@@ -27,7 +27,7 @@ Answer without looking. Model answers are short; if yours is weaker, re-read the
 | 3 | What does the GUA do? | Sets which contract changes the leader can agree alone and which need other agreement parties. |
 | 4 | What are the three bordereaux types? | Risk, premium, claims. |
 | 5 | What does SND stand for and why does it matter? | Signing Number and Date – the bureau reference that identifies each accounting entry and links premiums, endorsements and claims. |
-| 6 | Who agrees a complex claim on a Lloyd's subscription contract? | The leader plus a second agreement party under the Lloyd's Claims Scheme; followers are bound. |
+| 6 | Who agrees a complex claim on a Lloyd's subscription contract? | The Lloyd's lead and second Lloyd's lead under the Lloyd's Claims Lead Arrangements (which replaced the Lloyd's Claims Scheme); followers are bound. |
 | 7 | Give three causes of aged premium debt. | Late documentation, bureau rejections, DA remittance delays, client non-payment, disputes. |
 
 ### Advanced (Modules 07–09)
@@ -121,7 +121,7 @@ This plan covers the knowledge base only (Phase 1 and early Phase 2 of the 24-mo
 |---|---|
 | Detailed Lloyd's 2026–2030 strategy targets (cost-to-income, NPS, efficiency) | Reported by law firm summaries; confirm in Lloyd's strategy brochure. |
 | Blueprint Two replacement detail and CDR extensions (treaty, DA) | Based on trade press; Lloyd's/LMG publications are the primary source. |
-| Lloyd's Claims Scheme exact rules | Summarised; read the current scheme text. |
+| Lloyd's Claims Lead Arrangements exact rules and thresholds | Summarised; read the current LCLA text and guidance. |
 | Lloyd's financial strength ratings | Change over time; check lloyds.com. |
 | FOS award limits and FSCS eligibility thresholds | Updated periodically. |
 | EU AI Act high-risk timing | Subject to EU simplification proposals. |

@@ -39,7 +39,7 @@ A world-class London market consultant passes these six tests. Use them as your 
 
 | Pillar | Level 1 – Foundation | Level 2 – Practitioner | Level 3 – Expert | Level 4 – Authority |
 |---|---|---|---|---|
-| **A. Market and domain** | Explains structure, actors, lifecycle correctly | Explains process detail and exceptions (signing down, claims schemes, DA controls) | Diagnoses why a process fails at a specific client and what market rules constrain the fix | Shapes market thinking; consulted by market bodies |
+| **A. Market and domain** | Explains structure, actors, lifecycle correctly | Explains process detail and exceptions (signing down, claims lead arrangements, DA controls) | Diagnoses why a process fails at a specific client and what market rules constrain the fix | Shapes market thinking; consulted by market bodies |
 | **B. Financial and capital acumen** | Reads combined ratio and its components | Builds a class-level P&L view from syndicate accounts; understands SBF and ECA | Links operational change to loss ratio, expense ratio and capital with credible numbers | CFO-level adviser on cycle management and capital efficiency |
 | **C. Functional and operating model** | Maps an as-is process | Designs a target process and operating model for one function | Designs an end-to-end operating model across underwriting, DA, claims, finance | Known for operating models that delivered results |
 | **D. Data, technology and AI** | Explains CDR, MRC data, systems landscape, basic AI concepts | Builds a data model; runs an AI prototype with measured accuracy | Designs data platform and AI programme with governance; leads vendor selection | Sets direction for a carrier's data and AI strategy |

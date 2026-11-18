@@ -273,7 +273,7 @@ Political and economic measures used by governments and international bodies (UN
 | Sub-point | Key notes |
 |---|---|
 | 11.1 Role and responsibilities | Assess risk; decide acceptance, terms and price; work within authority and business plan; build a balanced profitable portfolio; manage aggregation; ensure contract certainty; manage relationships with brokers |
-| 11.2 Lead and following underwriters | **Lead**: sets terms and rate, often handles claims agreement and changes (under GUA and claims schemes), carries reputational responsibility. **Followers**: accept the leader's terms for their share, rely on leader's expertise; can sometimes add conditions. Each insurer is **severally** liable only for its own line |
+| 11.2 Lead and following underwriters | **Lead**: sets terms and rate, often handles claims agreement and changes (under GUA and claims lead arrangements), carries reputational responsibility. **Followers**: accept the leader's terms for their share, rely on leader's expertise; can sometimes add conditions. Each insurer is **severally** liable only for its own line |
 
 ---
 

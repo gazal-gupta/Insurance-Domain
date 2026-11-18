@@ -356,7 +356,7 @@ Licensing and tax are checked on every risk. Mistakes create regulatory breaches
 
 **What it costs:** every change (endorsement, claim) may need agreement from several insurers; data is duplicated across all of them; processing is complex.
 
-**Consulting implication:** standards that let one agreed change flow to all insurers (the General Underwriters' Agreement, claims schemes, common data records) are the main levers for reducing cost.
+**Consulting implication:** standards that let one agreed change flow to all insurers (the General Underwriters' Agreement, claims lead arrangements, common data records) are the main levers for reducing cost.
 
 ### 7.2 A broker-centred market
 
@@ -523,7 +523,7 @@ These are exactly the kinds of questions that lead to consulting work.
 
 The point a partner makes: **one point of combined ratio on £1bn is £10m a year, every year.** That is how you justify a £2–3m programme in one sentence. Memorise this conversion.
 
-**3. Use the "three questions" filter on every client fact.** For any fact in this chapter, ask: (a) *So what* for this client's P&L or capital? (b) *Is it structural or cyclical?* (c) *What would the CEO do differently on Monday?* Example: "London uses subscription" → so what: every change and claim needs multi-party agreement → structural → the CEO should push standards (GUA, claims schemes, data records) and not expect a single-firm system to remove the cost.
+**3. Use the "three questions" filter on every client fact.** For any fact in this chapter, ask: (a) *So what* for this client's P&L or capital? (b) *Is it structural or cyclical?* (c) *What would the CEO do differently on Monday?* Example: "London uses subscription" → so what: every change and claim needs multi-party agreement → structural → the CEO should push standards (GUA, claims lead arrangements, data records) and not expect a single-firm system to remove the cost.
 
 **4. Know the industry's "physics" before the client's problems.** Top-tier partners build an industry model first: what drives value (underwriting margin, cost, capital, float), what the cycle is doing, where profit pools sit (lead vs follow, open market vs delegated, classes). Sections 1, 2 and 7 of this chapter are that model in simple form. Keep it on one page and update it every quarter.
 

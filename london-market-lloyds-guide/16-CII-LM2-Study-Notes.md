@@ -21,7 +21,7 @@ flowchart LR
   Coverholder -- binds risks for --> Syndicate
 ```
 
-Key relationships to know: client–broker (agency); broker–insurer (TOBA, premium and claims handling); lead–follower (subscription, GUA, claims schemes); managing agent–members (agency agreements); insurer–coverholder (binding authority agreement). See [Module 02](02-Beginner-Actors-Entities-Players.md).
+Key relationships to know: client–broker (agency); broker–insurer (TOBA, premium and claims handling); lead–follower (subscription, GUA, claims lead arrangements); managing agent–members (agency agreements); insurer–coverholder (binding authority agreement). See [Module 02](02-Beginner-Actors-Entities-Players.md).
 
 ---
 
@@ -280,7 +280,7 @@ Broker collects premium; premium payment terms in the MRC (e.g., premium payment
 
 | Sub-point | Key notes |
 |---|---|
-| 10.1 Insurer and broker roles | Broker: notify, gather information, present and advocate the claim, collect payment. Insurer: acknowledge, investigate coverage, appoint experts, set reserves, agree and pay; lead and agreement parties agree on behalf of followers under claims schemes |
+| 10.1 Insurer and broker roles | Broker: notify, gather information, present and advocate the claim, collect payment. Insurer: acknowledge, investigate coverage, appoint experts, set reserves, agree and pay; lead and agreement parties agree on behalf of followers under claims lead arrangements |
 | 10.2 Claims personnel | Claims broker/technician; lead claims adjuster; follower claims handlers; **loss adjuster** (appointed by insurer); **loss assessor** (appointed by insured); TPA/DCA; lawyers; experts (forensic accountants, engineers) |
 | 10.3 Principles in claims | Apply indemnity (and modifications such as average and excesses), subrogation, contribution, proximate cause and exclusions. See [Module 15 LO1](15-CII-LM1-Study-Notes.md) |
 
