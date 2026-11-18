@@ -246,7 +246,7 @@ sequenceDiagram
   participant V as Velonetic
   I->>B: Notify loss
   B->>L: Claim notification (UMR, details)
-  L->>L: Triage standard / complex; coverage; sanctions
+  L->>L: Triage standard or complex, check coverage and sanctions
   L->>E: Appoint experts
   L->>S: Involve second lead if complex
   L->>F: Advise reserve
