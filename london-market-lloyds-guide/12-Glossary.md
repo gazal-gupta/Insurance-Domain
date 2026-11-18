@@ -26,7 +26,7 @@ Plain-English definitions of the terms you will hear in London market and Lloyd'
 | **Chain of security** | Lloyd's three-link capital structure: syndicate assets, Funds at Lloyd's, central assets. (07) |
 | **CIDRA** | Consumer Insurance (Disclosure and Representations) Act 2012. (15) |
 | **CIL – Coming into Line** | Deadline for members to provide Funds at Lloyd's for the next year. (07) |
-| **Claims Lead Arrangements (CLA)** | Market claims agreement rules for company market and mixed placements. (06) |
+| **Lloyd's Claims Lead Arrangements (LCLA)** | Lloyd's rules for agreeing claims on subscription contracts: the lead agrees standard claims; lead and second lead agree complex claims; followers are bound. Replaced the Lloyd's Claims Scheme. (06) |
 | **Combined ratio** | (Claims + expenses) ÷ earned premium. (01) |
 | **Composite policy** | One policy covering several parties with different interests, treated as separate contracts. (17) |
 | **Consortium** | Group of insurers writing together under a consortium leader. (04, 17) |

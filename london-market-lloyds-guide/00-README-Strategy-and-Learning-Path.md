@@ -53,17 +53,17 @@ The knowledge levels (Beginner → Advanced) take about 12 weeks. Becoming a wor
 
 | # | Module | Level | Read time |
 |---|---|---|---|
-| 01 | [Foundations: insurance basics and how London is different](01-Beginner-Foundations.md) | Beginner | 60 min |
-| 02 | [Actors, entities and players](02-Beginner-Actors-Entities-Players.md) | Beginner | 60 min |
-| 03 | [Lines of business and products](03-Beginner-Lines-of-Business.md) | Beginner | 45 min |
-| 04 | [Placement and underwriting: open market lifecycle](04-Intermediate-Placement-and-Underwriting.md) | Intermediate | 90 min |
-| 05 | [Delegated authority: coverholders, MGAs, bordereaux](05-Intermediate-Delegated-Authority.md) | Intermediate | 75 min |
-| 06 | [Accounting, settlement, claims and reinsurance](06-Intermediate-Accounting-Settlement-Claims-Reinsurance.md) | Intermediate | 90 min |
-| 07 | [Capital, finance and regulation](07-Advanced-Capital-Finance-Regulation.md) | Advanced | 90 min |
-| 08 | [Modernisation, data standards and technology](08-Advanced-Modernisation-Data-Technology.md) | Advanced | 75 min |
-| 09 | [AI in the London market](09-Advanced-AI-in-London-Market.md) | Advanced | 75 min |
-| 10 | [Business scenarios and case studies](10-Business-Scenarios-and-Case-Studies.md) | All | 120 min |
-| 11 | [Consulting playbook and client conversation defence](11-Consulting-Playbook.md) | Champion | 90 min |
+| 01 | [Foundations: insurance economics and how London is different](01-Beginner-Foundations.md) | Beginner | 3–4 hrs |
+| 02 | [Actors, entities and players](02-Beginner-Actors-Entities-Players.md) | Beginner | 3–4 hrs |
+| 03 | [Lines of business and products](03-Beginner-Lines-of-Business.md) | Beginner | 4 hrs |
+| 04 | [Placement and underwriting: open market lifecycle](04-Intermediate-Placement-and-Underwriting.md) | Intermediate | 4–5 hrs |
+| 05 | [Delegated authority: coverholders, MGAs, bordereaux](05-Intermediate-Delegated-Authority.md) | Intermediate | 4–5 hrs |
+| 06 | [Accounting, settlement, claims and reinsurance](06-Intermediate-Accounting-Settlement-Claims-Reinsurance.md) | Intermediate | 5 hrs |
+| 07 | [Capital, finance and regulation](07-Advanced-Capital-Finance-Regulation.md) | Advanced | 5–6 hrs |
+| 08 | [Modernisation, data standards and technology](08-Advanced-Modernisation-Data-Technology.md) | Advanced | 4–5 hrs |
+| 09 | [AI in the London market](09-Advanced-AI-in-London-Market.md) | Advanced | 5 hrs |
+| 10 | [Business scenarios and case studies (14 cases)](10-Business-Scenarios-and-Case-Studies.md) | All | 45–60 min per case |
+| 11 | [Consulting playbook: top-tier strategy consulting craft](11-Consulting-Playbook.md) | Champion | 5–6 hrs |
 | 12 | [Glossary A–Z](12-Glossary.md) | Reference | — |
 | 13 | [Self-assessment, 12-week plan, sources](13-Sources-and-Further-Reading.md) | All | — |
 | **18** | **[The path to world-class London market consultant (24 months)](18-World-Class-Consultant-Path.md)** | **Champion – start here for the plan** | 45 min |
@@ -75,23 +75,23 @@ The knowledge levels (Beginner → Advanced) take about 12 weeks. Becoming a wor
 
 **How the pieces fit:** Module 18 is the spine – a 24-month path built on practice, proof and exposure, not exams. Modules 01–13 are the knowledge it draws on. Module 19 holds the weekly drills and templates. Modules 14–17 follow the CII syllabus structure and are kept as a precise reference for law, rules and calculations – useful, but not the goal.
 
-### 2.4 Detailed chapter rewrite – progress
+### 2.4 Chapter format and status
 
-Each chapter is being rewritten in full detail using one standard format: learning objectives → explanation → worked examples → how it works in practice → consulting angle → **Partner's lens** (how a senior top-tier strategy consultant would use the material) → takeaways → check questions → practice tasks → sources.
+All core chapters (01–11) are written in full detail using one standard format: learning objectives → explanation → worked examples → how it works in practice → consulting angle → **Partner's lens** (how a senior top-tier strategy consultant would use the material) → takeaways → check questions → practice tasks → sources.
 
 | Chapter | Status |
 |---|---|
 | 01 Foundations | ✅ Detailed |
 | 02 Actors, entities and players | ✅ Detailed |
-| 03 Lines of business | Next |
-| 04 Placement and underwriting | Planned |
-| 05 Delegated authority | Planned |
-| 06 Accounting, settlement, claims, reinsurance | Planned |
-| 07 Capital, finance, regulation | Planned |
-| 08 Modernisation, data, technology | Planned |
-| 09 AI in the London market | Planned |
-| 10 Business scenarios | Planned |
-| 11 Consulting playbook – to be rebuilt around top-tier strategy consulting craft | Planned |
+| 03 Lines of business | ✅ Detailed |
+| 04 Placement and underwriting | ✅ Detailed |
+| 05 Delegated authority | ✅ Detailed |
+| 06 Accounting, settlement, claims, reinsurance | ✅ Detailed (updated for Lloyd's Claims Lead Arrangements) |
+| 07 Capital, finance, regulation | ✅ Detailed |
+| 08 Modernisation, data, technology | ✅ Detailed |
+| 09 AI in the London market | ✅ Detailed |
+| 10 Business scenarios | ✅ Detailed – 14 full cases |
+| 11 Consulting playbook – top-tier strategy consulting craft | ✅ Detailed |
 
 ### 2.5 How to study (do not skip this)
 
