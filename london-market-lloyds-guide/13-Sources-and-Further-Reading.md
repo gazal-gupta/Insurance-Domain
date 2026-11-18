@@ -48,9 +48,11 @@ Write a one-page recommendation for Scenarios 2, 8 and 10 in [Module 10](10-Busi
 
 ---
 
-## 2. Twelve-week learning plan
+## 2. Twelve-week knowledge plan
 
-| Week | Focus | Guide modules | CII link | Output |
+This plan covers the knowledge base only (Phase 1 and early Phase 2 of the 24-month path). The full development path, with exposure, artefacts and market presence, is in [Module 18](18-World-Class-Consultant-Path.md). The "CII link" column points to optional reference notes, not exams.
+
+| Week | Focus | Guide modules | CII reference | Output |
 |---|---|---|---|---|
 | 1 | Insurance basics, London vs domestic | 01 | LM1 LO1–2 | One-page summary of principles |
 | 2 | Actors and entities | 02 | LM1 LO6 | Draw the market map from memory |

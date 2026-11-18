@@ -43,9 +43,11 @@ flowchart LR
   B[Beginner<br/>Weeks 1-3<br/>Market structure, actors,<br/>classes, core terms]
   I[Intermediate<br/>Weeks 4-8<br/>Placement, delegated authority,<br/>accounting, settlement, claims,<br/>reinsurance]
   A[Advanced<br/>Weeks 9-12<br/>Capital, regulation, finance,<br/>modernisation, data, AI]
-  C[Champion<br/>Ongoing<br/>Scenarios, consulting playbook,<br/>client defence]
+  C[Champion<br/>Months 4-24<br/>Spike, proof artefacts,<br/>real exposure, POVs,<br/>client outcomes]
   B --> I --> A --> C
 ```
+
+The knowledge levels (Beginner → Advanced) take about 12 weeks. Becoming a world-class consultant takes about 24 months of deliberate practice and real exposure – see [Module 18](18-World-Class-Consultant-Path.md).
 
 ### 2.3 Guide map
 
@@ -64,12 +66,14 @@ flowchart LR
 | 11 | [Consulting playbook and client conversation defence](11-Consulting-Playbook.md) | Champion | 90 min |
 | 12 | [Glossary A–Z](12-Glossary.md) | Reference | — |
 | 13 | [Self-assessment, 12-week plan, sources](13-Sources-and-Further-Reading.md) | All | — |
-| 14 | [CII LM1–LM3: course structure, weighting and exam strategy](14-CII-LM-Certificate-Overview.md) | Exam track | 30 min |
-| 15 | [CII LM1 – London Market insurance essentials: study notes](15-CII-LM1-Study-Notes.md) | Exam track (Beginner) | 3–4 hrs |
-| 16 | [CII LM2 – London Market insurance principles and practices: study notes](16-CII-LM2-Study-Notes.md) | Exam track (Intermediate) | 4–5 hrs |
-| 17 | [CII LM3 – London Market underwriting principles: study notes](17-CII-LM3-Study-Notes.md) | Exam track (Intermediate–Advanced) | 5–6 hrs |
+| **18** | **[The path to world-class London market consultant (24 months)](18-World-Class-Consultant-Path.md)** | **Champion – start here for the plan** | 45 min |
+| **19** | **[Practice toolkit and templates](19-Practice-Toolkit-and-Templates.md)** | **Champion – use weekly** | — |
+| 14 | [CII LM1–LM3 structure (optional reference)](14-CII-LM-Certificate-Overview.md) | Reference | 30 min |
+| 15 | [LM1 topic notes – principles, regulation, market basics](15-CII-LM1-Study-Notes.md) | Reference (Beginner) | 3–4 hrs |
+| 16 | [LM2 topic notes – placement law, intermediaries, reinsurance maths, claims](16-CII-LM2-Study-Notes.md) | Reference (Intermediate) | 4–5 hrs |
+| 17 | [LM3 topic notes – wordings, business planning, pricing, distribution](17-CII-LM3-Study-Notes.md) | Reference (Advanced) | 5–6 hrs |
 
-**Two tracks, one body of knowledge:** modules 01–13 build practical and consulting depth; modules 14–17 map that knowledge to the CII LM1, LM2 and LM3 syllabuses examined in 2027, with practice questions. Study both in parallel – the 12-week plan in module 13 shows how.
+**How the pieces fit:** Module 18 is the spine – a 24-month path built on practice, proof and exposure, not exams. Modules 01–13 are the knowledge it draws on. Module 19 holds the weekly drills and templates. Modules 14–17 follow the CII syllabus structure and are kept as a precise reference for law, rules and calculations – useful, but not the goal.
 
 ### 2.4 How to study (do not skip this)
 

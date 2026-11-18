@@ -1,5 +1,7 @@
 # Module 14 – CII London Market Units LM1, LM2, LM3: Course Structure and Exam Strategy
 
+> **Status in this guide: optional reference.** The development goal is consulting capability, not exams – see [Module 18](18-World-Class-Consultant-Path.md). Use modules 14–17 when you need precise rules, law and calculations. The question weightings below remain a useful signal of which topics the industry treats as core.
+
 **Purpose:** Map the Chartered Insurance Institute (CII) London Market units to this guide, so you can (1) pass the exams and (2) use the same knowledge in client work. The exam teaches the rules; the rest of this guide teaches how the rules play out in practice.
 
 **Source:** CII examination syllabuses for LM1, LM2 and LM3, published October 2026, examined **1 January 2027 to 31 December 2027** (LM3 states 1 December 2027) **[certain]**. Always check the CII unit page for "qualification updates" before you sit the exam.
