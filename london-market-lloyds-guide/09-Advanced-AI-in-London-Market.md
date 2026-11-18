@@ -1,226 +1,403 @@
 # Module 09 – AI in the London Market
 
-**Level:** Advanced | **Goal:** Separate real AI value from hype, know the use cases across the lifecycle, understand AI as both a tool and a new risk to insure, and be able to design a governed AI programme for a London carrier or broker.
-
----
-
-## 1. Reality check – where the market actually is (2026)
-
-| Evidence | Source and tag |
+| | |
 |---|---|
-| LMA survey on AI risk management (April 2026): 39 responses representing over 60% of market stamp capacity; 93% have an AI governance framework in place (72%) or in development (21%). Market described as still at an **early stage**; general GenAI tools (e.g., Microsoft Copilot, ChatGPT-type tools) drive most current use. Use cases mentioned include marine sanctions tracking, wording analytics for slip-level exclusions and risk reporting linked to external data. | LMA survey and trade press **[likely]** |
-| LMA and Barnett Waddingham launched an **AI Adoption Toolkit** (23 April 2026): principles-based, start with lower-risk use cases, embed controls from the outset, scale gradually. | LMA **[likely]** |
-| Lloyd's 2026–2030 strategy positions AI to **strengthen human decision-making rather than replace it** and commits to defining data, technology and AI strategies. | Lloyd's strategy, Skadden summary **[likely]** |
-| AIG-backed **Syndicate 2479**, managed by Talbot, began underwriting from 1 January 2026; reports say it uses large language model agents to assess diversification and fit with underwriting appetite. | Trade press **[likely]** |
-| PRA 2026 priorities letter highlights increased AI use by insurers. | Law firm summaries **[likely]** |
-
-**Advisor view [likely]:** Most London firms are past experimentation but not yet at scale. The biggest blocker is **unstructured and inconsistent data**, not model capability. Firms that win will combine AI with data standards (CDR), clean master data and redesigned workflows.
+| **Level** | Advanced |
+| **Path phase** | Phase 2–3; your recommended primary spike ([Module 18 §3](18-World-Class-Consultant-Path.md)) |
+| **Time** | 5 hours reading; ongoing hands-on practice |
+| **Prerequisites** | Modules 04–08 |
+| **You will be able to** | Separate AI value from hype in London; explain how modern AI works in business terms; map use cases across the lifecycle; design and evaluate an AI solution; set up governance consistent with UK regulation and the LMA toolkit; advise on AI as an insured risk; build a business case and an AI programme |
 
 ---
 
-## 2. Types of AI you will discuss
+## 1. Reality check – where the market is in 2026
 
-| Type | What it does | London examples |
+| Evidence | Tag |
+|---|---|
+| **LMA survey on AI risk management** (April 2026): 39 responses covering over 60% of market stamp capacity; 93% have an AI governance framework in place (72%) or in development (21%). Market described as at an **early stage**; general AI assistants drive most current use. Use cases mentioned include marine sanctions tracking, wording analytics for slip-level exclusions, and risk reporting linked to external data | [likely] |
+| **LMA AI Adoption Toolkit** with Barnett Waddingham (23 April 2026): principles-based; start with lower-risk use cases; embed controls from the outset; scale gradually | [likely] |
+| **Lloyd's 2026–2030 strategy**: AI should strengthen human decision-making, not replace it; Lloyd's will define data, technology and AI strategies | [likely] |
+| **Syndicate 2479** (AIG-backed, managed by Talbot) began underwriting 1 January 2026, reportedly using AI agents to assess diversification and appetite fit | [likely] |
+| **PRA 2026 priorities** highlight insurers' increasing use of AI | [likely] |
+
+**Advisor view [likely]:** most London firms have moved past experiments but few have AI at scale in core workflows. The binding constraint is **data and workflow**, not model capability. Firms that win will combine AI with data standards, clean master data, redesigned processes and governance.
+
+---
+
+## 2. How modern AI works – what a consultant must understand
+
+You do not need to be a data scientist. You do need to explain these ideas clearly to executives.
+
+| Concept | Plain explanation | Why it matters in London |
 |---|---|---|
-| **Predictive machine learning** | Learns patterns from structured historical data to predict outcomes. | Claims severity, propensity to bind, lapse, fraud scores, pricing factors. |
-| **Document AI / extraction** | Turns PDFs, emails and spreadsheets into structured data. | Submissions, SOVs, bordereaux, loss runs, MRCs. |
-| **Generative AI (LLMs)** | Reads, summarises, compares and drafts text; answers questions over documents. | Wording comparison, claims file summaries, underwriting notes, broker emails. |
-| **Retrieval-augmented generation (RAG)** | LLM answers using a controlled document set (e.g., underwriting guidelines, wordings library). | "Is this risk within appetite?" assistant; clause library Q&A. |
-| **Agentic AI** | AI that plans and performs multi-step tasks using tools (e.g., extract → check sanctions → price → draft quote) with human approval points. | Submission-to-quote agents; bordereaux exception handling; follow-line decisions. |
-| **Geospatial and computer vision** | Analyses satellite, aerial, vessel tracking and photo data. | Property risk features, post-cat damage assessment, vessel AIS tracking for sanctions/war zones. |
+| **Machine learning (ML)** | Models learn patterns from historical data to predict outcomes | Works where structured history exists (claims severity, propensity to bind); limited for rare, complex risks |
+| **Large language model (LLM)** | A model trained on very large amounts of text that can read, summarise, compare, extract and draft text | London's work is document-heavy: submissions, MRCs, wordings, claims files |
+| **Context window** | How much text the model can read at once | Long submissions and wordings may need splitting or retrieval |
+| **Hallucination** | The model produces confident but wrong content | Unacceptable for coverage, pricing or reserving without checks |
+| **Retrieval-augmented generation (RAG)** | The model answers using documents retrieved from a controlled library (e.g., wordings, guidelines) and cites them | Grounds answers in the firm's own approved sources |
+| **Structured extraction** | Model fills a defined schema (fields) from documents | Turns submissions and bordereaux into data |
+| **Agents** | AI that plans and carries out multi-step tasks using tools, with approval points | Submission-to-quote, exception handling – needs strong controls |
+| **Evaluation** | Measuring accuracy on a test set of real examples | The difference between a demo and a production system |
+| **Fine-tuning vs prompting** | Adjusting a model with extra training vs instructing it | Most London use cases succeed with good prompting, retrieval and validation rather than fine-tuning **[likely]** |
 
 ---
 
 ## 3. Use-case map across the lifecycle
 
-Maturity: **Now** = proven and in production in several London firms; **Emerging** = pilots and early production; **Future** = limited evidence yet. Tags reflect my judgement **[likely]** unless noted.
+Maturity: **Now** = in production at several London firms; **Emerging** = pilots and early production; **Future** = limited evidence. Judgements are **[likely]** unless noted.
 
-| Lifecycle stage | Use case | Value lever | Maturity |
-|---|---|---|---|
-| **Distribution / broking** | Submission pack creation, market selection support, client data cleansing | Broker productivity, placement speed | Now / Emerging |
-| **Submission intake** | Extract data from emails, SOVs, loss runs; create structured submission | Reduce manual keying; faster quotes | Now |
-| **Triage** | Score submissions for appetite fit and likely profitability; route to right underwriter | Underwriter focus on best risks; higher hit ratio | Now / Emerging |
-| **Underwriting assistant** | Summarise risk, compare to guidelines, draft referral notes, highlight missing info | Underwriter capacity | Emerging |
-| **Pricing** | ML factors for frequency/severity; external data enrichment | Rate adequacy, loss ratio | Now (data-rich classes) |
-| **Wording and contract certainty** | Compare MRC to standard wordings; flag non-standard clauses, missing exclusions (e.g., cyber, sanctions, war) | Contract certainty, fewer disputes | Now / Emerging |
-| **Follow decisions** | Data-driven follow lines; algorithmic follow | Low-cost capacity deployment | Emerging |
-| **Exposure management** | Geocoding, clash detection, accumulations; AI-enriched property attributes | Better cat capital and pricing | Now |
-| **Sanctions and compliance** | Screen parties, vessels, voyages; monitor AIS data | Avoid sanctions breaches | Now |
-| **Delegated authority** | Map and validate bordereaux; flag authority breaches; coverholder performance analytics | Lower cost, faster exposure view | Now / Emerging |
-| **Accounting and reconciliation** | Match cash to premium entries; classify breaks; predict late payment | Lower aged debt; smaller ops teams | Emerging |
-| **Claims – FNOL and triage** | Extract claim notices, classify complexity, route | Faster response | Now |
-| **Claims – file review** | Summarise expert reports and correspondence; draft reserve rationale; coverage checklist | Handler productivity; reserve quality | Emerging |
-| **Claims – leakage and fraud** | Detect anomalies, duplicate payments, missed recoveries | Lower loss cost | Emerging |
-| **Reinsurance** | Identify recoverable claims; check cessions vs treaties | Fewer missed recoveries | Emerging |
-| **Reserving and actuarial** | Faster data preparation; anomaly detection; narrative drafting | Actuarial productivity | Emerging |
-| **Regulatory reporting** | Draft narrative reports; data lineage checks | Lower reporting cost | Future / Emerging |
-| **Agentic end-to-end** | Submission-to-quote with human approval; bordereaux exception agent | Step change in cost per transaction | Future / Emerging |
+| Stage | Use case | Value lever | Maturity | Risk tier |
+|---|---|---|---|---|
+| Broking | Submission pack creation; market selection support | Broker productivity | Now / Emerging | Low–Medium |
+| Intake | Extract data from emails, SOVs, loss runs | Remove manual keying | Now | Low |
+| Triage | Score appetite fit and priority; route to underwriter | Selection; hit ratio | Now / Emerging | Medium |
+| Underwriting assistant | Summarise risk; compare to guidelines; draft referral notes | Underwriter capacity | Emerging | Medium |
+| Pricing | ML factors; external data enrichment | Rate adequacy | Now (data-rich classes) | Medium–High |
+| Wording | Compare MRC to standards; flag missing or changed clauses | Contract certainty | Now / Emerging | Medium |
+| Follow decisions | Data-driven follow lines | Low-cost capacity | Emerging | High |
+| Exposure | Geocoding; property attributes from imagery; clash detection | Cat capital, pricing | Now | Medium |
+| Sanctions | Screen parties, vessels, voyages; AIS tracking | Avoid breaches | Now | Medium–High |
+| Delegated authority | Map and validate bordereaux; detect breaches; coverholder analytics | Cost; exposure speed | Now / Emerging | Low–Medium |
+| Accounting | Cash matching; break classification; late-payment prediction | Aged debt; ops cost | Emerging | Low |
+| Claims FNOL and triage | Extract notices; classify complexity; route | Speed | Now | Medium |
+| Claims file review | Summarise reports; draft reserve rationale; coverage checklist | Handler productivity; reserve consistency | Emerging | Medium |
+| Leakage and fraud | Detect anomalies, duplicates, missed recoveries; spot AI-generated documents | Loss ratio | Emerging | Medium–High |
+| Reinsurance | Match claims to treaties; check cessions | Recoveries | Emerging | Low–Medium |
+| Actuarial | Data preparation; anomaly detection; narrative drafting | Productivity | Emerging | Medium |
+| Regulatory reporting | Draft narratives; lineage checks | Reporting cost | Emerging / Future | Medium |
+| Agentic workflows | Submission-to-quote; bordereaux exception agent | Step change in cost per transaction | Emerging / Future | High |
 
 ---
 
-## 4. Five deep dives
+## 4. Deep dives
 
 ### 4.1 Submission intake and triage
 
 ```mermaid
 flowchart LR
-  A[Broker email + attachments] --> B[AI extraction:<br/>insured, class, limits, SOV,<br/>loss history]
-  B --> C[Enrichment:<br/>company data, geocoding,<br/>sanctions, cat scores]
+  A[Broker email and<br/>attachments] --> B[Extraction to schema:<br/>insured, class, limits,<br/>SOV, loss history]
+  B --> C[Enrichment: company data,<br/>geocoding, sanctions,<br/>cat scores]
   C --> D[Appetite and priority score]
   D --> E{Fit?}
   E -- No --> F[Fast decline with reason]
-  E -- Yes --> G[Underwriter workbench:<br/>pre-filled risk, pricing inputs]
-  G --> H[Underwriter decision<br/>human accountable]
-  H --> I[Feedback loop to improve<br/>extraction and scoring]
+  E -- Yes --> G[Workbench: pre-filled risk,<br/>pricing inputs]
+  G --> H[Underwriter decision -<br/>human accountable]
+  H --> I[Feedback improves<br/>extraction and scoring]
 ```
 
-- **Value:** London underwriters often see many more submissions than they can review properly **[likely]**. Faster declines and better prioritisation improve both cost and loss ratio.
-- **Success measures:** extraction accuracy by field, time from receipt to first review, quote turnaround, hit ratio on high-score risks, underwriter adoption.
-- **Pitfalls:** poor accuracy on complex SOVs; underwriters not trusting scores; no feedback loop.
+| Aspect | Detail |
+|---|---|
+| **Value** | Underwriters review more of the right risks; faster declines; quicker quotes |
+| **Measures** | Field-level extraction accuracy; time to first review; quote turnaround; hit ratio on high-score risks; adoption |
+| **Pitfalls** | Weak accuracy on complex SOVs; scores trained only on past acceptance (copying past bias); no feedback loop |
+| **Design tip** | Train or tune scoring on **profitability**, not just on past bind decisions |
 
 ### 4.2 Wording analytics and contract certainty
 
-- Compare each MRC against the firm's standard wordings and mandatory clauses (e.g., state-backed cyber exclusions, sanctions clauses, communicable disease exclusions).
-- Flag missing, changed or unusual clauses for the underwriter before binding.
-- **Why it matters:** the Russia aircraft litigation shows how much money depends on the exact cover and exclusions.
-- **Pitfalls:** LLMs can miss subtle changes; must be evaluated against a test set of real wordings with lawyers.
+- Compare each MRC and wording against approved standards and mandatory clauses (sanctions, state-backed cyber exclusions, communicable disease, war).
+- Flag missing, changed or unusual clauses before binding; explain the difference in plain English.
+- **Why it matters:** the Russia aircraft litigation shows how much money depends on precise wording.
+- **Guardrails:** evaluate on a test set of real wordings reviewed by lawyers; show the clause text, not just the AI's summary; underwriter decides.
 
 ### 4.3 Bordereaux processing
 
-- AI maps each coverholder's file layout to the standard (Lloyd's reporting standards / future DA CDR).
-- Validation rules check limits, territories, classes and dates against the BAA.
-- Exceptions go to a workflow; AI drafts the query to the coverholder.
-- **Value:** large reduction in manual mapping effort; faster exposure updates.
+- AI proposes mappings from each coverholder's layout to the standard model; humans confirm once; mappings are reused.
+- Validation rules check every row against structured binder terms ([Module 05 §7](05-Intermediate-Delegated-Authority.md)).
+- AI drafts queries to coverholders for exceptions and classifies exception causes.
+- **Measures:** mapping accuracy; exceptions per 1,000 rows; days from receipt to validated data; effort per bordereau.
 
 ### 4.4 Claims file summarisation and triage
 
-- Summarise long claims files (adjuster reports, legal letters) into a structured view: facts, coverage issues, reserve drivers, next actions.
-- Triage new claims by complexity and route.
-- **Guardrail:** reserve and coverage decisions remain with the handler; AI output is advisory and logged.
+- Structured summary of long files: facts, coverage issues, reserve drivers, next actions, deadlines.
+- Triage by complexity (aligned to the Lloyd's Claims Lead Arrangements thresholds for complex claims).
+- **Guardrail:** reserve and coverage decisions stay with handlers; AI output logged and reviewable.
 
-### 4.5 Agentic and algorithmic underwriting
+### 4.5 Exposure and geospatial
+
+- Improve geocoding of SOVs and bordereaux; extract building attributes from aerial imagery; detect clashes (same location on several policies).
+- After catastrophes, compare imagery to exposures to estimate losses quickly.
+- **Value:** better cat model inputs → better pricing and possibly lower capital uncertainty.
+
+### 4.6 Marine sanctions and voyage monitoring
+
+- Combine vessel tracking (AIS), ownership data and sanctions lists to flag vessels with suspicious behaviour (signal gaps, ship-to-ship transfers, port calls in sanctioned areas).
+- Mentioned as an emerging use case in the LMA survey **[likely]**.
+
+### 4.7 Agentic and algorithmic underwriting
 
 - An agent performs steps (extract, enrich, check appetite, propose line) and stops at approval gates.
-- Suitable first for **follow** business, small risks, renewals with no material change.
-- **Risks:** model error replicated across many risks at once (correlated mistakes); soft-market adverse selection; accountability under SM&CR; Lloyd's oversight of new syndicates and plans.
+- Suitable first for follow business, small risks and unchanged renewals.
+- **Risks:** correlated errors across many risks; adverse selection in a soft market; accountability under SM&CR; Lloyd's scrutiny of plans.
 
 ---
 
-## 5. AI as a risk to insure
+## 5. How to evaluate an AI solution (the skill most consultants lack)
+
+### 5.1 Build a test set
+
+| Step | Detail |
+|---|---|
+| Collect real examples | e.g., 200 submissions, 50 bordereaux, 100 claims files (anonymised where needed) |
+| Create the "gold standard" | Experts record the correct answers (fields, classifications, flags) |
+| Cover the hard cases | Different brokers, layouts, languages, classes, poor scans |
+| Keep it separate | Do not tune the system on the test set |
+
+### 5.2 Measures
+
+| Measure | Meaning | Example |
+|---|---|---|
+| **Field-level accuracy** | % of fields extracted correctly | 96% of TIV values correct |
+| **Precision** | Of the items flagged, how many were right | 80% of sanctions alerts were genuine concerns |
+| **Recall** | Of the true items, how many were flagged | 99% of true sanctions matches were caught |
+| **Straight-through rate** | % processed with no human change | 70% of bordereaux rows pass validation |
+| **Human correction rate** | % of AI outputs changed by users | 12% of claim summaries edited |
+| **Time saved** | Before vs after | 40 → 15 minutes per submission |
+
+**Trade-off example – sanctions screening:** high **recall** matters most (missing a sanctioned party is serious), so accept lower precision (more false alerts) and manage the review workload. For submission triage, balance both – too many false declines lose good business.
+
+### 5.3 Production readiness checklist
+
+- Accuracy above agreed threshold on the test set, by segment (not just on average).
+- Clear human review points and override logging.
+- Monitoring of accuracy and drift after go-live.
+- Security, data residency and confidentiality controls agreed.
+- Fallback process if the AI service is unavailable (operational resilience).
+- Owner and accountable senior manager named.
+
+---
+
+## 6. Reference architecture for AI in a carrier
+
+```mermaid
+flowchart TB
+  U[Users: underwriters, DA, claims,<br/>finance - in their workflow tools] --> APP[AI-enabled applications<br/>workbench, bordereaux, claims]
+  APP --> GW[AI gateway: access control,<br/>prompt and output logging,<br/>data masking, model routing]
+  GW --> M[Models: LLMs, ML models,<br/>document AI]
+  APP --> RAG[Retrieval: approved wordings,<br/>guidelines, contracts, claims files]
+  RAG --> DP[Data platform and<br/>document stores]
+  APP --> RULES[Validation rules and<br/>structured contract terms]
+  GW --> MON[Monitoring and evaluation:<br/>accuracy, drift, incidents]
+  MON --> GOV[AI governance: inventory,<br/>risk tiering, approvals]
+```
+
+**Design principles:** AI inside the workflow (not a separate chatbot); controlled retrieval from approved sources; validation rules around AI outputs; full logging; model choice can change without rebuilding applications.
+
+---
+
+## 7. AI as a risk to insure
 
 | Theme | What is happening | Tag |
 |---|---|---|
-| **Affirmative AI liability products** | Lloyd's-backed products cover losses from AI model errors and failures, e.g., Armilla AI (limits reported up to $25m) and Testudo (generative AI liability, launched Jan 2026). | [likely] |
-| **Silent AI exposure** | Existing PI/E&O, D&O, cyber, product liability and crime policies may pay AI-related losses that were never priced. Similar to "silent cyber" a decade ago. | [likely] |
-| **Exclusions** | Some US liability forms introduced generative AI exclusions; London wordings are being reviewed. | [guessing] on specific market-wide adoption – check LMA clause library. |
-| **Aggregation** | Many insureds using the same foundation model or AI vendor create correlated losses. | [likely] |
-| **Deepfake fraud** | AI-generated voice/video used in payment fraud – hits crime and cyber policies; also a claims fraud risk. | [certain] as a phenomenon |
-| **D&O** | "AI washing" – claims against companies overstating AI capabilities. | [likely] |
+| **Affirmative AI liability** | Lloyd's-backed products covering AI model errors, e.g., Armilla AI (limits reported up to $25m) and Testudo (generative AI liability, launched January 2026) | [likely] |
+| **Silent AI** | Existing PI/E&O, D&O, cyber, product liability and crime policies may respond to AI-related losses never priced – like "silent cyber" a decade ago | [likely] |
+| **Exclusions** | Some markets have introduced generative AI exclusions; London wordings under review | [guessing] on market-wide adoption |
+| **Aggregation** | Many insureds relying on the same model or vendor → correlated losses | [likely] |
+| **Deepfake fraud** | AI-generated voice/video used in payment fraud; also used in fraudulent claims | [certain] as a phenomenon |
+| **D&O "AI washing"** | Claims against companies overstating AI capabilities | [likely] |
 
-**Client question you should be ready to answer:** "How do we know how much AI risk we are already carrying?" Answer: run a **silent AI exposure review** – wording review across classes, exposure mapping by insured AI use, scenario analysis for correlated AI failures, then decide on exclusion, affirmation or pricing.
+**Silent AI exposure review – method:**
+1. Inventory wordings across classes; identify where AI-related losses could trigger cover.
+2. Map insureds' AI use (sector, dependency on specific vendors/models).
+3. Build scenarios (e.g., a widely used model produces faulty outputs for 30 days).
+4. Estimate exposure; decide: exclude, affirm with sub-limits and pricing, or accept.
 
 ---
 
-## 6. Governance and regulation
+## 8. Governance and regulation
 
-### 6.1 What applies
+### 8.1 What applies
 
 | Area | Requirement |
 |---|---|
-| **UK approach** | No single AI law; regulators apply existing rules (principles-based). **[certain]** |
-| **PRA** | Model risk, governance, operational resilience and third-party risk expectations apply to AI. SS1/23 (model risk management) formally applies to banks, but insurers often use it as a benchmark **[likely]**. Internal model governance applies where AI affects capital. |
-| **FCA** | Consumer Duty and fair value for retail/SME customers; PS25/21 removes larger commercial customers from Consumer Duty, ICOBS and PROD **[certain]**; but fair treatment, financial crime and SM&CR still apply. |
-| **SM&CR** | A named senior manager must be accountable for AI risks in their area. |
-| **UK GDPR / DPA 2018** | Lawful basis, data minimisation, rights around automated decision-making with significant effect on individuals – relevant for A&H, claims involving individuals, DA consumer business. |
-| **EU AI Act** (for Lloyd's Europe and EU operations) | AI used for risk assessment and pricing in **life and health insurance for individuals** is classed as high-risk; most commercial P&C use is not. Obligations for general-purpose AI models apply from August 2025. Timing of high-risk obligations has been subject to EU simplification proposals – check the latest position **[likely]**. |
-| **Lloyd's / LMA** | LMA AI Adoption Toolkit principles include governance and accountability, risk tiering, data protection, and security and intellectual property **[likely]**. Lloyd's oversight will expect AI use to be governed within existing principles. |
-| **Confidentiality** | Broker submissions and client data are confidential; using them to train or prompt external models needs contractual and technical controls. |
+| **UK approach** | No single AI law; regulators apply existing rules **[certain]** |
+| **PRA** | Model risk, governance, operational resilience and third-party risk apply to AI; SS1/23 (model risk) formally applies to banks but insurers often use it as a benchmark **[likely]**; internal model governance where AI affects capital |
+| **FCA** | Consumer Duty and fair value for retail/SME; PS25/21 removes larger commercial customers from Consumer Duty, ICOBS and PROD **[certain]**; financial crime and SM&CR still apply |
+| **SM&CR** | Named senior manager accountable for AI risks in their area |
+| **UK GDPR / DPA 2018** | Lawful basis, minimisation, rights around automated decisions with significant effects on individuals |
+| **EU AI Act** (Lloyd's Europe, EU operations) | AI for risk assessment and pricing in life and health insurance for individuals is high-risk; most commercial P&C uses are not; timing of high-risk obligations subject to EU simplification proposals **[likely]** |
+| **LMA toolkit** | Principles including governance and accountability, risk tiering, data protection, security and intellectual property **[likely]** |
+| **Confidentiality** | Broker submissions and client data are confidential; contractual and technical controls needed for external models |
 
-### 6.2 AI governance framework (minimum viable)
+### 8.2 Minimum viable governance framework
 
 | Element | Description |
 |---|---|
-| **AI policy** | Approved by board; defines acceptable use, roles and risk appetite. |
-| **Use case inventory** | Every AI use case registered with owner, purpose, data, model, vendor, risk tier. |
-| **Risk tiering** | Low (internal productivity) → Medium (decision support) → High (automated decision affecting customers, capital or financial reporting). Controls scale with tier. |
-| **Human-in-the-loop design** | Clear approval points; humans accountable for binding, reserving and claims decisions. |
-| **Evaluation and testing** | Test sets of real documents; accuracy thresholds; bias tests where individuals are affected; regular re-testing. |
-| **Monitoring** | Drift, error rates, overrides, incidents. |
-| **Third-party management** | Due diligence on AI vendors; data residency; exit plans. |
-| **Training** | AI literacy for underwriters, claims, operations, board. Lloyd's strategy refers to building an "AI-trained" workforce **[likely]**. |
+| **AI policy** | Board-approved; acceptable use, roles, risk appetite |
+| **Use-case inventory** | Owner, purpose, data, model, vendor, risk tier for every use case |
+| **Risk tiering** | Low (internal productivity) → Medium (decision support) → High (automated decisions affecting customers, capital or reporting) |
+| **Controls by tier** | Low: training, logging. Medium: test set evaluation, human review, monitoring. High: independent validation, senior approval, ongoing audit |
+| **Human-in-the-loop** | Humans accountable for binding, reserving and claims decisions |
+| **Third-party management** | Vendor due diligence; data residency; exit plans |
+| **Training** | AI literacy for staff and board |
+
+### 8.3 Risk tiering examples
+
+| Use case | Tier | Why |
+|---|---|---|
+| Drafting internal emails and meeting notes | Low | No decision impact |
+| Bordereaux field mapping with human confirmation | Low–Medium | Validated by rules and humans |
+| Submission triage scores | Medium | Influences which risks are reviewed |
+| Claims summaries supporting reserving | Medium | Influences financial estimates |
+| Automated follow-line decisions | High | Binds capital without individual human review |
+| Pricing factors used in capital model | High | Affects capital and plan |
 
 ---
 
-## 7. Building an AI programme for a client – a practical approach
+## 9. Building an AI programme
 
 ```mermaid
 flowchart LR
-  A[1. Ambition and value<br/>pool sizing] --> B[2. Data and process<br/>readiness assessment]
-  B --> C[3. Use case portfolio:<br/>value vs feasibility vs risk]
-  C --> D[4. Governance set-up<br/>before scaling]
-  D --> E[5. Pilot 2-3 use cases<br/>with clear KPIs]
+  A[1. Ambition and value pool] --> B[2. Data and process readiness]
+  B --> C[3. Use-case portfolio:<br/>value x feasibility x risk]
+  C --> D[4. Governance before scale]
+  D --> E[5. Pilot 2-3 use cases<br/>with test sets and KPIs]
   E --> F[6. Scale: workflow redesign,<br/>integration, change management]
-  F --> G[7. Value tracking and<br/>continuous improvement]
+  F --> G[7. Value tracking]
 ```
 
-### 7.1 Prioritisation matrix (example)
+### 9.1 Prioritisation example
 
 | Use case | Value | Feasibility | Risk | Priority |
 |---|---|---|---|---|
-| Submission extraction (property SOV) | High | High | Low | 1 |
-| Bordereaux mapping | High | High | Low | 1 |
+| Property SOV extraction | High | High | Low | 1 |
+| Bordereaux mapping and validation | High | High | Low | 1 |
 | Claims file summarisation | Medium | High | Medium | 2 |
 | Wording comparison | High | Medium | Medium | 2 |
 | Triage scoring | High | Medium | Medium | 2 |
 | Agentic follow underwriting | High | Low | High | 3 |
 | Automated claims settlement | Medium | Low | High | 3 |
 
-### 7.2 Business case logic (illustrative – **[guessing]**, replace with client data)
+### 9.2 Business case – illustrative **[guessing]**; replace with client data
 
-For a managing agent with 60 underwriting assistants keying submission data:
+| Driver | Assumption | Value |
+|---|---|---|
+| 60 underwriting assistants | 50% of time on data entry | 30 FTE of data entry |
+| Extraction removes half of that | 50% | 15 FTE released |
+| Cost per FTE | £75k | **£1.1m a year capacity** |
+| Faster quotes on preferred risks | +2 points hit ratio on top-quartile submissions | Growth/loss ratio upside – show separately |
+| Costs | Platform, integration, change, run | £0.6–0.9m year 1; £0.3m run |
 
-- Time spent on data entry: about 50% of role.
-- Extraction automation removes about half of that effort.
-- Capacity released ≈ 60 × 50% × 50% = **15 FTE equivalent**.
-- Plus faster quotes → higher hit ratio on preferred risks (often the larger prize, but harder to prove).
+Present **cost savings** and **underwriting benefits** separately – CFOs discount the second.
 
-Always present **cost savings** and **loss ratio / growth benefits** separately; CFOs discount the second.
+### 9.3 AI operating model
 
-### 7.3 AI maturity model
+| Model | Description | When it fits |
+|---|---|---|
+| **Central AI centre of excellence** | Central team builds and governs | Early stage; small firms |
+| **Hub and spoke** | Central platform and governance; business teams own use cases | Most London managing agents at scale **[likely]** |
+| **Fully federated** | Each business builds its own | Large groups with mature data capability |
+
+Roles needed: AI product owners in the business; data and ML engineers; evaluation specialists; risk and compliance partners; change managers.
+
+### 9.4 Adoption – the overlooked success factor
+
+- Involve underwriters and handlers in designing outputs.
+- Show the AI's sources and confidence; never hide how it reached a result.
+- Measure and publish time saved and quality improvements.
+- Change incentives and procedures – otherwise people work around new tools.
+
+### 9.5 Maturity model
 
 | Level | Description |
 |---|---|
-| 1. Ad hoc | Individuals use general AI tools; no policy. |
-| 2. Governed experiments | Policy in place; inventory; a few pilots. |
-| 3. Embedded use cases | Several use cases in production, integrated into workflows, value tracked. |
-| 4. AI-enabled operating model | Processes redesigned around AI; data platform and standards in place; roles changed. |
-| 5. AI-native | Agentic workflows with human oversight across the lifecycle; continuous learning. |
+| 1. Ad hoc | Individuals use general AI tools; no policy |
+| 2. Governed experiments | Policy; inventory; a few pilots |
+| 3. Embedded use cases | Several use cases in production, integrated, value tracked |
+| 4. AI-enabled operating model | Processes redesigned around AI; data foundations and standards in place |
+| 5. AI-native | Agentic workflows with oversight across the lifecycle |
 
-**[likely]** Most London managing agents are at level 2–3 in late 2026.
-
----
-
-## 8. Failure modes to warn clients about
-
-1. **Pilot purgatory** – many proofs of concept, none scaled, because workflow and integration were not funded.
-2. **Garbage in** – AI on top of bad data creates confident errors.
-3. **No baseline** – value cannot be shown because current performance was never measured.
-4. **Shadow AI** – staff paste confidential broker data into public tools.
-5. **Over-automation in a soft market** – faster binding of underpriced risks.
-6. **Ignoring the broker** – carrier-side AI cannot fix data the broker never captured; work with brokers on standards.
-7. **No accountability** – unclear who owns an AI-supported decision.
+**[likely]** Most London managing agents sit at levels 2–3 in late 2026.
 
 ---
 
-## 9. Build your own AI skills (for you as a consultant)
+## 10. Failure modes
 
-| Week | Exercise | Skill gained |
+| Failure | Prevention |
+|---|---|
+| Pilot purgatory | Fund integration and workflow change with the pilot; set scale criteria up front |
+| Garbage in | Fix master data and validation; measure data quality |
+| No baseline | Measure current performance before the pilot |
+| Shadow AI | Provide approved tools; train staff; monitor |
+| Over-automation in a soft market | Keep human decisions for binding; monitor rate adequacy |
+| Ignoring brokers | Work with brokers on data standards and shared benefits |
+| No accountability | Named owner and senior manager for each use case |
+
+---
+
+## 11. Mini case – AI bordereaux pilot
+
+**Situation:** a managing agent with 120 coverholders wants to "use AI for bordereaux".
+
+| Step | Action |
+|---|---|
+| 1 | Baseline: effort per bordereau, days to validated data, exceptions per 1,000 rows |
+| 2 | Build structured binder terms for the top 30 coverholders (prerequisite) |
+| 3 | Test set: 3 months of bordereaux from 15 coverholders with expert-validated outputs |
+| 4 | Pilot AI mapping and validation; measure accuracy and straight-through rate by coverholder |
+| 5 | Scale criteria: ≥ 98% mapping accuracy on key fields; ≥ 60% straight-through; exception workflow live |
+| 6 | Governance: Low–Medium tier; human confirmation of new mappings; monthly accuracy report |
+
+**Expected outcome [guessing]:** 40–60% less effort on mapping and validation; validated exposure data weeks earlier.
+
+---
+
+## 12. Partner's lens
+
+*Top-tier strategy consulting methods applied to this chapter.*
+
+1. **Start from the value pool, not the technology.** A partner sizes where AI can move the P&L – expense ratio, selection, leakage, recoveries – before discussing models. "Where is the £10m?" comes before "Which LLM?".
+2. **Workflow beats model.** The same model gives very different value depending on whether it is embedded in the underwriter's workbench or sits in a separate chat window. Redesign the workflow; the model is replaceable.
+3. **Evaluation is credibility.** Bring test-set results by segment, not demos. Executives and regulators trust numbers like "97% field accuracy on 2,000 real SOV rows".
+4. **Governance is an accelerator.** Firms with clear risk tiering approve low-risk use cases in weeks. Position governance as the way to move faster safely – consistent with the LMA toolkit and Lloyd's stance.
+5. **Bring the other side of the coin.** Boards also need to understand AI as an insured risk (silent AI, aggregation, new products). Advising on both the operational and underwriting sides of AI is rare – and differentiating.
+
+---
+
+## 13. Build your own AI skills
+
+| Week | Exercise | Skill |
 |---|---|---|
-| 1 | Use an LLM to explain each glossary term back to you, then check against [module 12](12-Glossary.md). | Prompting, verification |
-| 2 | Write a sample MRC (fictional) and ask an LLM to extract all Risk Details into a table. Measure accuracy field by field. | Extraction and evaluation |
-| 3 | Create 10 fictional bordereaux with different layouts; ask an LLM to map them to a standard set of fields. Record failure patterns. | Data mapping, error analysis |
-| 4 | Build a small RAG assistant over public Lloyd's / LMA guidance documents. Test with 20 questions. | RAG, evaluation design |
-| 5 | Draft an AI governance one-pager for a fictional managing agent using the framework in section 6.2. | Governance design |
-| 6 | Write a business case for one use case with explicit assumptions and sensitivity. | Value case design |
+| 1 | Use an LLM to explain glossary terms; check against [Module 12](12-Glossary.md) | Prompting, verification |
+| 2 | Write a fictional MRC; extract Risk Details into a schema; measure field accuracy | Extraction and evaluation |
+| 3 | Create 10 fictional bordereaux with different layouts; map them to a standard; record failure patterns | Mapping, error analysis |
+| 4 | Build a small RAG assistant over public Lloyd's/LMA guidance; test with 20 questions; score answers | RAG, evaluation design |
+| 5 | Draft an AI governance pack for a fictional managing agent (section 8.2) | Governance design |
+| 6 | Write a business case with assumptions and sensitivities (section 9.2) | Value case design |
+| 7 | Design an agentic submission workflow with approval gates and controls | Agent design |
 
-**Rule:** never put real client data into a public AI tool. Use fictional or public data for practice.
+**Rule:** never put real client data into public AI tools; use fictional or public data for practice.
+
+---
+
+## 14. Key takeaways
+
+1. London AI adoption is real but early; data and workflow are the constraints.
+2. LLMs fit London's document-heavy work; hallucination requires grounding, validation and human decisions.
+3. Highest current value: intake, wording checks, bordereaux, claims summarisation, exposure, sanctions.
+4. Evaluate with test sets and segment-level metrics; precision and recall trade-offs depend on the use case.
+5. Governance by risk tier enables speed; humans stay accountable for binding, reserving and claims decisions.
+6. AI is also a new insured risk – silent AI, aggregation and affirmative products.
+
+---
+
+## 15. Check your understanding
+
+| # | Question | Answer |
+|---|---|---|
+| 1 | What is RAG and why use it? | Retrieval-augmented generation – answers grounded in an approved document library, reducing hallucination and enabling citations. |
+| 2 | For sanctions screening, which matters more: precision or recall? | Recall – missing a true match is serious; manage the extra false alerts. |
+| 3 | Name three items in a production readiness checklist. | Test-set accuracy by segment; human review and override logging; monitoring; security; fallback; named owner. |
+| 4 | Which tier is automated follow-line decision-making? | High. |
+| 5 | What is silent AI? | Unpriced AI-related exposure in existing policies not designed for it. |
+
+---
+
+## 16. Sources
+
+- [LMA – AI Adoption Toolkit launch](https://lmalloyds.com/lma-launches-ai-adoption-toolkit-to-support-governance-led-implementation-across-the-lloyds-market/)
+- [LMA – Survey on AI risk management (PDF)](https://lmalloyds.com/wp-content/uploads/2026/04/LMA-Survey-on-AI-Risk-Management.pdf)
+- [Barnett Waddingham – practical toolkit for AI adoption in the Lloyd's market](https://www.barnett-waddingham.co.uk/comment-insight/blog/practical-toolkit-for-ai-adoption-in-the-lloyds-market/)
+- [Browne Jacobson – LMA's AI governance blueprint](https://www.brownejacobson.com/insights/the-word-may-2026/lma-s-ai-governance-blueprint)
+- [Skadden – Lloyd's new five-year strategy](https://www.skadden.com/insights/publications/2026/04/lloyds-of-london-new-five-year-strategy)
+- [AI Media House – AIG's AI test runs through Lloyd's](https://aimmediahouse.com/banking/aigs-ai-test-runs-through-lloyds)
+- [Clifford Chance – PRA 2026 priorities](https://www.cliffordchance.com/insights/resources/blogs/insurance-insights/2026/01/the-pras-2026-insurance-supervision-priorities.html)
