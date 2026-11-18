@@ -66,6 +66,9 @@ The knowledge levels (Beginner → Advanced) take about 12 weeks. Becoming a wor
 | 11 | [Consulting playbook: top-tier strategy consulting craft](11-Consulting-Playbook.md) | Champion | 5–6 hrs |
 | 12 | [Glossary A–Z](12-Glossary.md) | Reference | — |
 | 13 | [Self-assessment, 12-week plan, sources](13-Sources-and-Further-Reading.md) | All | — |
+| **21** | **[Lloyd's end to end: functioning, processes, stakeholders, underwriting, claims, DA, coverholders, bordereaux, reinsurance](21-Lloyds-End-to-End.md)** | **Master reference – read before any Lloyd's client** | 6–8 hrs |
+| 20 | [Market landscape, strategic trends and outlook 2027–2030](20-Market-Landscape-Trends-Outlook-2027-2030.md) | Champion | 3 hrs |
+| 22 | [New strategies in the London market (23 strategic plays)](22-New-Strategies-London-Market.md) | Champion | 3 hrs |
 | **18** | **[The path to world-class London market consultant (24 months)](18-World-Class-Consultant-Path.md)** | **Champion – start here for the plan** | 45 min |
 | **19** | **[Practice toolkit and templates](19-Practice-Toolkit-and-Templates.md)** | **Champion – use weekly** | — |
 | 14 | [CII LM1–LM3 structure (optional reference)](14-CII-LM-Certificate-Overview.md) | Reference | 30 min |
