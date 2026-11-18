@@ -1,114 +1,134 @@
 # Module 08 – Modernisation, Data Standards and Technology
 
-**Level:** Advanced | **Goal:** Understand why London market modernisation has been so hard, where it stands after Lloyd's retired Blueprint Two in March 2026, what the target technology and data landscape looks like for a carrier, and what to recommend to clients now.
+| | |
+|---|---|
+| **Level** | Advanced |
+| **Path phase** | Phase 2–3; core to your recommended spike ([Module 18 §3](18-World-Class-Consultant-Path.md)) |
+| **Time** | 4–5 hours reading, 3 hours exercises |
+| **Prerequisites** | Modules 04–06 |
+| **You will be able to** | Explain why London modernisation has repeatedly struggled; explain the Blueprint Two story and where things stand after March 2026; describe the main data standards; design a target architecture and data strategy for a London carrier; run a vendor selection; advise on "what now" after Blueprint Two |
 
 ---
 
-## 1. Twenty-five years of modernisation – and the lessons
+## 1. Why this chapter matters
+
+Technology and data spend is one of the largest discretionary costs for London carriers, and one of the most frequent consulting topics. It is also where consultants most often lose credibility: by pitching yesterday's market programme, by recommending tools without fixing data, or by ignoring the constraints of a shared market. This chapter gives you the history, the standards, the architecture and the current position so you can advise with authority.
+
+---
+
+## 2. Twenty-five years of modernisation – and the lessons
 
 | Period | Initiative | Outcome | Lesson |
 |---|---|---|---|
-| 2000–2006 | **Kinnect** – Lloyd's market-wide electronic trading platform | Abandoned after heavy spend **[likely]** | Big central platforms fail without firm-level benefits. |
-| 2000s | **Project Rüschlikon** – ACORD messaging for reinsurance accounting and claims | Partial adoption, mainly by large reinsurers and brokers **[likely]** | Standards succeed where the biggest players see direct benefit. |
-| 2004–2007 | **Contract certainty** and the **MRC** | Successful | Regulator pressure plus a simple standard works. |
-| 2016 | **PPL** electronic placing launched | Adopted, often driven by Lloyd's mandates **[likely]** | Adoption needs mandates and usability. |
-| 2016–2019 | **London Market Target Operating Model (TOM)** | Merged into Lloyd's programme | Market-wide governance is slow. |
-| 2019–2020 | **Future at Lloyd's** – Blueprint One and **Blueprint Two** | Ambitious digital processing vision; repeated delays (cutover moved from 2024 into 2025 and then 2026) **[likely]** | Single cutover across hundreds of firms is very high risk. |
-| Mar 2026 | **Blueprint Two name and original vision retired** after review; Velonetic refocused on incremental modernisation; common data standards retained; re-platforming unlikely before 2028 **[likely]** | Market moves to incremental, standards-led change | Standards and incremental change over big bang. |
+| 2000–2006 | **Kinnect** – Lloyd's electronic trading platform | Abandoned after heavy spend **[likely]** | Central platforms fail without benefits for each firm |
+| 2000s | **Project Rüschlikon** – ACORD messaging for reinsurance accounting and claims | Partial adoption by large reinsurers and brokers **[likely]** | Standards succeed where big players gain directly |
+| 2004–2007 | **Contract certainty and the MRC** | Successful | Regulator pressure plus a simple standard works |
+| 2016 | **PPL** electronic placing | Adopted, partly through Lloyd's mandates; later moved to a "Next Gen" platform after delays **[likely]** | Adoption needs mandates and usability |
+| 2016–2019 | **London Market Target Operating Model (TOM)** | Folded into Lloyd's programme | Market-wide governance is slow |
+| 2019–2020 | **Future at Lloyd's – Blueprint One and Two** | Ambitious digital processing vision; cutover moved repeatedly from 2024 into 2025 and 2026 **[likely]** | Single cutover across hundreds of firms is very high risk |
+| Mar 2026 | **Blueprint Two name and original vision retired**; Velonetic refocused on incremental modernisation; common data standards retained; re-platforming not expected before 2028 **[likely]** | Shift to incremental, standards-led change | Standards and incremental delivery over "big bang" |
 
-### 1.1 Why market-wide change is so hard
+### 2.1 Why market-wide change is so hard
 
-1. **Many parties, uneven benefit.** Brokers, managing agents, companies, coverholders and the bureau all must change. Benefits fall unevenly; brokers often carry the cost of data capture while carriers gain.
-2. **Shared legacy infrastructure.** Bureau systems are decades old and deeply embedded in every firm's processes.
-3. **Data captured late and poorly.** Placement data is unstructured (PDFs, emails), so downstream automation is limited.
-4. **No single owner.** Lloyd's, LMA, IUA, LIIBA, LIMOSS, Velonetic, vendors – decision rights are spread.
-5. **Business is always "live".** You cannot stop the market to migrate.
+| Barrier | Explanation |
+|---|---|
+| **Collective action problem** | Everyone benefits if everyone changes, but each firm pays its own costs and gains only when others change too |
+| **Uneven costs and benefits** | Brokers often carry the cost of capturing structured data; carriers and the bureau gain most |
+| **Shared legacy** | Bureau systems are decades old and embedded in every firm's processes |
+| **Unstructured data at source** | Submissions and contracts are documents, so automation downstream is limited |
+| **Spread decision rights** | Lloyd's, LMA, IUA, LIIBA, LIMOSS, Velonetic, platforms and vendors all have a say |
+| **Always live** | The market cannot stop to migrate; old and new must run together |
+| **Long tail** | Contracts and claims from old years of account stay open for years – old data and processes must be supported |
 
 ---
 
-## 2. Blueprint Two – what you need to know now
+## 3. Blueprint Two – the full story
 
-### 2.1 What it originally aimed to do **[likely]**
+### 3.1 The original vision **[likely]**
 
 | Component | Purpose |
 |---|---|
-| **Core Data Record (CDR)** | Capture a defined set of structured data at placement so accounting, settlement, tax and regulatory reporting can be automated. |
-| **Digital Gateway** | Validate placement data against the CDR before it enters downstream processing, for both Lloyd's and company market business. |
-| **Digital processing services** | New accounting, settlement and claims services replacing legacy bureau systems. |
-| **Delegated authority data services** | Standardised DA contract and bordereaux data handling. |
-| **Placement standards** | Lloyd's stopped building its own placement platform and set standards for third-party platforms. |
+| **Core Data Record (CDR)** | Structured contract data captured at placement so accounting, settlement, tax and regulatory reporting can be automated |
+| **Digital Gateway** | Validate placement data against the CDR before downstream processing, for Lloyd's and company market business |
+| **Digital processing services** | New accounting, settlement and claims services replacing legacy bureau systems |
+| **Delegated authority data services** | Standardised DA contract and bordereaux data |
+| **Placement standards** | Lloyd's stopped building its own placement platform; set standards for third-party platforms |
 
-### 2.2 What happened in March 2026 **[likely]**
+### 3.2 What happened
 
-- Lloyd's Council approved retiring the name and original vision of Blueprint Two after a review. The CEO said the programme had not delivered the benefits originally expected.
-- Lloyd's strategy now refers to **transitioning away from Blueprint Two**, **refocusing Velonetic on incremental technology modernisation**, an **open architecture**, and **common data standards**.
-- The **CDR** continues as a data standard (ACORD-maintained versions; extensions to treaty reinsurance and a delegated authority CDR were in consultation during 2026 **[guessing]** – confirm with ACORD/LMG before citing).
-- Full re-platforming of bureau services is not expected before **2028**.
+| Date | Event | Tag |
+|---|---|---|
+| 2020 | Blueprint Two launched | [certain] |
+| 2023–2024 | Phase 1 cutover targeted for mid/late 2024 | [likely] |
+| 2024–2025 | Cutover pushed into 2025, then 2026 | [likely] |
+| March 2026 | Lloyd's Council approves retiring the name and original vision after a review; CEO says expected benefits were not delivered | [likely] |
+| 2026 | Lloyd's strategy refers to transitioning away from Blueprint Two, refocusing Velonetic on incremental modernisation, open architecture and common data standards | [likely] |
+| 2026 | CDR continues; extensions (e.g., treaty reinsurance, delegated authority) consulted on | [guessing] – confirm with ACORD/LMG |
+| 2028+ | Bureau re-platforming not expected before 2028 | [likely] |
 
-### 2.3 How to talk about it with clients
+### 3.3 How to talk about it with clients
 
 | Client says | Your position |
 |---|---|
-| "We spent millions getting Blueprint Two ready – was it wasted?" | "Not if the spend improved your own data. CDR-aligned data, clean master data and integration capability are still needed. What is at risk is any spend tied to the specific cutover." |
-| "Should we pause all modernisation until the market decides?" | "No. Waiting costs you more than the market's uncertainty. Focus on changes that pay back inside your own firm within 18–24 months and stay standards-aligned." |
-| "Will the bureau be replaced?" | "Not quickly. Plan for incremental change to bureau services through at least 2028, and design your systems to integrate through APIs and standard messages." |
+| "We spent millions getting ready – was it wasted?" | "Not if it improved your own data. CDR-aligned data, clean master data and integration capability are still needed. What is at risk is spend tied only to the specific cutover." |
+| "Should we pause modernisation until the market decides?" | "No. Waiting costs more than the market's uncertainty. Focus on changes that pay back inside your firm within 18–24 months and stay standards-aligned." |
+| "Will the bureau be replaced?" | "Not quickly. Plan for incremental change through at least 2028 and integrate through standard messages and APIs." |
+| "Who owns market modernisation now?" | "Lloyd's sets direction, but the work is spread across Velonetic, LIMOSS, the LMA, IUA and LIIBA, platforms and standards bodies. Engage through the associations." |
 
 ---
 
-## 3. Data standards you must know
+## 4. Data standards you must know
 
-| Standard | What it covers |
+| Standard / reference | What it covers |
 |---|---|
-| **MRC** | Structure of the contract (sections, fields). |
-| **CDR – Core Data Record** | Minimum structured data set for risk, premium, tax and regulatory processing, captured at placement. Maintained with ACORD. |
-| **ACORD GRLC** | Global Reinsurance and Large Commercial messaging standards (placement, accounting, claims, documents). |
-| **Lloyd's Coverholder Reporting Standards** | Bordereaux field definitions for DA. |
-| **Lloyd's risk codes** | Codes classifying business for Lloyd's reporting and capital. |
-| **Lloyd's/LMA clause references** | e.g., LMA5564 for cyber war exclusions – useful for wording analytics. |
-| **Market references** | UMR (contract), UCR (claim), SND/OSND (accounting entries). |
+| **MRC** | Structure of the contract (six sections) |
+| **CDR – Core Data Record** | Minimum structured data for processing: contract and parties, risk details, insurers and lines, premium and instalments, tax and regulatory, broker remuneration and deductions **[likely]** |
+| **ACORD GRLC messages** | Global Reinsurance and Large Commercial standards for placement, accounting (e.g., technical accounts), claims and documents |
+| **Lloyd's Coverholder Reporting Standards** | Bordereaux fields |
+| **Lloyd's risk codes** | Classification of business for reporting and capital |
+| **Clause references** | LMA/IUA/Institute clause numbers – enable wording analytics |
+| **Market references** | UMR (contract), UCR (claim), TR (claim transaction), SND/OSND (accounting entries) |
 
-**Practical point:** any data model you design for a London carrier must hold UMR, signed lines by insurer, MRC sections, CDR fields, Lloyd's risk codes, tax and regulatory data, and links between premium entries (SND) and claims (UCR).
+**Rule for data models:** a London carrier's model must hold UMR, MRC sections, signed lines by insurer, CDR fields, risk codes, tax and regulatory data, and the links between premium entries (SND/OSND) and claims (UCR/TR).
 
 ---
 
-## 4. Technology landscape of a London carrier
-
-### 4.1 Reference architecture
+## 5. Reference architecture for a London carrier
 
 ```mermaid
 flowchart TB
-  subgraph Channels[Inputs]
+  subgraph In[Inputs]
     E[Broker email and documents]
-    P[Placing platforms - PPL, Whitespace]
-    BX[Bordereaux from coverholders]
+    P[Placing platforms]
+    BX[Bordereaux]
     API[Broker / MGA APIs]
   end
-  subgraph Ingest[Ingestion and triage]
-    ING[Document and data ingestion<br/>OCR, AI extraction, mapping]
+  subgraph Ing[Ingestion]
+    ING[Document and data ingestion<br/>extraction, mapping, validation]
   end
-  subgraph Core[Core underwriting and policy]
-    UWB[Underwriting workbench<br/>triage, pricing, referrals, decisions]
-    PRC[Pricing and rating models]
-    PAS[Policy administration system<br/>contracts, endorsements, lines]
+  subgraph Core[Underwriting and policy]
+    UWB[Underwriting workbench]
+    PRC[Pricing models]
+    PAS[Policy administration]
     EXP[Exposure and cat modelling]
   end
   subgraph Fin[Finance and claims]
-    ACC[Technical accounting,<br/>credit control, reconciliation]
-    CLM[Claims system]
-    RI[Outwards reinsurance system]
-    GL[General ledger, IFRS 17 / UK GAAP,<br/>Solvency UK reporting]
+    ACC[Technical accounting]
+    CLM[Claims]
+    RI[Outwards reinsurance]
+    GL[General ledger and reporting]
   end
-  subgraph Market[Market infrastructure]
-    BUR[Bureau - Velonetic<br/>accounting, settlement, claims]
+  subgraph Mkt[Market]
+    BUR[Bureau - Velonetic]
   end
-  subgraph Data[Data and analytics]
-    DP[Data platform - single view<br/>of contract, party, exposure]
-    MI[MI, portfolio analytics, AI models]
+  subgraph Data[Data]
+    DP[Data platform]
+    MI[MI, analytics, AI]
   end
   E --> ING
-  P --> UWB
   BX --> ING
   API --> ING
+  P --> UWB
   ING --> UWB
   UWB <--> PRC
   UWB --> PAS
@@ -126,81 +146,256 @@ flowchart TB
   DP --> MI
 ```
 
-### 4.2 Typical vendors and tools **[likely]** (verify current positions before naming in a proposal)
+### 5.1 Layer by layer
+
+| Layer | Capabilities | Build or buy (typical) |
+|---|---|---|
+| **Ingestion** | Email and document capture; extraction (AI); mapping to standard model; validation; exception workflow | Buy platform + configure; AI models increasingly commoditised |
+| **Underwriting workbench** | Triage, enrichment, pricing integration, referrals, authority checks, decision record | Buy or build; differentiation in workflow and data |
+| **Pricing and rating** | Technical price models by class | Build (actuarial IP) on standard tools |
+| **Policy administration** | Contract record, lines, endorsements, premium, financial postings | Buy (specialty PAS) |
+| **Exposure and cat** | Aggregation, cat models, RDS | Buy models; build aggregation views |
+| **Technical accounting** | Premium, claims and RI accounting; reconciliation; credit control | Buy + automation |
+| **Claims** | FNOL, handling, reserving, payments, recoveries | Buy |
+| **Outwards reinsurance** | Programme, cessions, recoveries | Buy or specialist build |
+| **Finance and reporting** | GL, UK GAAP, IFRS 17, Solvency UK | Buy |
+| **Data platform** | Golden records, history, data quality, lineage | Cloud platform + build data products |
+| **MI and AI** | Dashboards, models, AI services, governance | Build on platform |
+
+### 5.2 Vendors and tools **[likely]** – verify before naming in proposals
 
 | Capability | Examples |
 |---|---|
-| Policy administration (specialty) | Sequel Eclipse, DXC Genius / Assure, Guidewire, Duck Creek, Sapiens, Insurity |
+| Specialty policy administration | Sequel Eclipse, DXC Genius / Assure, Guidewire, Duck Creek, Sapiens, Insurity |
 | Underwriting workbench | Send, hx Renew, Federato, Concirrus, Artificial Labs, in-house builds |
-| Submission ingestion | Cytora, specialist AI document tools, platform-native extraction |
+| Submission ingestion | Cytora and other AI document platforms |
 | Placing platforms | PPL, Whitespace |
-| Cat modelling | Moody's RMS, Verisk, KCC, Cotality (formerly CoreLogic) |
-| Exposure / aggregation | Vendor cat platforms, in-house tools |
-| Bordereaux / DA management | Specialist DA platforms, Velonetic DA services, data platform builds |
-| Data platform | Snowflake, Databricks, Microsoft Fabric/Azure, AWS, Google Cloud |
-| Finance | SAP, Oracle, Workday, plus IFRS 17 engines |
-
-### 4.3 Common architecture problems
-
-| Problem | Effect |
-|---|---|
-| Multiple policy systems after M&A | No single view of exposure or client |
-| Data re-keyed 3–5 times across broker, platform, PAS, bureau | Errors, cost, delays |
-| Spreadsheet-based pricing and exposure | Key person risk, weak audit trail |
-| Bureau data not reconciled to internal data | Large reconciliation teams |
-| Point solutions without integration | "Insurtech sprawl" – many tools, little benefit |
-| Weak master data (broker, coverholder, insured, location) | Poor analytics, duplicate records, sanctions risk |
+| Cat models | Moody's RMS, Verisk, KCC, Cotality |
+| Data platforms | Snowflake, Databricks, Microsoft Fabric/Azure, AWS, Google Cloud |
+| Finance | SAP, Oracle, Workday, IFRS 17 engines |
 
 ---
 
-## 5. Data strategy for a London carrier
+## 6. Common architecture problems and their root causes
 
-### 5.1 Five data domains to get right
-
-| Domain | Golden record contains |
-|---|---|
-| **Party** | Insured, broker, coverholder, reinsurer, with identifiers (LEI, company numbers), sanctions status |
-| **Contract** | UMR, MRC sections, lines, layers, wordings, clauses, dates |
-| **Exposure** | Locations (geocoded), values, vessels (IMO), aircraft (serial), cyber footprint |
-| **Financial** | Premium, instalments, tax, brokerage, SND, settlement status, FX |
-| **Claims** | UCR, event codes, reserves, payments, recoveries, documents |
-
-### 5.2 Data quality dimensions to measure
-
-Completeness, accuracy, timeliness, consistency across systems, uniqueness, and validity against standards (CDR, Lloyd's codes).
-
-### 5.3 Data governance basics
-
-- Named **data owners** (business) and **data stewards** (operations) for each domain.
-- Data quality rules embedded at the point of capture (placement, bordereaux ingestion), not only checked downstream.
-- Lineage from source document to regulatory report.
-- Data quality KPIs reported to the executive committee.
-
----
-
-## 6. What to recommend now ("no-regret moves") **[likely]**
-
-| # | Move | Why it holds regardless of market decisions |
+| Problem | Root cause | Effect |
 |---|---|---|
-| 1 | Align your internal contract data model to the **CDR** | Standards survived the Blueprint Two decision; brokers and platforms are moving to them. |
-| 2 | Fix **master data** (party, broker, coverholder, location) | Every analytics, AI and regulatory use case depends on it. |
-| 3 | Invest in **ingestion** (submissions, bordereaux) with AI-assisted extraction | Removes manual keying, the largest controllable cost. |
-| 4 | Build **API and message-based integration** to platforms and bureau | Protects you from future market platform changes. |
-| 5 | Consolidate **policy and data platforms** after M&A | Single view of exposure and lower run cost. |
-| 6 | Create a **reconciliation automation** capability | Fast payback; reduces aged debt and operational risk. |
-| 7 | Set up **AI governance** before scaling AI | Required by regulators and the LMA toolkit direction. |
+| Several policy systems | M&A without consolidation | No single exposure view; high run cost |
+| Data keyed 3–5 times | No integration between platforms, PAS and bureau | Errors, cost, delay |
+| Spreadsheet pricing and exposure | Under-investment; key-person dependence | Weak audit trail; model risk |
+| Bureau data not reconciled | Different line bases, FX, timing | Large reconciliation teams |
+| Insurtech sprawl | Point solutions bought by separate teams | Many tools, little integrated value |
+| Weak master data | No owner for party, broker, coverholder, location records | Duplicate records; sanctions risk; poor analytics |
+| Old years on old systems | Long-tail claims keep legacy alive | Decommissioning blocked |
 
 ---
 
-## 7. Technical consulting skills to build
+## 7. Data strategy for a London carrier
+
+### 7.1 Five data domains
+
+| Domain | Golden record contains | Typical owner |
+|---|---|---|
+| **Party** | Insureds, brokers, coverholders, reinsurers – with identifiers (LEI, company numbers) and sanctions status | COO / compliance |
+| **Contract** | UMR, MRC sections, lines, layers, wordings, clauses, dates | CUO |
+| **Exposure** | Geocoded locations, values, vessels (IMO), aircraft, cyber footprint | CRO / exposure management |
+| **Financial** | Premium, instalments, tax, brokerage, SND, settlement status, FX | CFO |
+| **Claims** | UCR, event codes, reserves, payments, recoveries, documents | Chief Claims Officer |
+
+### 7.2 Data quality – measure it like a business KPI
+
+| Dimension | Example measure | Target example |
+|---|---|---|
+| Completeness | % of CDR mandatory fields populated at bind | ≥ 98% |
+| Accuracy | % of sampled records matching source documents | ≥ 97% |
+| Timeliness | % of bordereaux processed within 10 days of month end | ≥ 90% |
+| Consistency | % of contracts where PAS, bureau and finance agree on line and premium | ≥ 95% |
+| Uniqueness | Duplicate party records per 1,000 | < 5 |
+| Validity | % of locations geocoded to street level | ≥ 90% (property) |
+
+### 7.3 Data governance – who does what
+
+| Role | Responsibility |
+|---|---|
+| **Data owner** (business executive) | Accountable for a domain's quality and use |
+| **Data steward** (operations) | Defines rules; fixes issues; monitors quality |
+| **Data custodian** (IT/data team) | Runs platforms; implements controls |
+| **Data council** | Prioritises issues; approves standards |
+
+### 7.4 Data products
+
+A **data product** is a dataset managed like a product: a clear owner, defined users, quality targets, documentation and service levels. Example: "**DA risk data product**" – all bound DA risks, validated against binder terms, geocoded, refreshed within 10 days of bordereaux receipt, used by exposure management, finance and oversight. Treating bordereaux as a data product rather than a report is a strong POV for your spike.
+
+---
+
+## 8. Integration patterns
+
+| Pattern | Use | London example |
+|---|---|---|
+| **APIs (real time)** | Interactive workflows | Workbench requests enrichment data; MGA binds via carrier API |
+| **Standard messages (ACORD)** | Market exchanges | Technical accounts, claims messages |
+| **Event-driven** | React to changes across systems | "Risk bound" event updates exposure and finance |
+| **File/batch** | Large periodic loads | Bordereaux, bureau extracts |
+| **Platform integration** | Pull structured contract data from placing platforms | MRC data into PAS without re-keying |
+
+**Principle:** design for **open architecture** – integrate through standards so that market changes (bureau, platforms) do not require rebuilding internal systems. Lloyd's strategy now also refers to open architecture **[likely]**.
+
+---
+
+## 9. Cloud, resilience and third-party risk
+
+| Topic | Requirement |
+|---|---|
+| **Operational resilience** | Identify important business services (e.g., paying claims, binding cover) and stay within impact tolerances **[certain]** |
+| **Outsourcing and third parties** | PRA expectations on due diligence, contracts, exit plans for material outsourcing and cloud **[certain]** |
+| **Cyber security** | Protect client and market data; supplier security |
+| **Data protection** | Personal data in claims, A&H, DA bordereaux; international transfers |
+| **AI vendors** | Treat as material third parties where they support important services ([Module 09](09-Advanced-AI-in-London-Market.md)) |
+
+---
+
+## 10. Build vs buy and vendor selection
+
+### 10.1 When to build and when to buy
+
+| Build when | Buy when |
+|---|---|
+| The capability differentiates you (pricing models, underwriting insights) | The capability is standard (accounting, policy admin, claims) |
+| No product fits London specifics | Mature London-specific products exist |
+| You have engineering capacity to maintain it | You want vendor-funded upgrades |
+
+### 10.2 Vendor selection method
+
+| Step | Activity |
+|---|---|
+| 1. Requirements | Business capabilities and London specifics (subscription, lines, bureau, YOA, DA) |
+| 2. Long list → short list | Market scan; RFI |
+| 3. Scripted demonstrations | Vendors run **your** scenarios (e.g., a mixed Lloyd's/company placement with a signing down and an endorsement) |
+| 4. Fit-gap | Score against requirements; estimate configuration and custom work |
+| 5. Reference checks | Speak to London clients of the vendor |
+| 6. Total cost of ownership | Licence, implementation, run, internal team, data migration – over 5–7 years |
+| 7. Risk assessment | Vendor viability, delivery capacity, exit options |
+
+**Example scoring weights:** London functional fit 35%; technology and integration 20%; total cost 20%; vendor strength and delivery 15%; references 10%.
+
+### 10.3 London-specific scenarios to script in demos
+
+- Placement with written lines above 100% and signing down.
+- Lloyd's and non-bureau company insurers on the same contract.
+- Endorsement requiring only the leader under the GUA, and one requiring all insurers.
+- Instalment premium with a return premium.
+- Binder with monthly bordereaux and a claims bordereau.
+- Claim on a complex subscription contract with lead and second lead.
+- Year-of-account and calendar-year reporting from the same data.
+
+---
+
+## 11. Designing a modernisation programme
+
+| Principle | Explanation |
+|---|---|
+| **Value first** | Sequence by value and dependency, not by system |
+| **Data foundation early** | Master data and the data platform unlock later use cases |
+| **Incremental releases** | Deliver value every quarter; avoid big-bang cutovers (the Blueprint Two lesson) |
+| **Plan for the long tail** | Decide how open years of account and old claims will be handled on new systems or retained platforms |
+| **Test with London scenarios** | Multi-insurer, multi-currency, signing down, endorsements, bureau messages |
+| **Change management** | Underwriters and operations must see benefit, or adoption fails |
+| **Decommission** | Budget and track legacy decommissioning to realise run-cost savings |
+
+---
+
+## 12. No-regret moves after Blueprint Two **[likely]**
+
+| # | Move | Why it holds |
+|---|---|---|
+| 1 | Align the internal contract data model to the **CDR** | Standards survived the March 2026 decision |
+| 2 | Fix **master data** (party, broker, coverholder, location) | Every analytics, AI and regulatory use case depends on it |
+| 3 | Invest in **ingestion** (submissions, bordereaux) | Removes the largest controllable manual cost |
+| 4 | Build **API and standard-message integration** | Protects against future market platform changes |
+| 5 | Consolidate **policy and data platforms** after M&A | Single exposure view; lower run cost |
+| 6 | Automate **reconciliation** | Fast payback; lower aged debt and operational risk |
+| 7 | Set up **AI governance** before scaling AI | Regulators and the LMA toolkit expect it |
+
+---
+
+## 13. Technical consulting skills to build
 
 | Skill | What to learn |
 |---|---|
-| Business process modelling | BPMN, swimlanes for placement, DA, claims |
+| Process modelling | BPMN and swimlanes for placement, DA, claims |
 | Data modelling | Entity models for contract, party, exposure; mapping to CDR and ACORD |
-| Requirements | User stories with London market acceptance criteria (UMR, lines, SND) |
-| Integration | APIs, ACORD messages, event-driven architecture basics |
-| Data platforms | Modern data stack, data quality tooling, lineage |
-| Vendor selection | Fit-gap analysis, total cost of ownership, reference checks |
-| Testing | Test data for multi-insurer placements, currency, tax, endorsements |
-| AI | Prompting, retrieval-augmented generation (RAG), evaluation, model risk |
+| Requirements | User stories with London acceptance criteria (UMR, lines, SND) |
+| Integration | APIs, ACORD messages, event-driven basics |
+| Data platforms | Modern data stack; data quality tooling; lineage |
+| Vendor selection | Fit-gap, total cost of ownership, scripted demos |
+| Testing | Test data for multi-insurer, multi-currency placements |
+| AI | Extraction, retrieval-augmented generation, evaluation, model risk ([Module 09](09-Advanced-AI-in-London-Market.md)) |
+
+---
+
+## 14. Mini case – consolidating policy systems after M&A
+
+**Situation:** after two acquisitions, a managing agent runs three policy administration systems (£6m a year run cost). Exposure reports are built by hand from three extracts. Each system holds open years of account and active claims.
+
+| Option | Pros | Cons |
+|---|---|---|
+| A. Migrate everything to one system | Single view; lowest run cost | High migration risk for old years and claims |
+| B. New business on one system; old years run off on legacy | Lower risk | Legacy run cost continues for years |
+| C. Data platform first; consolidate later | Fast single exposure view | Two-step programme |
+
+**Recommended:** C then B – build the data platform for a single view within 6–9 months; move new business to the target system by class over 12–18 months; migrate open years only where claims volumes justify it; decommission the rest as years close.
+
+---
+
+## 15. Partner's lens
+
+*Top-tier strategy consulting methods applied to this chapter.*
+
+1. **Never lead with technology.** Lead with the business outcome (expense ratio, exposure accuracy, faster quotes), then show technology as the means. Boards approve outcomes, not platforms.
+2. **Learn from Blueprint Two in every proposal.** Show the client how your plan avoids big-bang risk: incremental releases, value every quarter, standards-aligned, independent of a single market cutover date. This answers the CEO's unspoken fear.
+3. **Price the cost of doing nothing.** Calculate the annual cost of re-keying, reconciliation and duplicate systems. It is often larger than the programme budget over three years.
+4. **Make data a CFO and CRO topic.** Link data quality to capital (exposure uncertainty), reserving (claims data) and reporting risk. Data programmes funded by finance and risk last longer than those funded by IT.
+5. **Insist on decommissioning.** Many programmes add systems and never remove old ones. Partners make decommissioning a named benefit with an owner.
+
+---
+
+## 16. Key takeaways
+
+1. London modernisation has repeatedly failed when it relied on single market-wide cutovers.
+2. In March 2026 Lloyd's retired Blueprint Two; common data standards (including the CDR) and incremental modernisation continue.
+3. Every London data model must handle UMR, lines, MRC sections, CDR fields and bureau references.
+4. Architecture problems mostly come from M&A, point solutions and weak master data.
+5. Measure data quality like a business KPI and assign business owners.
+6. No-regret moves: CDR alignment, master data, ingestion, integration, consolidation, reconciliation automation, AI governance.
+
+---
+
+## 17. Check your understanding
+
+| # | Question | Answer |
+|---|---|---|
+| 1 | Give three reasons market-wide modernisation is hard. | Collective action problem; uneven costs and benefits; shared legacy; unstructured data at source; spread decision rights; always-live market; long tail. |
+| 2 | What survived the Blueprint Two decision? | Common data standards including the CDR; incremental modernisation of bureau services. |
+| 3 | Which references link premium and claims records? | UMR, SND/OSND, UCR/TR. |
+| 4 | What is a data product? | A dataset managed with an owner, users, quality targets, documentation and service levels. |
+| 5 | Name three London scenarios to script in a vendor demo. | Signing down; mixed bureau/non-bureau; GUA endorsements; instalments and RP; binder bordereaux; complex claim; YOA reporting. |
+
+---
+
+## 18. Practice tasks
+
+1. **Draw** a data model for contract, party, exposure, financial and claims domains with London references.
+2. **Write** ten user stories with acceptance criteria for a policy system handling subscription placements.
+3. **Build** a total cost of ownership comparison for two fictional PAS options over seven years.
+4. **Write** a two-page POV: "After Blueprint Two – five no-regret moves for managing agents."
+
+---
+
+## 19. Sources
+
+- [Insurance Times – Lloyd's sunsets Blueprint Two](https://www.insurancetimes.co.uk/news/lloyds-sunsets-name-and-original-vision-of-blueprint-two-after-review/1458048.article)
+- [Insurance Times – market reacts to another Blueprint Two delay](https://www.insurancetimes.co.uk/news/market-reacts-to-another-blueprint-two-delay/1456270.article)
+- [Velonetic – Digital Gateway](https://www.velonetic.co.uk/blueprint-two/progress/solutions/digital-gateway)
+- [Skadden – Lloyd's new five-year strategy](https://www.skadden.com/insights/publications/2026/04/lloyds-of-london-new-five-year-strategy)
+- [Insurance Insider – PPL Next Gen goes live](https://www.insuranceinsider.com/article/2bd65d4pn7amg8t7mmadc/london-market-section/ppl-next-gen-platform-goes-live-after-delays)
+- [TxMinds – London market modernisation after Blueprint Two](https://www.txminds.com/blog/london-market-modernization-blueprint-two/)
