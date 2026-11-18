@@ -4,6 +4,18 @@
 
 **Read this first:** most of this path is **doing**, not reading. Modules 01–13 give you the knowledge. This module tells you how to turn it into capability, evidence and reputation. Modules 14–17 (CII syllabus notes) are now an optional reference library for law and market rules – use them when you need precise rules, not as a study track.
 
+### Your starting point and the standard you are aiming at
+
+You are already an insurance consultant, so you do not start from zero. Adjust the path as follows:
+
+| Area | Adjustment |
+|---|---|
+| Phase 1 (Foundation) | Compress from 3 months to about 6 weeks; use it to fill London- and Lloyd's-specific gaps rather than general insurance basics |
+| Pillar E (Consulting craft) | Your benchmark is the standard of top-tier strategy firms (McKinsey, Bain, BCG): answer-first communication, hypothesis-driven problem solving, value sizing in every recommendation. Each detailed chapter now ends with a **"Partner's lens"** section showing how a senior partner would use that chapter's knowledge with a client |
+| Exposure | Use your current client work: volunteer for London market and Lloyd's engagements, and turn every engagement into one artefact and one case study |
+
+*Note: the Partner's lens sections describe widely documented top-tier consulting methods. They are not insider material from any firm, and they do not replace feedback from senior people who have worked at those firms – seek that feedback directly when you can.*
+
 ---
 
 ## 1. What "world class" actually means here

@@ -75,7 +75,25 @@ The knowledge levels (Beginner → Advanced) take about 12 weeks. Becoming a wor
 
 **How the pieces fit:** Module 18 is the spine – a 24-month path built on practice, proof and exposure, not exams. Modules 01–13 are the knowledge it draws on. Module 19 holds the weekly drills and templates. Modules 14–17 follow the CII syllabus structure and are kept as a precise reference for law, rules and calculations – useful, but not the goal.
 
-### 2.4 How to study (do not skip this)
+### 2.4 Detailed chapter rewrite – progress
+
+Each chapter is being rewritten in full detail using one standard format: learning objectives → explanation → worked examples → how it works in practice → consulting angle → **Partner's lens** (how a senior top-tier strategy consultant would use the material) → takeaways → check questions → practice tasks → sources.
+
+| Chapter | Status |
+|---|---|
+| 01 Foundations | ✅ Detailed |
+| 02 Actors, entities and players | ✅ Detailed |
+| 03 Lines of business | Next |
+| 04 Placement and underwriting | Planned |
+| 05 Delegated authority | Planned |
+| 06 Accounting, settlement, claims, reinsurance | Planned |
+| 07 Capital, finance, regulation | Planned |
+| 08 Modernisation, data, technology | Planned |
+| 09 AI in the London market | Planned |
+| 10 Business scenarios | Planned |
+| 11 Consulting playbook – to be rebuilt around top-tier strategy consulting craft | Planned |
+
+### 2.5 How to study (do not skip this)
 
 Reading alone will not get you there. For each module:
 
