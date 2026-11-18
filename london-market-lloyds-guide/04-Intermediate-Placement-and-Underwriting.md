@@ -1,22 +1,34 @@
 # Module 04 – Placement and Underwriting: The Open Market Lifecycle
 
-**Level:** Intermediate | **Goal:** Walk through the full placement lifecycle step by step, understand the contract (MRC), the subscription mechanics (lead, follow, written and signed lines), the underwriting controls, and where things break.
+| | |
+|---|---|
+| **Level** | Intermediate |
+| **Path phase** | Phase 1 (late) and Phase 2 ([Module 18](18-World-Class-Consultant-Path.md)) |
+| **Time** | 4–5 hours reading, 3 hours exercises |
+| **Prerequisites** | Modules 01–02 |
+| **You will be able to** | Walk through every stage of an open market placement; read and critique an MRC; explain lead/follow, written and signed lines, the GUA and facilities; explain how underwriters price and control risk; diagnose where placement and underwriting lose time, money and data |
 
 ---
 
-## 1. Three ways business enters London
+## 1. Why this chapter matters
 
-| Route | Who decides to accept each risk | Typical share of Lloyd's premium |
-|---|---|---|
-| **Open market** | The underwriter at the syndicate/company, risk by risk, negotiated with a broker. | Around half **[likely]** |
-| **Delegated authority** | A coverholder/MGA binds risks under authority granted by the insurer. | About 45% **[likely]** |
-| **Facilities and consortia** | Pre-agreed capacity: a leader or algorithm decides; followers are bound by pre-agreed rules. | Growing; included in the two numbers above |
-
-This module covers the open market and facilities. Module 05 covers delegated authority.
+Placement is where the contract, the price and the first data about a risk are created. Every downstream problem – premium queries, reconciliation breaks, claims disputes, poor exposure data – can usually be traced back to something that happened, or did not happen, during placement. Underwriting is where most of the value is created or destroyed: a 5% mispricing on a £10m risk costs more than a year of process improvement in many teams.
 
 ---
 
-## 2. The placement lifecycle end to end
+## 2. Three routes into the market
+
+| Route | Who decides on each risk | Share of Lloyd's premium | Economics |
+|---|---|---|---|
+| **Open market** | Underwriter at syndicate or company, risk by risk, with a broker | About half **[likely]** | Lower acquisition cost than DA; high underwriting effort per risk |
+| **Delegated authority** | Coverholder/MGA within limits set by the insurer | About 45% **[likely]** | High acquisition cost (commission); low underwriting effort per risk for the insurer; high oversight cost |
+| **Facilities and consortia** | A leader or algorithm decides; followers bound by pre-agreed rules | Growing; inside the two figures above | Very low effort for followers; risk of adverse selection |
+
+This chapter covers the open market and facilities. Delegated authority is in [Module 05](05-Intermediate-Delegated-Authority.md).
+
+---
+
+## 3. The placement lifecycle – stage by stage
 
 ```mermaid
 sequenceDiagram
@@ -27,222 +39,499 @@ sequenceDiagram
   participant F as Follow underwriters
   participant P as Platform (PPL / Whitespace)
   participant V as Bureau (Velonetic)
-  C->>B: Instructions, risk information
-  B->>B: Market strategy, submission pack, UMR
-  B->>L: Present risk (platform or in person)
-  L->>L: Assess, price, refer, sanctions/licensing checks
-  L-->>B: Quote (terms, rate, line)
-  B->>C: Recommend terms
+  C->>B: Instructions and risk information
+  B->>B: Market strategy, submission, draft MRC, UMR
+  B->>L: Present risk
+  L->>L: Assess, price, refer, sanctions and licensing checks
+  L-->>B: Quote
+  B->>C: Recommendation
   C->>B: Firm order
   B->>L: Request lead line
-  L->>P: Write and stamp line (written line)
-  B->>F: Show led slip to followers
+  L->>P: Write and stamp line
+  B->>F: Show led MRC
   F->>P: Write follow lines
-  B->>B: Total written lines ≥ 100%, sign down
-  B->>C: Confirm cover, contract certainty, documentation
-  B->>V: Submit premium and risk data for processing
-  V->>L: Signed line, signing number and date (SND)
-  V->>F: Same
-  C->>B: Pays gross premium
-  B->>V: Pays net premium via central settlement
+  B->>B: Lines ≥ 100%, sign down
+  B->>C: Confirm cover, documentation
+  B->>V: Premium and risk data
+  V->>L: Signed line, SND
+  V->>F: Signed line, SND
+  C->>B: Gross premium
+  B->>V: Net premium
   V->>L: Settlement
   V->>F: Settlement
 ```
 
-### Step-by-step detail
+### Stage 0 – Renewal planning (90–120 days before expiry)
 
-| # | Step | What happens | Key outputs | What goes wrong |
-|---|---|---|---|---|
-| 1 | **Client engagement** | Retail broker or client instructs London broker. Broker checks KYC, sanctions, licensing, terms of business. | Terms of business agreement (TOBA), client due diligence | Incomplete KYC; wrong client classification under FCA rules |
-| 2 | **Submission preparation** | Broker collects risk data: SOV, loss history, financials, engineering reports, prior wording. Creates **Unique Market Reference (UMR)**. | Submission pack, draft MRC | Data in many formats (PDF, Excel); missing values |
-| 3 | **Market strategy** | Broker decides lead market, follow markets, platform, whether to use a facility. | Market list | Over-reliance on facilities may limit client choice (conflict of interest) |
-| 4 | **Presentation to lead** | Broker presents risk on platform or face to face (still common at Lloyd's "boxes"). | — | Underwriter capacity to review is limited; long queues |
-| 5 | **Underwriting assessment** | Lead underwriter reviews risk, runs pricing and cat models, checks appetite and authority, may refer to senior underwriter or peer review. | Technical price, decision | Inconsistent pricing; poor audit trail |
-| 6 | **Quote and negotiation** | Lead proposes terms: premium, deductibles, limits, conditions, exclusions, line size. Broker negotiates. | Quote | Many versions; unclear which is final |
-| 7 | **Firm order and binding** | Client confirms. Lead writes and stamps its line on the MRC. | **Written line**, binding | Binding before contract terms are complete (contract certainty failure) |
-| 8 | **Following** | Broker takes the led MRC to follow markets. Followers write lines on same terms (can add own conditions in limited cases). | Follow lines | Followers add conditions; delays to reach 100% |
-| 9 | **Signing down** | If total written lines exceed 100%, all lines are reduced proportionally. | **Signed lines** | Errors in signing down calculations |
-| 10 | **Contract certainty and documentation** | Terms finalised and documented before inception. Broker issues evidence of cover; final contract documentation provided to the client promptly. | Final MRC, evidence of cover | Late documentation; mismatched wordings |
-| 11 | **Premium and data processing** | Broker submits premium information to bureau (or direct to non-bureau carriers). Bureau checks and processes, issues **signing number and date (SND)**. | LPAN / premium advice, SND | Rejections ("queries") due to data errors |
-| 12 | **Settlement** | Broker pays net premium within terms of trade; central settlement distributes to insurers. | Cash received | Aged debt, unallocated cash |
-| 13 | **Mid-term changes** | Endorsements: additions, deletions, extensions, premium adjustments. Agreed according to the **General Underwriters' Agreement (GUA)**. | Endorsement | Endorsements not agreed by required parties |
-| 14 | **Renewal** | 60–90 days before expiry, broker starts renewal: updated data, re-marketing or renewal terms from incumbent. | Renewal MRC | Late information; loss of lead |
+| | |
+|---|---|
+| **What happens** | Broker reviews the account: claims, changes in the client's business, last year's terms, market conditions. Sets a renewal strategy and timetable. |
+| **Data and documents** | Renewal information request to client; claims history; prior MRC and wording |
+| **Failure modes** | Late client information → rushed placement → contract certainty failures and extensions |
+| **Metric** | % renewals with complete information 30 days before inception |
+
+### Stage 1 – Client engagement, KYC and classification
+
+| | |
+|---|---|
+| **What happens** | Broker confirms the client, its ownership, sanctions status and regulatory classification (commercial size thresholds after FCA PS25/21 **[certain]**). Agrees terms of business. |
+| **Controls** | Sanctions and KYC screening; client classification; conflicts check |
+| **Failure modes** | Wrong classification → wrong conduct rules applied; incomplete sanctions screening |
+
+### Stage 2 – Submission preparation
+
+| | |
+|---|---|
+| **What happens** | Broker builds the submission: schedules (e.g., statement of values, fleet list), loss history, financials, engineering or survey reports, prior wording. Drafts the **MRC** and creates the **Unique Market Reference (UMR)**. |
+| **Data and documents** | Submission pack (often 20–200 pages), spreadsheets, MRC draft |
+| **Failure modes** | Data in inconsistent formats; missing values; outdated schedules; the fair presentation is incomplete |
+| **Metric** | % submissions accepted by the lead without information requests |
+
+**Fair presentation:** under the Insurance Act 2015, the client (through the broker) must disclose every material circumstance, or enough to put the insurer on notice to ask, in a reasonably clear and accessible way **[certain]**. "Data dumping" – sending thousands of pages without structure – can fail the "clear and accessible" test.
+
+### Stage 3 – Market strategy
+
+| | |
+|---|---|
+| **What happens** | Broker decides: which lead (expertise, claims reputation, appetite, rating), which followers, whether to use a facility, which platform, layering structure. |
+| **Considerations** | Client's security requirements (minimum ratings); broker's facility arrangements; conflicts of interest |
+| **Failure modes** | Steering business to facilities that suit the broker more than the client; concentration on a few leads |
+
+### Stage 4 – Presentation to the lead
+
+| | |
+|---|---|
+| **What happens** | Broker presents the risk – on a platform, by email, or face to face (still common at Lloyd's underwriting "boxes"). |
+| **Failure modes** | Underwriters receive far more submissions than they can review properly; prioritisation is informal |
+| **Metric** | Time from submission received to first underwriter review |
+
+### Stage 5 – Underwriting assessment
+
+| | |
+|---|---|
+| **What happens** | Underwriter checks appetite and authority, assesses risk quality, runs pricing and cat models, checks sanctions and licensing, may refer to senior underwriters or peer review. |
+| **Outputs** | Decision (decline, quote, quote with conditions); technical price; underwriting file note |
+| **Failure modes** | Pricing outside guidelines without referral; weak audit trail; inconsistent decisions between underwriters |
+| **Detail** | Section 9 of this chapter |
+
+### Stage 6 – Quote and negotiation
+
+| | |
+|---|---|
+| **What happens** | Lead proposes premium, deductibles, limits, conditions, exclusions, line size, **subjectivities** (conditions to be satisfied, e.g., "subject to satisfactory survey within 30 days"). Broker negotiates. |
+| **Legal point** | A quote is usually an offer that can be accepted while valid; wording decides **[certain]** |
+| **Failure modes** | Multiple versions of terms; unclear which is final; subjectivities not tracked after binding |
+
+### Stage 7 – Firm order and binding
+
+| | |
+|---|---|
+| **What happens** | Client instructs the broker to bind. Lead **writes its line** – stamps and signs (or accepts electronically). |
+| **Legal point** | Each written line creates a binding contract with that insurer for its share, even before the placement is fully subscribed (*General Reinsurance Corp v Forsakringsaktiebolaget Fennia Patria*, 1983) **[certain]** |
+| **Failure modes** | Binding while key terms are "to be agreed" → contract certainty failure |
+
+### Stage 8 – Following
+
+| | |
+|---|---|
+| **What happens** | Broker shows the led MRC to follow markets, who write their lines on the leader's terms. Followers may add limited conditions (e.g., their own sanctions or choice-of-law requirements). |
+| **Failure modes** | Followers adding conditions that create different terms for different insurers; delays reaching 100% |
+| **Metric** | Time from lead line to 100% placed |
+
+### Stage 9 – Signing down
+
+If written lines exceed 100%, all lines are reduced proportionally so they total 100% (section 6.2).
+
+### Stage 10 – Contract certainty and documentation
+
+| | |
+|---|---|
+| **What happens** | All terms finalised before inception; broker issues evidence of cover and final contract documentation to the client promptly. |
+| **Controls** | Contract certainty checks by broker and insurer; subjectivities tracked |
+| **Metric** | % contracts certain at inception; days to issue final documentation |
+
+### Stage 11 – Premium and data processing
+
+| | |
+|---|---|
+| **What happens** | Broker submits premium and contract data to the bureau (or directly to non-bureau insurers). Bureau validates and signs, allocating a **Signing Number and Date (SND)** to each entry. Premium settles through central settlement. |
+| **Failure modes** | Bureau queries due to data errors; mismatches between broker, bureau and insurer records |
+| **Detail** | [Module 06 Part A](06-Intermediate-Accounting-Settlement-Claims-Reinsurance.md) |
+
+### Stage 12 – Mid-term changes
+
+Endorsements (additions, deletions, extensions, premium adjustments) agreed according to the subscription agreement and the **General Underwriters' Agreement (GUA)** (section 6.5), then processed through the bureau.
+
+### Stage 13 – Renewal
+
+Treated as a **new contract** with a fresh duty of fair presentation **[certain]**. The incumbent lead has an advantage but must re-price.
 
 ---
 
-## 3. The Market Reform Contract (MRC)
+## 4. The Market Reform Contract (MRC) in depth
 
-### 3.1 What it is
+### 4.1 What it is
 
-The MRC is the standard London market placing and contract document, introduced in 2007 as part of the contract certainty reforms **[certain]**. It is both the placing slip (the document underwriters sign) and the contract (or the basis for it). It is used for open market, binding authorities (as the MRC binding authority format) and reinsurance.
+The MRC is the standard London placing document and contract format, introduced in 2007 as part of the contract certainty reforms **[certain]**. It is used for open market insurance, reinsurance and binding authorities (MRC binding authority format). It can be paper/PDF or electronic on a placing platform.
 
-### 3.2 Sections of the MRC **[certain]**
+### 4.2 The six sections
 
-| Section | Contents |
-|---|---|
-| **Risk Details** | UMR, type of insurance, insured, period, interest, limits, conditions, exclusions, premium, choice of law and jurisdiction, payment terms, taxes, recording and transmitting of information |
-| **Information** | Information presented about the risk (or confirmation of what was disclosed) |
-| **Security Details** | Insurers' liability (several not joint), order hereon, basis of written lines, basis of signed lines, signing provisions, and the stamps and lines of each insurer |
-| **Subscription Agreement** | Slip leader, agreement parties for changes (GUA), claims agreement parties, claims administration, rules and extra conditions for followers, basis of agreement to contract changes |
-| **Fiscal and Regulatory** | Tax payable by insurers, country of origin, regulatory clauses (e.g., US surplus lines information), allocation of premium to coding |
-| **Broker Remuneration and Deductions** | Brokerage and other deductions from gross premium |
-
-### 3.3 Unique Market Reference (UMR)
-
-- **[certain]** Format: "B" + 4-digit broker code + broker's own reference (e.g., B0999ABC12345). Unique for each contract and used throughout its life: premium, endorsements, claims.
-- Data teams use the UMR as the primary key to connect placement, accounting and claims records. If the UMR is wrong or duplicated, downstream reconciliation breaks.
-
-### 3.4 Contract certainty
-
-- **[certain]** Contract certainty means all terms are agreed by all parties before inception and the client receives contract documentation promptly after. Introduced by the market in response to regulator pressure (FSA, 2004–2007).
-- Insurers and brokers run **contract certainty checks** (often measured against market codes of practice) and report results.
-- **Consulting angle:** contract certainty failures cause claims disputes. Automated MRC checks are a strong AI/automation use case (Module 09).
-
----
-
-## 4. Subscription mechanics in depth
-
-### 4.1 Lead and follow
-
-| Role | Responsibilities |
-|---|---|
-| **Slip leader / lead underwriter** | Sets terms and price. Often has claims lead responsibilities. Usually chosen for expertise, reputation and claims capability. |
-| **Follower** | Accepts the leader's terms and takes a share. Relies on the leader's expertise. |
-| **Agreement parties** | Defined in the subscription agreement – those whose agreement is needed for changes (often leader only for minor changes; leader plus second lead or all for major changes). |
-
-**General Underwriters' Agreement (GUA):** **[certain]** a market agreement (introduced around 2007) that sets which contract changes the leader can agree alone and which need followers' agreement. The GUA reduces the need to go to every follower for each change.
-
-### 4.2 Written lines vs signed lines – worked example
-
-A risk requires 100% cover. The broker gets these written lines:
-
-| Insurer | Written line |
-|---|---|
-| Syndicate A (lead) | 25% |
-| Syndicate B | 20% |
-| Company C | 30% |
-| Syndicate D | 25% |
-| Company E | 20% |
-| **Total** | **120%** |
-
-The order is 100%, so the broker **signs down** each line by 100/120:
-
-| Insurer | Written | Signed |
+| Section | Contents | What goes wrong |
 |---|---|---|
-| A | 25% | 20.83% |
-| B | 20% | 16.67% |
-| C | 30% | 25.00% |
-| D | 25% | 20.83% |
-| E | 20% | 16.67% |
-| **Total** | 120% | **100%** |
+| **Risk Details** | UMR; type; insured; period; interest; situation; limits and sub-limits; deductibles; conditions; exclusions; premium; payment terms; choice of law and jurisdiction; taxes; recording, transmitting and storing information; notices | Vague terms ("as expiring"); wordings referenced but not attached; missing exclusions |
+| **Information** | Information presented to insurers or reference to it | Unclear what was presented → fair presentation disputes |
+| **Security Details** | Insurers' liability (several not joint); order hereon; basis of written lines; basis of signed lines; signing provisions; each insurer's stamp, line and reference | Signed line basis not stated; lines "to stand" ignored |
+| **Subscription Agreement** | Slip leader; agreement parties for contract changes (GUA); claims agreement parties; claims administration; rules for followers' conditions; expenses | Agreement parties unclear → disputes on changes and claims |
+| **Fiscal and Regulatory** | Tax payable by insurers; country of origin; regulatory information (e.g., US surplus lines details); allocation of premium to coding | Wrong tax or regulatory codes → bureau queries, tax errors |
+| **Broker Remuneration and Deductions** | Brokerage and other deductions | Mismatched brokerage between systems |
 
-- Underwriters can mark a line **"to stand"** (no signing down) – this must be honoured or that insurer agrees otherwise.
-- **Why overplace?** Brokers overplace so they can sign down and give the client a margin if a market withdraws. The signing down must be done fairly and as stated in the "basis of signed lines".
-- **Several liability:** each insurer is liable only for its own signed share. If one insurer fails, the others do not pay its share.
+### 4.3 Sample Risk Details extract (fictional)
 
-### 4.3 Mixed placements
+```
+UNIQUE MARKET REFERENCE:  B9999ABC2026001
+TYPE:                     Property Damage and Business Interruption
+INSURED:                  Atlas Logistics Ltd and subsidiaries
+PERIOD:                   From 01 January 2027 to 31 December 2027, both days inclusive,
+                          local standard time at the insured's address
+INTEREST:                 All real and personal property ... and business interruption
+SITUATION:                As per schedule of locations attached (Appendix A)
+SUM INSURED / LIMIT:      GBP 250,000,000 any one occurrence
+SUB-LIMITS:               Flood GBP 25,000,000 any one occurrence and in the aggregate
+DEDUCTIBLE:               GBP 1,000,000 each and every loss
+CONDITIONS:               As per wording attached (Appendix B) including
+                          LMA3100 Sanction limitation and exclusion clause
+EXCLUSIONS:               As per wording, including war, terrorism, cyber (LMA5400)
+PREMIUM:                  GBP 1,850,000 (100%)
+PAYMENT TERMS:            Premium payment clause LSW3001 – 60 days
+CHOICE OF LAW:            England and Wales; exclusive jurisdiction of English courts
+SUBJECTIVITIES:           Survey of Site 4 within 45 days of inception
+```
 
-Many risks are shared between **Lloyd's syndicates and company market insurers**. Bureau processing handles both, but some company market insurers are **non-bureau**, so the broker must process with them directly. This is one source of data duplication.
+**[likely]** Clause numbers shown are illustrative of real LMA clauses (LMA3100 is the market sanctions clause **[certain]**); always check the current clause library.
+
+**Critique exercise:** what would you check? (1) Is Appendix A attached and dated? (2) Is the flood sub-limit consistent with the cat model output? (3) Is the subjectivity tracked with an owner? (4) Is the cyber exclusion appropriate for business interruption exposure?
+
+### 4.4 Unique Market Reference (UMR)
+
+Format: "B" + 4-digit broker code + broker's own reference **[certain]**. The UMR is the **primary key** across placement, accounting and claims. Duplicate or wrong UMRs break reconciliation downstream – check this first in any data quality review.
 
 ---
 
-## 5. Facilities, consortia and follow capacity
+## 5. Contract certainty
+
+| Aspect | Detail |
+|---|---|
+| **Definition** | All terms agreed by all parties before inception; contract documentation provided promptly after **[certain]** |
+| **Origin** | Regulator pressure (FSA) in 2004–2007 after widespread late documentation and disputes |
+| **Elements to check** | Complete MRC sections; wording attached or precisely referenced; no "to be agreed" items; subjectivities with deadlines; lines and signing basis stated; tax and regulatory information complete |
+| **Consequences of failure** | Coverage disputes; delayed claims; regulatory criticism; reinsurance disputes (reinsurer may not follow uncertain terms) |
+| **Measures** | % contracts certain at inception; % documentation issued within agreed days; number of post-inception changes to core terms |
+
+**Consulting angle:** automated MRC completeness and wording checks are among the highest-value, lowest-risk AI use cases in London ([Module 09](09-Advanced-AI-in-London-Market.md)).
+
+---
+
+## 6. Subscription mechanics in depth
+
+### 6.1 Lead selection
+
+Brokers choose leads for: class expertise, claims reputation, line size, rating, willingness to lead, speed, and relationship. Clients often specify approved security. **Partner insight:** lead position is a competitive asset – leads see more risks first, influence terms, and attract follow capacity. Lead share is one of the best indicators of a syndicate's market standing.
+
+### 6.2 Written vs signed lines – worked example
+
+| Insurer | Written line | Signed line (× 100/120) |
+|---|---|---|
+| Syndicate A (lead) | 25% | 20.83% |
+| Syndicate B | 20% | 16.67% |
+| Company C | 30% | 25.00% |
+| Syndicate D | 25% | 20.83% |
+| Company E | 20% | 16.67% |
+| **Total** | **120%** | **100%** |
+
+- A line marked **"to stand"** must not be signed down without that insurer's agreement.
+- The **basis of signed lines** in the MRC states how signing down works.
+- **Why brokers overplace:** to give the client a margin if a market withdraws, and to keep competitive tension.
+- **Data issue:** insurers often book the written line first and correct to the signed line later. Mismatches between written and signed lines are a common reconciliation break.
+
+### 6.3 Several liability
+
+Each insurer is liable only for its own signed share **[certain]**. If one insurer becomes insolvent, the others do not pay its share. This is why brokers' security committees vet each insurer.
+
+### 6.4 Layered and subscribed – both at once
+
+Large programmes combine layering and subscription: each layer has its own lead and followers, and sometimes its own price and wording.
+
+| Layer | Limit | Lead | Followers | Price (rate on line) |
+|---|---|---|---|---|
+| Primary | £25m xs £1m | Syndicate A | 5 insurers | 12% |
+| 1st excess | £75m xs £26m | Company C | 7 insurers | 4% |
+| 2nd excess | £150m xs £101m | Syndicate F | 9 insurers | 1.5% |
+
+**Risk:** excess layers may "follow form" the primary wording but with different exclusions – a common source of gaps.
+
+### 6.5 The General Underwriters' Agreement (GUA)
+
+| Aspect | Detail |
+|---|---|
+| **Purpose** | Defines which contract changes the slip leader can agree on behalf of all followers, and which need agreement from other agreement parties **[certain]** |
+| **How it works** | Changes are categorised – e.g., administrative and minor changes can be agreed by the leader alone; material changes (e.g., significant changes to risk, limits or premium) need the leader plus other named agreement parties, or all insurers. The subscription agreement section of the MRC states the arrangement |
+| **Why it matters** | Without it, every change would require every follower's agreement – slow and costly |
+| **Consulting angle** | Track which endorsements needed all-insurer agreement and how long they took – a measure of subscription friction |
+
+---
+
+## 7. Facilities, consortia and follow capacity
 
 | Structure | How it works | Benefit | Risk |
 |---|---|---|---|
-| **Lineslip** | Pre-agreed contract under which a lineslip leader (and sometimes a second lead) agrees individual risks declared by the broker for a class, binding all followers. | Faster placement, lower cost. | Followers rely heavily on the leader; adverse selection. |
-| **Consortium** | Several syndicates/insurers agree to write a class together under one consortium leader who binds for all. Registered with Lloyd's. | Scale, expertise access for followers. | Concentrated decision-making. |
-| **Broker facility** (e.g., portfolio or "follow" facilities) | Broker arranges pre-committed follow capacity that automatically follows selected leaders across many risks. | Lower friction; broker leverage. | Conflict of interest; data asymmetry; follower margin pressure. |
-| **Algorithmic / data-driven follow** | A syndicate decides follow lines using data and rules, often instantly. | Speed and low cost. | Model risk; needs good data; in a soft market can follow underpriced risks. |
+| **Lineslip** | Broker-arranged contract under which a lineslip leader (sometimes with a second lead) agrees individual declared risks for a class, binding all followers | Speed; lower cost for followers | Followers depend on the leader; adverse selection |
+| **Consortium** | Several insurers write a class together; a consortium leader binds for all | Access to expertise and distribution | Concentrated decision-making |
+| **Broker facility / portfolio facility** | Pre-committed follow capacity that automatically follows selected leads across many risks | Lower friction; broker leverage; certainty of capacity for clients | Conflict of interest; limited data for followers; margin pressure |
+| **Algorithmic / data-driven follow** | A syndicate decides follow lines using data and rules, often in minutes – e.g., Ki (syndicate 1618) **[likely]** | Speed and low cost | Model risk; in soft markets can follow underpriced risks |
 
-**Current debate [likely]:** In the soft market of 2026, critics argue that follow capacity and facilities push rates down because capital follows the lead without independent pricing. Lloyd's 2026 strategy puts emphasis on "leading underwriting performance", which implies more scrutiny of follow-only business.
+### 7.1 Why facilities matter in 2026 **[likely]**
+
+- Capacity is plentiful and rates are falling, so brokers have leverage to place more through facilities.
+- Followers gain volume at low cost but may lose independent pricing and risk-level data.
+- Lloyd's strategy emphasises **leading underwriting performance**, suggesting more scrutiny of passive follow business.
+
+### 7.2 How to analyse facility performance (consulting method)
+
+| Analysis | Question |
+|---|---|
+| Loss ratio by channel (open market lead / open market follow / facility) at similar rate levels | Is facility business worse because of selection, or only mix? |
+| Rate adequacy by channel | Are facility rates below technical price? |
+| Lead quality | Which leads does the facility follow, and how do those leads perform? |
+| Data availability | Does the follower get risk-level data or only summaries? |
+| Exit terms | Can the follower withdraw mid-term? |
 
 ---
 
-## 6. Underwriting – what happens inside the insurer
+## 8. Electronic placing
 
-### 6.1 Underwriting controls framework
+| Platform | Notes |
+|---|---|
+| **PPL (Placing Platform Limited)** | Market placing platform launched 2016; moved to a "Next Gen" platform after delays **[likely]** |
+| **Whitespace** | Electronic placing platform widely used in London **[likely]** |
+
+**What e-placing changes:** a single shared contract record, timestamps and audit trail, electronic stamps and lines, structured data for parts of the MRC, and messages between broker and underwriters.
+
+**What it does not change by itself:** submissions are still largely unstructured documents; underwriters' own systems still need data entry or integration; the bureau still processes the accounting.
+
+**Consulting angle:** the value of e-placing depends on **integration** – pulling structured contract data from the platform into the insurer's underwriting workbench, policy system and finance without re-keying.
+
+---
+
+## 9. Underwriting inside the insurer
+
+### 9.1 The underwriting control framework
 
 ```mermaid
 flowchart TB
-  A[Business plan - SBF<br/>approved by Lloyd's] --> B[Underwriting strategy and<br/>risk appetite]
-  B --> C[Underwriting authorities<br/>per underwriter: class, limit, territory]
-  C --> D[Line guides and pricing guides]
-  D --> E[Risk-level decision]
+  A[Business plan - SBF<br/>approved by Lloyd's] --> B[Underwriting strategy<br/>and risk appetite]
+  B --> C[Underwriting authorities<br/>per underwriter]
+  C --> D[Line guides and<br/>pricing guidelines]
+  D --> E[Risk decision]
   E --> F[Referral and peer review]
-  F --> G[Bound risk recorded in<br/>policy admin system]
-  G --> H[Underwriting audit and<br/>file review]
-  H --> I[Portfolio monitoring:<br/>rate change, mix, aggregates]
+  F --> G[Bound risk recorded]
+  G --> H[Underwriting audit]
+  H --> I[Portfolio monitoring:<br/>rate, mix, aggregates]
   I --> B
 ```
 
-| Control | Purpose |
-|---|---|
-| **Business plan (SBF – Syndicate Business Forecast)** | Lloyd's approves each syndicate's plan for premium, classes, loss ratios. Writing outside plan triggers Lloyd's intervention. |
-| **Underwriting authority letters** | Define what each underwriter may write: class, maximum line, territories, exclusions. |
-| **Line guide** | Maximum line sizes by class and risk quality. |
-| **Pricing models / technical price** | Calculated price needed to meet target loss ratio. Compare actual vs technical price = **rate adequacy**. |
-| **Referral rules** | Risks outside authority are referred to senior underwriters or committees. |
-| **Peer review** | Second underwriter reviews a sample or high-risk decisions. |
-| **Exposure management** | Monitor aggregates against risk appetite: probable maximum loss (PML), **Realistic Disaster Scenarios (RDS)** required by Lloyd's, cat model outputs (1-in-200 etc.). |
-| **Sanctions and licensing checks** | Confirm the insurer may write the risk in that territory and that no sanctioned party is involved. Lloyd's provides tools for licensing/tax rules (e.g., **Crystal**) **[certain]**. |
-| **Underwriting file and audit trail** | Evidence for regulators and Lloyd's that the decision followed the process. |
+| Control | Purpose | Typical weakness |
+|---|---|---|
+| **Business plan (SBF)** | Premium, classes, loss ratios approved by Lloyd's | Plan not cascaded into team targets |
+| **Underwriting authority letters** | What each underwriter may write: classes, max line, territories, exclusions | Not checked systematically at bind |
+| **Line guide** | Maximum line by class and risk quality | Exceptions not recorded |
+| **Pricing guidelines / models** | Technical price | Spreadsheet models with no version control |
+| **Referrals** | Risks outside authority go to senior underwriters | Informal referrals by email |
+| **Peer review** | Second review of samples or high-risk decisions | Done after binding; little feedback loop |
+| **Exposure management** | Aggregates, PML, RDS, cat model outputs | Monthly updates; no real-time view at bind |
+| **Sanctions and licensing checks** | Legal permission to write and pay | Manual screening; not repeated at claims |
+| **Underwriting audit** | Evidence that process was followed | Findings repeat year after year |
 
-### 6.2 Pricing language you will hear
+### 9.2 Building a technical price – worked example
+
+| Component | Amount |
+|---|---|
+| Expected loss (from experience and exposure rating, including cat load) | £600,000 |
+| Cost of capital: capital allocated £1.5m × 12% | £180,000 |
+| Acquisition cost (brokerage) | 25% of premium |
+| Internal expenses | 8% of premium |
+| **Technical price** = (600,000 + 180,000) ÷ (1 − 0.25 − 0.08) | **≈ £1,164,000** |
+
+If the market price is £1,050,000, **rate adequacy** = 1,050 ÷ 1,164 ≈ **90%** – the risk is about 10% underpriced against the target return.
+
+### 9.3 Risk-adjusted rate change (RARC) – worked example
+
+| Item | Expiring | Renewal |
+|---|---|---|
+| Premium | £1,000,000 | £1,050,000 |
+| Exposure (e.g., insured values) | 100 | 110 |
+| Deductible change effect on expected loss | — | −3% |
+
+1. Adjust expiring premium for exposure growth: £1,000,000 × 110/100 = £1,100,000.
+2. Adjust for the cover change (higher deductible lowers expected loss 3%): £1,100,000 × 0.97 = £1,067,000.
+3. RARC = £1,050,000 ÷ £1,067,000 − 1 ≈ **−1.6%**.
+
+The headline premium rose 5%, but on a like-for-like basis the price **fell** 1.6%. This is why Lloyd's and underwriters track **risk-adjusted** rate change. Lloyd's reported −6.7% for H1 2026 **[certain]**.
+
+### 9.4 Pricing and portfolio vocabulary
 
 | Term | Meaning |
 |---|---|
-| **Rate** | Premium per unit of exposure (e.g., % of sum insured). |
-| **Rate change / RARC** | **Risk-adjusted rate change** – change in price adjusted for changes in cover and exposure. Lloyd's reported a 6.7% fall in H1 2026 **[certain]**. |
-| **Rate adequacy** | Actual price ÷ technical price. Below 100% = underpriced. |
-| **Technical price / benchmark** | Model price needed to meet return targets. |
-| **Loss cost / burning cost** | Historical losses ÷ exposure, used to price. |
-| **Exposure rating** | Pricing based on exposure and benchmark curves rather than client loss history. |
-| **Hit ratio / quote-to-bind** | Percentage of quotes that become bound policies. |
-| **Retention ratio** | Percentage of renewals retained. |
+| **Burning cost** | Historical losses ÷ exposure, adjusted for trend and development |
+| **Exposure rating** | Price using exposure and benchmark loss curves |
+| **Experience rating** | Price using the client's own loss history |
+| **Hit ratio** | Bound ÷ quoted |
+| **Retention ratio** | Renewals retained ÷ renewals offered |
+| **Rate adequacy** | Actual price ÷ technical price |
+| **PML** | Probable maximum loss from an event |
+| **RDS** | Lloyd's Realistic Disaster Scenarios |
+| **Line size** | Share written on a risk |
 
-### 6.3 The underwriting cycle
+### 9.5 The underwriting workbench
 
-- **Hard market:** prices rise, terms tighten, capacity is scarce (e.g., 2019–2023 for many classes **[likely]**).
-- **Soft market:** prices fall, terms widen, capital is plentiful (2025–2026 in many London lines **[likely]**).
-- **Why this matters now:** In a softening market, the PRA warns that internal capital models may overstate profitability and understate capital **[likely]**. Clients will ask for help with **cycle management**: portfolio pruning, pricing discipline, expense control.
+A modern underwriting workbench brings together: submission intake, triage and prioritisation, risk data enrichment, pricing tools, referral workflow, authority checks, decision record, and links to the policy system and exposure tools. **[likely]** Many London firms have workbench projects; value depends on integration and adoption by underwriters, not on features.
 
 ---
 
-## 7. Endorsements, cancellations and renewals
+## 10. Cycle management – underwriting in a soft market
 
-| Process | Key points |
+| Action | What good looks like |
 |---|---|
-| **Endorsement** | Any change to a bound contract. Prepared by broker as MRC endorsement; agreed by agreement parties per the subscription agreement and GUA; processed by bureau with **Additional Premium (AP)** or **Return Premium (RP)**. |
-| **Cancellation** | By notice under the contract terms. Return premium calculated on pro-rata or short-period basis. |
-| **Extension** | Short extension while renewal terms are agreed – common in late renewals. |
-| **Renewal** | Treated as a new contract (new UMR in most cases). Incumbent lead has an advantage but must re-price. |
-| **Adjustable premium** | Deposit premium paid at inception, adjusted at expiry based on actual exposure (e.g., turnover, cargo shipped). |
+| **Know your technical price** | Every risk priced against a technical price; rate adequacy reported monthly |
+| **Separate rate from exposure and cover changes** | RARC tracked by class and channel |
+| **Hold terms, not just price** | Deductibles, exclusions, sub-limits monitored as carefully as rate |
+| **Manage follow and facility share** | Caps and performance triggers |
+| **Walk away** | Underwriters rewarded for profitable portfolio, not premium volume |
+| **Reduce cost** | Expense ratio improvements protect margin when price cannot |
+| **Use capital wisely** | Buy cheaper reinsurance where it improves return on capital |
+
+The PRA's 2026 priorities letter warns that softening markets may cause internal models to overstate profitability and understate capital **[likely]**. Expect regulators and Lloyd's to challenge 2027 plans that assume rate adequacy holds.
 
 ---
 
-## 8. Data and systems in placement
+## 11. Endorsements, cancellations and renewals
+
+| Process | Detail | Common issue |
+|---|---|---|
+| **Endorsement** | Prepared by broker in MRC endorsement format; agreed per GUA; processed with additional or return premium | Agreed by the wrong parties; processed late |
+| **Cancellation** | Under the cancellation clause; pro-rata or short-period return premium | Disputes about notice dates |
+| **Extension** | Short extension while renewal terms are agreed | Repeated extensions hide late placement |
+| **Adjustable premium** | Deposit premium adjusted on actual exposure at expiry | Adjustments never collected |
+| **Renewal** | New contract; fresh fair presentation | "As expiring" terms copied without review |
+
+---
+
+## 12. Data and systems in placement and underwriting
 
 | System | Owner | Purpose |
 |---|---|---|
-| Broker placing system | Broker | Client data, submissions, MRC creation, accounting |
-| Electronic placing platform (PPL, Whitespace) | Market / vendor | Shared MRC, lines, stamps, audit trail |
+| Broker placing system | Broker | Client data, submissions, MRC, accounting |
+| Electronic placing platform | Market/vendor | Shared contract record, lines, audit trail |
 | Underwriting workbench | Insurer | Intake, triage, pricing, referral, decision record |
-| Pricing and cat modelling tools | Insurer | Technical price, PML, aggregates |
-| Policy administration system (e.g., Sequel Eclipse, DXC Genius, Guidewire, Duck Creek, Sapiens) **[likely]** | Insurer | Record of bound risk, endorsements, premium, financial postings |
-| Bureau systems (Velonetic) | Market | Premium processing, signing, central settlement |
+| Pricing and cat models | Insurer | Technical price, PML, aggregates |
+| Policy administration system | Insurer | Contract record, lines, endorsements, premium |
+| Bureau systems (Velonetic) | Market | Premium processing, signing, settlement |
 
-**Key data reconciliation points:** UMR, signed line, premium, currency, tax, brokerage, inception date, class of business coding (Lloyd's risk codes), territory.
+**Key data points that must match across systems:** UMR, insured, period, written and signed line, premium (gross, net, currency), brokerage, tax, class/risk code, territory, deductibles and limits, layer, endorsements.
 
 ---
 
-## 9. Where consulting adds value in placement
+## 13. KPIs for placement and underwriting
 
-| Problem | Symptoms | Typical solution |
+| KPI | Why |
+|---|---|
+| Time from submission to first review | Underwriter capacity |
+| Quote turnaround time | Competitiveness |
+| Hit ratio / retention ratio | Market position |
+| Rate adequacy and RARC by class and channel | Profitability |
+| Lead share (% of premium led) | Market standing |
+| % contracts certain at inception | Control |
+| Referrals outside authority / breaches | Control |
+| Bureau query rate | Data quality |
+| Endorsement cycle time | Subscription friction |
+
+---
+
+## 14. Consulting opportunities
+
+| Problem | Symptoms | Solution |
 |---|---|---|
-| Slow quote turnaround | Underwriters spend time re-keying submission data | Submission ingestion and triage (AI-assisted); underwriting workbench |
-| Poor pricing discipline | Wide variation in rate adequacy; no visibility | Pricing tools, rate monitoring dashboards, governance |
+| Slow quote turnaround | Underwriters re-key submission data | Submission ingestion and triage; workbench |
+| Weak pricing discipline | Wide variation in rate adequacy | Pricing tools, rate dashboards, governance |
 | Contract certainty failures | Disputes, late documentation | Automated MRC checks, wording comparison |
-| High operating cost | Many manual touches; duplicate keying across systems | Process redesign, straight-through processing, data standards (CDR) |
-| Follow business underperforms | Followers take poor risks in soft market | Follow strategy analytics: lead quality scoring |
-| Poor exposure visibility | Aggregates calculated monthly in spreadsheets | Exposure management platform; data quality controls on SOVs |
+| High cost per risk | Many manual touches; duplicate keying | Process redesign; integration with platforms |
+| Poor follow performance | Facility business worse in soft market | Channel analytics; facility renegotiation |
+| Weak exposure visibility | Aggregates calculated monthly in spreadsheets | Exposure platform; data quality at intake |
+
+---
+
+## 15. Mini case – the slow property team
+
+**Situation:** a property team at a managing agent receives 300 submissions a week, quotes 30%, binds 10%. Quote turnaround averages 6 days; brokers complain. Underwriting assistants spend most of their time keying SOV data into models.
+
+**Diagnosis questions:**
+1. How much time per submission goes on data entry vs analysis?
+2. What share of declines could be made in under 10 minutes with basic appetite rules?
+3. What is the rate adequacy and loss ratio of risks bound with turnaround under 3 days vs over 6 days?
+
+**Likely answer:** fast declines plus automated SOV extraction cut turnaround in half; underwriters spend more time on the top 30% of submissions; hit ratio on preferred risks rises.
+
+---
+
+## 16. Partner's lens
+
+*Top-tier strategy consulting methods applied to this chapter.*
+
+1. **Find where value is created, not where work is done.** In placement, most effort is administrative, but most value is in two decisions: **which risks to write** and **at what price**. A partner sizes both before proposing process automation. A 2-point improvement in rate adequacy on £300m of property premium is about £6m a year – usually far more than the cost saving from faster processing.
+2. **Separate lead economics from follow economics.** Ask every client for performance split by lead, follow and facility. If they cannot produce it, that is the first finding.
+3. **Treat time-to-quote as a revenue lever, not an efficiency metric.** Faster quotes on preferred risks win better business. Frame workbench and AI projects as **selection improvement**, then cost reduction.
+4. **Trace one contract end to end.** In week one, take five real UMRs and trace them from submission to bureau signing to the policy system. Count re-keying points and mismatches. This one exercise usually produces the most persuasive slide in the diagnostic.
+5. **Use the cycle.** In a soft market, the CEO's question is "how do we avoid writing tomorrow's losses?" Position underwriting work as **cycle management** – rate adequacy, terms discipline, facility caps – not as "pricing transformation".
+
+---
+
+## 17. Key takeaways
+
+1. Placement creates the contract, the price and the first data; most downstream problems start here.
+2. The MRC's six sections are the backbone of the London contract; the UMR is the key that links everything.
+3. Each written line is a binding contract; signed lines may be reduced; liability is several.
+4. The GUA lets leaders agree changes for followers; facilities let followers deploy capacity cheaply – at a risk.
+5. Underwriting value comes from selection and price; measure rate adequacy and RARC by class and channel.
+6. In 2026's soft market, cycle management is the main underwriting agenda.
+
+---
+
+## 18. Check your understanding
+
+| # | Question | Answer |
+|---|---|---|
+| 1 | Name the six MRC sections. | Risk Details; Information; Security Details; Subscription Agreement; Fiscal and Regulatory; Broker Remuneration and Deductions. |
+| 2 | Written lines total 125%. A 30% written line signs to? | 24%. |
+| 3 | When is an insurer bound on an open market placement? | When it writes its line (subject to any conditions) – each line is a separate contract. |
+| 4 | Expected loss £400k, capital charge £100k, acquisition 20%, expenses 10%. Technical price? | 500 ÷ 0.70 ≈ £714k. |
+| 5 | Premium up 4%, exposure up 10%, no cover change. RARC? | 1.04 ÷ 1.10 − 1 ≈ −5.5%. |
+| 6 | Why can facility business perform worse than led business at the same rate? | Adverse selection – followers take risks they did not select, sometimes without risk-level data. |
+| 7 | What does the GUA do? | Sets which changes the leader can agree alone and which need other agreement parties. |
+
+---
+
+## 19. Practice tasks
+
+1. **Draft** a fictional MRC Risk Details section for a marine cargo open cover; critique it against section 4.
+2. **Calculate** technical price, rate adequacy and RARC for three fictional renewals.
+3. **Trace** the data flow of one contract across five systems; list every point where the same data is entered again.
+4. **Interview** an underwriter or broker about how facilities have changed their work (guide in [Module 19 §3](19-Practice-Toolkit-and-Templates.md)).
+
+---
+
+## 20. Sources
+
+- [Lloyd's half year results 2026](https://www.lloyds.com/insights/media-centre/press-releases/lloyds-announces-half-year-results-2026)
+- [Clifford Chance – PRA 2026 insurance supervision priorities](https://www.cliffordchance.com/insights/resources/blogs/insurance-insights/2026/01/the-pras-2026-insurance-supervision-priorities.html)
+- [Insurance Insider – PPL Next Gen platform goes live](https://www.insuranceinsider.com/article/2bd65d4pn7amg8t7mmadc/london-market-section/ppl-next-gen-platform-goes-live-after-delays)
+- [Insurance Insider – PPL Next Gen opens to the market](https://www.insuranceinsider.com/article/2bhivepwwobqqshhhodmo/london-market-section/ppl-next-gen-platform-opens-to-the-entire-market)
+- [FCA PS25/21](https://www.fca.org.uk/publication/policy/ps25-21.pdf)
