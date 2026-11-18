@@ -186,7 +186,7 @@ Drivers: capital supply, catastrophe events, investment returns, competition, re
 | Purpose | Free, independent resolution of complaints against financial firms | Compensation when an authorised firm **fails** (insolvent) |
 | Who can use | **Eligible complainants**: consumers, micro-enterprises, small businesses (fewer than 50 employees and turnover below £6.5m or balance sheet below £5m), small charities and trusts, some guarantors | Mainly individuals and small businesses (for general insurance, small businesses with turnover under £1m **[likely]**) |
 | Process | Complainant must first complain to the firm; firm has **8 weeks** to give a final response; complainant has **6 months** from final response to refer to FOS | Claim made to FSCS after firm declared in default |
-| Limits | Maximum award limit adjusted annually (e.g., £445,000 for complaints referred from 1 April 2025 about acts on/after 1 April 2019) **[likely]** – check current figure | General insurance: **90%** of claim, no upper limit; **100%** for compulsory insurance (e.g., employers' liability, motor third party) and certain claims such as injury **[likely]** |
+| Limits | Maximum award limit adjusted annually by CPI: **£455,000** for complaints referred from 1 April 2026 about acts on/after 1 April 2019; **£205,000** for acts before 1 April 2019 **[likely]** – check the figure for your year | General insurance: **90%** of claim, no upper limit; **100%** for compulsory insurance (e.g., employers' liability, motor third party) and certain claims such as injury **[likely]** |
 | Binding? | Decision binding on firm if complainant accepts | — |
 
 **Large London market commercial clients are usually not eligible** for FOS or FSCS – an exam favourite.

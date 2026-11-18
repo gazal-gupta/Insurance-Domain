@@ -214,7 +214,7 @@ flowchart TB
 | **FCA** | Consumer Duty and fair value for retail/SME; PS25/21 removes larger commercial customers from Consumer Duty, ICOBS and PROD **[certain]**; financial crime and SM&CR still apply |
 | **SM&CR** | Named senior manager accountable for AI risks in their area |
 | **UK GDPR / DPA 2018** | Lawful basis, minimisation, rights around automated decisions with significant effects on individuals |
-| **EU AI Act** (Lloyd's Europe, EU operations) | AI for risk assessment and pricing in life and health insurance for individuals is high-risk; most commercial P&C uses are not; timing of high-risk obligations subject to EU simplification proposals **[likely]** |
+| **EU AI Act** (Lloyd's Europe, EU operations) | AI for risk assessment and pricing in life and health insurance for individuals is high-risk; most commercial P&C uses are not. Under the Digital Omnibus provisional agreement of 7 May 2026, high-risk (Annex III) obligations move to **2 December 2027** and Annex I (embedded) to 2 August 2028; confirm formal adoption **[likely]** |
 | **LMA toolkit** | Principles including governance and accountability, risk tiering, data protection, security and intellectual property **[likely]** |
 | **Confidentiality** | Broker submissions and client data are confidential; contractual and technical controls needed for external models |
 

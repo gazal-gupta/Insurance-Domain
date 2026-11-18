@@ -122,8 +122,8 @@ This plan covers the knowledge base only (Phase 1 and early Phase 2 of the 24-mo
 | Detailed Lloyd's 2026–2030 strategy targets (cost-to-income, NPS, efficiency) | Reported by law firm summaries; confirm in Lloyd's strategy brochure. |
 | Blueprint Two replacement detail and CDR extensions (treaty, DA) | Based on trade press; Lloyd's/LMG publications are the primary source. |
 | Lloyd's Claims Lead Arrangements exact rules and thresholds | Summarised; read the current LCLA text and guidance. |
-| Lloyd's financial strength ratings | Change over time; check lloyds.com. |
-| FOS award limits and FSCS eligibility thresholds | Updated periodically. |
-| EU AI Act high-risk timing | Subject to EU simplification proposals. |
+| Lloyd's financial strength ratings | **Verified Nov 2026:** S&P AA-, Fitch AA-, KBRA AA-, AM Best A+ (all stable). Recheck before quoting. |
+| FOS award limits and FSCS eligibility thresholds | **FOS verified Nov 2026:** £455,000 / £205,000 from 1 April 2026. FSCS thresholds still to verify. |
+| EU AI Act high-risk timing | **Provisional deal 7 May 2026:** Annex III to 2 Dec 2027, Annex I to 2 Aug 2028. Confirm formal adoption. |
 | Russia aircraft litigation outcome | Appeal pending as of the sources used. |
 | Vendor and company names | Ownership and market positions change; verify before naming in proposals. |

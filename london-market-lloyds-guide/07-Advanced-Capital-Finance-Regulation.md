@@ -81,6 +81,8 @@ flowchart TB
 | **2. Funds at Lloyd's** | Each member's capital (cash, securities, letters of credit), sized by Lloyd's; used if syndicate assets are insufficient |
 | **3. Central assets** | Mainly the Central Fund, funded by member contributions; available at the Council's discretion to meet valid claims if a member cannot pay. This mutualisation gives every Lloyd's policy the same financial strength rating |
 
+**Ratings (2026):** S&P AA- (Very Strong), Fitch AA- (Very Strong), Kroll Bond Rating Agency AA-, all stable; AM Best A+ (Superior), upgraded from A in August 2024 and affirmed in 2026 **[likely]** – these market ratings are the floor of security for every policy written at Lloyd's.
+
 **2025 figures:** total capital, reserves and subordinated debt £49.8bn; central solvency ratio 496%; return on capital 22.0% **[likely]**. Skadden's summary refers to a $160bn chain of security **[likely]**.
 
 ### A4. How capital is set
@@ -278,7 +280,7 @@ flowchart TB
 | **Operational resilience** | Important business services within impact tolerances (March 2025 deadline) **[certain]** |
 | **Outsourcing and third parties** | Critical outsourcing including cloud, bureau, TPAs, AI vendors |
 | **Solvent exit planning** | Plans for orderly exit **[likely]** |
-| **Climate** | Climate risk management and scenarios **[certain]**; updated expectations in 2025 **[likely]** |
+| **Climate** | **SS5/25** (3 December 2025) replaced SS3/19: climate treated as a financial risk within underwriting, risk management, capital, ORSA and internal models; firms expected to complete a gap review by 3 June 2026 **[likely]** |
 | **AI** | Governance, model risk and accountability **[likely]** |
 | **SM&CR** | Named senior managers accountable |
 
