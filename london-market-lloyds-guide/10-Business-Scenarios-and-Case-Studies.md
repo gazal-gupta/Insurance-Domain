@@ -1,255 +1,408 @@
 # Module 10 – Business Scenarios and Case Studies
 
-**Level:** All | **Goal:** Apply the knowledge to realistic situations. Each scenario gives the situation, how the process works, what usually goes wrong, the questions a senior consultant would ask, and a recommended approach. Scenarios are fictional unless they name a real event; real events are tagged.
-
-**How to use:** read the situation, cover the rest, write your own answer in 15 minutes, then compare.
-
----
-
-## Scenario 1 – Placing a large US property risk in the open market
-
-**Situation:** A US retail broker sends a $500m total insured value (TIV) manufacturing risk across 40 locations, several in hurricane-exposed Gulf states, to a London wholesale broker. The client wants $250m limit excess of a $10m deductible.
-
-**How it works**
-1. London broker builds the submission: SOV (40 locations with COPE data), 5-year loss history, engineering reports.
-2. Broker chooses a lead syndicate known for US property, and approaches a broker facility for part of the follow capacity.
-3. Lead runs cat models (wind, flood, convective storm), prices, sets named windstorm sub-limit and deductible.
-4. Lead writes 15%. Followers (Lloyd's and company market) write lines to reach 115%; broker signs down to 100%.
-5. MRC finalised with US surplus lines details (Fiscal and Regulatory section), premium submitted to bureau, US dollar premium into US trust funds.
-
-**What goes wrong**
-- SOV geocoding poor → cat model understates loss.
-- Followers add conditions → contract certainty issues.
-- Late premium payment → aged debt.
-
-**Questions to ask**
-- "What share of the SOV is geocoded to rooftop level?"
-- "How does your follow strategy differ for leads you trust vs leads you don't?"
-- "What is the rate adequacy on this risk versus technical price?"
-
-**Recommended approach:** SOV data quality checks at intake (AI-assisted geocoding and COPE validation), lead quality scoring for follow decisions, automated MRC checks.
-
----
-
-## Scenario 2 – A coverholder's bordereaux are three months late
-
-**Situation:** A Florida coverholder writing homeowners' business for three syndicates has not sent risk bordereaux for three months. Hurricane season starts in four weeks.
-
-**Issues**
-- Exposure unknown → cat capital and reinsurance purchase may be wrong.
-- Premium may be collected but not remitted.
-- Possible breach of the binding authority agreement.
-
-**Questions to ask**
-- "What does the BAA say about reporting deadlines and remedies?"
-- "Who is the lead managing agent on the binder, and is a coordinated audit possible?"
-- "What is the premium written vs the gross premium income (GPI) limit?"
-- "Is the coverholder in financial difficulty?"
-
-**Recommended approach**
-1. Immediate: escalate via lead managing agent; formal notice; request data within 10 days; estimate exposure from prior data and growth trend.
-2. Short term: coordinated audit; restrict authority (e.g., stop new business in coastal zones) if data not received.
-3. Structural: risk-based DA oversight with automated bordereaux tracking; early warning triggers (late data = higher risk rating).
-
----
-
-## Scenario 3 – Hurricane event: claims surge and capital
-
-**Situation:** A major hurricane hits the US Gulf Coast. A syndicate with large US property binders and property cat reinsurance faces thousands of claims.
-
-**Process**
-1. Event coded; syndicate reports initial loss estimate to Lloyd's.
-2. DCAs/TPAs scale up adjusters; claims bordereaux volume rises sharply.
-3. Large risks: lead claims handlers appoint adjusters; followers bound by leader's agreements.
-4. Outwards reinsurance: cat XoL notified; reinstatement premiums calculated.
-5. Liquidity: premium trust fund cash used; possible cash calls on members.
-
-**What goes wrong**
-- DCA capacity shortfall → delays and leakage.
-- Event definition disputes (hours clause).
-- Missed reinsurance recoveries because claim data cannot be linked to treaties.
-
-**Questions to ask**
-- "How quickly can you produce a reliable gross and net loss estimate?"
-- "Are your claims and exposure data linked by event and location?"
-- "What is your DCA surge plan and how do you oversee it?"
-
-**Recommended approach:** cat playbook (pre-agreed adjuster capacity, triage rules, AI-assisted FNOL), event-coded data model, reinsurance recovery automation.
-
----
-
-## Scenario 4 – Cyber systemic event
-
-**Situation:** A global IT outage caused by a faulty software update (similar in nature to the July 2024 CrowdStrike outage **[certain]** that it happened) disrupts thousands of businesses. A syndicate writes cyber for SMEs via MGAs and large corporate cyber in the open market.
-
-**Key issues**
-- Is it a "cyber event" under the policy? System failure vs malicious attack coverage.
-- Waiting periods for business interruption.
-- Aggregation across many policies; reinsurance event definitions.
-- State-backed attack exclusions (not relevant here, but always checked).
-
-**Questions to ask**
-- "Which of your cyber wordings cover non-malicious system failure, and with what waiting periods?"
-- "Do you know which insureds depend on which technology vendors?"
-- "Does your property or casualty book carry silent cyber exposure?"
-
-**Recommended approach:** cyber accumulation model by technology dependency; wording harmonisation; scenario testing with RDS; the same approach applies to AI systemic risk.
-
----
-
-## Scenario 5 – Aircraft stranded in Russia (real case)
-
-**Facts [likely]:** After Russia's invasion of Ukraine in 2022, hundreds of leased aircraft stayed in Russia. Lessors claimed under contingent and possessed policies. In June 2025, the High Court found lessors could recover under **war risks** cover (not all-risks); AerCap recovered just over $1bn. Insurers were refused permission to appeal in September 2025 but the Court of Appeal granted permission in March 2026.
-
-**Lessons for consultants**
-1. Cause of loss and exact wording decide which insurers pay (war vs all-risks markets were different panels).
-2. Sanctions can stop insurers from paying or receiving money; claims processes must include sanctions checks.
-3. Reserving for litigation is uncertain for years.
-4. Wording analytics and aggregation monitoring by geography/political risk have real value.
-
-**Questions to ask a client still exposed**
-- "What is your reserve and range for the remaining litigation, and how does it interact with reinsurance?"
-- "Have you reviewed contingent/possessed covers on other aviation and marine books for similar political exposures?"
-
----
-
-## Scenario 6 – Launching a new syndicate (Syndicate-in-a-Box or full syndicate)
-
-**Situation:** A US specialty insurer wants a Lloyd's platform to access Lloyd's licences and rating.
-
-**Steps**
-1. Strategy: choose structure – own managing agent vs turnkey/third-party managing agent; full syndicate vs SIAB; or corporate member backing an existing syndicate.
-2. Business plan (SBF): classes, premium, loss ratios, expenses, reinsurance.
-3. Capital: internal model (often via turnkey agent), uSCR, ECA, FAL from corporate member.
-4. Lloyd's application: approval of plan, people (fit and proper), governance, outsourcing.
-5. Operations: bureau connectivity, policy system, DA approvals, claims setup, reporting.
-6. Go live on 1 January (typical).
-
-**What goes wrong:** unrealistic plan in a softening market; underestimating Lloyd's reporting requirements; poor data from day one.
-
-**Questions to ask**
-- "Why Lloyd's rather than a company platform or fronting?"
-- "What is your differentiated underwriting edge given rates are falling?"
-- "What is your target cost-to-income and how does it compare with Lloyd's peers?"
-
----
-
-## Scenario 7 – Closing a problematic year of account (RITC)
-
-**Situation:** A syndicate's 2023 YOA has deteriorating US casualty reserves. The board must decide whether to close by RITC at end-2025 or leave it open.
-
-**Considerations**
-- Reserve uncertainty → RITC price may be high; members of 2023 would bear a loss at close.
-- Leaving open → capital tied up; members unhappy; Lloyd's scrutiny.
-- Alternative: third-party RITC or LPT/ADC with a legacy specialist.
-
-**Questions to ask**
-- "What is the range of reserve outcomes, and what drives the uncertainty?"
-- "How does an ADC change the capital requirement and RITC price?"
-- "How are members of different years treated fairly?"
-
-**Recommended approach:** independent reserve review; options analysis (close, leave open, third-party transfer) with capital and member outcome for each; governance on conflicts between YOAs.
-
----
-
-## Scenario 8 – Cost-to-income reduction at a managing agent
-
-**Situation:** A mid-size managing agent's expense ratio (excluding acquisition cost) is 5 points above peers. The CEO wants a 20% operating cost reduction in two years without hurting underwriting.
-
-**Diagnostic**
-- Map cost by value chain stage (placement support, DA operations, claims, finance, IT, oversight).
-- Identify duplicated keying and reconciliation work.
-- Benchmark FTE per £m GWP by function.
-
-**Typical levers**
-| Lever | Typical impact **[guessing]** |
+| | |
 |---|---|
-| Submission and bordereaux automation | 15–30% of operations effort in affected teams |
+| **Level** | All – the bridge from knowledge to consulting |
+| **Path phase** | Phases 2–4 ([Module 18](18-World-Class-Consultant-Path.md)) |
+| **Time** | 45–60 minutes per case |
+| **Prerequisites** | Modules 01–09 (each case lists its main links) |
+| **You will be able to** | Solve London market business problems the way a top-tier consulting team would: define the question, form a hypothesis, structure the problem, choose analyses, interpret findings, recommend, size value and anticipate objections |
+
+---
+
+## 1. How to use this chapter
+
+Each case follows the same structure used in top-tier consulting work ([Module 11](11-Consulting-Playbook.md)):
+
+1. **Situation** – facts and numbers.
+2. **Key question** – precise, measurable, time-bound.
+3. **Day-one hypothesis** – your best guess before analysis.
+4. **Issue tree** – how to break the problem down.
+5. **Market mechanics** – the London-specific knowledge you need.
+6. **Analyses and illustrative findings**.
+7. **Recommendation and value**.
+8. **Risks and objections**.
+9. **Questions to ask the client**.
+10. **The trap** – the mistake most people make.
+
+**Method:** read only the situation and key question. Spend 30 minutes writing your hypothesis, issue tree, analyses and recommendation. Then compare. Cases are fictional unless they describe a named real event; real events are tagged.
+
+### Scoring rubric for your answers
+
+| Criterion | 1 – weak | 3 – good | 5 – partner level |
+|---|---|---|---|
+| Problem definition | Restates topic | Clear question | Question tied to a decision and a deadline |
+| Structure | List of ideas | MECE tree | MECE tree with the right first split |
+| London fluency | Generic insurance | Correct terms | Uses market mechanics to shape the answer |
+| Quantification | None | Some numbers | Value sized in ratio points and £m, with assumptions |
+| Recommendation | Options only | One recommendation | Recommendation with phasing, owners, risks |
+| Communication | Bottom-up | Answer stated | Pyramid: answer, three reasons, evidence |
+
+---
+
+## Case 1 – Restoring margin in a softening market
+
+**Links:** Modules 01, 04, 07, 11
+
+**Situation.** Syndicate A writes £900m GWP (£750m net earned). 2025 combined ratio 89%. Cat losses were light and reserve releases contributed 3 points. Risk-adjusted rates are falling about 6–7% a year across its main classes **[likely – market level]**. The CEO must submit the 2027 business plan (SBF) to Lloyd's.
+
+**Key question.** How should Syndicate A shape its 2027 plan to protect a combined ratio below 95% on a normalised basis while keeping Lloyd's approval?
+
+**Day-one hypothesis.** The underlying ratio is already about 95%; rate falls will push it above 97% in 2027 unless the syndicate shrinks under-priced classes, protects terms, and takes 1–2 points out of expenses.
+
+**Issue tree.**
+
+```mermaid
+flowchart LR
+  Q[Keep normalised CR < 95% in 2027] --> P[Price and terms]
+  Q --> M[Portfolio mix]
+  Q --> C[Cost]
+  Q --> R[Reinsurance and capital]
+  P --> P1[Rate adequacy by class]
+  P --> P2[Terms: deductibles, limits, exclusions]
+  M --> M1[Shrink below-technical classes]
+  M --> M2[Grow classes still adequate]
+  M --> M3[Lead vs follow vs facility mix]
+  C --> C1[Operating expense]
+  C --> C2[Acquisition cost]
+  R --> R1[Cheaper reinsurance in soft market]
+  R --> R2[Capital efficiency]
+```
+
+**Market mechanics.** Lloyd's approves the SBF and in 2026 is warning that rate adequacy for 2027 is under threat **[likely]**; the PRA is watching internal models that may overstate profitability **[likely]**. Plans with unrealistic loss ratios will be challenged.
+
+**Analyses and illustrative findings.**
+
+| Analysis | Finding |
+|---|---|
+| Combined ratio bridge | 89% headline → 95% normalised (cat +3, releases +3) |
+| Rate adequacy by class | 3 of 8 classes below 95% of technical price |
+| Channel split | Facility business 6 points worse than led business |
+| Expense benchmark | Operating expense ratio 2 points above peer estimate |
+| Reinsurance pricing | Cat reinsurance cheaper by about 10% vs 2025 **[guessing]** |
+
+**Recommendation.**
+1. Reduce the three under-priced classes by 25–40% in the 2027 plan.
+2. Cap facility share; require lead-selection rights and risk-level data.
+3. Hold terms: set minimum deductibles and exclusions by class.
+4. Buy additional cat protection while cheap to release capital.
+5. Launch a cost programme for 1.5 points over two years.
+
+**Value.** About 3 points of normalised combined ratio by 2028 ≈ £22m a year on £750m NEP; plus capital released.
+
+**Risks and objections.** Premium shrinkage worries the board and capital providers → present return on capital, not GWP. Brokers push back on facility caps → pre-wire with key brokers.
+
+**Questions to ask.** "Which classes are below technical price today?" "How much of your 2025 result was cat luck and reserve releases?" "What does your plan assume for rate change in 2027?"
+
+**The trap.** Recommending growth because headline results are strong.
+
+---
+
+## Case 2 – A coverholder stops reporting
+
+**Links:** Modules 05, 06
+
+**Situation.** A Florida coverholder writing homeowners' business for three syndicates (Syndicate B leads with 40%) has not sent risk bordereaux for three months. Last known GPI used: £38m of a £50m limit. Hurricane season starts in four weeks.
+
+**Key question.** What must Syndicate B do in the next 30 days to protect its exposure position, and how should it prevent a repeat?
+
+**Day-one hypothesis.** Exposure is understated by at least 20%; the coverholder may be in operational or financial difficulty; oversight is not risk-based.
+
+**Market mechanics.** BAA terms set reporting deadlines and remedies; Lloyd's expects registration, oversight and coordinated audits where binders are shared **[likely]**; the lead managing agent coordinates.
+
+**Analyses and illustrative findings.**
+
+| Analysis | Finding |
+|---|---|
+| Exposure estimate | Trend suggests GPI now about £47m – near limit; coastal share rising |
+| Remittance | Premium remittances also 60 days late |
+| Oversight history | Coverholder rated "medium" – last audit 26 months ago |
+| Portfolio scan | 6 other coverholders have bordereaux more than 45 days late |
+
+**Recommendation.**
+- **Immediate:** formal notice; data within 10 days; restrict new coastal business; inform exposure and reinsurance teams; check remittance and risk transfer terms.
+- **Short term:** coordinated audit with the other two syndicates.
+- **Structural:** automated bordereaux tracking; late data triggers higher risk tier; BAA renewal adds data and remittance requirements.
+
+**Value.** Avoids unpriced cat exposure; reduces credit risk; oversight effort refocused on high-risk partners.
+
+**Questions to ask.** "How many coverholders could be in this position today without you knowing?" "Are binder terms held as structured data?"
+
+**The trap.** Treating it as an admin delay rather than an exposure and credit event.
+
+---
+
+## Case 3 – Hurricane: claims surge, capital and reinsurance
+
+**Links:** Modules 06, 07
+
+**Situation.** A major hurricane hits the US Gulf Coast. Syndicate C (property binders and open market property) estimates a £180m gross loss; after quota share and per-risk reinsurance, £130m falls to its catastrophe programme. Its cat XoL is £150m xs £40m with one reinstatement at 100%; annual premium £15m.
+
+**Key question.** How should Syndicate C manage claims, recoveries, liquidity and its plan in the next 90 days?
+
+**Day-one hypothesis.** The gross loss estimate is probably low because DA claims data lags; recoveries and reinstatement premiums are not yet fully modelled; DCA capacity is the main operational risk.
+
+**Market mechanics.** Event coding; major loss reporting to Lloyd's **[likely]**; claims agreed by the lead (and second lead for complex claims) under the Lloyd's Claims Lead Arrangements; reinstatement premium on cat XoL.
+
+**Illustrative calculation.** With £130m falling to the cat programme: recovery = £130m − £40m = £90m; reinstatement premium = £15m × 90/150 = **£9m**; net retained = £40m + £9m reinstatement.
+
+**Recommendation.**
+- Daily loss estimate updates; event-coded claims data model.
+- Pre-agreed DCA surge capacity; triage simple vs complex claims.
+- Reinsurance recovery tracking by event; accrue reinstatement premiums.
+- Liquidity plan; communicate early with Lloyd's and capital providers.
+- Review the 2027 plan: pricing, aggregates and reinsurance purchase.
+
+**Questions to ask.** "How quickly can you produce a reliable gross and net loss estimate?" "Are DA claims linked to events and locations?"
+
+**The trap.** Forgetting reinstatement premiums and DA claims lag in early loss estimates.
+
+---
+
+## Case 4 – Systemic cyber event
+
+**Links:** Modules 03, 09
+
+**Situation.** A faulty software update causes a global IT outage (similar in nature to the July 2024 CrowdStrike outage **[certain]** as an event type). Syndicate D writes SME cyber through MGAs and large corporate cyber in the open market.
+
+**Key question.** What is Syndicate D's exposure, and how should it change wordings and accumulation management?
+
+**Day-one hypothesis.** Losses depend on whether wordings cover non-malicious system failure and on waiting periods; accumulation is poorly measured because technology dependency data is not captured.
+
+**Market mechanics.** Lloyd's requires state-backed cyber attack exclusions (from March 2023) **[certain]** – not relevant here because the event is not malicious, but always checked; event definitions in reinsurance determine recoveries.
+
+**Recommendation.** Wording inventory (system failure cover, waiting periods); collect technology dependency data at underwriting; scenario tests; align reinsurance event definitions; apply the same approach to AI systemic risk.
+
+**Questions to ask.** "Which wordings cover non-malicious failure?" "Do you know which insureds depend on which vendors?"
+
+**The trap.** Assuming cyber losses only come from attacks.
+
+---
+
+## Case 5 – Aircraft stranded in Russia (real case)
+
+**Links:** Modules 03, 07
+
+**Facts [likely].** After Russia's 2022 invasion of Ukraine, hundreds of leased aircraft remained in Russia. In June 2025 the High Court found lessors could recover under **war risks** cover rather than all risks; AerCap recovered just over $1bn. Permission to appeal was refused in September 2025, but the Court of Appeal granted permission in March 2026. Separate related proceedings continued in 2026.
+
+**Key question (for an exposed insurer).** How should the insurer manage reserves, reinsurance and wording lessons from this litigation?
+
+**Lessons.**
+1. The cause of loss and the exact wording decide which panel pays (war vs all risks).
+2. Sanctions can block payments; claims processes need sanctions checks.
+3. Litigation reserves remain uncertain for years.
+4. Wording analytics and political risk aggregation have real value.
+
+**Questions to ask.** "What is your reserve range for the remaining litigation and how does reinsurance respond?" "Which other aviation and marine contingent covers have similar political exposure?"
+
+**The trap.** Treating it as an aviation-only issue rather than a wording and aggregation lesson for all political and war exposures.
+
+---
+
+## Case 6 – Launching a new syndicate
+
+**Links:** Modules 02, 07
+
+**Situation.** A US specialty insurer wants a Lloyd's platform for licences and rating. Thirteen new syndicates started on 1 January 2026 **[likely]**; capital is entering the market while rates soften.
+
+**Key question.** Should the insurer enter Lloyd's in 2027, and through which structure?
+
+**Options.**
+
+| Option | Pros | Cons |
+|---|---|---|
+| Own managing agent + syndicate | Control | Cost; time; Lloyd's approval burden |
+| Syndicate-in-a-Box with a turnkey agent | Faster; lower fixed cost | Less control; reliance on host |
+| Corporate member backing existing syndicates | Fast capital deployment | No underwriting control |
+| SPA on a host syndicate | Simple | Follows host's underwriting |
+
+**Recommendation logic.** In a softening market, a distinctive underwriting edge is essential. If the insurer has a proven specialist team and a reason for Lloyd's licences, start with a SIAB or turnkey arrangement and plan modest first-year premium; otherwise deploy capital via a corporate member or SPA and revisit in a harder market.
+
+**Questions to ask.** "Why Lloyd's rather than a company platform or fronting?" "What is your differentiated underwriting edge at falling rates?"
+
+**The trap.** Building a plan on 2023–2024 pricing.
+
+---
+
+## Case 7 – Closing a problematic year of account
+
+**Links:** Module 07
+
+**Situation.** Syndicate E's 2023 year of account has deteriorating US casualty reserves (social inflation). The board must decide whether to close it by RITC at end-2025 or leave it open.
+
+**Key question.** Close, leave open, or transfer to a third party – which option is best for members of all affected years?
+
+**Analysis.** Independent reserve review with a range; RITC price under each reserve scenario; capital effect of leaving open; quotes for LPT/ADC or third-party RITC.
+
+**Recommendation logic.** If the reserve range is wide but quantifiable, buy an ADC to cap the tail and close by RITC to the 2024 year at a fair price. If the range cannot be estimated, keep open temporarily but set a plan and timeline; explore third-party RITC.
+
+**Questions to ask.** "What drives the reserve uncertainty?" "How are members of different years treated fairly?"
+
+**The trap.** Choosing the option that flatters one year's members at the expense of another's.
+
+---
+
+## Case 8 – Cutting the cost of doing business
+
+**Links:** Modules 06, 08, 11
+
+**Situation.** A mid-size managing agent's operating expense ratio is 4 points above peers. The CEO wants 2 points out in two years without hurting underwriting.
+
+**Key question.** Where can 2 points of expense ratio be removed by the 2028 year of account, and in what order?
+
+**Day-one hypothesis.** Half of the gap is manual processing (re-keying, reconciliation, bordereaux), a quarter is duplicated systems after M&A, a quarter is scale and Lloyd's costs.
+
+**Analyses.** Activity analysis; cost by value chain stage; FTE per £m GWP by function; application cost map; aged debt analysis.
+
+**Typical levers [guessing].**
+
+| Lever | Typical impact |
+|---|---|
+| Submission and bordereaux automation | 15–30% of affected operations effort |
 | Reconciliation automation | 20–40% of reconciliation effort |
-| Offshore/nearshore shared services | 20–30% labour cost reduction in moved activities |
+| Shared services / nearshore | 20–30% labour cost in moved activities |
 | Application rationalisation | 10–20% IT run cost |
-| Oversight simplification (risk-based) | Fewer audits, lower external spend |
+| Risk-based DA oversight | Fewer audits; lower external spend |
 
-**Trap:** cutting underwriting support too far reduces underwriters' capacity to select risk, which costs more in loss ratio than it saves.
+**The trap.** Cutting underwriting support so far that underwriters lose time for selection – costing more in loss ratio than it saves.
 
 ---
 
-## Scenario 9 – Post-Blueprint Two technology roadmap
+## Case 9 – After Blueprint Two: what now?
 
-**Situation:** A managing agent froze its operations roadmap in 2024 waiting for Blueprint Two. In March 2026, Lloyd's retired the programme. The COO asks: "What now?"
+**Links:** Module 08
 
-**Recommended answer structure**
-1. Inventory: what was built for BP2 (CDR mapping, gateway integration, data quality fixes). Keep what improves internal data.
+**Situation.** A managing agent froze its operations roadmap in 2024 waiting for Blueprint Two. In March 2026 Lloyd's retired the programme **[likely]**. The COO asks: "What now?"
+
+**Recommendation structure.**
+1. Inventory what was built: CDR mapping, gateway integration, data fixes – keep what improves internal data.
 2. Re-baseline the roadmap on internal value: ingestion, data platform, reconciliation, DA data.
-3. Keep standards alignment (CDR, ACORD) and integration flexibility (APIs).
-4. Engage with LMA/LMG on market direction; avoid single-vendor lock-in.
-5. Set 18–24 month payback rule for initiatives.
+3. Stay standards-aligned (CDR, ACORD) and integrate through APIs and messages.
+4. Engage through LMA/LMG on market direction.
+5. Apply an 18–24-month payback rule.
+
+**The trap.** Either waiting again for the market, or abandoning standards altogether.
 
 ---
 
-## Scenario 10 – AI submission triage implementation
+## Case 10 – AI submission triage
 
-**Situation:** A managing agent's property team receives about 300 submissions a week and quotes about 30% of them. Underwriters complain they spend most of their time reading emails and spreadsheets.
+**Links:** Module 09
 
-**Approach**
-1. Baseline: time per submission, quote rate, bind rate, loss ratio of bound risks.
-2. Pilot extraction on 3 months of historical submissions; measure field accuracy (e.g., ≥95% on key fields before production).
-3. Add appetite scoring using bound/declined history and underwriting guidelines.
-4. Embed in the underwriting workbench; underwriters can override scores (overrides tracked).
-5. Governance: risk tier "medium" (decision support); human decision; monthly accuracy review.
+**Situation.** A property team receives 300 submissions a week and quotes 30%. Underwriters spend most of their time reading emails and spreadsheets.
 
-**KPIs:** time to first review, % submissions reviewed within 24h, hit ratio on top-scored submissions, underwriter time on analysis vs admin.
+**Approach.**
+1. Baseline: time per submission, quote and bind rates, loss ratio of bound risks.
+2. Test set from 3 months of historical submissions; target ≥ 95% accuracy on key fields.
+3. Appetite scoring trained on **profitability**, not just past acceptance.
+4. Embed in the workbench; track overrides.
+5. Governance: medium risk tier; human decision; monthly accuracy review.
 
-**Trap:** scoring trained on past decisions copies past bias; include profitability, not just acceptance.
+**KPIs.** Time to first review; % reviewed within 24 hours; hit ratio on top-scored submissions; underwriter time on analysis vs admin.
 
----
-
-## Scenario 11 – Broker facility vs independent following
-
-**Situation:** A syndicate gets 30% of its property premium from broker follow facilities. Rates fell sharply in 2026 and the facility business shows worse loss ratios than its own led business.
-
-**Questions to ask**
-- "What is the rate adequacy of facility business vs open market follow vs lead?"
-- "What data do you receive from the facility – risk level or summary only?"
-- "Can you choose which leads you follow?"
-
-**Recommended approach:** analyse performance by channel and lead; renegotiate facility terms (lead selection, data rights, exit clauses); set appetite caps on facility share.
+**The trap.** Scoring that copies past bias and speeds up binding of under-priced risks.
 
 ---
 
-## Scenario 12 – Consumer Duty and DA after PS25/21
+## Case 11 – Broker facilities and follow performance
 
-**Situation:** A managing agent's coverholders sell to both SMEs and larger commercial customers. After FCA PS25/21 (December 2025), the compliance team wants to know what changes.
+**Links:** Module 04
 
-**Answer outline [certain for the rule; likely for practical effect]**
-- Larger commercial customers above DISP SME thresholds and contracts of large risks are now outside ICOBS, PROD and Consumer Duty.
-- SMEs below thresholds and consumers remain in scope.
-- The firm should reclassify products and books, update product governance for in-scope products, and simplify controls for out-of-scope books.
-- Co-manufacturing: insurers can nominate one lead for PROD 4 duties; MGAs cannot be lead.
+**Situation.** 30% of Syndicate F's property premium comes from broker facilities. Facility business runs 7 points worse than its led business at similar headline rates.
 
-**Questions to ask:** "Do your bordereaux capture the customer size data needed to classify each risk?" (Often they do not.)
+**Key question.** Should Syndicate F stay in the facilities, and on what terms?
 
----
+**Analyses.** Loss ratio by channel normalised for mix; rate adequacy by channel; performance of leads followed; data rights; exit terms.
 
-## Scenario 13 – Major marine loss (real event)
+**Recommendation logic.** Keep facilities that follow strong leads and provide risk-level data; renegotiate or exit the rest; cap facility share of each class.
 
-**Facts [certain]:** In March 2024 the container ship *Dali* hit and collapsed the Francis Scott Key Bridge in Baltimore. Losses involve hull, cargo, P&I (via the International Group of P&I Clubs and its reinsurance programme, heavily placed in London), bridge property, business interruption and liability. It is expected to be one of the largest marine insurance losses **[likely]**.
-
-**Lessons**
-1. One event triggers many classes and many layers of reinsurance.
-2. Liability limitation laws and litigation determine final cost.
-3. London reinsurers of the International Group program carry significant exposure.
-
-**Questions to ask:** "How do you capture clash exposure across marine, property and reinsurance for the same port or asset?"
+**The trap.** Valuing facility premium for its low acquisition effort while ignoring selection.
 
 ---
 
-## Scenario-solving framework (use in every case)
+## Case 12 – Conduct rules after PS25/21
 
-1. **Clarify** the business objective and the decision needed.
-2. **Map** the actors and the process (risk, money, data).
-3. **Quantify** the problem (premium, loss ratio, cost, capital, time).
-4. **Identify** root causes (people, process, data, technology, governance, incentives).
-5. **Generate** options; assess value, feasibility, risk, regulatory fit.
-6. **Recommend** one option with a phased plan and KPIs.
-7. **Anticipate** objections (Lloyd's, regulator, brokers, followers, staff).
+**Links:** Modules 05, 07
+
+**Situation.** A managing agent's coverholders sell to consumers, SMEs and larger commercial customers. Compliance asks what changes after FCA PS25/21 (December 2025).
+
+**Answer outline [certain for the rule; likely for practical effect].**
+- Larger commercial customers above DISP SME thresholds and contracts of large risks are outside ICOBS, PROD and Consumer Duty; consumers and SMEs remain in scope.
+- Reclassify products and books; simplify controls for out-of-scope books; keep product governance for in-scope books.
+- Co-manufacturing: insurers can nominate one lead for PROD 4; MGAs cannot be lead.
+
+**Question to ask.** "Do your bordereaux capture customer size data to classify each risk?" (Often they do not.)
+
+**The trap.** Assuming all commercial business is now out of scope.
+
+---
+
+## Case 13 – Major marine loss (real event)
+
+**Facts [certain].** In March 2024 the container ship *Dali* struck and collapsed the Francis Scott Key Bridge in Baltimore. Losses involve hull, cargo, P&I (through the International Group of P&I Clubs and its reinsurance programme, heavily placed in London), bridge property, business interruption and liability. It is expected to be among the largest marine insurance losses **[likely]**.
+
+**Lessons.** One event triggers many classes and reinsurance layers; liability limitation laws and litigation decide the final cost; London reinsurers of the International Group programme carry significant exposure.
+
+**Question to ask.** "How do you capture clash exposure across marine, property and reinsurance for the same port or asset?"
+
+---
+
+## Case 14 – MGA capacity strategy
+
+**Links:** Module 05
+
+**Situation.** A UK specialty MGA writes £80m GWP on a single Lloyd's binder. The lead syndicate signals it will cut capacity by 40% for 2027 due to soft-market concerns.
+
+**Key question.** How should the MGA secure capacity for 2027–2029?
+
+**Options.** Add a second Lloyd's lead and company market capacity (multi-carrier panel); fronting carrier plus reinsurance; multi-year capacity deal with profit commission and retained risk; slow growth.
+
+**Recommendation logic.** Build a panel of two to three capacity providers; offer alignment (retained share, profit-linked commission, risk-level data, API reporting); show underwriting performance by segment.
+
+**The trap.** Competing on commission rather than on data and alignment.
+
+---
+
+## 15. Scenario-solving checklist (use every time)
+
+1. **Clarify** the decision and the deadline.
+2. **Map** actors and flows: risk, money, data.
+3. **Quantify** the problem in ratio points, £m and capital.
+4. **Hypothesise** the answer on day one.
+5. **Structure** with a MECE tree; pick the right first split.
+6. **Analyse** the 20% that gives 80% of insight.
+7. **Recommend** one option, phased, with owners.
+8. **Size** value and name assumptions.
+9. **Anticipate** objections from Lloyd's, regulators, brokers, followers and staff.
+10. **Communicate** answer-first.
+
+---
+
+## 16. Partner's lens
+
+*How a senior top-tier consultant would use these cases.*
+
+1. **Every case is a P&L case.** Even "operational" problems (late bordereaux, aged debt) are exposure, credit or capital problems. Find the money first.
+2. **The market constrains the answer.** Lloyd's plan approval, the Claims Lead Arrangements, the bureau, brokers and followers all limit what one firm can do. Strong answers name the constraint and work with it.
+3. **Timing beats perfection.** Many London decisions have fixed windows (SBF, renewals, Coming into Line, hurricane season). A good answer delivered in time beats a perfect answer delivered late.
+4. **Practise out loud.** Partners can give a 30-second answer to any case. Record yourself on each case until you can.
+
+---
+
+## 17. Practice tasks
+
+1. Solve Cases 1, 2 and 8 under time pressure (30 minutes each) and score yourself with the rubric.
+2. Write a one-page answer-first recommendation for Case 9.
+3. Build the value model for Case 1 in a spreadsheet.
+4. Ask a practitioner to review one of your case answers and score it.
+
+---
+
+## 18. Sources
+
+- [Lloyd's half year results 2026](https://www.lloyds.com/insights/media-centre/press-releases/lloyds-announces-half-year-results-2026)
+- [HSF Kramer – Russian aircraft lessor policy claims judgment](https://www.hsfkramer.com/en_US/notes/insurance/2025-posts/high-court-finds-in-favour-of-lessors-in-russian-aircraft-lessor-policy-claims-full-analysis)
+- [Claims Journal – insurers win permission to appeal Russia jet ruling](https://www.claimsjournal.com/news/national/2026/03/31/336625.htm)
+- [Insurance Insider – Lloyd's 2026 stamp capacity](https://www.insuranceinsider.com/article/2fne9k2m0h2mgn7ucs5q8/sections/data/lloyds-2026-stamp-capacity-growth-to-slow-down-to-4)
+- [FCA PS25/21](https://www.fca.org.uk/publication/policy/ps25-21.pdf)
+- [Keoghs – Lloyd's Claims Lead Arrangements](https://keoghs.co.uk/keoghs-insight/keoghs-guide-to-lloyds-claims-lead-arrangements)
