@@ -20,13 +20,15 @@ Technology and data spend is one of the largest discretionary costs for London c
 
 | Period | Initiative | Outcome | Lesson |
 |---|---|---|---|
-| 2000–2006 | **Kinnect** – Lloyd's electronic trading platform | Abandoned after heavy spend **[likely]** | Central platforms fail without benefits for each firm |
+| 2000–2006 | **Kinnect** – Lloyd's electronic trading platform | Closed in early 2006 after about £70m spent; low use **[certain]** (full case: [Module 32](32-Lloyds-Digital-Transformation-Failures-and-Lessons.md)) | Central platforms fail without benefits for each firm |
 | 2000s | **Project Rüschlikon** – ACORD messaging for reinsurance accounting and claims | Partial adoption by large reinsurers and brokers **[likely]** | Standards succeed where big players gain directly |
 | 2004–2007 | **Contract certainty and the MRC** | Successful | Regulator pressure plus a simple standard works |
 | 2016 | **PPL** electronic placing | Adopted, partly through Lloyd's mandates; later moved to a "Next Gen" platform after delays **[likely]** | Adoption needs mandates and usability |
 | 2016–2019 | **London Market Target Operating Model (TOM)** | Folded into Lloyd's programme | Market-wide governance is slow |
 | 2019–2020 | **Future at Lloyd's – Blueprint One and Two** | Ambitious digital processing vision; cutover moved repeatedly from 2024 into 2025 and 2026 **[likely]** | Single cutover across hundreds of firms is very high risk |
 | Mar 2026 | **Blueprint Two name and original vision retired**; Velonetic refocused on incremental modernisation; common data standards retained; re-platforming not expected before 2028 **[likely]** | Shift to incremental, standards-led change | Standards and incremental delivery over "big bang" |
+
+For the full failure analysis – root causes, what corrected each failure and a pre-mortem checklist – see [Module 32](32-Lloyds-Digital-Transformation-Failures-and-Lessons.md).
 
 ### 2.1 Why market-wide change is so hard
 

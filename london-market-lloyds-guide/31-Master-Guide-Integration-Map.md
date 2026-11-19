@@ -139,7 +139,13 @@
 | B | "Crystal" | Crystal+ (current Lloyd's tool name) | 06, 12, 15, 21, 23, 24, 25 |
 | C | LIMOSS "owned by LMA and IUA" | Owned by the LMA, IUA and Lloyd's; publishes the Market Business Glossary | 02, 12, 21 |
 
-## 3. Partner's lens
+## 3. Coverage check (evidence)
+
+An automated check compared all 843 content lines of the source (bullets, numbered items, table rows and paragraphs) with the text of Modules 00–30 and 32. **827 lines (98%)** have at least 80% of their key words in the guide. The other 16 were checked by hand: all are covered with different wording (for example "synonymous" became "not the same as"). A word check shows coverage, not depth; depth is shown by the status column above.
+
+**Topic added beyond the source:** the source mentions Blueprint Two only as a current-state correction (§17.2). [Module 32](32-Lloyds-Digital-Transformation-Failures-and-Lessons.md) adds the full failure history (Kinnect, contract certainty, LM TOM, e-placing mandate, Blueprint Two), root causes and the corrections.
+
+## 4. Partner's lens
 
 The source is strong on process, data and control. It is lighter on **economics**: it rarely asks how much a fix is worth or who in the client pays for it. When you use its checklists, add one line to each finding: *volume × unit cost or margin effect × confidence*. That turns a well-informed observation into a decision a CFO will fund. The value model in [Module 27](27-Syndicate-Benchmark-and-Value-Model.md) is the tool for that.
 

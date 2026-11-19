@@ -72,6 +72,7 @@ The knowledge levels (Beginner → Advanced) take about 12 weeks. Becoming a wor
 | **29** | **[Account profiles: 25 managing agents](29-Account-Profiles-Top-25.md)** | **Business development** | 2 hrs |
 | **30** | **[Flagship point of view: fact base and storyline](30-POV-Fact-Base-Cost-of-a-Transaction.md)** | **Thought leadership** | 1 hr |
 | **31** | **[Master Guide integration map and correction log](31-Master-Guide-Integration-Map.md)** | **Reference: where every source section lives** | 30 min |
+| **32** | **[Lloyd's digital transformation: what failed, why, and what fixed it](32-Lloyds-Digital-Transformation-Failures-and-Lessons.md)** | **Advanced – consulting case study** | 2 hrs |
 | **26** | **[AI use-case library, capabilities and live examples](26-AI-Use-Cases-Capabilities-Live-Examples.md)** | **Advanced – AI spike** | 4 hrs |
 | **23** | **[Lloyd's process catalogue: 20 processes, stages, steps, parties, RACI](23-Lloyds-Process-Catalogue.md)** | **Working reference** | 3 hrs |
 | **24** | **[Lloyd's systems, documents and data: interlinked end to end](24-Lloyds-Systems-Documents-Data-Flow.md)** | **Technical reference** | 2 hrs |
