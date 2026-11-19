@@ -67,6 +67,10 @@ The knowledge levels (Beginner → Advanced) take about 12 weeks. Becoming a wor
 | 12 | [Glossary A–Z](12-Glossary.md) | Reference | — |
 | 13 | [Self-assessment, 12-week plan, sources](13-Sources-and-Further-Reading.md) | All | — |
 | **21** | **[Lloyd's end to end: functioning, processes, stakeholders, underwriting, claims, DA, coverholders, bordereaux, reinsurance](21-Lloyds-End-to-End.md)** | **Master reference – read before any Lloyd's client** | 6–8 hrs |
+| **27** | **[Your own data: syndicate benchmark and value model](27-Syndicate-Benchmark-and-Value-Model.md)** | **Owned asset** | 2 hrs |
+| **28** | **[Diagnostic toolkits: delegated authority and AI readiness](28-Diagnostic-Toolkits.md)** | **Owned asset** | 2 hrs |
+| **29** | **[Account profiles: 25 managing agents](29-Account-Profiles-Top-25.md)** | **Business development** | 2 hrs |
+| **30** | **[Flagship point of view: fact base and storyline](30-POV-Fact-Base-Cost-of-a-Transaction.md)** | **Thought leadership** | 1 hr |
 | **26** | **[AI use-case library, capabilities and live examples](26-AI-Use-Cases-Capabilities-Live-Examples.md)** | **Advanced – AI spike** | 4 hrs |
 | **23** | **[Lloyd's process catalogue: 20 processes, stages, steps, parties, RACI](23-Lloyds-Process-Catalogue.md)** | **Working reference** | 3 hrs |
 | **24** | **[Lloyd's systems, documents and data: interlinked end to end](24-Lloyds-Systems-Documents-Data-Flow.md)** | **Technical reference** | 2 hrs |

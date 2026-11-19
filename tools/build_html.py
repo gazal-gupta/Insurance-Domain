@@ -25,6 +25,7 @@ GROUPS = [
     ("Lloyd's master reference", ["21", "23", "24", "25"]),
     ("Strategy and outlook", ["20", "22"]),
     ("Consulting", ["11", "10", "19"]),
+    ("Owned consulting assets", ["27", "28", "29", "30"]),
     ("Reference", ["12", "13"]),
     ("CII syllabus notes (optional)", ["14", "15", "16", "17"]),
 ]
@@ -36,7 +37,7 @@ LABELS = {
     "08": "Modernisation, data, technology", "09": "AI in the London market", "26": "AI use cases and live examples",
     "21": "Lloyd's end to end", "23": "Process catalogue (L0–L3)", "24": "Systems, documents and data", "25": "IT landscape swimlanes", "20": "Outlook 2027–2030", "22": "New strategies",
     "11": "Consulting playbook", "10": "Case studies", "19": "Practice toolkit",
-    "12": "Glossary", "13": "Self-assessment and sources",
+    "27": "Benchmark and value model", "28": "Diagnostic toolkits", "29": "Account profiles (top 25)", "30": "Flagship POV fact base", "12": "Glossary", "13": "Self-assessment and sources",
     "14": "CII LM1–LM3 overview", "15": "LM1 notes", "16": "LM2 notes", "17": "LM3 notes",
 }
 
@@ -167,7 +168,7 @@ def flashcards(mid, text):
 
 
 def main():
-    files = {p.name[:2]: p for p in SRC.glob("[0-2][0-9]-*.md")}
+    files = {p.name[:2]: p for p in SRC.glob("[0-9][0-9]-*.md")}
     modules, cards = [], []
     for _, ids in GROUPS:
         for mid in ids:
