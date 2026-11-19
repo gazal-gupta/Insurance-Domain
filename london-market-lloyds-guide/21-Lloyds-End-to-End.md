@@ -12,6 +12,8 @@
 
 ---
 
+
+**One-page infographic:** [Lloyd's market structure](interactive/Lloyds-Market-Structure-Infographic.html) – clients, distribution, syndicates, members' capital, Chain of Security and oversight on one page.
 ## 1. Lloyd's on one page
 
 ```mermaid

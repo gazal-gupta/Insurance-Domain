@@ -10,6 +10,8 @@
 
 ---
 
+
+**One-page infographic:** [Lloyd's market structure](interactive/Lloyds-Market-Structure-Infographic.html) – clients, distribution, syndicates, members' capital, Chain of Security and oversight on one page.
 ## 1. Why this chapter matters
 
 In the first client meeting, people test you on the basics without saying so. If you call Lloyd's "an insurer", confuse a managing agent with a syndicate, or say a broker "works for the insurer", the client quietly downgrades you. If you explain how a managing agent's economics differ from its members' economics, they lean in.
