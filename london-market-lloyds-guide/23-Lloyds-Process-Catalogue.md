@@ -245,7 +245,7 @@ flowchart LR
 |---|---|---|---|---|---|---|
 | 06.1 | Intake | Receive and log submission; extract data | MA-UWA | LUW | Submission record | Prioritisation / triage |
 | 06.2 | Appetite | Check class, territory and size against appetite and authority | LUW | — | Authority letter; line guide | Outside authority → referral |
-| 06.3 | Compliance | Licensing and tax by territory | MA-UWA | MA-CMP | Lloyd's Crystal | Permission to write |
+| 06.3 | Compliance | Licensing and tax by territory | MA-UWA | MA-CMP | Lloyd's Crystal+ | Permission to write |
 | 06.4 | Compliance | Sanctions screening of parties, vessels, territories | MA-UWA | MA-CMP, OFSI | Screening result | Hits escalated before quote |
 | 06.5 | Exposure | Cat modelling and aggregate check | MA-EXP | LUW | Model output; aggregates | Within RDS/aggregate limits |
 | 06.6 | Pricing | Technical price; rate adequacy; RARC for renewals | LUW | MA-ACT | Pricing model | Variance from technical price explained |

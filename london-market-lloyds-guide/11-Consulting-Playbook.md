@@ -666,6 +666,102 @@ Syndicate X: £1.2bn GWP, £1.0bn net earned premium, 2025 combined ratio 91%. M
 
 ---
 
+## Master Guide integration: diagnose, interview, measure and defend
+
+A strong consultant does not start with "replace the PAS" or "deploy GenAI". They clarify the business problem, understand the market mechanics, gather evidence, find root causes, size value, design the target model and sequence change around risk and adoption.
+
+### The seven-step diagnostic
+
+1. **Frame the outcome** – faster quote, better margin, lower claims cost, lower control risk, DA transparency, broker experience?
+2. **Set scope and unit of analysis** – managing agent, syndicate, carrier, broker, MGA, coverholder, class, territory, product, transaction or shared service?
+3. **Map the real value stream** – trigger → work → decision → data → system → control → hand-off → outcome. Measure wait, touch and queue time and rework.
+4. **Find the source of truth** – owner and master record for every contract, policy, participant, premium and claim field.
+5. **Find failure demand** – incomplete submissions, repeat referrals, rekeying, bad bordereaux, wording mismatches, policy-match failures, authority breaches, payment exceptions.
+6. **Size value and risk** – volumes, cycle time, quality, labour, leakage, capital, service and control loss, with a counterfactual and attribution.
+7. **Design and sequence** – simplify process, standardise data, redesign roles and authority, integrate platforms, add analytics and AI, manage change and assure controls.
+
+### Interview guide – one revealing question set per stakeholder
+
+| Stakeholder | Questions |
+|---|---|
+| CUO / Active Underwriter | Which classes make underwriting profit? Where does appetite drift? How are referrals, pricing exceptions and line sizes controlled? What limits growth? |
+| Class underwriter | What makes a submission quotable? What drives terms and capacity? How much time goes on collecting data versus deciding? |
+| Managing agent COO | What is central versus syndicate-specific? Where are bottlenecks and control failures? How do you evidence oversight? |
+| Chief Claims Officer | What is the claims agreement model? How do FNOL, coverage, reserves, adjusters, lead and follow and payment work? Where do delay and leakage arise? |
+| Head of DA | How are coverholders approved, onboarded, monitored and audited? How good are bordereaux? How are breaches found and fixed? |
+| CFO | How do technical accounts, cash, debt, tax, settlement and RI recoveries reconcile? Which breaks are material? |
+| CDO | What is the canonical model? Who manages CDR and ACORD mappings? Who owns quality and lineage? |
+| CIO / CTO / architect | What is the system-of-record map? Which platforms are strategic, legacy or duplicated? What are the integration and resilience limits? |
+| CRO / Compliance | What are the most material conduct, prudential, operational, outsourcing, data, sanctions and AI risks? How is control evidence kept? |
+| Broker leadership | Which steps create friction? Where are duplicate data requests, unclear terms and slow responses? |
+| Coverholder / MGA | Are binder rules clear and built into systems? Can you quote and bind within authority? Are bordereaux and claims submissions reliable? |
+
+### Metrics by business outcome
+
+| Outcome | Primary measures | Cut by |
+|---|---|---|
+| Underwriting productivity | Submissions per underwriter; minutes per submission; time to triage; time to quote | Class, complexity, broker, channel, referral, completeness |
+| Broker and client experience | Submission-to-quote; quote turnaround; time to bind; NIGO rate; broker satisfaction | Wait vs touch; new vs renewal; class, broker |
+| Growth and conversion | Quote rate, quote-to-bind, hit ratio, growth, capacity used | Segment, channel, price change, terms, appetite |
+| Portfolio profit | Loss, combined and expense ratio; rate adequacy; attritional and cat loss; reserve development | Underwriting and accident year, class, territory, broker, cohort, layer |
+| Claims | FNOL-to-triage, decision time, cycle time, leakage, reserve accuracy, cost, complaints | Severity, complexity, type, lead/follow route, delegated vs open |
+| Delegated authority | Bordereau timeliness, first-pass acceptance, breaches, audit findings, loss ratio | Coverholder, binder, product, territory, DCA, field |
+| Premium and settlement | TA acceptance, settlement time, unallocated cash, aged debt, breaks | Broker, carrier, currency, tax jurisdiction, class, reason |
+| Data quality | Completeness, accuracy, timeliness, consistency, uniqueness, validity, lineage coverage | CDR element, source, application, team, bordereau, consumer |
+| Technology operations | Availability, incident duration, change failure, latency, RTO and RPO test results | Service, vendor, application, process, important business service |
+| AI performance | Grounded accuracy, override, error escape, latency, cost, productivity, outcomes | Model version, task, segment, document type, use case, user group |
+
+**KPI traps.** Submission-to-quote is not submission-to-bind. Bind depends on broker negotiation, the insured's choice, capacity and price, so it is not a pure underwriting productivity measure. For complex specialty risks, pair turnaround with completeness, risk quality and referral outcomes.
+
+### Executive storyline (pyramid, problem-led)
+
+- **Answer first:** "The biggest opportunity is faster quotes and more underwriting capacity by fixing submission quality and fragmented work management – not by replacing every core platform."
+- **Reason 1 – Process:** incomplete data and broken hand-offs create waiting and rework.
+- **Reason 2 – Data:** risk and contract data is rekeyed and does not match across placement, policy, premium and claims.
+- **Reason 3 – Technology:** existing systems can hold core control; integration and workflow visibility are weak.
+- **Reason 4 – Governance:** authority, decision evidence and exceptions are not built into the workflow.
+- **Recommendation:** simplify intake, capture CDR-aligned data, orchestrate work across existing systems, automate low-risk tasks, keep human underwriting authority.
+- **Value proof:** baseline, target, cost, adoption, control metrics, owners, milestones.
+
+### Defending five common client questions
+
+| Client asks | Defensible answer |
+|---|---|
+| "Why not automate underwriting end to end?" | Underwriting includes judgement on uncertainty, coverage, aggregation and capital. Automate extraction, enrichment, workflow and controlled recommendations first. Increase decision automation only for well-bounded products with good data, validated models, clear authority and measured outcomes. |
+| "Why do we need CDR if we have a data warehouse?" | A warehouse consolidates data for analysis. CDR defines the transaction data that must exist where data is created and exchanged. One does not replace the other; capturing CDR-aligned data at source cuts downstream cleansing cost. |
+| "Can the lead handle all claims?" | Not automatically. The route depends on the claims agreement arrangement, class, contract, complexity and what participants adopted. CLA and SCAP have defined scopes; company-market and bespoke arrangements may differ. |
+| "Why not one global PAS?" | It can work for a defined entity or portfolio. London has many participants with their own systems and shared services. The realistic path is interoperable architecture, standard data and orchestration, with core replacement only where economics and control justify it. |
+| "What is the business case for GenAI?" | Start with bounded work: extraction, risk summaries, contract comparison, claims letters. Baseline time and quality, include review, rework and control cost, and prove a business outcome improves without weakening accountability. |
+
+### Ten mistakes to avoid in a client conversation
+
+| Do not say | Say instead |
+|---|---|
+| "Lloyd's is an insurer." | Lloyd's is a marketplace; member-backed syndicates underwrite through managing agents. |
+| "The syndicate is the legal risk carrier." | The members behind the syndicate carry their several shares; confirm the contract and entity structure. |
+| "The London market is Lloyd's." | Lloyd's and the company market coexist and can share one placement. |
+| "The lead carries the whole risk." | Lead is a terms and placement role; each participant's liability follows its share. |
+| "The MRC is the whole policy." | The MRC is a standard contract framework; the full contract may include wording, schedules, endorsements and attachments. |
+| "CDR is a database or PAS." | CDR is a market data standard implemented across many applications and messages. |
+| "ATLAS holds all coverholder policies." | ATLAS handles coverholder and service company applications and filings, not individual policy data. |
+| "The lead agrees every claim." | Apply the relevant CLA, SCAP, contract and participant agreement route. |
+| "One global core will fix London." | Design for many participant systems, interoperability, standards and clear record authority. |
+| "AI adoption means autonomous underwriting." | Most current use is productivity and workflow; decision impact, governance and accountability must be explicit. |
+
+### Rules of thumb when a client says…
+
+| The client says | Break it down into |
+|---|---|
+| "Placement is slow" | Broker wait, underwriter touch, referral, capacity negotiation, contract documents, market processing |
+| "Data quality is poor" | Which element, source, owner, definition, validation point and downstream effect |
+| "Claims are delayed" | Coverage, adjuster, lead agreement, follower referral, documents, settlement or payment exception |
+| "DA is uncontrolled" | Binder rules, authority evidence, bordereaux, data quality, audit cadence and remediation – not just dashboards |
+| "We need AI" | Is the task extraction, prediction, search, drafting, optimisation or orchestration? Then pick the technique |
+| "We need one platform" | Which capability is common, which must stay participant-specific, and what must interoperate |
+| Cites a KPI | Definition, denominator, period basis, cohort, exclusions, source system |
+| Cites a London requirement | Document, version and date; does it apply to Lloyd's, company market, a class, a delegated arrangement or everyone? |
+
+
 ## 21. Further reading
 
 - Barbara Minto, *The Pyramid Principle* – structured thinking and writing.

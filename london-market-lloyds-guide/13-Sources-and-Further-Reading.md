@@ -127,3 +127,84 @@ This plan covers the knowledge base only (Phase 1 and early Phase 2 of the 24-mo
 | EU AI Act high-risk timing | **Provisional deal 7 May 2026:** Annex III to 2 Dec 2027, Annex I to 2 Aug 2028. Confirm formal adoption. |
 | Russia aircraft litigation outcome | Appeal pending as of the sources used. |
 | Vendor and company names | Ownership and market positions change; verify before naming in proposals. |
+
+## Master Guide integration: primary reference library and reading order
+
+The source guide's 40-item reference list, kept as a maintained reading list. Prefer current official requirements and standards over secondary summaries, and check the publication date before quoting anything in a client deliverable.
+
+### Lloyd's: structure, capital, performance, requirements
+1. [Introduction to Lloyd's and the London Market](https://www.lloyds.com/market-resources/learning-at-lloyds/introduction-to-lloyds-and-the-london-market)
+2. [Syndicates](https://www.lloyds.com/about-lloyds/join-lloyds-market/underwriter/syndicate)
+3. [Capital structure / Chain of Security](https://www.lloyds.com/about-lloyds/investor-relations/capital-structure/)
+4. [Regulation of Lloyd's](https://www.lloyds.com/regulation-of-lloyds)
+5. [Our strategy](https://www.lloyds.com/about-lloyds/our-purpose/our-strategy)
+6. [Blueprint Two update](https://www.lloyds.com/about-lloyds/blueprint-two)
+7. [2025 full-year results](https://www.lloyds.com/insights/media-centre/press-releases/lloyds-announces-full-year-results-2025)
+8. [2026 half-year results](https://www.lloyds.com/insights/media-centre/press-releases/lloyds-announces-half-year-results-2026)
+9. [Market requirements and standards](https://www.lloyds.com/market-resources/requirements-and-standards)
+10. [Core Data Record](https://www.lloyds.com/market-resources/requirements-and-standards/core-data-record)
+
+### Placement, delegated authority and claims
+11. [Delegated authorities](https://www.lloyds.com/market-resources/delegated-authorities)
+12. [Coverholders](https://www.lloyds.com/market-resources/delegated-authorities/coverholders)
+13. [ATLAS](https://www.lloyds.com/atlas)
+14. [DA systems and tools (DCOM, Delegated Audit Manager)](https://www.lloyds.com/market-resources/delegated-authorities/systems-and-tools)
+15. [DA reporting standards](https://www.lloyds.com/market-resources/delegated-authorities/market-knowledge/reporting-standards)
+16. [Claims Lead Arrangements](https://www.lloyds.com/market-resources/claims-for-market-participants/lloyds-claims-lead-arrangements)
+17. [Single Claims Agreement Party](https://www.lloyds.com/market-resources/claims-for-market-participants/single-claims-agreement-party)
+18. [MRC contract certainty](https://www.lloyds.com/market-resources/requirements-and-standards/lloyds-requirements-of-the-council/operating-at-lloyds/performance-management/mr-contracts-certainty)
+19. [Licences](https://www.lloyds.com/market-resources/multinational/our-licences)
+20. [Tax support](https://www.lloyds.com/market-resources/multinational/our-tax-support)
+
+### Market bodies, standards and infrastructure
+21. [IUA FAQ](https://www.iua.co.uk/IUA_Member/IUANew/About_the_IUA/FAQ.aspx)
+22. [LMG Digital Market](https://lmg.london/digital-market/)
+23. [LMG – CDR now spans the full lifecycle (Oct 2026)](https://lmg.london/news/core-data-record-now-spans-the-full-insurance-lifecycle-from-pre-bind-through-to-claims/)
+24. [LIMOSS CDR updates](https://limoss.london/cdr-updates)
+25. [LIMOSS Market Business Glossary](https://limoss.london/mbg)
+26. [Velonetic services](https://www.velonetic.co.uk/services)
+27. [Velonetic services and solutions](https://www.velonetic.co.uk/services-solutions)
+28. [PPL](https://www.ppl-london.com/)
+29. [ACORD Ruschlikon FAQ](https://www.acord.org/standards-architecture/ruschlikon/faq)
+
+### Regulation, resilience and AI
+30. [Bank of England – insurance regulatory reporting](https://www.bankofengland.co.uk/prudential-regulation/regulatory-reporting/regulatory-reporting-insurance-sector)
+31. [FCA ICOBS](https://www.fca.org.uk/firms/insurance-conduct-business-sourcebook-icobs)
+32. [FCA operational resilience – insurers](https://www.fca.org.uk/firms/operational-resilience/insights-insurance-firms)
+33. [FCA Critical Third Parties](https://www.fca.org.uk/firms/critical-third-parties-strengthening-uk-financial-services)
+34. [Lloyd's operational resilience principle](https://www.lloyds.com/market-resources/market-oversight/principles-for-doing-business-at-lloyds/operational-resilience)
+35. [LMA AI Adoption Toolkit](https://lmalloyds.com/ai-adoption-toolkit/)
+36. [LMA – AI adoption more than doubles](https://lmalloyds.com/ai-adoption-more-than-doubles-across-the-lloyds-market-in-12-months-with-93-of-survey-respondents-building-governance-frameworks/)
+37. [LMA – AI and ML in actuarial and risk](https://lmalloyds.com/ai-and-ml-in-actuarial-and-risk/)
+38. [Bank of England – AI in UK financial services 2026](https://www.bankofengland.co.uk/report/2026/artificial-intelligence-in-uk-financial-services-2026) (all financial services, not Lloyd's)
+39. [FCA – AI in financial services: good practice](https://www.fca.org.uk/publications/good-poor-practice/ai-financial-services)
+40. [European Commission – Navigating the AI Act](https://digital-strategy.ec.europa.eu/en/faqs/navigating-ai-act)
+
+### Added in this integration (verification sources)
+- [Lloyd's – simplifies structure (Oversight and Performance function)](https://www.lloyds.com/insights/media-centre/press-releases/lloyds-simplifies-structure-as-part-of-strategy-to-increase-competitiveness)
+- [Insurance Business – Lloyd's consolidates oversight into a single function](https://www.insurancebusinessmag.com/uk/news/breaking-news/lloyds-consolidates-oversight-into-single-function-in-push-to-cut-cost-of-doing-business-596147.aspx)
+- [LMG – CDR v3.3 supporting treaty reinsurance](https://lmg.london/news/data-council-launches-core-data-record-v3-3-supporting-treaty-reinsurance/)
+- [Reinsurance News – CDR expanded to the full lifecycle](https://www.reinsurancene.ws/lmg-data-council-expands-core-data-record-to-cover-full-insurance-lifecycle/)
+- [Lewis Silkin – lessons from the BoE/FCA 2026 AI survey](https://www.lewissilkin.com/insights/2026/10/30/key-lessons-from-the-bank-of-england-and-fcas-2026-survey-102o6yl)
+- [Lewis Silkin – FCA AI good and bad practice](https://www.lewissilkin.com/insights/2026/10/23/building-ai-the-right-way-fca-shares-good-and-bad-practice-102o6ay)
+
+### Recommended reading order
+1. Lloyd's introduction and syndicate structure.
+2. Chain of Security and regulation of Lloyd's.
+3. LMG digital market, MRC and CDR.
+4. Delegated authority and claims lead arrangements.
+5. Velonetic services, PPL and ACORD Ruschlikon.
+6. PRA and FCA material and operational resilience.
+7. LMA AI Adoption Toolkit and the FCA AI good-practice paper.
+8. Current Lloyd's strategy, results and market updates.
+
+### Self-check items added
+| # | Question | Answer |
+|---|---|---|
+| A1 | What does "order hereon" mean? | The share of the whole risk placed on this slip; lines are read against it per the "basis of written lines". |
+| A2 | Who owns DCOM? | Lloyd's (Delegated Contract and Oversight Manager). |
+| A3 | Who owns LIMOSS? | The LMA, IUA and Lloyd's. |
+| A4 | What is in the third link of the Chain of Security? | Central Fund plus callable layer, other Corporation assets and subordinated debt (about £6.9bn at end 2025). |
+| A5 | Which firms were first designated under the UK CTP regime and when? | Microsoft, Google Cloud, AWS and Oracle entities, effective 13 July 2026. |
+| A6 | Can you quote BoE/FCA AI survey numbers as Lloyd's adoption? | No – they cover all UK financial services. |
+

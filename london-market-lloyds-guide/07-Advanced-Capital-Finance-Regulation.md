@@ -430,6 +430,77 @@ flowchart TB
 
 ---
 
+## Master Guide integration: Chain of Security figures and the regulatory map
+
+### Chain of Security at 31 December 2025
+
+The source gives three headline numbers. The full published breakdown shows that the **third link is more than the Central Fund** **[certain – Lloyd's capital structure disclosure]**:
+
+| Link | What it is | £m at 31 Dec 2025 |
+|---|---|---:|
+| 1 – Syndicate level | Premium trust funds and members' syndicate-level assets | 95,297 |
+| 2 – Funds at Lloyd's (FAL) | Each member's own capital, held in trust | 31,132 |
+| 3 – Central assets: Central Fund | Mutual fund available at Council's discretion | 3,202 |
+| 3 – Central assets: callable layer | Members can be called for up to a % of premium | 2,997 |
+| 3 – Central assets: Corporation of Lloyd's | Other Corporation net assets | 362 |
+| 3 – Central assets: subordinated debt | Debt issued by the Corporation | 298 |
+| **Third link total** | | **6,859** |
+
+These are point-in-time figures. Use the latest Lloyd's disclosure in any solvency or investor discussion.
+
+**Why "several, not joint" matters.** Each member answers only for its own share of a syndicate. This drives capital, insolvency, contract, claims, accounting and reporting conversations.
+
+### Regulatory map
+
+The perimeter depends on the legal entity, activity, product, customer, location and distribution chain. A London placement can involve several regulated entities and several jurisdictions. **Never assume that only UK rules apply because the risk is placed in London.**
+
+| Body | Main role | Practical relevance |
+|---|---|---|
+| PRA | Prudential supervision | Solvency, capital, governance, risk management, reserving, reporting |
+| FCA | Conduct | Customer outcomes, distribution, product governance, complaints, operational resilience |
+| Lloyd's Corporation | Market oversight and requirements | Business plans, capital, performance, delegated authority, conduct, operating standards |
+| Bank of England | Hosts the PRA; financial stability | Prudential policy, supervisory reporting, systemic resilience |
+| EIOPA and EU national regulators | EU coordination and national supervision | Solvency II, cross-border distribution, EU market access |
+| Local regulators | Local insurance, distribution and tax rules | Admitted and non-admitted rules, local issuance, taxes, licensing, data, claims |
+
+**Solvency UK.** The UK prudential regime after the post-Brexit reforms; applies for reporting dates from 31 December 2024 **[certain]**. The Bank of England updates its insurance reporting material regularly (the 2026 materials include refreshed Q&A and a newer taxonomy) **[likely]**. On an engagement, map each obligation to entity, reporting date, taxonomy version, solo or group scope, and data lineage.
+
+**FCA conduct – where it applies:**
+- **ICOBS** – insurance conduct of business rules.
+- **PROD** – product design, target market, distribution strategy, oversight and fair value where it applies.
+- **Consumer Duty** – applies to retail customers in scope. **Do not** apply it to all wholesale commercial business or treat every commercial insured as retail (see the PS25/21 changes in this module).
+- Complaints and claims handling; financial crime and sanctions.
+
+**Operational resilience.** In-scope firms identify important business services, set impact tolerances, map people, processes, technology, data, facilities and third parties, and test recovery. Map the **whole service chain**: brokers, cloud, TPAs, shared processing, data vendors, payment providers and delegated partners.
+
+**Critical Third Parties (CTP) regime.** The first designations took effect on **13 July 2026**: Microsoft Ireland Operations, Google Cloud EMEA, Amazon Web Services EMEA and Oracle Corporation UK **[certain]**. Designation does **not** move accountability: firms still own their operational risk, exit plans, concentration and resilience.
+
+### Multinational programmes – seven checks
+
+1. Where is the risk located and where is the insurance activity deemed to happen?
+2. Admitted or non-admitted permissions; local fronting needs.
+3. Master and local policy structure; difference in conditions or limits.
+4. Local policyholder, insured entity and certificate requirements.
+5. Premium allocation, local taxes, stamp duties, parafiscal charges, withholding taxes.
+6. Local claim payment, currency controls, sanctions and data residency.
+7. Reinsurance and fronting, collateral, local credit-for-reinsurance rules.
+
+Lloyd's licence maps and tax support (Crystal+) help, but they do not replace local legal and tax advice.
+
+### Ten regulatory diagnostic questions
+
+1. Which legal entities are parties to the contract, and which are regulated?
+2. Which regulator supervises each entity, for which activity?
+3. Where is the risk and which licence or admitted basis applies?
+4. Which customer regime applies (retail, commercial, wholesale, professional)?
+5. Who is manufacturer, distributor, intermediary, administrator and claims handler?
+6. Which product governance, fair value, disclosure and complaint controls apply?
+7. What is the important business service and its impact tolerance?
+8. Which critical and material third parties support it, and what is the exit plan?
+9. What must be reported, with which definition, taxonomy and lineage?
+10. How do sanctions, privacy, outsourcing, cyber and AI controls work across the chain?
+
+
 ## Sources
 
 - [Lloyd's full year results 2025](https://www.lloyds.com/insights/media-centre/press-releases/lloyds-announces-full-year-results-2025)

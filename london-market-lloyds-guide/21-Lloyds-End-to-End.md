@@ -93,7 +93,7 @@ flowchart TB
 | **Service companies** | Group-owned coverholders of managing agents | Lloyd's, local regulators | BAA | Same as coverholders | Local platform results |
 | **DCAs / TPAs** | Handle delegated claims | FCA / local; managing agent oversight | Claims agreements | Claims systems, claims bordereaux | Cycle time, leakage |
 | **Velonetic** | Bureau services: premium and claims processing, central accounting and settlement | Contracted via LIMOSS | Service agreements | Bureau systems (e.g., CLASS, ECF, IMR) **[likely]** | Processing times, query rates |
-| **LIMOSS** | Manages market service contracts (owned by LMA and IUA) | Its owners | Service contracts | — | Cost and quality of market services |
+| **LIMOSS** | Manages market service contracts; publishes the Market Business Glossary (owned by the LMA, IUA and Lloyd's) | Its owners | Service contracts | — | Cost and quality of market services |
 | **LMA** | Represents managing agents; clauses; guidance | — | LMA clauses, toolkits | — | Market advocacy |
 | **LIIBA** | Represents brokers | — | — | — | Broker interests |
 | **Placing platforms (PPL, Whitespace)** | Electronic placement | Contracts | Electronic MRC | Platform data | Adoption, uptime |
@@ -162,7 +162,7 @@ flowchart TB
 | Reviews submissions | From brokers, often at the "box" in the Lloyd's building or on platforms |
 | Decides lead or follow | Sets terms as lead, or follows on the leader's terms |
 | Prices | Technical price, rate adequacy, risk-adjusted rate change ([Module 04 §9](04-Intermediate-Placement-and-Underwriting.md)) |
-| Checks permissions | Licensing and tax by territory (Lloyd's Crystal), sanctions, authority limits |
+| Checks permissions | Licensing and tax by territory (Lloyd's Crystal+), sanctions, authority limits |
 | Manages aggregates | Cat exposure, Realistic Disaster Scenarios |
 | Writes lines | Stamps and signs on the MRC or platform |
 | Agrees changes | As slip leader under the GUA |
@@ -178,7 +178,7 @@ flowchart TB
 | **Principles and minimum standards** | Lloyd's assesses managing agents' underwriting controls under principles-based oversight **[likely]** |
 | **Realistic Disaster Scenarios** | Lloyd's-prescribed scenarios measure gross and net exposure to major events |
 | **Risk codes** | Lloyd's classification for reporting and capital |
-| **Licensing (Crystal)** | Territory permissions and tax rules |
+| **Licensing (Crystal+)** | Territory permissions and tax rules |
 | **Capacity** | Stamp capacity limits premium for each YOA |
 
 ---
@@ -208,7 +208,7 @@ Full detail: [Module 04](04-Intermediate-Placement-and-Underwriting.md).
 | **Signing** | Each entry gets a Signing Number and Date; OSND links later entries |
 | **Central settlement** | Net settlement between brokers and syndicates in main currencies **[likely]** |
 | **Premium trust funds** | Syndicate premiums held in trust; US situs business in US trust funds (Lloyd's American Trust Fund); Canadian trust funds **[certain]** |
-| **Taxes** | IPT for UK; US Federal Excise Tax (4% direct, 1% reinsurance); overseas taxes guided by Crystal **[certain]** |
+| **Taxes** | IPT for UK; US Federal Excise Tax (4% direct, 1% reinsurance); overseas taxes guided by Crystal+ **[certain]** |
 | **Terms of trade** | Broker payment periods; settlement due dates |
 | **Reconciliation** | Managing agents reconcile bureau, ledger and broker records |
 
@@ -461,7 +461,7 @@ flowchart LR
 | System / tool | Owner | Purpose |
 |---|---|---|
 | **ATLAS** | Lloyd's | Coverholder applications and records |
-| **Crystal** | Lloyd's | Licensing, tax and regulatory information by territory |
+| **Crystal+** | Lloyd's | Licensing, tax and regulatory information by territory |
 | **Lloyd's returns** | Lloyd's | Plans, performance, capital, RDS submissions |
 | **Bureau systems (e.g., CLASS, ECF, IMR)** | Velonetic | Claims processing, electronic claims files, document repository **[likely]** |
 | **Placing platforms** | PPL, Whitespace | Electronic placement |
@@ -559,6 +559,44 @@ Data standards: MRC, CDR, ACORD GRLC, Lloyd's reporting standards, risk codes, U
 4. Walk through the hurricane story (section 15) and list every data hand-off and control.
 
 ---
+
+## Master Guide integration: structure terms, year bases and corrections
+
+### Structure – precise definitions
+
+- **Lloyd's Corporation** – governs and oversees the market; sets requirements, oversees performance, protects the franchise, runs central functions. It is not an insurer.
+- **Members** – the capital providers (corporate or individual Names). They back one or more syndicates.
+- **Managing agents** – authorised firms that run syndicates: underwriting and operations teams, portfolio and claims management, exposure oversight, business plan delivery, compliance.
+- **Syndicates** – underwriting units through which members participate. A syndicate is **not** a legal entity or the insurer.
+- **Members' agents** – advise and represent members on participation and capital.
+- **Lloyd's brokers** – approved to place business at Lloyd's.
+- **Coverholders and service companies** – delegated underwriting entities (Module 05). *Source cross-reference fix: the source says "Part VI"; the content is in its Part II, section 14.*
+
+### Capacity terms – a sharper definition
+
+- **Stamp capacity** – the maximum premium a syndicate may accept in a year of account, measured as **gross written premium net of acquisition costs (brokerage and commission)**, equal to the total of its members' allocated capacity **[certain]**. The source's wording ("capacity expressed in the context of the stamp") is too vague to use with a client.
+- **Premium income** – always state written or earned and the accounting basis.
+- **Business plan (SBF)** – premium, class and territory mix, appetite, limits, reinsurance, expenses, controls, expected profit and capital. A good plan is coherent, achievable, evidenced and governed by clear limits.
+
+### RITC – a nuance the source leaves out
+
+At the end of a year of account (normally after three years) liabilities are transferred by **Reinsurance to Close**. The receiving party can be the **same syndicate's next open year or a different syndicate** (third-party RITC, common in run-off deals) **[certain]**. Old claims do not disappear; they keep being handled.
+
+### Four year bases – always ask which one a KPI uses
+
+| Basis | Groups results by |
+|---|---|
+| Underwriting year | The year the risk incepted |
+| Calendar year | The reporting period, regardless of inception |
+| Accident year | The year the loss event happened |
+| Year of account | Lloyd's three-year venture for business written in that year |
+
+The same portfolio can look profitable on one basis and loss-making on another.
+
+### Chain of Security figures
+
+See the full 31 December 2025 breakdown in [Module 07](07-Advanced-Capital-Finance-Regulation.md): about £95.3bn first link, £31.1bn FAL, and a third link of about £6.9bn, of which the Central Fund is £3.2bn.
+
 
 ## 21. Sources
 

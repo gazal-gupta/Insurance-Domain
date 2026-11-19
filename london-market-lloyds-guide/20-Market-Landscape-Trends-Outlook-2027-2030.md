@@ -293,6 +293,46 @@ Top-tier strategy work uses scenarios when the future is uncertain. Three plausi
 
 ---
 
+## Master Guide integration: 2026 strategic direction and themes to track
+
+### Four strategy drivers translated into client questions
+
+| Lloyd's driver (2026–2030) | Question to ask a client |
+|---|---|
+| Leading underwriting performance | Is underwriting quality getting better, and can you prove it by class? |
+| Efficient and flexible marketplace | Can people transact more easily and faster with you? |
+| Maximised capital advantage | Is capital used efficiently with clear risk and return? |
+| A Lloyd's to be proud of | Are conduct, culture, talent and trust getting stronger? |
+
+### Blueprint Two – use the current story
+
+In March 2026 Lloyd's moved away from Blueprint Two and refocused on incremental modernisation of Velonetic, operational resilience, process simplification, common data standards and open architecture **[certain]**. What still matters: simpler processes, common data, incremental modernisation, participant choice, and no single platform replacing everyone's systems. **Never propose "Blueprint Two deployment" as a live end state.** Start from business outcomes and the current service map, then align to the latest Velonetic, Lloyd's and LMG roadmap.
+
+### Lloyd's oversight restructure (4 November 2026)
+
+Lloyd's is merging governance, performance, reserving and syndicate-level capital setting into **one Oversight and Performance function**, led by **Rachel Turk** **[certain]**. The stated aim is to simplify structure and cut the cost of doing business at Lloyd's while keeping oversight. It links to the strategy target that the extra cost of operating at Lloyd's should be no more than the equivalent of the 1% headline charge **[likely]**.
+
+**So what for a managing agent:** expect one joined-up conversation about plan, performance, reserves and capital rather than several separate ones. Watch how information requests and supervisory engagement change; the announcement itself does not change any managing agent's obligations.
+
+### Using results figures correctly
+
+FY2025 (£57.9bn GWP, 87.6% combined ratio, £10.6bn profit before tax) and H1 2026 (£34.7bn GWP, 90.8% combined ratio) show scale and direction **[certain]**. They do not replace analysis by segment, year of account, prior-year development, catastrophe load, reserves and capital. Always quote period and source in a client deck.
+
+### Nine themes to track (with the consultant's question)
+
+| Theme | Why it matters | Question to ask |
+|---|---|---|
+| Underwriting discipline | Capacity is only valuable with sustainable risk-adjusted returns | Can underwriters see exposure, rate adequacy, accumulation and claims at decision time? |
+| Faster, more certain placement | Broker and client experience depends on speed and clarity | Where does the time go: data collection, referral, quote, lines, wording, validation or settlement? |
+| Delegated authority scale | MGAs reach niches and new distribution | Can the carrier monitor portfolio, authority, claims and data in near real time? |
+| Common data and interoperability | Rekeying and inconsistent meaning cost money | Is the standard captured once at source and reused? |
+| Exposure and accumulation | Climate, cyber, supply chain and systemic events correlate losses | Is exposure data granular, current and linked to scenarios? |
+| Claims outcomes | The core promise and a major source of volatility | Can contracts be matched fast, decisions made fairly, payments made accurately and recoveries collected? |
+| Operational resilience | Shared services and cloud concentration create systemic dependency | Can important services keep running through a provider, cyber or data outage? |
+| AI and automation | Productivity is real; control is essential | Is AI helping a governed workflow or creating an unowned shadow decision? |
+| Specialty product innovation | Emerging risks need fast product design | Can product, wording, rating, authority, reporting and claims change safely? |
+
+
 ## 12. Sources
 
 - [Lloyd's half year results 2026](https://www.lloyds.com/insights/media-centre/press-releases/lloyds-announces-half-year-results-2026)

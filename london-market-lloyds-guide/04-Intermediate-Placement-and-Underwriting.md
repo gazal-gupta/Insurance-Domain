@@ -528,6 +528,140 @@ The PRA's 2026 priorities letter warns that softening markets may cause internal
 
 ---
 
+## Master Guide integration: submission to bind in detail
+
+### Three flows run through every placement
+
+| Flow | Path | What breaks if you ignore it |
+|---|---|---|
+| **Risk and decision** | Submission → appetite → pricing → underwriting decision → binding authority → claims decision | Fast quotes on risks the portfolio should not hold |
+| **Contract and data** | Broker evidence → placement record → MRC and wording → policy record → endorsements → bordereaux and claims records → regulatory and management reporting | Contract uncertainty, failed policy matching, bad exposure data |
+| **Money** | Insured premium → broker and market accounting → insurer cash; later claim payment → insured or beneficiary; plus reinsurance recoveries and commissions | Unallocated cash, aged debt, missed recoveries |
+
+**Why it matters.** Transformations often fail because one flow is redesigned and the other two are not. A fast digital quote journey can still leave manual contract certainty, poor exposure data and slow premium settlement **[likely – common pattern in market programmes]**.
+
+```mermaid
+flowchart TD
+ A[Client need or risk identified] --> B[Broker fact-find and submission]
+ B --> C[Market selection and appetite triage]
+ C --> D[Underwriter assessment or referral]
+ D --> E[Quote, decline or request more information]
+ E -->|Terms accepted, firm order| F[Line allocation and subscription]
+ F --> G[Contract certainty: MRC, wording, endorsements]
+ G --> H[Bind and policy or contract record]
+ H --> I[Premium processing, taxes and settlement]
+ H --> J[Exposure, portfolio and regulatory reporting]
+ H --> K[In-force servicing: changes, certificates, renewals]
+ K --> L[FNOL or claim notification]
+ L --> M[Coverage, liability and quantum assessment]
+ M --> N[Claims agreement, authority and settlement]
+ N --> O[Recovery, reinsurance and financial close]
+ O --> P[Renewal, run-off or closure]
+```
+
+### What a good submission contains (varies by class)
+
+- Insured legal entities, domiciles, group structure, ownership and insured interests.
+- Business description, operations, revenue, payroll, turnover, assets and other exposure bases.
+- **Property:** locations, geocodes, construction, occupancy, protection, values, business interruption detail.
+- **Marine, aviation, transport:** fleet, vessel, aircraft, route, cargo, accumulation.
+- Limits, deductibles, sub-limits, aggregates, retentions, territory and jurisdiction.
+- Loss runs, claim narratives, reserves, large losses and what was fixed afterwards.
+- Engineering reports, surveys, inspections, risk controls, certificates.
+- Expiring terms and premium, coverage changes, the broker's market strategy.
+- Requested wording, endorsements, warranties, subjectivities, target inception.
+- Exposure and security data: cyber controls, business continuity, catastrophe exposure, supply-chain concentration.
+
+**The real consulting problem.** Submissions arrive as PDFs, spreadsheets, emails, portals and feeds. The task is not "extract the documents". It is to build a **traceable, validated risk view** with source, confidence and a list of missing information.
+
+### Appetite triage: outcomes and failure modes
+
+Early outcomes: decline (outside appetite, prohibited class or territory); request information or a survey; refer (senior underwriter, product head, exposure management, legal, compliance, pricing); quote on terms; offer a part line subject to lead terms.
+
+Common failures: incomplete locations or values; inconsistent entity names; old loss runs; the same submission arriving through several broker channels; information requests nobody tracks; wrong risk codes; and **turnaround measured without separating time waiting for the broker from time in underwriting**.
+
+### The underwriter's eight questions
+
+1. **Eligibility** – inside class, territory, product and licence permissions?
+2. **Hazard and exposure** – what can happen, how bad, how often, what is the maximum plausible loss?
+3. **Controls and vulnerability** – what reduces likelihood or severity; what risk is left?
+4. **Accumulation** – what else could the same event, peril, supplier, region or systemic cause hit?
+5. **Coverage fit** – can it be covered with suitable definitions, limits, exclusions, sub-limits, warranties, conditions?
+6. **Technical price** – expected loss plus expenses, reinsurance, capital cost, uncertainty and target return.
+7. **Portfolio fit** – does it improve or worsen mix, volatility, concentration and risk-adjusted return?
+8. **Execution** – can the broker supply the data, and can we administer, service and settle it compliantly?
+
+Underwriting is not only a price decision. Terms, capacity, attachment, deductibles, exclusions, warranties, subjectivities, referral and reinsurance can matter as much as premium.
+
+### Technical premium bridge
+
+```text
+Expected ultimate loss
++ Loss adjustment / claims handling expense
++ Acquisition cost (brokerage or commission, depending on model)
++ Operating expense allocation
++ Reinsurance cost
++ Cost of capital / risk margin
++ Profit and uncertainty margin
+= Indicated technical premium
+
+Market price = technical view adjusted for competition, capacity, broker
+relationship, portfolio strategy, terms, cycle and underwriting judgement.
+```
+
+No single formula is universal. Methods by class and data maturity: exposure rating, experience rating, burning cost, frequency-severity models, catastrophe models, scenario analysis, credibility weighting, GLMs, gradient boosting, expert judgement and structured referral. The live calculator in the interactive guide (RARC / technical price) uses this bridge.
+
+### Worked example: the same warehouse, two levels of submission
+
+A warehouse is submitted at £80m total insured value (buildings, stock, business interruption). The basic submission says "modern warehouse, sprinklered". An experienced underwriter asks for:
+
+- Exact geocoded location and flood, wind, earthquake and wildfire exposure.
+- Construction, roof, cladding, age, maintenance.
+- Occupancy and how combustible the stock is; storage height and rack layout.
+- Sprinkler type, water supply, impairment procedure, maintenance evidence.
+- Fire detection, compartments, security, fire-service response.
+- BI indemnity period, key suppliers, alternative sites, utility dependencies.
+- Values split by building, stock, contents and BI; replacement cost and inflation assumptions.
+- Prior losses and proof that survey recommendations were done.
+
+**Lesson for AI work:** a tool that extracts "sprinklered" but not the sprinkler standard, impairment procedure or inspection evidence has not solved the underwriting problem.
+
+### Signing down, "order hereon" and two corrections to the source
+
+**Correction 1 – "order hereon".** The source defines it as "the remaining share after prior capacity has been secured". That is not the standard meaning. **"Order hereon" states what share of the whole risk is being placed on this slip** (for example "Order hereon: 60% of 100%"). Each written line is then read as a percentage of the order or of the whole, as the slip's **"Basis of written lines"** field states **[certain – MRC Security Details]**. Getting this wrong misstates every participant's exposure.
+
+**Correction 2 – signing is normally pro rata.** The source's example signs four lines (40/30/25/25 = 120%) down to 30/25/25/20. That is **not** a pro rata signing. The standard MRC signing provision allocates lines written "to stand" in full and signs all other lines down **in equal proportions** until the total equals 100% of the order, unless the slip states other signing provisions **[certain]**:
+
+| Participant | Written line | Pro rata signed (÷1.2) | Source example (only valid if C wrote "to stand" and the broker agreed other cuts) |
+|---|---:|---:|---:|
+| Syndicate A (lead) | 40% | 33.33% | 30% |
+| Syndicate B | 30% | 25.00% | 25% |
+| Company carrier C | 25% | 20.83% | 25% |
+| Company carrier D | 25% | 20.83% | 20% |
+| **Total** | **120%** | **100%** | **100%** |
+
+The lead's signed share does not make it responsible for the other participants' shares. Use the signing calculator in the interactive guide to practise.
+
+### Lead and follow: what is not implied
+
+Do not assume that: the lead carries all the risk; followers have no underwriting duty of their own; every class uses the same claims agreement route; or "follow the leader" removes contract, conduct or regulatory accountability. A different carrier can lead different layers or sections, and followers may impose their own line size, subjectivities or terms.
+
+### Layers, MRC versus wording, and contract certainty
+
+- **Layered placements:** primary and excess layers have different attachment points, limits, prices and carriers. The placement record must keep the links between programme, section, layer, participants and wording.
+- **MRC is not the policy wording.** The slip or MRC is the standard market record of key terms; the full contract can also include wording, schedules, endorsements, certificates and attachments. Contract certainty means the **whole** agreement is clear and timely, not just a completed data form.
+- **Subjectivities:** track each one with owner, due date, evidence, status, escalation and the consequence if it is not met.
+- **Common contract-certainty failures:** unclear insured entity, location or risk description; limits or deductibles that differ between slip and wording; unclear clause versions or conflicting endorsements; wrong period or time zone; missing signed lines or participant agreement; untracked subjectivities; manual rekeying into the policy system that creates differences.
+
+### Bind, issuance, endorsements and renewal
+
+**At bind:** confirm final terms, limit, deductible, premium, period, insureds and shares; confirm authority and that referrals are closed; complete the contract documents and store the master version; issue the policy, certificate or evidence of cover; create policy and exposure records; check tax, regulatory and reporting data; trigger premium processing and broker or client communications. Administration can sit with the carrier, managing agent, service company or coverholder depending on the model.
+
+**Endorsement control questions:** Is the change allowed under authority? Does it change hazard or accumulation materially? Have all required participants agreed? Does it change rate or premium? Are downstream records and tax updated? Is the version and effective date clear?
+
+**Renewal is a new underwriting decision, not a copy-forward.** Refresh exposure, claims, controls, catastrophe view, price, terms, capacity, reinsurance, sanctions and licensing, and client needs. Compare expiring and renewal data and flag changes and old assumptions.
+
+
 ## 20. Sources
 
 - [Lloyd's half year results 2026](https://www.lloyds.com/insights/media-centre/press-releases/lloyds-announces-half-year-results-2026)

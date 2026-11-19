@@ -75,7 +75,7 @@ flowchart TB
 | **UK Insurance Premium Tax** | UK risks: standard rate 12%, higher rate 20% for certain products **[certain]** |
 | **US Federal Excise Tax** | Premiums to non-US insurers for US risks: 4% direct, 1% reinsurance **[certain]** |
 | **US surplus lines taxes** | State taxes paid by US surplus lines brokers |
-| **Overseas premium taxes and levies** | Vary by country; Lloyd's provides guidance through Crystal |
+| **Overseas premium taxes and levies** | Vary by country; Lloyd's provides guidance through Crystal+ |
 | **Fire brigade charges, pool levies** | Specific countries |
 
 **Data point:** tax depends on risk location, insured location, class and sometimes the insurer's status. A data model must hold these separately; tax errors are common in DA business.
@@ -399,6 +399,120 @@ If you can explain both tables to a CFO without notes, you understand the core o
 4. **Design** a claims triage model (standard vs complex) using the LCLA thresholds.
 
 ---
+
+## Master Guide integration: premium, claims and reinsurance detail
+
+### Follow the premium
+
+The broker collects premium from the insured, deducts or accounts for brokerage and other allowed items, and each market participant receives its share through accounting and settlement. The actual route depends on broker arrangements, premium trust rules, local law, carrier and market processing model **[certain]**.
+
+| Term | Meaning |
+|---|---|
+| Technical account | Record of premium, commission, taxes, deductions and each participant's share |
+| Financial account | The cash movement and its reconciliation |
+| Written premium | Premium contracted in the period (state the definition) |
+| Earned premium | Share recognised over the cover period |
+| Unearned premium reserve | Premium for cover not yet provided |
+| Bordereau | Periodic list of risks, premiums or claims (delegated and treaty business) |
+| Settlement | Cash moving between parties |
+
+**Velonetic's place.** Velonetic provides shared processing for Lloyd's and company-market business: premium and underwriting processing, claims processing and agreement support, and settlement. It is **not** any carrier's policy, finance or claims system. A typical chain: broker sends accounting data → validation and matching → allocation to participants → exceptions → cash settlement and reconciliation. Cut-offs, messages and service levels vary, so map the client's actual route.
+
+**EBOT and ECOT.** ACORD Ruschlikon messages. EBOT carries technical and financial account transactions; ECOT carries claims transactions, and claim payments link back into EBOT accounting. In any architecture discussion separate five things: the business event, the data structure, the message, the central processing service and the insurer's system of record.
+
+### Premium exceptions to diagnose
+
+Missing or wrong CDR fields; wrong signed line; duplicate accounting; participant mismatch; wrong currency or exchange rate; tax jurisdiction error; invalid broker reference; late bordereau; reconciliation break; unallocated cash; premium debt; sanctions or payment block; cancellations and return premiums not reflected downstream.
+
+**Diagnostic KPI set:** time from bind to technical account submission; first-pass acceptance; exception rate by reason; time to clear an exception; cash settlement time; unallocated cash; aged debt; reconciliation breaks.
+
+### Claims routes in one picture
+
+```mermaid
+flowchart TD
+ A[FNOL or notification] --> B[Policy and contract match]
+ B --> C[Coverage and notification checks]
+ C --> D[Liability, causation and quantum investigation]
+ D --> E[Reserve and exposure assessment]
+ E --> F{Which authority or agreement route?}
+ F -->|Delegated authority| G[Coverholder or DCA handles within limits]
+ F -->|Open market, standard claim| H[Claims Lead Arrangements: lead agrees]
+ F -->|Qualifying claim up to 250k GBP| I[SCAP: slip leader agrees for all]
+ F -->|Complex, disputed or outside authority| J[Lead plus second lead and participant referrals]
+ G --> K[Claims agreement and payment instruction]
+ H --> K
+ I --> K
+ J --> K
+ K --> L[Payment, recovery, litigation, salvage, subrogation]
+ L --> M[Reserve updates, reinsurance recovery, closure]
+```
+
+### FNOL and first controls
+
+FNOL data: policy or contract reference, insured, claimant, date, time and place, cause or peril, description, amount claimed, injured and third parties, emergency action, broker, adjuster, attachments, and any catastrophe or cyber event code.
+
+First controls:
+- Match the claim to the right contract, insured interest, period, location and section.
+- Identify coverage, limits, deductibles, exclusions, conditions and notification requirements.
+- Screen for sanctions, fraud indicators and conflicts.
+- Spot catastrophe or cyber aggregation, severity and notification triggers.
+- Assign handler, adjuster, expert and legal support by complexity and authority.
+- Set the first reserve with rationale and confidence, and define review triggers.
+
+### Coverage, causation, liability, quantum – keep them separate
+
+| Concept | The question |
+|---|---|
+| Coverage | Does the policy respond to this event and interest under its terms? |
+| Causation | What caused the loss? Are there concurrent or excluded causes? |
+| Liability | Is the insured legally responsible, and how far? (mainly liability lines) |
+| Quantum | What is the loss worth, including mitigation and extra costs? |
+| Reservation of rights | Insurer keeps its position open while it investigates; use depends on jurisdiction and contract |
+| Declinature | Decision not to pay, subject to contract and law |
+| Without prejudice | A legal negotiation concept – never use it as a casual label |
+
+### CLA and SCAP – precise facts
+
+- **Lloyd's Claims Lead Arrangements (CLA)** replaced the Lloyd's Claims Scheme **[certain]** and took effect from **1 June 2023** **[likely]**. Standard claims: the lead agrees for all participating syndicates. Complex claims: lead plus a second lead. CLA governs Lloyd's syndicates; company-market participants and bespoke contracts may follow different arrangements.
+- **SCAP – Single Claims Agreement Party.** A contract clause for **non-complex claims up to £250,000** **[certain]**. The slip leader agrees the claim on behalf of all participants who adopted SCAP **at placement** **[certain]**. It uses the LMA9150 clause and went live on 1 February 2018 **[likely]**. Check the current threshold and the slip before advising.
+
+### Reserving, payment and recovery
+
+- **Reserve** = best estimate of ultimate cost, using coverage, severity, development, legal costs, inflation, currency, adjuster input and uncertainty. Every reserve change must be traceable. Settlement authority is set by role, amount, complexity, litigation status and contract.
+- **Payment controls:** payee validation, bank details, sanctions, duplicate-payment prevention, approvals, currency, tax where relevant, reconciliation and audit evidence. Payees can be the insured, a claimant, a repairer, a hospital, a solicitor or another beneficiary.
+- **Recoveries:** subrogation, contribution from other insurers, salvage, deductibles, reinsurance, collateral, contractual indemnities. Closing a claim does not end recovery or legal duties; watch reopenings, litigation, commutation and run-off.
+
+### Claims KPIs
+
+FNOL-to-triage and FNOL-to-first-contact; time to coverage and liability decision; time to first reserve and reserve development; cycle time by complexity; handling cost and external expert and legal cost; leakage, reopened claims, complaints and litigation rate; settlement speed and payment exceptions; recoveries identified, pursued and realised; claims data completeness and policy-match rate.
+
+**Rule:** never improve claim speed at the cost of indemnity accuracy, fairness, fraud control, customer outcomes or regulatory duties.
+
+### Reinsurance lifecycle in seven steps
+
+1. Cedant defines portfolio, exposures, loss history, objectives and requested structure.
+2. Broker prepares the submission: exposure data, catastrophe modelling, loss history, pricing assumptions.
+3. Reinsurers review quality, aggregation, attachment, limit, exclusions, reinstatements, hours clauses, experience and capital.
+4. Terms are negotiated and subscribed, usually with a lead and followers.
+5. Contract finalised; premiums, deposits, adjustments and bordereaux administered.
+6. Losses notified and allocated to layers; recoveries calculated and collected.
+7. Experience analysed for renewal, commutation, run-off or restructuring.
+
+| Structure | Core idea | Typical purpose |
+|---|---|---|
+| Quota share | Fixed share of premium and losses | Capital relief, growth, earnings sharing |
+| Surplus | Cession of sums insured above the cedant's retention | Manage severity and capacity by risk size |
+| Per-risk excess of loss | Pays above retention on one risk | Large single losses |
+| Catastrophe excess of loss | Pays above retention for all losses from one event | Catastrophe accumulation |
+| Stop loss | Pays when annual loss ratio or loss exceeds a threshold | Protect the year's result |
+| Facultative | Negotiated per risk | Large or unusual exposures, treaty exclusions |
+
+**Reinsurance pain points:** coarse exposure data; inconsistent geocoding; treaty mapping not aligned to policies and claims; missing hours-clause or event coding; slow recovery submission; unclear layer allocation; collateral management; currency mismatch; coverage and aggregation disputes; data split across underwriting, exposure management, actuarial and finance.
+
+### Intermediate checkpoint
+
+Take one complex commercial risk. Draw the full sequence from submission through bind, premium settlement, endorsement, FNOL, claim agreement, payment and reinsurance recovery. At every stage name the **owner, decision, source record, system, data control, money movement and most likely exception**.
+
 
 ## Sources
 

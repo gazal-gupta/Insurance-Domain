@@ -392,6 +392,66 @@ Roles needed: AI product owners in the business; data and ML engineers; evaluati
 
 ---
 
+## Master Guide integration: AI governance a client will expect you to defend
+
+### Governance model – eight elements
+
+1. Board and senior management accountability, with a named executive owner.
+2. An AI inventory: models, vendors, use cases, owners, data, risk tier, decision impact, lifecycle status.
+3. Risk tiering by customer impact, materiality, autonomy, data sensitivity, legal exposure and **whether the outcome can be reversed**.
+4. AI risk management joined to existing risk, conduct, outsourcing, privacy, cyber, resilience and product governance (no parallel universe).
+5. An approved lifecycle: build, validate, deploy, change, monitor, incident, retire.
+6. Human oversight with clear authority, competence, override and escalation.
+7. Third-party and foundation-model due diligence, exit plan and concentration check.
+8. Training and acceptable-use rules for underwriters, claims handlers, brokers and operations.
+
+### Data and model controls
+
+Lineage, lawful basis, minimisation, access, retention, cross-border transfer, quality, representative samples, label checks, bias testing, drift monitoring, robustness, uncertainty, explainability, benchmarks, reproducibility.
+
+**Extra for LLMs:** retrieval freshness, citation coverage, prompt-injection defence, output constraints, approved source lists, hallucination tests, leakage tests, safe failure behaviour.
+
+### "Human in the loop" is not a control by itself
+
+A review is a real control only if the reviewer has **competence, time, information, authority and the ability to challenge**. Someone who clicks "approve" under volume pressure is not oversight. Measure override rate, review time, defects that escape, approval quality, reviewer training and outcomes after the decision.
+
+### Agent controls – ten rules
+
+1. Tool allowlists and least-privilege identity.
+2. Separate read, draft and commit permissions.
+3. No payment, bind, decline or policy change without an approval gate.
+4. An explicit workflow state machine with transition checks.
+5. Idempotency keys, transaction logs, retries and compensating actions.
+6. Rate limits, budgets, timeouts and circuit breakers.
+7. Sandboxed handling of documents and code; treat attached content as untrusted.
+8. Prompt and tool-call logs with sensitive-data controls.
+9. Kill switch, rollback, incident response and a deterministic fallback.
+10. End-to-end evaluation and monitoring by workflow segment.
+
+### Evaluation scorecard
+
+| Dimension | Measure | Example test |
+|---|---|---|
+| Extraction | Field-level precision and recall; exact match on critical fields | Extract period, limits, location, named insured, premium from test submissions |
+| Grounding | Claims supported, citations correct, sources current | Every statement in a coverage summary traces to a clause and page |
+| Reasoning support | Completeness and usefulness of the risk view | Underwriter compares AI pack with an expert pack |
+| Workflow | Task completion, correct routing, safe stop, idempotency | Simulate a missing loss run, an out-of-authority limit, a duplicate submission |
+| Decision quality | Acceptance, override, error, later loss outcomes | Compare triage suggestions with underwriter decisions and later claims |
+| Fairness | Segment outcomes and proxy-variable tests where lawful | Compare errors and adverse outcomes by segment |
+| Robustness | Ambiguous, corrupted, adversarial, out-of-range inputs | Prompt injection hidden in an attached PDF; inconsistent values across schedules |
+| Security and privacy | Leakage, access, vendor controls | Check isolation, retention, external model access, logs |
+| Productivity | Cycle time and minutes saved **after** review and rework | Net minutes saved per submission |
+| Business outcome | Risk-adjusted economics and customer outcomes | Quote quality, loss performance, retention, claims service |
+
+### EU AI Act – do not over-generalise
+
+The Act treats some AI used for **risk assessment and pricing in life and health insurance** as high-risk **[certain]**. It does not make every insurance product, or all property and casualty underwriting, high-risk. For a cross-border insurer or MGA, map each use case, the provider or deployer role, product, customer, territory and the effective dates (see Module 13 for the 2026 timing change) with legal and compliance. Classification is a legal decision, not the AI team's assumption.
+
+### FCA position (October 2026)
+
+The FCA's good-practice paper adds no new rules: existing requirements apply when firms use AI. Themes: safety, security and robustness; fairness; transparency and explainability; accountability and governance; contestability and redress **[certain]**.
+
+
 ## 16. Sources
 
 - [LMA – AI Adoption Toolkit launch](https://lmalloyds.com/lma-launches-ai-adoption-toolkit-to-support-governance-led-implementation-across-the-lloyds-market/)

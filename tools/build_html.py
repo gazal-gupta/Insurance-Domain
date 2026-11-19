@@ -26,7 +26,7 @@ GROUPS = [
     ("Strategy and outlook", ["20", "22"]),
     ("Consulting", ["11", "10", "19"]),
     ("Owned consulting assets", ["27", "28", "29", "30"]),
-    ("Reference", ["12", "13"]),
+    ("Reference", ["12", "13", "31"]),
     ("CII syllabus notes (optional)", ["14", "15", "16", "17"]),
 ]
 LABELS = {
@@ -37,7 +37,7 @@ LABELS = {
     "08": "Modernisation, data, technology", "09": "AI in the London market", "26": "AI use cases and live examples",
     "21": "Lloyd's end to end", "23": "Process catalogue (L0–L3)", "24": "Systems, documents and data", "25": "IT landscape swimlanes", "20": "Outlook 2027–2030", "22": "New strategies",
     "11": "Consulting playbook", "10": "Case studies", "19": "Practice toolkit",
-    "27": "Benchmark and value model", "28": "Diagnostic toolkits", "29": "Account profiles (top 25)", "30": "Flagship POV fact base", "12": "Glossary", "13": "Self-assessment and sources",
+    "27": "Benchmark and value model", "28": "Diagnostic toolkits", "29": "Account profiles (top 25)", "30": "Flagship POV fact base", "12": "Glossary", "13": "Self-assessment and sources", "31": "Master Guide integration map",
     "14": "CII LM1–LM3 overview", "15": "LM1 notes", "16": "LM2 notes", "17": "LM3 notes",
 }
 
@@ -166,7 +166,7 @@ def enhance_mermaid(code):
     for a, b in edges:
         outdeg[a] = outdeg.get(a, 0) + 1
         indeg[b] = indeg.get(b, 0) + 1
-    if not order or len(order) > 18 or max(outdeg.values() or [0]) > 2 or not edges:
+    if not order or len(order) > 18 or max(outdeg.values() or [0]) > 4 or not edges:
         return INIT + "\n" + "\n".join(lines) + "\n", "flow"
     # sequence: breadth-first from roots in appearance order
     adj = {n: [] for n in order}

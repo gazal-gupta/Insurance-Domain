@@ -363,6 +363,81 @@ sequenceDiagram
 
 ---
 
+## Master Guide integration: 2026 reality check, value map, techniques and an agentic design
+
+### 2026 reality check – keep the statistics in the right box
+
+| Source | Scope | Key facts | Confidence |
+|---|---|---|---|
+| LMA AI adoption survey 2026 | **Lloyd's market**: 39 firms, over 60% of stamp capacity | Adoption more than doubled in 12 months; 93% have or are building AI governance frameworks; use is mainly productivity and workflow, with limited, controlled use in core underwriting, pricing and claims decisions | **[likely]** – LMA release as quoted in source |
+| Bank of England / FCA AI survey (26 Oct 2026) | **All UK financial services** (196 firms) – **not Lloyd's** | 86% use AI (75% in 2024); 80% have deployed AI agents but only 2% use agents with broad autonomy | **[certain]** |
+| FCA "AI in financial services: good practice and areas for improvement" (19 Oct 2026) | All FCA firms | No new rules: existing requirements apply. Good practice includes proportionate governance across the AI lifecycle, mapping AI dependencies in operational resilience, and testing before deployment. Poor practice includes building tools without a defined need, overstating capability, and launching automated customer journeys without enough testing | **[certain]** |
+
+**Client-room rule:** never present the BoE/FCA numbers as Lloyd's adoption figures. Use them to make the point about third-party dependency, data security, governance and controlled autonomy.
+
+### Where AI creates value across the lifecycle
+
+| Stage | High-value use | Human / control boundary | Value measures |
+|---|---|---|---|
+| Broker and submission | Classify emails and attachments; extract insured, exposure, locations, limits, losses; flag missing fields; summarise | Underwriter or broker checks critical fields against source | Intake time, extraction accuracy, completeness, time to triage |
+| Appetite and triage | Appetite match, similar-risk search, referral routing, explain mismatches | AI ranks; an authorised person owns accept, decline and exceptions | Triage time, referral quality, quote rate, avoidable declines |
+| Underwriting workbench | Risk summary, exposure comparison, survey insights, wording comparison, market intelligence | Human authority and recorded rationale stay clear | Minutes per submission, submissions per underwriter, quote turnaround |
+| Pricing | Data preparation, features, model monitoring, scenarios | Actuarial governance, judgement, fairness, validation | Rate adequacy, loss ratio, calibration, profit by segment |
+| Contract certainty | Compare quote, order, slip, MRC and wording; find gaps; draft summaries | Contract specialists approve legal terms | Contract issue time, discrepancy rate, late amendments |
+| Policy servicing | Read endorsement requests, assess impact, draft change, route authority | Underwriting approval, version integrity | Endorsement turnaround, rekeying, rework |
+| Premium and accounting | Read bordereaux, map fields, explain exceptions, match references | **Deterministic validation** and finance approval for posting and cash | First-pass acceptance, exception cycle time, breaks |
+| Delegated authority | Detect mix shifts, limit breaches, drift, poor data, late bordereaux | Capacity provider stays accountable for oversight and action | Breach detection lead time, audit findings, loss ratio |
+| Claims | FNOL extraction, wording retrieval, summaries, severity triage, fraud signals, reserve support, letters | Coverage, liability, reserve, settlement and adverse decisions need governed authority | FNOL-to-triage, handling time, leakage, reserve accuracy |
+| Catastrophe and exposure | Geocode enrichment, accumulation insight, event footprints, scenario narratives | Cat model and exposure sign-off; uncertainty disclosed | Exposure completeness, aggregation speed, PML insight |
+| Reinsurance | Treaty matching, loss-to-layer allocation, recovery packs, bordereau checks | Ceded decisions stay controlled and auditable | Recovery cycle time, missed recoveries |
+| Compliance and operations | Policy search, regulatory change summaries, evidence collection, control testing | Compliance and legal validate interpretation | Evidence retrieval time, test coverage, issue closure |
+
+### Match the technique to the problem
+
+| Technique | Best for | Example | Main risk |
+|---|---|---|---|
+| Rules and deterministic workflow | Hard contract or authority conditions | Binder limits, referral thresholds, required fields, tax checks | Stale or conflicting rules; weak version control |
+| Predictive ML | Estimates and rankings from history | Frequency, severity, fraud priority, triage | Bias, drift, poor labels, explainability |
+| NLP and document intelligence | Unstructured text | Submission extraction, claims documents, wording comparison | Facts without provenance; OCR errors |
+| GenAI / LLM | Language-heavy help | Summaries, coverage research, drafting, knowledge search | Hallucination, privacy, IP, prompt injection, stale knowledge |
+| Optimisation | Allocation under constraints | Capacity allocation, claims workload, RI structure options | Wrong objective or constraints; false precision |
+| Agents and orchestration | Multi-step work across tools with bounded authority | Intake → enrich → validate → route → draft decision pack → log | Cascading errors, excess permissions, unclear accountability |
+
+**Design rule.** Rules for hard contract limits; predictive models for calibrated estimates; LLMs for language and retrieval; agents to coordinate bounded steps. Never let an LLM invent policy terms, bypass authority or make a final adverse decision without governance and a named accountable human.
+
+### A governed agentic underwriting assistant – 11 components
+
+1. **Submission intake agent** – classifies the email or portal payload and opens a case.
+2. **Document intelligence** – extracts from application, loss runs, schedules, surveys, correspondence, keeping citations and confidence.
+3. **Entity and location enrichment** – resolves insureds, geocodes sites, adds approved external data.
+4. **Data validation** – checks CDR-aligned mandatory data, consistency, duplicates, missing evidence.
+5. **Appetite and rules service** – applies versioned product, territory, class, limit and authority rules.
+6. **Exposure service** – accumulation, catastrophe and systemic context from approved models.
+7. **Pricing services** – calls approved rating models with version tracking.
+8. **Underwriting copilot** – builds a decision pack: summary, evidence, uncertainties, terms points, referrals, similar risks.
+9. **Workflow orchestrator** – tasks, approvals, deadlines, events, exception queues.
+10. **Human decision and bind controls** – the underwriter records the decision and rationale; bind checks authority and approvals.
+11. **Audit and observability** – inputs, outputs, model versions, prompts, tool calls, approvals, overrides and outcomes.
+
+It must **not** be one unconstrained agent with access to every system. Build a controlled workflow with least-privilege tools, typed interfaces, state transitions, idempotency, approval gates and auditable actions.
+
+### Prioritising AI opportunities
+
+Score each use case 1–5 on **business value, feasibility, data readiness, controllability and time to value**. A weighted score ranks the pipeline; it does not replace risk review. (The AI use-case priority sheet in the [diagnostics workbook](../consulting-assets/README.md) does this.)
+
+Typical sequence for a London firm:
+1. Document and submission intelligence with source traceability.
+2. Search and knowledge assistants over approved underwriting and claims content.
+3. Contract comparison and data quality exception management.
+4. Bordereaux ingestion and DA portfolio monitoring.
+5. Claims triage and summaries, with human coverage decisions.
+6. Underwriting decision support and pricing analytics.
+7. Bounded agents coordinating steps with approval gates.
+8. Higher-impact decision automation only after strong validation, regulatory review and evidence of safe outcomes.
+
+**A value case must include:** baseline time; volumes; error and rework; labour cost; cycle time; quality; leakage; broker and customer outcomes; technology cost; model oversight cost; change cost; and a named benefit owner.
+
+
 ## 14. Sources
 
 - [Insurance Journal – Hiscox launches GenAI-powered lead underwriting platform](https://www.insurancejournal.com/news/international/2024/08/13/788125.htm)

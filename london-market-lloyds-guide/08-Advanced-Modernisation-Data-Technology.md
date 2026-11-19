@@ -391,6 +391,66 @@ A **data product** is a dataset managed like a product: a clear owner, defined u
 
 ---
 
+## Master Guide integration: CDR, architecture principles and integration patterns
+
+### The Core Data Record – what it is and is not
+
+The CDR is a defined set of critical data elements for London market processing, validation and reporting. It aligns with ACORD structures and aims to stop repeated capture, improve matching and give reusable data across the lifecycle. **It is not a policy administration system and not a full enterprise data model** **[certain]**.
+
+**2026 scope expansion**
+
+| Date | Release | Status |
+|---|---|---|
+| May 2026 | CDR v3.3 – treaty reinsurance (plus minor fixes to v3.2) | **[certain]** – LMG Data Council announcement |
+| Sept 2026 | v3.4 Claims and v3.5 Agreements of Delegation | **[guessing]** – stated in the source; I could not confirm these version labels. Check the LIMOSS MBG |
+| 1 Oct 2026 | LMG: CDR now spans pre-bind tagging, placement, **FNOL claims data** and **delegated authority agreement data** (binders, lineslips, digital platforms). The DA CDR is a subset of the Computable Binding Authority Agreement (CBAA) model | **[certain]** |
+| Next | The expanded CDR is being built into the next MRC version | **[certain]** that work is under way; timing **[guessing]** |
+
+**What CDR enables:** better capture at source; less duplicate entry; automated premium validation and settlement; matching claims to policies and participants; tax, regulatory and management reporting; better DA reporting and oversight; reusable data across broker, carrier and central services.
+
+**Standards map**
+
+| Item | What it is |
+|---|---|
+| ACORD GRLC | Data standards for global reinsurance and large commercial |
+| MBG (LIMOSS) | Reference portal for market terms, CDR, reference data and implementation artefacts |
+| CDR | Versioned data element set |
+| MRC | Contract document and data structure |
+| PRR (roles and responsibilities) | Market material that clarifies who does what in placing and processing; use the current approved edition |
+| ACORD Ruschlikon (EBOT, ECOT) | Back-office message standards – not insurer systems |
+
+**Data quality rule template – define for every critical element:** business meaning; mandatory or conditional; data type; allowed values; source; owner; evidence and provenance; validation rule; timing; downstream users; correction workflow; audit history; version. Build controls around entity resolution, address and geocode, dates, currency, limit and attachment, class and territory, tax, participant share, policy matching and claims references.
+
+### Ten architecture principles for London programmes
+
+1. **Design around the lifecycle and service outcomes** – placement-to-cash and FNOL-to-settlement, not technology boxes.
+2. **Preserve participant autonomy** – brokers, carriers, managing agents and service providers will not all move to one core platform.
+3. **Common data, not one database** – CDR- and ACORD-aligned models, APIs, events and data contracts; keep ownership and legal entity boundaries.
+4. **Capture data close to source** and reuse it; stop document-to-screen rekeying.
+5. **Separate contract truth from workflow state** – the master contract version and the transaction status are different things.
+6. **Build controls into workflows** – authority, referral, approval, audit, segregation of duties and exceptions are first-class design items.
+7. **Make shared-service dependencies visible** – design for outage, fallback, reconciliation, replay and continuity.
+8. **Keep financial reconciliation deterministic** – AI can help extract and investigate; posting, cash and premium allocation need controlled validation.
+9. **Trace end to end** – link broker reference, quote, order, contract, policy, participant, premium, claim, payment and recovery.
+10. **Do not hide data quality in AI** – bad source data should trigger repair workflows, not feed a confident model.
+
+### Integration patterns
+
+| Pattern | Use for |
+|---|---|
+| API-led | Real-time needs: quote, policy enquiry, authority check, payment status |
+| Event-driven | Lifecycle events: submission received, quote issued, order confirmed, bound, endorsed, FNOL, reserved, paid, bordereau accepted |
+| Batch and file | Bordereaux, bulk reports, some market processing – add control totals, schema and version checks, duplicate detection, reconciliation |
+| Document intelligence | Submissions, slips, wordings, surveys, loss runs, claims evidence – with provenance and confidence |
+| Canonical model and data contracts | Common business concepts across sources, with source-specific extensions |
+| Reference data services | Classes, territories, currencies, tax codes, perils, legal entities, brokers, participants, statuses |
+| Master data and entity resolution | Insureds, brokers, coverholders, locations, counterparties – deterministic keys plus controlled probabilistic matching |
+
+**Non-functional requirements checklist:** availability, throughput, RTO, RPO, data residency, latency, encryption, access segregation, retention, audit, non-repudiation, observability, version compatibility, reconciliation, model performance, explainability, disaster recovery, exit portability. For shared market and cloud dependencies, include a **tested manual fallback and reconciliation** so restoration does not create duplicate or missing transactions.
+
+**Build versus buy – evaluation criteria:** market fit; configurability; London standards support; reference clients; capability depth; APIs; upgrade path; data ownership; cloud and security posture; third-party concentration; regulatory evidence; total cost of ownership; implementation partners; exit options. A product speeds time to value but can impose process limits. A bespoke workbench can differentiate underwriting but creates support, model governance and maintenance duties.
+
+
 ## 19. Sources
 
 - [Insurance Times – Lloyd's sunsets Blueprint Two](https://www.insurancetimes.co.uk/news/lloyds-sunsets-name-and-original-vision-of-blueprint-two-after-review/1458048.article)

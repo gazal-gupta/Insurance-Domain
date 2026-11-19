@@ -170,7 +170,7 @@ Drivers: capital supply, catastrophe events, investment returns, competition, re
 - **US:** state-based regulation; National Association of Insurance Commissioners (NAIC) coordinates; Lloyd's syndicates are eligible surplus lines insurers and hold US trust funds.
 - **EU:** after Brexit, UK insurers lost passporting; Lloyd's set up **Lloyd's Insurance Company S.A. (Lloyd's Europe)** in Brussels.
 - **IAIS** sets global Insurance Core Principles.
-- Lloyd's holds licences in 200+ countries and territories and provides licensing guidance (Crystal) **[certain]**.
+- Lloyd's holds licences in 200+ countries and territories and provides licensing guidance (Crystal+) **[certain]**.
 
 ### 7.3 Governance of the Lloyd's Market
 

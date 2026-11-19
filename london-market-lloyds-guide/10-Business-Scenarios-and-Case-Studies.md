@@ -363,6 +363,95 @@ flowchart LR
 
 ---
 
+## Cases 15–20 – Master Guide applied scenarios
+
+These six scenarios come from the source *Master Learning Guide* (Part VII). Each keeps the source tasks and adds a **model answer** so you can check your work. Try the tasks before reading the answer.
+
+## Case 15 – Large property risk across Lloyd's and the company market
+
+**Situation.** A multinational manufacturer wants £250m property damage and business interruption cover across several sites. The broker approaches a panel of Lloyd's syndicates and company carriers. The risk has flood and wind exposure, a complex supply chain and large BI values.
+
+**Tasks.** (1) Name broker, insured entities, lead, followers, managing agents, syndicates, members and carriers. (2) Build a submission checklist and flag high-risk gaps. (3) Explain the underwriting view: geospatial exposure, construction and occupancy, cat model, BI dependencies, values, controls. (4) Draw primary and excess layers with lines. (5) Explain written versus signed lines with an example. (6) List the MRC, wording and endorsement records needed for contract certainty. (7) Map premium accounting, tax, cash and participant allocation. (8) For a flood claim, map FNOL, policy match, coverage, adjuster, lead agreement, followers, reserve, payment and reinsurance.
+
+**Model answer – key points**
+- **Structure example:** primary £50m; £100m xs £50m; £100m xs £150m. Each layer has its own slip, lead and lines. Flood and wind usually carry sub-limits and annual aggregates.
+- **Highest-risk gaps:** site-level values and geocodes; BI values by site and supplier dependency; flood defence and elevation; the BI indemnity period.
+- **Lines:** if the primary is over-placed at 125%, non-"to stand" lines are signed down in equal proportion (multiply by 0.8). See Module 04.
+- **Claims:** Lloyd's participants agree under CLA through the Lloyd's lead (with a second lead if complex). Company carriers agree under the slip's claims agreement terms. SCAP will not apply at this size.
+- **Money:** premium and claims move through broker accounting and Velonetic central settlement for bureau participants; tax follows the location of each site.
+
+**Consulting opportunity.** Submission intake and data quality, schedule enrichment, linking modelled exposure into the quote workflow, contract comparison. **Measure:** submission-to-quote, underwriter minutes, risk information quality, contract discrepancy rate.
+
+## Case 16 – UK MGA writing SME cyber under a Lloyd's binder
+
+**Situation.** An MGA with digital distribution binds SME cyber within a binder backed by Lloyd's capacity. The book grows fast, cloud-provider concentration rises and loss bordereaux arrive late.
+
+**Tasks.** (1) Separate MGA, coverholder, service company, DCA and TPA. (2) Map the managing agent, Lloyd's approval, ATLAS, DCOM and binder governance. (3) Define authority, prohibited risks, referral thresholds, pricing rules and aggregation controls. (4) Define premium and claims bordereaux with CDR-aligned fields. (5) Design the capacity provider's dashboard: premium, claims, concentration, data quality, breaches, audit. (6) Plan the fix for late bordereaux and missing cloud-dependency data.
+
+**Model answer – key points**
+- **Governance chain:** coverholder approved via **ATLAS**; binder registered in **DCOM** (both Lloyd's tools); audits planned in Delegated Audit Manager; licensing checked in **Crystal+**.
+- **Aggregation control:** require a "primary cloud provider" and "key software dependency" field at quote, and set a hard cap on the share of limit exposed to any one provider. Breach blocks binding (deterministic rule, not AI).
+- **Bordereaux fix:** contractual deadline with a financial consequence; standard template; automated validation on receipt; a first-pass acceptance target; escalate repeat lateness to binder review.
+- **Dashboard:** traffic-light by binder for loss ratio vs plan, growth vs plan, concentration vs cap, bordereau timeliness, open audit actions, breaches.
+
+**Consulting opportunity.** DA data hub, bordereaux ingestion, rules-based breach detection, cyber accumulation analytics, AI-assisted audit. Keep authority enforcement deterministic and auditable.
+
+## Case 17 – Multi-carrier liability claim with a coverage dispute
+
+**Situation.** A large liability claim is notified across several subscribing participants. Liability is disputed, legal costs are rising, and coverage depends on an exclusion and a notification condition.
+
+**Tasks.** (1) Match the claim to period, insured, wording, endorsements and participants. (2) Separate coverage, liability and quantum workstreams. (3) Identify the lead and second-lead route. (4) Set reserve rationale and authority limits. (5) Define referral, legal privilege and evidence controls. (6) Map payment, contribution, subrogation and RI recovery.
+
+**Model answer – key points**
+- **Route:** a disputed, large claim is "complex" under CLA, so lead **and** second lead agree for Lloyd's syndicates; company carriers per slip terms; consider a reservation of rights letter while coverage is investigated.
+- **Separate workstreams:** coverage counsel on the exclusion and notification condition; defence counsel on liability; adjuster or expert on quantum. Mixing them leaks privilege and slows decisions.
+- **Reserve:** set on the most likely outcome including defence costs, record the rationale and confidence, and review at each legal milestone.
+- **Recoveries:** check other insurance (contribution), third-party responsibility (subrogation) and the per-risk and clash XoL treaties.
+
+**Consulting opportunity.** Contract-to-claim matching, wording retrieval, coverage research assistant, reserve governance, status orchestration, payment control. AI assembles the evidence; authorised claims and legal staff own coverage and settlement decisions.
+
+## Case 18 – Poor premium settlement and reconciliation
+
+**Situation.** Underwriters report policies bound, but finance gets inconsistent technical accounts. Broker references, participant shares, premium taxes and cash do not reconcile. Unallocated cash and debt age are rising.
+
+**Tasks.** (1) Draw the flow from bind to technical account and cash. (2) Name the master record for signed line, premium, tax, commission, currency and cash. (3) Map broker, Velonetic and carrier finance roles. (4) Define control totals, duplicate checks and exception reason codes. (5) Size the cost of rework and trapped cash.
+
+**Model answer – key points**
+- **Root-cause hypothesis:** the signed line and premium in the policy system were rekeyed and differ from the slip and the bureau record; the UMR is not used as the common key.
+- **Fix order:** use the UMR plus signing number and date as the matching key; one master for signed line (bureau signing) fed back to the PAS; reason-coded exception queue; daily control totals.
+- **Value:** trapped cash × cost of capital + FTE hours on rework + bad-debt write-offs. Example: £20m unallocated × 8% = £1.6m a year before labour.
+
+**Consulting opportunity.** CDR validation, automated technical-account checks, API and event integration, exception workbench, cash allocation and a finance dashboard.
+
+## Case 19 – A global carrier wants an AI underwriting workbench
+
+**Situation.** Specialty submissions arrive by email and spreadsheet. Underwriters search documents by hand and rekey data into policy and exposure systems. The CIO proposes a single agent that reads, prices and binds.
+
+**Tasks.** (1) Challenge the "one agent" idea with a risk-tiered design. (2) Design orchestration with separate intake, extraction, validation, appetite, pricing, exposure and decision-support capabilities. (3) Define provenance, confidence, human approval and immutable audit. (4) Name systems of record and integration methods. (5) Define the evaluation dataset and KPI baseline. (6) Propose release phases: copilot → controlled workflow → bounded automation.
+
+**Model answer – key points**
+- **The challenge:** one agent with bind rights breaks least privilege, mixes low-risk and high-risk steps, and cannot be validated step by step. Binding is a commit action that needs an authority check and a human decision.
+- **Design:** the 11-component model in [Module 26](26-AI-Use-Cases-Capabilities-Live-Examples.md); read / draft / commit permissions separated.
+- **Evaluation set:** 200–500 past submissions with expert-labelled fields and decisions, including edge cases (missing loss runs, inconsistent values, injected instructions in PDFs).
+- **KPIs:** net underwriter minutes per submission after review; extraction exact-match on critical fields; submission-to-quote; override rate.
+
+**Consulting opportunity.** A measurable submission-to-quote programme that keeps human authority and integrates existing core systems rather than building an isolated demo.
+
+## Case 20 – Catastrophe event across a multi-layer programme
+
+**Situation.** A severe windstorm hits thousands of insured locations in several countries. Carriers and syndicates need gross loss, net loss, aggregate exposure, claims surge planning and reinsurance recoveries.
+
+**Tasks.** (1) Fix event identity, footprint and affected exposure. (2) Match policies and locations to claims and participants. (3) Aggregate gross loss by insured, location, class, carrier, syndicate, underwriting year and treaty. (4) Allocate across per-risk and cat layers, applying event definitions and hours clauses. (5) Track reinstatements, recoveries, collateral and cash timing. (6) Explain uncertainty and avoid double counting.
+
+**Model answer – key points**
+- **Event definition:** the cat XoL hours clause (often 72 hours for windstorm) decides whether damage across countries is one loss occurrence or two. That choice can move the net loss by a whole retention.
+- **Order of recoveries:** apply per-risk XoL first (inures to the cat programme if the treaty says so), then cat XoL. Reinstatement premium is usually pro rata as to amount; book it as a cost of the event.
+- **Double counting risks:** the same location under two policies; the same loss in both the claims and the modelled estimate; one syndicate counted at both managing agent and group level.
+- **Reporting:** give a range, state model and data limits, and update as claims replace estimates.
+
+**Consulting opportunity.** An event-driven exposure and claims data product, geospatial enrichment, a catastrophe response workbench, RI allocation and scenario analytics. Practise the layer maths in the interactive guide's cat XoL calculator.
+
+
 ## 15. Scenario-solving checklist (use every time)
 
 1. **Clarify** the decision and the deadline.

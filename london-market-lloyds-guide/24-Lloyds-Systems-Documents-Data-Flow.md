@@ -57,7 +57,7 @@ flowchart TB
   end
   subgraph LLOYDS[Corporation of Lloyd's]
     L1[ATLAS - coverholders]
-    L2[Crystal - licensing and tax]
+    L2[Crystal+ - licensing and tax]
     L3[CMR and MDC - market returns]
   end
   subgraph REG[Regulators]
@@ -125,7 +125,7 @@ flowchart TB
 | **CLASS** **[likely]** | Velonetic | Bureau claims system recording claims movements and agreements | P12 | UCR, TR, movements, agreement parties | Claim transactions | ECF; MA claims and accounting |
 | **ATLAS** | Lloyd's | Coverholder applications, approvals and records | P09, P11 | Coverholder details, permissions, locations, approvals | Applications, Coverholder Undertaking | MA DA teams (portal) |
 | **Binding authority registration** | Lloyd's | Registers binders before inception **[likely]** | P09 | Binder UMR, parties, period | BAA | MA DA systems |
-| **Crystal** **[likely]** | Lloyd's | Licensing, tax and regulatory information by territory | P06, P08, P10 | Territory rules | Guidance | Underwriting checks; tax processes |
+| **Crystal+** **[likely]** | Lloyd's | Licensing, tax and regulatory information by territory | P06, P08, P10 | Territory rules | Guidance | Underwriting checks; tax processes |
 | **Core Market Returns (CMR)** | Lloyd's | Web-based collection of syndicate data | P02, P19 | Syndicate returns | Returns | MA finance, actuarial |
 | **Market Data Collections (MDC)** | Lloyd's | Web-based collection of syndicate data, including the Gross Quarterly Data return and Lloyd's Capital Return | P02, P03, P19 | Quarterly data, capital | GQD, LCR | MA finance, actuarial |
 | **SecureShare** | Lloyd's | Secure file upload for data outside CMR/MDC | P19 | Ad hoc submissions | Files | MA |
@@ -141,7 +141,7 @@ flowchart TB
 | **Pricing models** | Technical price, rate adequacy, RARC | P06 | Rating factors, expected loss, technical price | Pricing sheets | Actuarial platforms, spreadsheets |
 | **Exposure and cat modelling** | Aggregates, PML, RDS | P06, P10, P14, P15 | Geocoded locations, values, event losses | RDS outputs | Moody's RMS, Verisk |
 | **Policy administration system (PAS)** | Contract record, lines, endorsements, premium, postings | P05, P07, P08 | UMR, written/signed lines, terms, premium | Policy record | Sequel Eclipse, DXC Genius/Assure, Guidewire, Duck Creek, Sapiens |
-| **DA and bordereaux platform** | Contract register, bordereaux ingestion, validation, oversight MI | P09, P10, P11, P13 | Structured binder terms; risk, premium and claims rows | Bordereaux, BAAs, audit reports | Velonetic DA services such as DCOM **[likely]**, specialist DA platforms, in-house |
+| **DA and bordereaux platform** | Contract register, bordereaux ingestion, validation, oversight MI | P09, P10, P11, P13 | Structured binder terms; risk, premium and claims rows | Bordereaux, BAAs, audit reports | Specialist DA platforms or in-house tools; binders registered in Lloyd's DCOM **[certain]** |
 | **Technical accounting and credit control** | Booking, reconciliation, cash allocation, aged debt | P08, P10 | SND/OSND, settlements, cash, aged debt | Statements, reconciliations | PAS modules, finance systems, automation tools |
 | **Claims system** | Handling, reserving, payments, recoveries | P12, P13, P14 | UCR, reserves, payments, event codes | Claim files | Vendor or in-house |
 | **Outwards reinsurance system** | Programmes, cessions, recoveries, RI accounting | P15 | Treaties, cessions, recoveries | RI contracts, collection notes | Specialist RI systems (e.g., Sapiens reinsurance) |
@@ -247,7 +247,7 @@ flowchart LR
 | A1 | P05 | CL, RB | Client files; retail broker system | Risk information | Exposure, loss history | Client ref | Lloyd's broker system |
 | A2 | P05 | LB | Broker placing system | Submission; draft MRC | Contract draft | **UMR** created | Platform; MA ingestion |
 | A3 | P06 | MA-UWA | Submission ingestion | Submission, SOV | Structured risk data | UMR | Workbench |
-| A4 | P06 | MA-UWA | Sanctions screening; Crystal **[likely]** | Screening record | Sanctions and licensing results | Party IDs | Workbench |
+| A4 | P06 | MA-UWA | Sanctions screening; Crystal+ **[likely]** | Screening record | Sanctions and licensing results | Party IDs | Workbench |
 | A5 | P06 | MA-EXP | Cat model | Model output | Modelled losses, aggregates | Location IDs | Workbench; exposure store |
 | A6 | P06 | LUW | Workbench; pricing model | File note | Technical price, decision | UMR | Platform |
 | A7 | P05 | LUW, FUW | PPL Next Gen / Whitespace **[likely]** | Electronic MRC | Written lines, stamps | UMR + syndicate | Broker; MA PAS |
@@ -376,6 +376,133 @@ Standards: MRC, Core Data Record, ACORD GRLC, Lloyd's coverholder reporting stan
 4. Write ten integration requirements for connecting a placing platform to a PAS.
 
 ---
+
+## Master Guide integration: capability stack, reference architecture and systems of record
+
+There is no single end-to-end Lloyd's or London platform. Each managing agent, broker and carrier has its own estate; shared infrastructure and standards connect parts of the chain. Map systems by **capability, record authority and integration**, not by vendor name.
+
+### Fifteen capability layers
+
+| Layer | Supports | Typical systems | Key design question |
+|---|---|---|---|
+| Broker engagement and CRM | Client, prospect and relationship management | Broker and carrier CRM, portals, intake tools | Where is the master client and risk relationship, with consent and evidence? |
+| Digital placement | Submission, quote, negotiation, firm order, lines | PPL, other e-placing, portals | Does placement data reach underwriting and contract records without rekeying? |
+| Submission ingestion | Email, portal, API, documents | Workflow, IDP and OCR, document stores | Can it identify risk, entity, location, section and source? |
+| Underwriting workbench | Appetite, triage, referral, pricing, decision | Carrier workbenches, rating engines | Can underwriters see model inputs, rules, referrals and evidence? |
+| Product and rating | Product set-up, rules, factors, forms | Product and rules engines, pricing models | Are rules versioned, tested, governed and traceable to issued policies? |
+| Policy administration | Bind, record, documents, endorsements, renewal | PAS, document generation | Which system is the master for terms and version history? |
+| Delegated authority | Onboarding, authority, bordereaux, audits | DCOM, ATLAS (Lloyd's), carrier DA platforms | Can authority, risk, premium, claims and audit evidence be reconciled? |
+| Claims | FNOL to recovery | Claims platforms, TPA and DCA tools | Can a claim be matched to contract, participant, authority and reinsurance? |
+| Exposure and catastrophe | Geocoding, accumulation, modelling | Cat models, exposure stores, GIS | Is data granular, current and consistent across underwriting and claims? |
+| Reinsurance | Placement, cessions, recoveries, collateral | RI administration, treaty systems | Can gross-to-net and claim-to-treaty mapping be explained and audited? |
+| Premium and finance | Technical accounts, cash, tax, debt | ERP, ledgers, market accounting interfaces | Where is the trusted premium, cash and share record? |
+| Shared market services | Processing, validation, accounting, settlement | Velonetic services and messaging | What is central versus carrier-owned, and what happens in an outage? |
+| Data and analytics | Canonical model, warehouse, BI, regulatory reporting | Data platform, data products, semantic layer | Are metrics consistent by underwriting year, calendar year and legal entity? |
+| Identity, security, control | Access, audit, privacy, cyber, resilience | IAM, SIEM, GRC, third-party risk | Can access and decision evidence be traced across participants and vendors? |
+| AI and decision intelligence | Models, GenAI assistants, agents, monitoring | Model platforms, LLM gateways, orchestration, vector search | Which decisions can AI influence, who approves, and how is output monitored? |
+
+### Named tools – correct roles
+
+| Tool | What it is | What it is not |
+|---|---|---|
+| PPL | Digital placing platform for brokers and underwriters | Not the policy, premium, claims or finance architecture |
+| Velonetic | Shared processing for Lloyd's and company market | Not a carrier core system |
+| ATLAS | Lloyd's coverholder and service company registration and filing | Not a policy system |
+| **DCOM** | **Lloyd's** Delegated Contract and Oversight Manager: onboarding, facility placement, binder registration | **Correction:** not a Velonetic service (earlier versions of this module said so) |
+| **Crystal+** | Lloyd's market access, licensing, tax and territory reference | |
+| Delegated Audit Manager | Lloyd's DA audit planning and oversight | |
+| Core Market Returns (CMR) | Lloyd's market reporting | Check current scope and channel |
+| Lloyd's Insights Hub and other tools | Market information and analytics | Access depends on the current Lloyd's catalogue |
+| LIMOSS MBG | Standards and reference data hub, including the CDR | |
+| ACORD GRLC and Ruschlikon | Standards and messages | Not software |
+| MRC and CDR | Contract and data standards | Not applications |
+
+### Carrier and broker estates
+
+Carriers and managing agents may run policy administration, underwriting, rating, claims, reinsurance, finance and ERP, document management, actuarial, cat modelling, a data warehouse or lakehouse, and workflow tools. Brokers run broking systems, CRM, placement workbenches, document stores, accounting and client portals. Do not assume one vendor is used everywhere, or that a market standard decides a carrier's core platform.
+
+**Application inventory – 13 attributes per system:** capability; business owner; platform or vendor; version; deployment model; system-of-record status; integrations; data classification; control owner; support model; end-of-life status; resilience tier; strategic role.
+
+### Reference architecture: risk to cash and claims
+
+```mermaid
+flowchart LR
+ subgraph Distribution
+  A[Insured or producing broker]
+  B[Wholesale or Lloyd's broker]
+ end
+ subgraph Market_placement
+  C[Submission intake and enrichment]
+  D[Digital placing and negotiation e.g. PPL]
+  E[Underwriting workbench and pricing]
+  F[MRC, wording and contract record]
+ end
+ subgraph Risk_carrier
+  G[Policy administration]
+  H[Exposure and portfolio data]
+  I[Claims management]
+  J[Reinsurance]
+  K[Finance and ERP]
+ end
+ subgraph Shared_market
+  L[Velonetic processing and settlement]
+  M[Standards: CDR, ACORD, MBG]
+  N[Lloyd's DA tools: ATLAS, DCOM, audit]
+ end
+ subgraph Data_AI_control
+  O[Integration: API and event layer]
+  P[Data platform and data products]
+  Q[AI services and orchestration]
+  R[Identity, audit, model risk, security]
+ end
+ A --> B --> C --> D --> E --> F --> G
+ E --> H
+ G --> I --> J
+ G --> K
+ K <--> L
+ D <--> L
+ F <--> M
+ G <--> M
+ N <--> G
+ N <--> H
+ C --> O
+ D --> O
+ E --> O
+ F --> O
+ G --> O
+ H --> O
+ I --> O
+ J --> O
+ K --> O
+ L --> O
+ M --> O
+ O <--> P
+ P <--> Q
+ R --- O
+ R --- P
+ R --- Q
+```
+
+This is a logical model, not a claim that every carrier uses these components. It deliberately separates standards, shared services, carrier systems and the data and AI layer.
+
+### Systems of record – the essential discovery exercise
+
+For every data object, find the master application and who may change it.
+
+| Data object | Questions to settle |
+|---|---|
+| Client, insured, legal entity | Is there a mastered entity ID? How are subsidiaries, insureds and brokers reconciled? |
+| Submission | Where is the full evidence pack and its versions? Is the same submission recognised across email, portal and PPL? |
+| Quote and decision | Are decision, rating, referral and rationale stored with model and rule versions? |
+| Placement | Where are written and signed lines, order, lead and follower shares held as master? |
+| Contract and wording | What makes up the full contract? Where are endorsements and the document hierarchy? |
+| Policy | Which PAS owns period, insured interest, premium, exposure and status? |
+| Premium and cash | Which system owns technical account, financial account, cash, debt and reconciliation? |
+| Claim | Which platform owns FNOL, coverage position, reserve, payment, recovery and closure? |
+| Delegated agreement | Where is the approved authority, current version, limits and reporting duty? |
+| Reinsurance | How are policies and claims mapped to treaties, layers, recoveries and collateral? |
+| Regulatory reporting | Is there lineage from source transaction to the submitted return and its corrections? |
+
 
 ## 11. Sources
 

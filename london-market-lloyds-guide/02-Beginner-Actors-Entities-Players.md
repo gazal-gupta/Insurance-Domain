@@ -337,7 +337,7 @@ About 45% of Lloyd's premium comes through delegated authority **[likely]**. Ful
 | **IUA** | Represents company market; clauses and statistics | Company market clients; market data |
 | **LIIBA** | Represents London brokers | Any change that affects broker workflow |
 | **LMG** | Umbrella body (Lloyd's, LMA, IUA, LIIBA); "London Matters" reports; Data Council | Market strategy and data standards |
-| **LIMOSS** | Owned by LMA and IUA; manages market service contracts, including bureau services | Bureau changes and market service costs |
+| **LIMOSS** (London Insurance Market Operations & Strategic Sourcing) | Owned by the LMA, IUA and Lloyd's; manages market service contracts, including bureau services; publishes the Market Business Glossary (CDR) | Bureau changes and market service costs |
 | **Velonetic** | Bureau service provider (part of DXC), formerly Xchanging; premium, claims, accounting and settlement services | Any accounting, settlement or claims process project; refocused on incremental modernisation after Blueprint Two **[likely]** |
 | **Placing platforms (PPL, Whitespace)** | Electronic placement | Placement process and data projects |
 | **ACORD** | Data standards (GRLC messages, Core Data Record) | Data model and integration projects |
@@ -497,7 +497,7 @@ Example: a bordereaux automation and DA oversight programme.
 | 4 | What is the difference between aligned and non-aligned capital? | Aligned comes from the managing agent's own group; non-aligned from third parties (Names, investors). |
 | 5 | Give two reasons a group might write a class at Lloyd's rather than on its company platform. | Lloyd's licences/US surplus lines access; shared Lloyd's rating; capital efficiency; brand. |
 | 6 | Whose agent is a coverholder when it binds a risk? | The insurer's. |
-| 7 | What does LIMOSS do? | Manages market service contracts (including bureau services) on behalf of LMA and IUA members. |
+| 7 | What does LIMOSS do? | Manages market service contracts (including bureau services) for its owners, the LMA, IUA and Lloyd's, and publishes the Market Business Glossary. |
 | 8 | In a soft market, which participants' margins are usually under most pressure? | Follow underwriters and capital providers. |
 
 ---
@@ -510,6 +510,65 @@ Example: a bordereaux automation and DA oversight programme.
 4. **Practitioner conversation:** ask a broker or underwriter to explain how facilities have changed their work in the last two years (interview guide in [Module 19 §3](19-Practice-Toolkit-and-Templates.md)).
 
 ---
+
+## Master Guide integration: actors, bodies and the client-room test
+
+### Company market versus Lloyd's in one table
+
+| Dimension | Lloyd's market | Company market |
+|---|---|---|
+| Basic model | A marketplace where syndicates underwrite on behalf of members | Corporate insurers and reinsurers underwrite through their own legal entities |
+| Risk-bearing capital | Members back syndicates; each member's liability is **several, not joint** | The insurer's own capital plus its reinsurance |
+| Underwriting unit | Syndicate, run by a managing agent | Carrier legal entity and its business units |
+| Governance | Lloyd's Corporation oversight plus PRA and FCA | Carrier board, control functions and its regulators |
+| Distribution | Lloyd's brokers, coverholders, service companies; open market and delegated | Brokers, MGAs, delegated partners, direct and other channels |
+| Infrastructure | Lloyd's-specific oversight and reporting tools plus shared London infrastructure | Shared London infrastructure where used, plus carrier platforms |
+| Common to both | Broker-led placement, subscription, specialist underwriting, common standards, shared services | Same |
+
+The company market is not one company or one technology estate. It is many carriers with different appetites, operating models, platforms and levels of use of central services **[certain]**.
+
+**Worked example.** A broker places a £100m property risk. Syndicate 1 writes 30%, Syndicate 2 writes 20%, and two company carriers write 25% each. Each participant is liable only for its own share. The lead sets terms and coordinates agreement but does not carry the others' shares.
+
+### Participants the earlier tables did not separate
+
+| Participant | Role | What they decide or answer for |
+|---|---|---|
+| Producing / retail broker | Owns the relationship with the insured or the local intermediary | Client data, local advice, compliance, placement instructions |
+| Company-market broker | Places with corporate carriers; may run cross-market subscriptions | Placement strategy, carrier coordination |
+| Follow underwriter | Takes a share, often on lead terms | Whether to follow, own line size, own referrals and controls |
+| TPA (third-party administrator) | General market term for outsourced claims or policy administration | Service under an outsourcing contract. **Not** the same as a Lloyd's DCA, which needs specific delegated claims authority |
+| Loss adjuster / surveyor | Investigates damage, cause, size of loss and mitigation | Evidence and recommendations; does **not** make the coverage decision |
+| Coverage counsel | Advises on contract, liability, disputes and litigation | Legal interpretation, defence strategy, settlement advice |
+| Forensic expert | Engineering, cyber, marine, accounting or other specialist | Cause, damage, quantum, expert evidence |
+| Members' agent | Advises and represents members on participation and capital | Syndicate selection and capital for Names |
+
+### The client-room test (use on every transaction)
+
+Ask seven questions **[certain – standard diagnostic practice]**:
+
+1. Who owns the client relationship?
+2. Who has authority to bind?
+3. Which legal entity carries the risk?
+4. Who is the lead?
+5. Who holds the master contract?
+6. Who processes premium and claims cash?
+7. Who owns the data and the control evidence?
+
+If the client team cannot answer all seven for a sample of transactions, you have found the first workstream.
+
+### Market bodies and infrastructure: additions and corrections
+
+| Organisation | What it is | Why it matters |
+|---|---|---|
+| **LIMOSS** – London Insurance Market Operations & Strategic Sourcing | **Correction:** owned by the **LMA, IUA and Lloyd's** (earlier versions of this guide said LMA and IUA only) **[certain]**. Manages market service contracts and publishes the **Market Business Glossary (MBG)**, which holds the Core Data Record and reference data | Bureau service changes; where to find the current CDR version |
+| **ACORD** | Global insurance data standards body | GRLC (Global Reinsurance and Large Commercial) standards and Ruschlikon messages (EBOT, ECOT) |
+| **PPL** – Placing Platform Limited | Electronic placing platform | Placement workflow and collaboration; not a policy, premium or claims system |
+| **Velonetic** | Shared London processing business; lineage runs back through Xchanging and the earlier bureau joint ventures **[likely]** | Premium accounting, claims agreement support and settlement. It is not any carrier's core system |
+| **Lloyd's Academy / Learning at Lloyd's** | Lloyd's learning resources | Free foundation material |
+| **IUA** | Represents company-market insurers and reinsurers | Not a regulator |
+
+**Named firms – a classification note.** The source lists Beazley and Hiscox as "company insurers". Both are best described as **groups that run Lloyd's managing agents and also own company-market and US carriers** **[certain]**. Always say which entity you mean: "Beazley's Lloyd's syndicate 2623" is a different risk carrier from "Beazley Insurance dac". Ownership and structures change; check before naming firms in a proposal.
+
 
 ## 19. Sources for this chapter
 

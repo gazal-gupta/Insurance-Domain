@@ -12,3 +12,4 @@
 | [Path to world-class London market consultant](london-market-lloyds-guide/18-World-Class-Consultant-Path.md) | 24-month development path: capability model, spike choice, phased roadmap, proof artefacts, exposure routes, network, scorecard. |
 | [Practice toolkit](london-market-lloyds-guide/19-Practice-Toolkit-and-Templates.md) | Syndicate teardown, news "so-what" notes, interview guide, POV and value case templates, AI sparring prompts. |
 | [CII LM1 / LM2 / LM3 topic notes (optional reference)](london-market-lloyds-guide/14-CII-LM-Certificate-Overview.md) | Rules, law and calculations organised by the 2027 CII syllabuses. |
+| [Master Guide integration map](london-market-lloyds-guide/31-Master-Guide-Integration-Map.md) | Section-by-section map of the source *Master Learning Guide* (kept in [source-material](london-market-lloyds-guide/source-material/London_Market_and_Lloyds_Master_Learning_Guide.md)) into this guide, with a correction log. |

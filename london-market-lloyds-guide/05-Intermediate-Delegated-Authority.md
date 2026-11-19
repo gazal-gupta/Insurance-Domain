@@ -400,6 +400,90 @@ A £50m gross premium US property binder:
 
 ---
 
+## Master Guide integration: delegated authority operating model
+
+### Key entities: precise distinctions
+
+| Entity | Plain meaning | Do not confuse with |
+|---|---|---|
+| Coverholder | Approved by Lloyd's to enter contracts **on behalf of Lloyd's underwriters** under a binding authority; listed in ATLAS | "MGA" – a global business term. An MGA may be a Lloyd's coverholder, but the words are not interchangeable in every legal context |
+| Binding authority (binder) | Contract giving a coverholder defined authority for a period, class, territory, limits and terms | A lineslip |
+| Service company | Owned by or connected to a managing agent; writes or serves business under delegation | An independent coverholder |
+| DCA | Delegated Claims Administrator with specific delegated claims authority | A TPA, which is a broader outsourcing term |
+| Lineslip | A facility where a lead can bind defined risks on behalf of the followers, under the agreement | A binder, which delegates to a third party |
+| Consortium | Several insurers in one facility or scheme; structure and authority vary | A single-carrier binder |
+| Bordereau | Periodic report of risks, premium, adjustments and claims | A policy record |
+
+### Lifecycle
+
+```mermaid
+flowchart TD
+ A[Capacity strategy or product concept] --> B[Coverholder or MGA due diligence]
+ B --> C[Managing agent or carrier approval]
+ C --> D[Agreement design: binder, limits, classes, territory, controls]
+ D --> E[Registration, onboarding and permissions]
+ E --> F[Risk submission and eligibility checks]
+ F --> G[Bind or policy issue within authority]
+ G --> H[Premium and risk bordereaux]
+ G --> I[Claims FNOL and delegated handling]
+ H --> J[Data validation and portfolio monitoring]
+ I --> J
+ J --> K[Audit, QA, remediation and performance review]
+ K --> L[Renew, amend, suspend or terminate authority]
+```
+
+### What every binder must define (11-point checklist)
+
+1. Parties, roles, legal entities and authorised signatories.
+2. Class, product, territory, distribution channel and insured segment.
+3. Effective dates, termination, run-off and renewal process.
+4. Underwriting authority: eligibility, limits, line size, pricing and rating rules, exclusions, referrals, prohibited risks.
+5. Policy documents, wording, endorsements and contract certainty.
+6. Premium, commission, brokerage, fees, tax, accounting and cash handling.
+7. Claims authority, reserves, settlement limits, litigation, complaints and referrals.
+8. Reinsurance, accumulation, catastrophe exposures and reporting.
+9. Data requirements: bordereau format, frequency, quality and reconciliation.
+10. Audit rights, file reviews, service levels, KPIs, remediation and breach notification.
+11. Sanctions, financial crime, data protection, outsourcing, cyber and business continuity controls.
+
+Use this as the spine of the binder control matrix in the [DA diagnostic workbook](../consulting-assets/README.md).
+
+### Oversight principle
+
+The capacity provider cannot outsource the risk and stop watching it. Oversight covers pre-bind due diligence, portfolio monitoring, audits and file reviews, data quality, exceptions and referrals, claims, financial reconciliation, compliance, complaints, sanctions and remediation. Make it **risk-based**: weight by portfolio size, class severity, territory, maturity, growth, loss performance, control history, data quality and third-party dependencies.
+
+### Lloyd's DA tools – corrected roles
+
+| Tool | Owner | What it does | What it is not |
+|---|---|---|---|
+| **ATLAS** | Lloyd's | Coverholder and service company applications, approvals, permissions and ongoing filings | Not a store of individual policies |
+| **DCOM – Delegated Contract and Oversight Manager** | **Lloyd's** | Coverholder onboarding, facility placement and binder registration; it replaced the old Binding Authority Registration (BAR) process **[certain]** | **Correction:** earlier versions of this guide called DCOM a Velonetic service. It is a Lloyd's tool |
+| **Delegated Audit Manager** | Lloyd's | Audit planning and management for coverholders and DCAs | |
+| **Crystal+** | Lloyd's | Market access, licensing, tax and regulatory information by territory (current name; formerly "Crystal") | Not legal advice |
+| **DA reporting standards** | Lloyd's | Required risk, premium, tax and claims data fields | |
+
+The managing agent will also run its own DA platform, data lake, policy and claims systems and finance controls. Always find the line where ATLAS and DCOM stop and internal systems start.
+
+### DA KPI set
+
+Binder profit and loss ratio; GWP and growth; rate change; quote-to-bind and hit ratio; referral and decline rates; capacity used; risk concentration; large-loss frequency; bordereau timeliness and first-pass acceptance; missing-field rate; claims leakage; audit findings; overdue remediation; authority breaches; complaint trends; time to onboard a coverholder.
+
+### Worked example: a UK MGA scaling SME cyber
+
+The MGA has a digital quote-and-bind journey, a panel of Lloyd's syndicates and company capacity, and authority to bind below agreed limits. A portal alone is not an operating model. It also needs:
+
+- Version-controlled, approved eligibility and rating rules with evidence.
+- High-risk submissions routed to underwriter referral.
+- Policy documents and endorsements that match the binder wording.
+- Aggregation data for systemic cyber events: cloud provider, software dependency, region, industry.
+- Premium and claims bordereaux that reconcile to source policies and cash.
+- Explicit claims authority and escalation limits.
+- Portfolio visibility, audit trails and authority-breach alerts for the capacity providers.
+- Controlled renewal, termination and run-off.
+
+The full consulting version of this case is Case 16 in [Module 10](10-Business-Scenarios-and-Case-Studies.md).
+
+
 ## 19. Sources
 
 - [Lloyd's – oversight and monitoring of delegated contracts](https://www.lloyds.com/market-resources/delegated-authorities/market-knowledge/oversight-and-monitoring-of-contracts)

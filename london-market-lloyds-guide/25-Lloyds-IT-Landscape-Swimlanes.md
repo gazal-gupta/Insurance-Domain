@@ -8,7 +8,7 @@
 
 **How to read the swimlanes.** Each diagram is a swimlane: every vertical lane is **a party and the system it works in** (for example "Lloyd's broker – placing system"). Arrows are hand-offs, labelled with the document or data that moves. Notes show controls. Below each diagram, a table explains how each system is used at that stage, with its data in and data out.
 
-**Tags.** Lloyd's systems CMR, MDC and ATLAS are confirmed on Lloyd's pages **[certain]**. Bureau component names (IMR, ECF, CLASS), Crystal, BEEDS and RegData are **[likely]**. Product names for firm-level systems are examples of the type only **[likely]**.
+**Tags.** Lloyd's systems CMR, MDC and ATLAS are confirmed on Lloyd's pages **[certain]**. Bureau component names (IMR, ECF, CLASS), Crystal+, BEEDS and RegData are **[likely]**. Product names for firm-level systems are examples of the type only **[likely]**.
 
 ---
 
@@ -19,10 +19,10 @@
 | **1. Client and distribution** | Client files; retail broker systems; Lloyd's broker placing and accounting systems; broker document management | Clients, brokers | 2, 4, 5, 8 |
 | **2. Placement platforms** | PPL Next Gen, Whitespace **[likely]** | Market / vendors | 2, 4, 6, 10 |
 | **3. Core insurance (managing agent)** | Submission ingestion; underwriting workbench; pricing; exposure and cat models; policy administration (PAS); claims; outwards reinsurance; sanctions screening; document management | Managing agent | 2–5, 8–10 |
-| **4. Delegated authority** | Coverholder rating and policy systems; DCA claims systems; MA DA and bordereaux platform (e.g., Velonetic DA services such as DCOM **[likely]**) | Coverholders, DCAs, MA | 6, 7, 9 |
+| **4. Delegated authority** | Coverholder rating and policy systems; DCA claims systems; MA DA and bordereaux platform (specialist or in-house); Lloyd's DCOM for binder registration **[certain]** | Coverholders, DCAs, MA | 6, 7, 9 |
 | **5. Market utilities** | Velonetic premium processing and signing; Insurers' Market Repository; central accounting and settlement; ECF and CLASS claims **[likely]** | Velonetic (via LIMOSS) | 5, 8, 9 |
 | **6. Finance, risk and actuarial** | Technical accounting; general ledger; IFRS 17 / UK GAAP; reserving tools; capital model | Managing agent | 1, 5, 11 |
-| **7. Data, AI and reporting** | Data platform; MI; AI services; Lloyd's CMR, MDC, SecureShare; ATLAS; Crystal; BoE BEEDS; FCA RegData | MA, Lloyd's, regulators | All |
+| **7. Data, AI and reporting** | Data platform; MI; AI services; Lloyd's CMR, MDC, SecureShare; ATLAS; Crystal+; BoE BEEDS; FCA RegData | MA, Lloyd's, regulators | All |
 
 ### Lloyd's insurance stages used in this module
 
@@ -117,7 +117,7 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
   participant WB as Lead underwriter<br/>Workbench
-  participant CMP as Compliance<br/>Sanctions screening and Crystal
+  participant CMP as Compliance<br/>Sanctions screening and Crystal+
   participant EXP as Exposure team<br/>Cat models
   participant PRC as Pricing<br/>Pricing models
   participant CUO as CUO<br/>Referral workflow
@@ -137,7 +137,7 @@ sequenceDiagram
 | Lane | System | How it is used | Data in | Data out |
 |---|---|---|---|---|
 | Lead underwriter | Workbench | Orchestrates checks; records decision | Submission data | Quote; file note |
-| Compliance | Sanctions screening; Crystal **[likely]** | Screen parties; check licences and tax | Party, territory, class | Clear / refer; rules |
+| Compliance | Sanctions screening; Crystal+ **[likely]** | Screen parties; check licences and tax | Party, territory, class | Clear / refer; rules |
 | Exposure | Cat models (e.g., Moody's RMS, Verisk) **[likely]** | Model event losses and aggregates | Geocoded locations, values | AAL, PML, aggregate use |
 | Pricing | Pricing models | Technical price; RARC | Exposure, experience | Technical price; adequacy |
 | CUO | Referral workflow | Approve outside-authority risks | Referral | Decision |
@@ -281,7 +281,7 @@ sequenceDiagram
 | Lane | System | How it is used | Data in | Data out |
 |---|---|---|---|---|
 | Coverholder | Rating and policy system | Bind within authority; produce bordereaux | Customer data | Certificates; bordereaux |
-| MA DA team | DA platform (e.g., DCOM-type services or specialist platforms) **[likely]** | Ingest, map, validate; oversight MI | Bordereaux; binder terms | Validated rows; exceptions; MI |
+| MA DA team | Specialist or in-house DA platform; binder terms from Lloyd's DCOM **[likely]** | Ingest, map, validate; oversight MI | Bordereaux; binder terms | Validated rows; exceptions; MI |
 | MA exposure | Cat models | Update aggregates and RDS | Validated locations | Aggregates |
 | MA technical accounting | Accounting tools | Book and reconcile DA premium | Premium rows; cash | Reconciled premium |
 | Auditor | Audit tools | Audit coverholder | Files, systems | Audit report |
@@ -457,7 +457,7 @@ sequenceDiagram
 | Data platform and MI | ● | ○ | ○ | ○ | ○ | ○ | ● | ○ | ○ | ○ | ● |
 | Sanctions screening | — | ● | ● | — | — | ○ | ○ | ● | ○ | — | — |
 | ATLAS | — | — | — | — | — | ● | ● | — | — | — | — |
-| Crystal | — | — | ● | — | ○ | — | ○ | — | — | — | — |
+| Crystal+ | — | — | ● | — | ○ | — | ○ | — | — | — | — |
 | CMR / MDC / SecureShare | ● | — | — | — | — | — | — | — | ○ | — | ● |
 | BEEDS / RegData | — | — | — | — | — | — | — | — | — | — | ● |
 

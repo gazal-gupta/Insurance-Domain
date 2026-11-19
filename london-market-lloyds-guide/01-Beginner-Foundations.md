@@ -569,6 +569,56 @@ The point a partner makes: **one point of combined ratio on £1bn is £10m a yea
 
 ---
 
+## Master Guide integration: the 60-second explanation and core terms
+
+### London in 60 seconds
+
+The London market is a global centre for complex, specialty, commercial and large risks. It is an ecosystem of insurance and reinsurance capacity, specialist brokers, underwriting businesses, service providers, market associations and shared processing infrastructure **[certain]**.
+
+Clients come to London when a risk needs one or more of: specialist underwriting skill, large combined capacity, international reach, bespoke wordings, complex claims expertise, or access to global reinsurance. Typical classes: property, energy, marine, aviation, construction, cyber, political violence, professional indemnity, financial lines, specialty casualty, reinsurance and emerging risks.
+
+**Do not say "London market" when you mean "Lloyd's".** Lloyd's has its own governance, capital structure and oversight. The company market is the corporate carriers operating in London outside Lloyd's. Both share brokers, clients, talent, infrastructure and conventions, and they often sit on the same placement.
+
+### Risk, contract and premium terms (additions)
+
+| Term | Plain meaning | Watch-out |
+|---|---|---|
+| Insurable interest | A financial or legal interest the law or contract recognises | Must exist for the contract to be valid |
+| Period, inception, expiry | Start and end of cover | Check exact **times and time zones**; a wrong zone is a classic contract-certainty error |
+| Limit of liability | Most the insurer will pay | Read with the aggregate structure |
+| Deductible / excess | Amount the insured bears first | Terms vary by class and market |
+| Retention | Amount the insured or cedant keeps before cover responds | Mostly a reinsurance term |
+| Sub-limit | A lower limit inside the main limit for a peril, location or cost | Often missed in extraction |
+| Aggregate | Maximum for a period or coverage | |
+| Premium types | Gross written, net written, earned, collected, ceded | Never use them interchangeably in a KPI |
+| Rate | Premium divided by an exposure base | State the base |
+| Brokerage vs commission vs fee | Broker pay vs pay under a distribution deal vs flat charge | Different accounting and conduct rules |
+| Taxes and levies | Premium tax, parafiscal charges, stamp duties | Set by **risk location** and local law |
+
+### Reinsurance terms (additions)
+
+| Term | Plain meaning |
+|---|---|
+| Cedant | The insurer passing risk to a reinsurer |
+| Ceding commission | Paid by reinsurer to cedant (proportional treaties) to cover acquisition and admin costs |
+| Facultative | Reinsurance of one risk, negotiated on its own |
+| Treaty | Reinsurance of a defined portfolio |
+| Proportional | Reinsurer takes a fixed share of premium and losses (quota share, surplus) |
+| Non-proportional | Reinsurer pays above a retention up to a limit (excess of loss) |
+| Occurrence / event limit | Most the treaty pays for one event |
+| Reinstatement | Restoring used limit after a loss, usually for extra premium |
+| Retrocession | Reinsurance bought by a reinsurer |
+
+### Beginner checkpoint (source wording, answer without notes)
+
+1. Why is the London market not the same as Lloyd's?
+2. Why is a Lloyd's syndicate not itself the insurer?
+3. Who owns the capital and who carries a subscribed share?
+4. What separates a managing agent, a syndicate, a member and the Lloyd's Corporation?
+5. What do a broker, lead, follower, coverholder, MGA, DCA and reinsurer each do?
+6. What is the difference between a written line and a signed line, and between an MRC and a policy wording?
+
+
 ## 15. Sources for this chapter
 
 - [Lloyd's full year results 2025](https://www.lloyds.com/insights/media-centre/press-releases/lloyds-announces-full-year-results-2025)

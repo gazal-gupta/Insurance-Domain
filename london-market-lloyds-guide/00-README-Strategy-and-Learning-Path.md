@@ -71,6 +71,7 @@ The knowledge levels (Beginner → Advanced) take about 12 weeks. Becoming a wor
 | **28** | **[Diagnostic toolkits: delegated authority and AI readiness](28-Diagnostic-Toolkits.md)** | **Owned asset** | 2 hrs |
 | **29** | **[Account profiles: 25 managing agents](29-Account-Profiles-Top-25.md)** | **Business development** | 2 hrs |
 | **30** | **[Flagship point of view: fact base and storyline](30-POV-Fact-Base-Cost-of-a-Transaction.md)** | **Thought leadership** | 1 hr |
+| **31** | **[Master Guide integration map and correction log](31-Master-Guide-Integration-Map.md)** | **Reference: where every source section lives** | 30 min |
 | **26** | **[AI use-case library, capabilities and live examples](26-AI-Use-Cases-Capabilities-Live-Examples.md)** | **Advanced – AI spike** | 4 hrs |
 | **23** | **[Lloyd's process catalogue: 20 processes, stages, steps, parties, RACI](23-Lloyds-Process-Catalogue.md)** | **Working reference** | 3 hrs |
 | **24** | **[Lloyd's systems, documents and data: interlinked end to end](24-Lloyds-Systems-Documents-Data-Flow.md)** | **Technical reference** | 2 hrs |
@@ -147,3 +148,43 @@ Reading alone will not get you there. For each module:
 10. "AI value in London is highest today in submission intake, wording review, bordereaux processing and claims triage, and the constraint is data quality and governance, not models."
 
 If you cannot explain each sentence for two minutes, go back to the relevant module.
+
+## Master Guide integration: how mastery is tested
+
+This section brings in the orientation part of the source *Master Learning Guide* (full text kept in [source-material](source-material/London_Market_and_Lloyds_Master_Learning_Guide.md); line-by-line coverage in [Module 31](31-Master-Guide-Integration-Map.md)).
+
+**Who the source was written for:** insurance professionals, business analysts, product owners, architects, transformation leaders and consultants who want practitioner-level command of both the company market and Lloyd's. **Its stated aim:** move from beginner to advanced; explain who does what, how risk and money move, where processes break and which systems enable them; and advise on modernisation, data and AI.
+
+### Five views of the same risk
+
+A London market expert does not memorise acronyms. They can look at one risk from five angles and connect them **[certain]**:
+
+| # | View | The question it answers |
+|---|---|---|
+| 1 | **Risk and contract** | What is insured, where, for how much, for which period, on which terms and exclusions? |
+| 2 | **Market and capital** | Which legal entity or Lloyd's member carries each share? Who leads, follows, delegates or reinsures? |
+| 3 | **Process and control** | How does the risk move from broker submission to quote, firm order, bind, premium, claims and closure? |
+| 4 | **Data and technology** | Which record is the master at each stage? How do placing, policy, accounting, claims, exposure, regulatory and market platforms exchange data? |
+| 5 | **Economics and outcomes** | How are premium, brokerage, expenses, capital, reinsurance, losses, reserves and profit measured, and where can change improve them? |
+
+**The core mental model.** London is a specialist, broker-led ecosystem built on subscription and delegated authority. It is not one insurer running one policy system. Lloyd's is a marketplace inside that ecosystem; the company market sits next to it. Shared market infrastructure, brokers, carriers, managing agents, coverholders, service companies, claims specialists and reinsurers connect the lifecycle. A consultant must be able to move between the market view and the single-transaction view in the same conversation.
+
+### How to pace yourself (source plan mapped to this guide)
+
+| Stage | Source weeks | What to do | Modules in this guide |
+|---|---|---|---|
+| Beginner | 1–4 | Learn the ecosystem, Lloyd's structure, core language and open-market placement. Aim to explain the market on one page. | 01, 02, 03, 21 (Part A) |
+| Intermediate | 5–12 | Trace a risk through placement, underwriting, contract certainty, premium, claims, delegated authority and reinsurance. Work the scenarios and data flows. | 04, 05, 06, 23, 24 |
+| Advanced | 13–24 | Diagnose operating models, control gaps, architecture, data quality, performance and AI. Defend options and trade-offs. | 07, 08, 09, 25, 26, 11, 27–30 |
+| Ongoing | — | Read current Lloyd's requirements and market notices. Check terms and process against the client's class, territory, model, contract and platforms. | 13, 20 |
+
+**Progress rule.** Do not move on because you have read a section. Move on when you can explain it without notes, draw the flow, and answer "what could go wrong?" The full 24-week plan, weekly rhythm and phase gates are in [Module 18](18-World-Class-Consultant-Path.md).
+
+**Research cut-off and validity.** The source guide is dated 19 November 2026. For a live engagement, the contract documents, current Lloyd's requirements, regulator rules and the client's own procedures always win over any guide, including this one.
+
+### What makes someone a London market champion
+
+They can explain the market in plain language; draw the risk and money flows; separate the legal risk carriers from market infrastructure; work in both open-market and delegated models; explain the claims and reinsurance effects of contract structure; map systems and data standards; and show where change creates measurable value without weakening underwriting discipline or governance.
+
+The real test is not how many acronyms you know. It is whether you can sit with a CUO, COO, Claims Director, broker, CTO or Chief Risk Officer, understand their problem in market context, challenge their assumptions, recommend a practical path and defend the consequences.
+

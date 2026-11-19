@@ -281,3 +281,79 @@ Do not score yourself without evidence. Every level claim needs either an artefa
 | 4 | Read Module 07. Second syndicate teardown. Write your first "so-what" summary of Lloyd's H1 2026 results. Book your first two practitioner conversations. Score yourself on the capability model. |
 
 Then continue with Phase 1 for months 2–3 and review against the Phase 1 exit test.
+
+## Master Guide integration: the 24-week learning journey, gates and capstone
+
+**How this fits the 24-month path above.** The source's 24-week plan is a **knowledge** plan at about 5–7 hours a week. The 24-month path in this module is a **reputation** plan (spike, proof artefacts, network). Run the 24 weeks as the first six months of Phase 1. If you already know general P&C, move faster on basics but do not skip London-specific mechanics: Lloyd's governance, subscription and delegated authority.
+
+### 24-week journey
+
+| Phase | Weeks | Focus | Evidence of mastery | Modules |
+|---|---:|---|---|---|
+| 1 Foundation | 1–2 | Ecosystem, Lloyd's structure, company market, capital, participants | One-page ecosystem map; 5-minute spoken explanation; glossary quiz | 01, 02, 21 |
+| 2 Placement | 3–4 | Submission, appetite, quote, lead and follow, lines, MRC, contract certainty | Placement flow; worked subscription example; MRC field walk-through | 04 |
+| 3 Policy and premium | 5–6 | Bind, policy, endorsement, renewal, technical accounting, settlement | Policy lifecycle map; premium-to-cash reconciliation exercise | 04, 06 |
+| 4 Claims | 7–8 | FNOL, coverage, reserve, CLA, SCAP, delegated claims, payment and recovery | Claims swimlane; complex claim discussion (Case 17) | 06, 25 |
+| 5 Delegated authority | 9–10 | Coverholder, MGA, binder, DCA, bordereaux, ATLAS and DCOM, audit | Binder control matrix; DA oversight dashboard design (Case 16) | 05 |
+| 6 Reinsurance | 11–12 | Treaty and facultative, structures, recoveries, RITC, capital | Gross-to-net flow; treaty allocation exercise (Case 20) | 06, 07 |
+| 7 Regulation and market change | 13–14 | PRA, FCA, Lloyd's, Solvency UK, licensing, resilience, strategy | Regulatory obligation map; 2026 change briefing | 07, 20 |
+| 8 Technology | 15–16 | PPL, Velonetic, carrier cores, CDR and ACORD, integration, architecture | Capability architecture; system-of-record matrix | 08, 24, 25 |
+| 9 Data and analytics | 17–18 | CDR, reference data, data quality, KPIs, exposure, reporting | CDR data dictionary sample; metric tree; lineage map | 08, 11 |
+| 10 AI and automation | 19–20 | Use cases, agent orchestration, evaluation, risk controls | AI opportunity portfolio; architecture; evaluation plan (Case 19) | 09, 26 |
+| 11 Consulting delivery | 21–22 | Discovery, problem solving, options, value case, change, controls | Discovery pack; maturity assessment; business case | 11, 27, 28 |
+| 12 Capstone | 23–24 | Integrated client scenario and executive defence | 15-slide recommendation and 30-minute Q&A defence | All |
+
+### Weekly rhythm (about 5–7 hours)
+
+| Activity | Time | What you do |
+|---|---|---|
+| Read | 60–90 min | One concept area plus official market material |
+| Draw | 45 min | One workflow, actor map, data lineage or system context diagram |
+| Apply | 90 min | One scenario with realistic sample data and documents |
+| Explain | 30 min | 5-minute teach-back without notes |
+| Defend | 30 min | Answer "why?", "what could go wrong?", "who is accountable?", "how would we measure success?" |
+| Reflect | 15 min | Log gaps, unclear terms and questions that need an authoritative answer |
+
+### Six phase gates
+
+| Gate | You are ready when you can… |
+|---|---|
+| 1 Foundation | Explain London vs Lloyd's vs company market; identify capital, legal risk carriers and governance; define 30 core terms; draw the participant ecosystem |
+| 2 Lifecycle | Trace open-market placement and a claim end to end, naming systems, data and money at each hand-off; explain lead, follow and subscription |
+| 3 Delegated and reinsurance | Design a binder control framework; explain coverholder vs MGA; diagnose bordereau failure; map a treaty recovery |
+| 4 Technology and regulation | Separate standards from platforms; find systems of record; explain central services; map regulators; describe current modernisation accurately |
+| 5 AI | Pick the right technique; design a bounded agent workflow; specify evaluation, controls and outcomes; defend where human accountability stays |
+| 6 Consultant champion | Run a 60-minute discovery; synthesise a problem-led storyline; size options; recommend a roadmap; defend trade-offs with business, technology and risk leaders |
+
+### Capstone: advise a specialty insurer or managing agent
+
+**Brief.** A London insurer wants better specialty underwriting productivity, DA control and claims service. Submissions are document-heavy; policy data is fragmented; bordereaux are late; claims matching is inconsistent; technology leaders are considering an AI workbench.
+
+**Eleven deliverables**
+1. Market operating model and stakeholder map.
+2. Current-state value-stream maps for open-market and delegated business.
+3. Systems-of-record and integration architecture.
+4. Data quality assessment mapped to CDR and ACORD fields.
+5. Baseline KPI tree with definitions and denominators.
+6. Root-cause analysis and a prioritised opportunity backlog.
+7. Target operating model: roles, authority, control design.
+8. Target architecture with a coexistence strategy.
+9. AI opportunity matrix, governance tiers, evaluation and release plan.
+10. 24-month roadmap: dependencies, costs, benefits, risks, benefit owners.
+11. Executive decision paper: choices, recommendation, trade-offs, decisions needed.
+
+**The defence must answer:** Why this sequence? Why not replace the core first? Which market standards matter? What changes for brokers and underwriters? How will DA oversight improve? How are claims and premium linked? How will benefits be evidenced? What risks remain? **What will the firm stop doing?**
+
+Use the [value model and diagnostics workbooks](../consulting-assets/README.md) for deliverables 5, 6 and 10.
+
+### First 30 days (for an experienced insurance consultant)
+
+| Week | Focus | Output |
+|---|---|---|
+| 1 | Lloyd's introduction, company market, actor map, Chain of Security, member / syndicate / agent duties | One-page market map |
+| 2 | Draw a subscription placement: slip and MRC, lines, signing down, contract certainty, CDR, PPL, Velonetic | Explain a £100m risk split across four participants |
+| 3 | Trace premium settlement and a complex claim: CLA and SCAP, technical vs financial account, EBOT and ECOT, claim-to-policy matching | Money and claims trace |
+| 4 | Delegated authority (coverholder, MGA, binder, DCA, bordereaux, ATLAS and DCOM) plus 2026 modernisation and AI themes | 10-minute client briefing defended against 10 questions |
+
+At day 30 you should be credible in discovery and know your gaps. Champion-level skill needs repeated casework, time with market practitioners, and constant checking of current rules and contracts.
+
