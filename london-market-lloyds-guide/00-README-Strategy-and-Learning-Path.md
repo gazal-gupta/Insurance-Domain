@@ -67,6 +67,7 @@ The knowledge levels (Beginner → Advanced) take about 12 weeks. Becoming a wor
 | 12 | [Glossary A–Z](12-Glossary.md) | Reference | — |
 | 13 | [Self-assessment, 12-week plan, sources](13-Sources-and-Further-Reading.md) | All | — |
 | **21** | **[Lloyd's end to end: functioning, processes, stakeholders, underwriting, claims, DA, coverholders, bordereaux, reinsurance](21-Lloyds-End-to-End.md)** | **Master reference – read before any Lloyd's client** | 6–8 hrs |
+| **26** | **[AI use-case library, capabilities and live examples](26-AI-Use-Cases-Capabilities-Live-Examples.md)** | **Advanced – AI spike** | 4 hrs |
 | **23** | **[Lloyd's process catalogue: 20 processes, stages, steps, parties, RACI](23-Lloyds-Process-Catalogue.md)** | **Working reference** | 3 hrs |
 | **24** | **[Lloyd's systems, documents and data: interlinked end to end](24-Lloyds-Systems-Documents-Data-Flow.md)** | **Technical reference** | 2 hrs |
 | **25** | **[Lloyd's IT landscape by stage: swimlane views](25-Lloyds-IT-Landscape-Swimlanes.md)** | **Technical reference** | 2 hrs |
