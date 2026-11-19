@@ -13,7 +13,7 @@
   --display: "Fraunces", Georgia, "Times New Roman", serif;
   --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --radius: 10px; --topbar: 60px;
+  --radius: 10px; --topbar: 60px; --diagram-bg: #FFFFFF; --diagram-ink: #14243A;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -21,6 +21,7 @@
     --ink: #F1E7CF; --brass: #D7AC52; --brass-soft: #3A2E15; --teal: #63B5BD; --teal-soft: #14323A;
     --ok: #6CC08E; --warn: #E2A84C; --risk: #E58190;
     --c0: #D7AC52; --c1: #63B5BD; --c2: #B58FD9; --c3: #6CC08E; --c4: #E58190; --c5: #7FA6EA; --c6: #E2A84C; --c7: #A6B1C1;
+    --diagram-bg: #F4F6F9; --diagram-ink: #14243A;
     color-scheme: dark;
   }
 }
@@ -29,6 +30,7 @@
   --ink: #F1E7CF; --brass: #D7AC52; --brass-soft: #3A2E15; --teal: #63B5BD; --teal-soft: #14323A;
   --ok: #6CC08E; --warn: #E2A84C; --risk: #E58190;
   --c0: #D7AC52; --c1: #63B5BD; --c2: #B58FD9; --c3: #6CC08E; --c4: #E58190; --c5: #7FA6EA; --c6: #E2A84C; --c7: #A6B1C1;
+  --diagram-bg: #F4F6F9; --diagram-ink: #14243A;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -197,8 +199,31 @@ h1, h2, h3 { font-family: var(--display); color: var(--ink); text-wrap: balance;
 .prose td { padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; font-variant-numeric: tabular-nums; }
 .prose tr:last-child td { border-bottom: 0; }
 .prose tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface-2) 45%, transparent); }
-.diagram { overflow-x: auto; margin: 14px 0 20px; padding: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
-.diagram pre.mermaid { margin: 0; background: transparent; text-align: center; font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: pre; }
+.diagram { margin: 16px 0 24px; background: var(--diagram-bg); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.dbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 12px; border-bottom: 1px solid #D8DEE6; background: #F3F5F8; color: var(--diagram-ink); }
+.dleg { font-size: 12.5px; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; color: #3B4656; }
+.sw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid; vertical-align: -2px; margin-left: 6px; }
+.sw:first-child { margin-left: 0; }
+.s-start { background: #2B7A4B; border-color: #1E5A37; } .s-step { background: #FFF4DA; border-color: #9C7218; }
+.s-dec { background: #FDE7C4; border-color: #A86400; } .s-end { background: #1C6A73; border-color: #124A50; } .s-actor { background: #14243A; border-color: #14243A; }
+.dleg .num { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: #1C6A73; color: #FFFFFF; font-style: normal; font-size: 11px; font-weight: 700; margin-left: 6px; }
+.dbar .enlarge { background: #14243A; color: #FFFFFF; border-color: #14243A; }
+.dwrap { overflow-x: auto; padding: 16px; cursor: zoom-in; }
+.diagram pre.mermaid { margin: 0; background: transparent; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: #5A6577; white-space: pre; }
+.diagram svg { display: block; margin: 0 auto; height: auto; }
+.diagram svg, .diagram svg * { font-family: Arial, Helvetica, sans-serif; }
+.diagram svg { white-space: normal; }
+.diagram[data-kind="flow-numbered"] svg, .diagram[data-kind="sequence"] svg { width: auto !important; max-width: none !important; }
+.diagram[data-kind="flow"] svg, .diagram[data-kind="other"] svg { width: 100% !important; max-width: none !important; min-width: 760px; }
+.lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(10, 16, 26, .82); display: flex; flex-direction: column;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
+.lightbox[hidden] { display: none !important; }
+.lbbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; background: #FFFFFF; color: #14243A; border-radius: 10px 10px 0 0; padding: 8px 12px; }
+.lbbar b { flex: 1; min-width: 0; font-family: var(--display); font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lbbar .btn { background: #FFFFFF; color: #14243A; border-color: #C9D1DC; }
+.lbbar .zoomval { font-family: var(--mono); font-size: 12.5px; min-width: 48px; text-align: center; }
+.lbbody { flex: 1; overflow: auto; background: #FFFFFF; border-radius: 0 0 10px 10px; padding: 20px; }
+.lbbody svg { display: block; margin: 0 auto; max-width: none !important; height: auto; }
 .notes { margin: 28px 0 0; background: var(--teal-soft); border-radius: var(--radius); padding: 12px 14px; display: grid; gap: 6px; }
 .notes label { font-size: 13px; font-weight: 600; color: var(--teal); }
 .notes textarea { font: inherit; font-size: 14px; width: 100%; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); padding: 8px 10px; resize: vertical; }
@@ -221,7 +246,6 @@ footer.foot { margin-top: 64px; font-size: 13px; color: var(--muted); border-top
   .hub { max-width: 190px; }
 }
 .brand .short { display: none; }
-@media (max-width: 760px) { .diagram svg { min-width: 560px; } }
 @media (max-width: 520px) { .search { display: none; } .brand { flex: 1 1 auto; } .brand .full { display: none; } .brand .short { display: inline; } }
 </style>
 
@@ -489,13 +513,21 @@ footer.foot { margin-top: 64px; font-size: 13px; color: var(--muted); border-top
 </tbody>
 </table></div>
 <h3 id="m00-2-2-the-learning-path">2.2 The learning path</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  B[Beginner&lt;br/&gt;Weeks 1-3&lt;br/&gt;Market structure, actors,&lt;br/&gt;classes, core terms]
-  I[Intermediate&lt;br/&gt;Weeks 4-8&lt;br/&gt;Placement, delegated authority,&lt;br/&gt;accounting, settlement, claims,&lt;br/&gt;reinsurance]
-  A[Advanced&lt;br/&gt;Weeks 9-12&lt;br/&gt;Capital, regulation, finance,&lt;br/&gt;modernisation, data, AI]
-  C[Champion&lt;br/&gt;Months 4-24&lt;br/&gt;Spike, proof artefacts,&lt;br/&gt;real exposure, POVs,&lt;br/&gt;client outcomes]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  B["1. Beginner&lt;br/&gt;Weeks 1-3&lt;br/&gt;Market structure, actors,&lt;br/&gt;classes, core terms"]
+  I["2. Intermediate&lt;br/&gt;Weeks 4-8&lt;br/&gt;Placement, delegated authority,&lt;br/&gt;accounting, settlement, claims,&lt;br/&gt;reinsurance"]
+  A["3. Advanced&lt;br/&gt;Weeks 9-12&lt;br/&gt;Capital, regulation, finance,&lt;br/&gt;modernisation, data, AI"]
+  C["4. Champion&lt;br/&gt;Months 4-24&lt;br/&gt;Spike, proof artefacts,&lt;br/&gt;real exposure, POVs,&lt;br/&gt;client outcomes"]
   B --&gt; I --&gt; A --&gt; C
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class B startc
+  class I,A stepc
+  class C endc
+</pre></div></div>
 <p>The knowledge levels (Beginner → Advanced) take about 12 weeks. Becoming a world-class consultant takes about 24 months of deliberate practice and real exposure – see <a href="#m18">Module 18</a>.</p>
 <h3 id="m00-2-3-guide-map">2.3 Guide map</h3>
 <div class="table-wrap"><table>
@@ -1076,11 +1108,19 @@ footer.foot { margin-top: 64px; font-size: 13px; color: var(--muted); border-top
 <p><strong>Risk in this choice:</strong> AI consulting is crowded with people who know AI but not insurance. If you neglect domain depth (pillar A and B), you become one of them. Keep 60% of your learning time on domain and finance, 40% on AI and data, until month 12.</p>
 <hr />
 <h2 id="m18-4-the-24-month-roadmap">4. The 24-month roadmap</h2>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  P1[Phase 1&lt;br/&gt;Months 0-3&lt;br/&gt;FOUNDATION&lt;br/&gt;Language and mental models] --&gt; P2[Phase 2&lt;br/&gt;Months 3-9&lt;br/&gt;PRACTITIONER&lt;br/&gt;Process, data and first proof]
-  P2 --&gt; P3[Phase 3&lt;br/&gt;Months 9-18&lt;br/&gt;EXPERT&lt;br/&gt;Spike depth and published POV]
-  P3 --&gt; P4[Phase 4&lt;br/&gt;Months 18-24+&lt;br/&gt;AUTHORITY&lt;br/&gt;Client outcomes and market presence]
-</pre></div>
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  P1["1. Phase 1&lt;br/&gt;Months 0-3&lt;br/&gt;FOUNDATION&lt;br/&gt;Language and mental models"] --&gt; P2["2. Phase 2&lt;br/&gt;Months 3-9&lt;br/&gt;PRACTITIONER&lt;br/&gt;Process, data and first proof"]
+  P2 --&gt; P3["3. Phase 3&lt;br/&gt;Months 9-18&lt;br/&gt;EXPERT&lt;br/&gt;Spike depth and published POV"]
+  P3 --&gt; P4["4. Phase 4&lt;br/&gt;Months 18-24+&lt;br/&gt;AUTHORITY&lt;br/&gt;Client outcomes and market presence"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class P1 startc
+  class P2,P3 stepc
+  class P4 endc
+</pre></div></div>
 <h3 id="m18-phase-1-foundation-months-0-3">Phase 1 – Foundation (months 0–3)</h3>
 <p><strong>Goal:</strong> speak the language correctly and hold the core mental models (risk flow, money flow, data flow).</p>
 <div class="table-wrap"><table>
@@ -1896,13 +1936,19 @@ Total result       = Underwriting result + Investment return − Tax
 <p>Source: Lloyd's results releases <span class="tag tag-certain">certain</span> for headline figures; underlying split <span class="tag tag-likely">likely</span>.</p>
 <p><strong>What an advisor sees <span class="tag tag-likely">likely</span>:</strong> headline results look strong because 2025 and early 2026 had moderate catastrophe losses and reserve releases. But the underlying ratio is rising period after period because prices are falling. That is the classic early stage of a <strong>soft market</strong>. Clients who keep growing at falling prices are building future losses.</p>
 <h3 id="m01-2-5-the-insurance-cycle">2.5 The insurance cycle</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[Prices high,&lt;br/&gt;profits strong] --&gt; B[New capital and&lt;br/&gt;competitors enter]
-  B --&gt; C[Prices fall, terms widen&lt;br/&gt;SOFT MARKET]
-  C --&gt; D[Losses rise, reserves&lt;br/&gt;deteriorate, capital lost]
-  D --&gt; E[Capacity withdraws,&lt;br/&gt;prices rise&lt;br/&gt;HARD MARKET]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. Prices high,&lt;br/&gt;profits strong"] --&gt; B["2. New capital and&lt;br/&gt;competitors enter"]
+  B --&gt; C["3. Prices fall, terms widen&lt;br/&gt;SOFT MARKET"]
+  C --&gt; D["4. Losses rise, reserves&lt;br/&gt;deteriorate, capital lost"]
+  D --&gt; E["5. Capacity withdraws,&lt;br/&gt;prices rise&lt;br/&gt;HARD MARKET"]
   E --&gt; A
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A,B,C,D,E stepc
+</pre></div></div>
 <p>Drivers: supply of capital, major catastrophes, investment returns, reserve surprises (especially US liability), and competition. In 2026 new capital is still entering Lloyd's – approved capital for 2026 rose to about £36.2bn and 13 new syndicates started on 1 January 2026 <span class="tag tag-likely">likely</span> – which adds to price pressure.</p>
 <h3 id="m01-2-6-consulting-angle">2.6 Consulting angle</h3>
 <p>Every recommendation you make must land on one of four numbers: <strong>loss ratio, expense ratio, capital, or growth</strong>. In a soft market, clients care most about the expense ratio (they control it) and loss selection (they partly control it). Learn to say: "This change takes about 1.5 points off your expense ratio," not "This improves efficiency."</p>
@@ -1992,14 +2038,22 @@ Total result       = Underwriting result + Investment return − Tax
 </table></div>
 <h3 id="m01-3-3-layers-and-towers">3.3 Layers and towers</h3>
 <p>Large limits are often split into <strong>layers</strong>, each insured by different insurers at different prices. Together they form a <strong>tower</strong>.</p>
-<div class="diagram"><pre class="mermaid">flowchart TB
-  L4["Layer 4: $250m xs $250m&lt;br/&gt;(rarely hit, cheapest per $ of limit)"]
-  L3["Layer 3: $150m xs $100m"]
-  L2["Layer 2: $75m xs $25m"]
-  L1["Primary: $24m xs $1m deductible&lt;br/&gt;(hit most often, most expensive per $ of limit)"]
-  D["Deductible: first $1m kept by insured"]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
+  L4["1. Layer 4: $250m xs $250m&lt;br/&gt;(rarely hit, cheapest per $ of limit)"]
+  L3["2. Layer 3: $150m xs $100m"]
+  L2["3. Layer 2: $75m xs $25m"]
+  L1["4. Primary: $24m xs $1m deductible&lt;br/&gt;(hit most often, most expensive per $ of limit)"]
+  D["5. Deductible: first $1m kept by insured"]
   L4 --- L3 --- L2 --- L1 --- D
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class L4 startc
+  class L3,L2,L1 stepc
+  class D endc
+</pre></div></div>
 <p>"$75m xs $25m" means the layer pays losses above $25m, up to a further $75m (so it covers losses between $25m and $100m).</p>
 <p><strong>Worked example:</strong> a $60m loss is paid as follows. The insured pays the first $1m (deductible). The primary layer ($24m xs $1m) pays the loss from $1m up to $25m – that is $24m. Layer 2 pays from $25m to $60m = $35m. Layers 3 and 4 pay nothing. Total: $1m + $24m + $35m = $60m.</p>
 <p><strong>Why it matters:</strong> each layer often has its own lead underwriter, followers, price and sometimes wording. Gaps or differences between layers cause disputes – a classic contract certainty risk.</p>
@@ -2108,15 +2162,22 @@ Total result       = Underwriting result + Investment return − Tax
 <hr />
 <h2 id="m01-4-direct-insurance-reinsurance-and-retrocession">4. Direct insurance, reinsurance and retrocession</h2>
 <h3 id="m01-4-1-the-idea">4.1 The idea</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  Client[Client] -- premium --&gt; Insurer
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  Client["5. Client"] -- premium --&gt; Insurer
   Insurer -- claims --&gt; Client
   Insurer -- reinsurance premium --&gt; Reinsurer
   Reinsurer -- recoveries --&gt; Insurer
-  Reinsurer -- retro premium --&gt; Retro[Retrocessionaire]
+  Reinsurer -- retro premium --&gt; Retro["4. Retrocessionaire"]
   Retro -- recoveries --&gt; Reinsurer
-  Investors[Capital markets / ILS investors] -- capital --&gt; Reinsurer
-</pre></div>
+  Investors["1. Capital markets / ILS investors"] -- capital --&gt; Reinsurer
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class Investors startc
+  class Client,Insurer,Reinsurer,Retro stepc
+</pre></div></div>
 <ul>
 <li><strong>Direct insurance</strong>: insurer covers a client.</li>
 <li><strong>Reinsurance</strong>: an insurer transfers part of its risk to a reinsurer.</li>
@@ -2713,7 +2774,8 @@ Total result       = Underwriting result + Investment return − Tax
 <p>This chapter gives you the full cast. For each party we cover four things: <strong>what it does</strong>, <strong>how it earns money</strong>, <strong>who regulates it</strong>, and <strong>what it means for a consultant</strong>.</p>
 <hr />
 <h2 id="m02-2-the-full-map">2. The full map</h2>
-<div class="diagram"><pre class="mermaid">flowchart TB
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
   subgraph Demand[Demand side]
     INS[Insured / Client]
     RB[Retail / producing broker]
@@ -2763,7 +2825,7 @@ Total result       = Underwriting result + Investment return − Tax
   WB --- VEL
   WB --- PLAT
   MA --- PLAT
-</pre></div>
+</pre></div></div>
 <h3 id="m02-2-1-each-party-through-three-lenses">2.1 Each party through three lenses</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -3035,7 +3097,8 @@ Total result       = Underwriting result + Investment return − Tax
 <h3 id="m02-3-5-managing-agents">3.5 Managing agents</h3>
 <p><strong>What they are <span class="tag tag-certain">certain</span>:</strong> companies authorised to manage syndicates on behalf of members. They employ the underwriters and support teams and run the business.</p>
 <p><strong>Typical organisation of a managing agent</strong></p>
-<div class="diagram"><pre class="mermaid">flowchart TB
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
   BOARD[Board&lt;br/&gt;with independent NEDs] --&gt; CEO
   CEO --&gt; CUO[Chief Underwriting Officer&lt;br/&gt;class underwriting teams]
   CEO --&gt; CFO[CFO&lt;br/&gt;finance, actuarial, capital,&lt;br/&gt;reinsurance]
@@ -3044,7 +3107,7 @@ Total result       = Underwriting result + Investment return − Tax
   CEO --&gt; CRO[CRO&lt;br/&gt;risk, exposure management]
   CEO --&gt; COMP[Compliance / conduct]
   BOARD --&gt; IA[Internal audit]
-</pre></div>
+</pre></div></div>
 <p><strong>How managing agents earn money</strong></p>
 <div class="table-wrap"><table>
 <thead>
@@ -4949,7 +5012,8 @@ Total result       = Underwriting result + Investment return − Tax
 <p>This chapter covers the open market and facilities. Delegated authority is in <a href="#m05">Module 05</a>.</p>
 <hr />
 <h2 id="m04-3-the-placement-lifecycle-stage-by-stage">3. The placement lifecycle – stage by stage</h2>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
   autonumber
   participant C as Client / Retail broker
   participant B as London broker
@@ -4977,7 +5041,7 @@ Total result       = Underwriting result + Investment return − Tax
   B-&gt;&gt;V: Net premium
   V-&gt;&gt;L: Settlement
   V-&gt;&gt;F: Settlement
-</pre></div>
+</pre></div></div>
 <h3 id="m04-stage-0-renewal-planning-90-120-days-before-expiry">Stage 0 – Renewal planning (90–120 days before expiry)</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -5571,17 +5635,24 @@ SUBJECTIVITIES:           Survey of Site 4 within 45 days of inception
 <hr />
 <h2 id="m04-9-underwriting-inside-the-insurer">9. Underwriting inside the insurer</h2>
 <h3 id="m04-9-1-the-underwriting-control-framework">9.1 The underwriting control framework</h3>
-<div class="diagram"><pre class="mermaid">flowchart TB
-  A[Business plan - SBF&lt;br/&gt;approved by Lloyd's] --&gt; B[Underwriting strategy&lt;br/&gt;and risk appetite]
-  B --&gt; C[Underwriting authorities&lt;br/&gt;per underwriter]
-  C --&gt; D[Line guides and&lt;br/&gt;pricing guidelines]
-  D --&gt; E[Risk decision]
-  E --&gt; F[Referral and peer review]
-  F --&gt; G[Bound risk recorded]
-  G --&gt; H[Underwriting audit]
-  H --&gt; I[Portfolio monitoring:&lt;br/&gt;rate, mix, aggregates]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
+  A["1. Business plan - SBF&lt;br/&gt;approved by Lloyd's"] --&gt; B["2. Underwriting strategy&lt;br/&gt;and risk appetite"]
+  B --&gt; C["3. Underwriting authorities&lt;br/&gt;per underwriter"]
+  C --&gt; D["4. Line guides and&lt;br/&gt;pricing guidelines"]
+  D --&gt; E["5. Risk decision"]
+  E --&gt; F["6. Referral and peer review"]
+  F --&gt; G["7. Bound risk recorded"]
+  G --&gt; H["8. Underwriting audit"]
+  H --&gt; I["9. Portfolio monitoring:&lt;br/&gt;rate, mix, aggregates"]
   I --&gt; B
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,D,E,F,G,H,I stepc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -6156,7 +6227,8 @@ SUBJECTIVITIES:           Survey of Site 4 within 45 days of inception
 </table></div>
 <hr />
 <h2 id="m05-3-the-da-chain-and-its-contracts">3. The DA chain and its contracts</h2>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   I[Insured] --&gt; RB[Retail broker / agent]
   RB --&gt; CH[Coverholder / MGA&lt;br/&gt;binds locally]
   CH -- binding authority placed by --&gt; LB[London broker]
@@ -6167,7 +6239,7 @@ SUBJECTIVITIES:           Survey of Site 4 within 45 days of inception
   I -- claim --&gt; DCA[Coverholder or DCA / TPA]
   DCA -- claims bordereaux --&gt; MA
   MA -- loss fund / claim payments --&gt; DCA
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -6533,7 +6605,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </tbody>
 </table></div>
 <h3 id="m05-7-5-target-state-bordereaux-process">7.5 Target-state bordereaux process</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   A[Coverholder system] --&gt; B[File or API]
   B --&gt; C[Ingestion and mapping&lt;br/&gt;AI-assisted]
   C --&gt; D[Validation against BAA,&lt;br/&gt;sanctions, tax, data rules]
@@ -6545,7 +6618,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   G --&gt; I[Exposure and cat models]
   G --&gt; J[Claims and reserving]
   G --&gt; K[Oversight MI and&lt;br/&gt;audit triggers]
-</pre></div>
+</pre></div></div>
 <p><strong>Design principles:</strong></p>
 <ol>
 <li><strong>One standard internal data model</strong> – map every coverholder to it once.</li>
@@ -7145,17 +7218,25 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <p><strong>Mixed placements</strong> (Lloyd's plus non-bureau company insurers) mean the broker processes the same contract twice in different ways – a structural source of cost and error.</p>
 <h3 id="m06-a3-premium-flow-step-by-step">A3. Premium flow step by step</h3>
-<div class="diagram"><pre class="mermaid">flowchart TB
-  A[Contract bound - MRC,&lt;br/&gt;signed lines] --&gt; B[Broker prepares premium&lt;br/&gt;submission: gross, brokerage,&lt;br/&gt;tax, instalments, currency]
-  B --&gt; C[Submission to bureau&lt;br/&gt;with supporting documents]
-  C --&gt; D[Bureau validation against MRC,&lt;br/&gt;lines, coding, tax]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
+  A["1. Contract bound - MRC,&lt;br/&gt;signed lines"] --&gt; B["2. Broker prepares premium&lt;br/&gt;submission: gross, brokerage,&lt;br/&gt;tax, instalments, currency"]
+  B --&gt; C["3. Submission to bureau&lt;br/&gt;with supporting documents"]
+  C --&gt; D["4. Bureau validation against MRC,&lt;br/&gt;lines, coding, tax"]
   D -- query --&gt; B
-  D --&gt; E[Signing: SND allocated&lt;br/&gt;per insurer share]
-  E --&gt; F[Accounting entries to each&lt;br/&gt;syndicate / company]
-  F --&gt; G[Central settlement: broker pays&lt;br/&gt;net; bureau distributes]
-  G --&gt; H[Lloyd's: premium into&lt;br/&gt;premium trust funds]
-  H --&gt; I[Insurer reconciles bureau data&lt;br/&gt;to own ledger and policy system]
-</pre></div>
+  D --&gt; E["5. Signing: SND allocated&lt;br/&gt;per insurer share"]
+  E --&gt; F["6. Accounting entries to each&lt;br/&gt;syndicate / company"]
+  F --&gt; G["7. Central settlement: broker pays&lt;br/&gt;net; bureau distributes"]
+  G --&gt; H["8. Lloyd's: premium into&lt;br/&gt;premium trust funds"]
+  H --&gt; I["9. Insurer reconciles bureau data&lt;br/&gt;to own ledger and policy system"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,D,E,F,G,H stepc
+  class I endc
+</pre></div></div>
 <h3 id="m06-a4-key-terms">A4. Key terms</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -7369,19 +7450,28 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <hr />
 <h2 id="m06-part-b-claims">Part B – Claims</h2>
 <h3 id="m06-b1-the-claims-process">B1. The claims process</h3>
-<div class="diagram"><pre class="mermaid">flowchart TB
-  A[Loss occurs] --&gt; B[Insured notifies broker / DCA]
-  B --&gt; C[Broker notifies lead via market&lt;br/&gt;claims systems, linked to UMR]
-  C --&gt; D[Lead triages: standard or complex;&lt;br/&gt;checks coverage, sanctions]
-  D --&gt; E[Experts appointed: loss adjuster,&lt;br/&gt;lawyers, forensic accountants]
-  E --&gt; F[Reserve set; followers informed]
-  F --&gt; G{Agreed by claims&lt;br/&gt;agreement parties?}
-  G -- Query / dispute --&gt; H[Investigation, negotiation,&lt;br/&gt;coverage position]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
+  A["1. Loss occurs"] --&gt; B["2. Insured notifies broker / DCA"]
+  B --&gt; C["3. Broker notifies lead via market&lt;br/&gt;claims systems, linked to UMR"]
+  C --&gt; D["4. Lead triages: standard or complex;&lt;br/&gt;checks coverage, sanctions"]
+  D --&gt; E["5. Experts appointed: loss adjuster,&lt;br/&gt;lawyers, forensic accountants"]
+  E --&gt; F["6. Reserve set; followers informed"]
+  F --&gt; G{"7. Agreed by claims&lt;br/&gt;agreement parties?"}
+  G -- Query / dispute --&gt; H["8. Investigation, negotiation,&lt;br/&gt;coverage position"]
   H --&gt; G
-  G -- Agreed --&gt; I[Payment via bureau to broker&lt;br/&gt;to insured]
-  I --&gt; J[Recoveries: reinsurance,&lt;br/&gt;subrogation, salvage]
-  J --&gt; K[Claim closed; data to&lt;br/&gt;reserving and MI]
-</pre></div>
+  G -- Agreed --&gt; I["9. Payment via bureau to broker&lt;br/&gt;to insured"]
+  I --&gt; J["10. Recoveries: reinsurance,&lt;br/&gt;subrogation, salvage"]
+  J --&gt; K["11. Claim closed; data to&lt;br/&gt;reserving and MI"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,D,E,F,H,I,J stepc
+  class G decc
+  class K endc
+</pre></div></div>
 <h3 id="m06-b2-who-agrees-a-claim-the-lloyd-s-claims-lead-arrangements">B2. Who agrees a claim – the Lloyd's Claims Lead Arrangements</h3>
 <p>The <strong>Lloyd's Claims Lead Arrangements (LCLA)</strong> replaced the earlier <strong>Lloyd's Claims Scheme (Combined)</strong> <span class="tag tag-likely">likely</span>. In simple terms:</p>
 <div class="table-wrap"><table>
@@ -7698,16 +7788,22 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <hr />
 <h2 id="m06-part-c-reinsurance-operations">Part C – Reinsurance operations</h2>
 <h3 id="m06-c1-the-outwards-reinsurance-cycle">C1. The outwards reinsurance cycle</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[Risk appetite and&lt;br/&gt;capital model] --&gt; B[Programme design:&lt;br/&gt;quota share, XoL, cat, aggregate]
-  B --&gt; C[Placement via RI broker&lt;br/&gt;1 Jan, 1 Jun, 1 Jul]
-  C --&gt; D[Wording and security review]
-  D --&gt; E[Cessions: allocate inwards&lt;br/&gt;risks to treaties]
-  E --&gt; F[RI premium accounting]
-  F --&gt; G[Losses: identify recoverable&lt;br/&gt;claims; collections]
-  G --&gt; H[Disputes, commutations]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. Risk appetite and&lt;br/&gt;capital model"] --&gt; B["2. Programme design:&lt;br/&gt;quota share, XoL, cat, aggregate"]
+  B --&gt; C["3. Placement via RI broker&lt;br/&gt;1 Jan, 1 Jun, 1 Jul"]
+  C --&gt; D["4. Wording and security review"]
+  D --&gt; E["5. Cessions: allocate inwards&lt;br/&gt;risks to treaties"]
+  E --&gt; F["6. RI premium accounting"]
+  F --&gt; G["7. Losses: identify recoverable&lt;br/&gt;claims; collections"]
+  G --&gt; H["8. Disputes, commutations"]
   H --&gt; A
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A,B,C,D,E,F,G,H stepc
+</pre></div></div>
 <h3 id="m06-c2-worked-recovery-cat-xol-with-reinstatement">C2. Worked recovery – cat XoL with reinstatement</h3>
 <p><strong>Programme:</strong> £80m xs £20m cat XoL; annual premium £8m (rate on line 10%); one reinstatement at 100% additional premium, pro rata to amount.</p>
 <p><strong>Event:</strong> hurricane causes £65m net loss to the syndicate.</p>
@@ -8036,13 +8132,14 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <p>So the 2026 YOA's result is only known after its policies have expired and claims have developed – which is why Lloyd's historically used <strong>three-year accounting</strong>.</p>
 <h3 id="m07-a2-closing-a-year-reinsurance-to-close-ritc">A2. Closing a year: reinsurance to close (RITC)</h3>
-<div class="diagram"><pre class="mermaid">timeline
+<div class="diagram" data-kind="other"><div class="dbar"><span class="dleg">Use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+timeline
   title Life of the 2026 year of account
   2026 : Policies written. YOA open.
   2027 : Remaining premium earned. Claims develop.
   2028 (31 Dec) : 36 months. Year normally closed by RITC.
   2029 : Profit distributed to members, or losses funded.
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -8106,12 +8203,20 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <p>The <strong>RITC premium</strong> is the critical number: too low and the 2024 members (who may be different people) subsidise 2023 members; too high and the reverse. This is a fairness and conflict issue that managing agents must govern carefully.</p>
 <h3 id="m07-a3-the-chain-of-security">A3. The chain of security</h3>
-<div class="diagram"><pre class="mermaid">flowchart TB
-  L1[Link 1: Syndicate level assets&lt;br/&gt;Premium trust funds for that syndicate's claims]
-  L2[Link 2: Members' Funds at Lloyd's - FAL&lt;br/&gt;Each member's capital, held in trust]
-  L3[Link 3: Central assets&lt;br/&gt;Central Fund + Corporation assets&lt;br/&gt;+ subordinated debt; mutual]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
+  L1["1. Link 1: Syndicate level assets&lt;br/&gt;Premium trust funds for that syndicate's claims"]
+  L2["2. Link 2: Members' Funds at Lloyd's - FAL&lt;br/&gt;Each member's capital, held in trust"]
+  L3["3. Link 3: Central assets&lt;br/&gt;Central Fund + Corporation assets&lt;br/&gt;+ subordinated debt; mutual"]
   L1 --&gt; L2 --&gt; L3
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class L1 startc
+  class L2 stepc
+  class L3 endc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -8137,15 +8242,23 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>Ratings (2026):</strong> S&amp;P AA- (Very Strong), Fitch AA- (Very Strong), Kroll Bond Rating Agency AA-, all stable; AM Best A+ (Superior), upgraded from A in August 2024 and affirmed in 2026 <span class="tag tag-likely">likely</span> – these market ratings are the floor of security for every policy written at Lloyd's.</p>
 <p><strong>2025 figures:</strong> total capital, reserves and subordinated debt £49.8bn; central solvency ratio 496%; return on capital 22.0% <span class="tag tag-likely">likely</span>. Skadden's summary refers to a $160bn chain of security <span class="tag tag-likely">likely</span>.</p>
 <h3 id="m07-a4-how-capital-is-set">A4. How capital is set</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[SBF: business plan&lt;br/&gt;for next YOA] --&gt; B[Syndicate internal model:&lt;br/&gt;one-year SCR and ultimate SCR]
-  B --&gt; C[Lloyd's Capital Return]
-  C --&gt; D[Lloyd's review and challenge]
-  D --&gt; E[ECA = uSCR x 135%]
-  E --&gt; F[Member FAL = share of ECA,&lt;br/&gt;adjusted for diversification]
-  F --&gt; G[Coming into Line:&lt;br/&gt;FAL in place - usually late Nov]
-  G --&gt; H[Underwriting starts 1 January]
-</pre></div>
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. SBF: business plan&lt;br/&gt;for next YOA"] --&gt; B["2. Syndicate internal model:&lt;br/&gt;one-year SCR and ultimate SCR"]
+  B --&gt; C["3. Lloyd's Capital Return"]
+  C --&gt; D["4. Lloyd's review and challenge"]
+  D --&gt; E["5. ECA = uSCR x 135%"]
+  E --&gt; F["6. Member FAL = share of ECA,&lt;br/&gt;adjusted for diversification"]
+  F --&gt; G["7. Coming into Line:&lt;br/&gt;FAL in place - usually late Nov"]
+  G --&gt; H["8. Underwriting starts 1 January"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,D,E,F,G stepc
+  class H endc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -8631,13 +8744,21 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <hr />
 <h2 id="m07-part-f-regulation-in-late-2026">Part F – Regulation in late 2026</h2>
 <h3 id="m07-f1-three-layers">F1. Three layers</h3>
-<div class="diagram"><pre class="mermaid">flowchart TB
-  PRA[PRA - prudential] --&gt; LLO[Lloyd's - market oversight&lt;br/&gt;under Lloyd's Act 1982]
-  FCA[FCA - conduct] --&gt; LLO
-  LLO --&gt; MA[Managing agents and syndicates]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
+  PRA["1. PRA - prudential"] --&gt; LLO["3. Lloyd's - market oversight&lt;br/&gt;under Lloyd's Act 1982"]
+  FCA["2. FCA - conduct"] --&gt; LLO
+  LLO --&gt; MA["4. Managing agents and syndicates"]
   PRA --&gt; MA
   FCA --&gt; MA
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class PRA,FCA startc
+  class LLO stepc
+  class MA endc
+</pre></div></div>
 <h3 id="m07-f2-pra">F2. PRA</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -9333,7 +9454,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>Rule for data models:</strong> a London carrier's model must hold UMR, MRC sections, signed lines by insurer, CDR fields, risk codes, tax and regulatory data, and the links between premium entries (SND/OSND) and claims (UCR/TR).</p>
 <hr />
 <h2 id="m08-5-reference-architecture-for-a-london-carrier">5. Reference architecture for a London carrier</h2>
-<div class="diagram"><pre class="mermaid">flowchart TB
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
   subgraph In[Inputs]
     E[Broker email and documents]
     P[Placing platforms]
@@ -9381,7 +9503,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   CLM --&gt; DP
   EXP --&gt; DP
   DP --&gt; MI
-</pre></div>
+</pre></div></div>
 <h3 id="m08-5-1-layer-by-layer">5.1 Layer by layer</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -10296,16 +10418,25 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <hr />
 <h2 id="m09-4-deep-dives">4. Deep dives</h2>
 <h3 id="m09-4-1-submission-intake-and-triage">4.1 Submission intake and triage</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[Broker email and&lt;br/&gt;attachments] --&gt; B[Extraction to schema:&lt;br/&gt;insured, class, limits,&lt;br/&gt;SOV, loss history]
-  B --&gt; C[Enrichment: company data,&lt;br/&gt;geocoding, sanctions,&lt;br/&gt;cat scores]
-  C --&gt; D[Appetite and priority score]
-  D --&gt; E{Fit?}
-  E -- No --&gt; F[Fast decline with reason]
-  E -- Yes --&gt; G[Workbench: pre-filled risk,&lt;br/&gt;pricing inputs]
-  G --&gt; H[Underwriter decision -&lt;br/&gt;human accountable]
-  H --&gt; I[Feedback improves&lt;br/&gt;extraction and scoring]
-</pre></div>
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. Broker email and&lt;br/&gt;attachments"] --&gt; B["2. Extraction to schema:&lt;br/&gt;insured, class, limits,&lt;br/&gt;SOV, loss history"]
+  B --&gt; C["3. Enrichment: company data,&lt;br/&gt;geocoding, sanctions,&lt;br/&gt;cat scores"]
+  C --&gt; D["4. Appetite and priority score"]
+  D --&gt; E{"5. Fit?"}
+  E -- No --&gt; F["6. Fast decline with reason"]
+  E -- Yes --&gt; G["7. Workbench: pre-filled risk,&lt;br/&gt;pricing inputs"]
+  G --&gt; H["8. Underwriter decision -&lt;br/&gt;human accountable"]
+  H --&gt; I["9. Feedback improves&lt;br/&gt;extraction and scoring"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,D,G,H stepc
+  class E decc
+  class F,I endc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -10452,7 +10583,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </ul>
 <hr />
 <h2 id="m09-6-reference-architecture-for-ai-in-a-carrier">6. Reference architecture for AI in a carrier</h2>
-<div class="diagram"><pre class="mermaid">flowchart TB
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
   U[Users: underwriters, DA, claims,&lt;br/&gt;finance - in their workflow tools] --&gt; APP[AI-enabled applications&lt;br/&gt;workbench, bordereaux, claims]
   APP --&gt; GW[AI gateway: access control,&lt;br/&gt;prompt and output logging,&lt;br/&gt;data masking, model routing]
   GW --&gt; M[Models: LLMs, ML models,&lt;br/&gt;document AI]
@@ -10461,7 +10593,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   APP --&gt; RULES[Validation rules and&lt;br/&gt;structured contract terms]
   GW --&gt; MON[Monitoring and evaluation:&lt;br/&gt;accuracy, drift, incidents]
   MON --&gt; GOV[AI governance: inventory,&lt;br/&gt;risk tiering, approvals]
-</pre></div>
+</pre></div></div>
 <p><strong>Design principles:</strong> AI inside the workflow (not a separate chatbot); controlled retrieval from approved sources; validation rules around AI outputs; full logging; model choice can change without rebuilding applications.</p>
 <hr />
 <h2 id="m09-7-ai-as-a-risk-to-insure">7. AI as a risk to insure</h2>
@@ -10641,14 +10773,22 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <hr />
 <h2 id="m09-9-building-an-ai-programme">9. Building an AI programme</h2>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   A[1. Ambition and value pool] --&gt; B[2. Data and process readiness]
   B --&gt; C[3. Use-case portfolio:&lt;br/&gt;value x feasibility x risk]
   C --&gt; D[4. Governance before scale]
   D --&gt; E[5. Pilot 2-3 use cases&lt;br/&gt;with test sets and KPIs]
   E --&gt; F[6. Scale: workflow redesign,&lt;br/&gt;integration, change management]
   F --&gt; G[7. Value tracking]
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,D,E,F stepc
+  class G endc
+</pre></div></div>
 <h3 id="m09-9-1-prioritisation-example">9.1 Prioritisation example</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -12153,7 +12293,9 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <hr />
 <h2 id="m26-6-designing-an-agentic-workflow-worked-example">6. Designing an agentic workflow – worked example</h2>
 <h3 id="m26-6-1-submission-to-quote-agent-for-a-property-class">6.1 Submission-to-quote agent for a property class</h3>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
+  autonumber
   participant BR as Broker email
   participant AG as AI agent&lt;br/&gt;Orchestrator
   participant EX as Extraction tool
@@ -12174,7 +12316,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   AG-&gt;&gt;UW: Draft quote, summary, open questions
   Note over UW: Gate 2 - underwriter approves, edits or declines - human accountable
   UW--&gt;&gt;BR: Quote sent by underwriter
-</pre></div>
+</pre></div></div>
 <h3 id="m26-6-2-controls-designed-in">6.2 Controls designed in</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -12511,7 +12653,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>How this chapter relates to the others:</strong> it brings everything about Lloyd's into one place, adds Lloyd's-specific detail, and links to the deeper chapters (04–07) for worked examples. If you only have one chapter to read before meeting a Lloyd's client, read this one.</p>
 <hr />
 <h2 id="m21-1-lloyd-s-on-one-page">1. Lloyd's on one page</h2>
-<div class="diagram"><pre class="mermaid">flowchart TB
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
   subgraph Demand[Clients and distribution]
     CL[Clients worldwide]
     RB[Retail / producing brokers]
@@ -12564,7 +12707,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   FCA -.-&gt; MA
   FCA -.-&gt; LB
   FCA -.-&gt; CH
-</pre></div>
+</pre></div></div>
 <p><strong>In one sentence:</strong> clients' risks reach Lloyd's through brokers and coverholders; underwriters employed by managing agents accept them on behalf of syndicates; members' capital (with the Central Fund behind it) backs the promises; the bureau moves the money and records; the Corporation supervises the market under the oversight of the PRA and FCA.</p>
 <hr />
 <h2 id="m21-2-stakeholder-register-who-does-what">2. Stakeholder register – who does what</h2>
@@ -12883,14 +13026,20 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <hr />
 <h2 id="m21-5-underwriting-at-lloyd-s">5. Underwriting at Lloyd's</h2>
 <h3 id="m21-5-1-the-chain-of-underwriting-authority">5.1 The chain of underwriting authority</h3>
-<div class="diagram"><pre class="mermaid">flowchart TB
-  L[Lloyd's approves syndicate plan - SBF] --&gt; B[Managing agent board sets&lt;br/&gt;risk appetite and strategy]
-  B --&gt; C[CUO allocates classes,&lt;br/&gt;budgets and authorities]
-  C --&gt; U[Class underwriters: authority letters,&lt;br/&gt;line guides, pricing guidelines]
-  U --&gt; D[Risk-level decisions:&lt;br/&gt;open market, facilities, binders]
-  D --&gt; M[Monitoring: rate change,&lt;br/&gt;rate adequacy, aggregates, plan vs actual]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
+  L["1. Lloyd's approves syndicate plan - SBF"] --&gt; B["2. Managing agent board sets&lt;br/&gt;risk appetite and strategy"]
+  B --&gt; C["3. CUO allocates classes,&lt;br/&gt;budgets and authorities"]
+  C --&gt; U["4. Class underwriters: authority letters,&lt;br/&gt;line guides, pricing guidelines"]
+  U --&gt; D["5. Risk-level decisions:&lt;br/&gt;open market, facilities, binders"]
+  D --&gt; M["6. Monitoring: rate change,&lt;br/&gt;rate adequacy, aggregates, plan vs actual"]
   M --&gt; L
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class L,B,C,U,D,M stepc
+</pre></div></div>
 <h3 id="m21-5-2-what-a-lloyd-s-underwriter-does-every-day">5.2 What a Lloyd's underwriter does every day</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -13106,7 +13255,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </tbody>
 </table></div>
 <h3 id="m21-8-2-the-lloyd-s-claims-process">8.2 The Lloyd's claims process</h3>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
   autonumber
   participant I as Insured
   participant B as Lloyd's broker
@@ -13129,7 +13279,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   V-&gt;&gt;F: Settlement from each share
   V-&gt;&gt;B: Funds
   B-&gt;&gt;I: Payment
-</pre></div>
+</pre></div></div>
 <h3 id="m21-8-3-claims-under-delegated-authority-at-lloyd-s">8.3 Claims under delegated authority at Lloyd's</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -13202,19 +13352,28 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <p>Scale: about 45% of Lloyd's premium; about 412 service companies <span class="tag tag-likely">likely</span>.</p>
 <h3 id="m21-9-2-becoming-a-lloyd-s-coverholder">9.2 Becoming a Lloyd's coverholder</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[Find a Lloyd's broker and/or&lt;br/&gt;managing agent sponsor] --&gt; B[Due diligence by&lt;br/&gt;managing agent]
-  B --&gt; C[Application on ATLAS]
-  C --&gt; D{Referral criteria met?&lt;br/&gt;v16, April 2026}
-  D -- Yes --&gt; E[Internal Lloyd's review]
-  D -- No --&gt; F[Standard processing]
-  E --&gt; G[Coverholder Undertaking signed]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. Find a Lloyd's broker and/or&lt;br/&gt;managing agent sponsor"] --&gt; B["2. Due diligence by&lt;br/&gt;managing agent"]
+  B --&gt; C["3. Application on ATLAS"]
+  C --&gt; D{"4. Referral criteria met?&lt;br/&gt;v16, April 2026"}
+  D -- Yes --&gt; E["5. Internal Lloyd's review"]
+  D -- No --&gt; F["6. Standard processing"]
+  E --&gt; G["7. Coverholder Undertaking signed"]
   F --&gt; G
-  G --&gt; H[Lloyd's approval]
-  H --&gt; I[Binding authority placed&lt;br/&gt;within 6 months of approval]
-  I --&gt; J[BAA registered before inception]
-  J --&gt; K[Binding begins]
-</pre></div>
+  G --&gt; H["8. Lloyd's approval"]
+  H --&gt; I["9. Binding authority placed&lt;br/&gt;within 6 months of approval"]
+  I --&gt; J["10. BAA registered before inception"]
+  J --&gt; K["11. Binding begins"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,E,F,G,H,I,J stepc
+  class D decc
+  class K endc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -13332,7 +13491,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <hr />
 <h2 id="m21-10-bordereaux-at-lloyd-s-the-complete-picture">10. Bordereaux at Lloyd's – the complete picture</h2>
 <h3 id="m21-10-1-the-bordereaux-cycle">10.1 The bordereaux cycle</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   A[Coverholder binds risks&lt;br/&gt;during month] --&gt; B[Prepare risk, premium,&lt;br/&gt;claims bordereaux]
   B --&gt; C[Send to Lloyd's broker&lt;br/&gt;and managing agents]
   C --&gt; D[Managing agent ingestion&lt;br/&gt;and mapping]
@@ -13344,7 +13504,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   F -- Yes --&gt; I[Exposure: aggregates,&lt;br/&gt;RDS, cat models]
   F -- Yes --&gt; J[Claims and reserving]
   F -- Yes --&gt; K[Oversight MI, audit triggers,&lt;br/&gt;Lloyd's reporting]
-</pre></div>
+</pre></div></div>
 <h3 id="m21-10-2-what-each-bordereau-feeds">10.2 What each bordereau feeds</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -13481,14 +13641,20 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </tbody>
 </table></div>
 <h3 id="m21-11-2-syndicates-as-buyers-outwards">11.2 Syndicates as buyers (outwards)</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[SBF and capital model&lt;br/&gt;uSCR, RDS] --&gt; B[Outwards programme:&lt;br/&gt;quota share, risk XoL,&lt;br/&gt;cat XoL, aggregate]
-  B --&gt; C[Placed by reinsurance brokers;&lt;br/&gt;security review of reinsurers]
-  C --&gt; D[Cessions: allocate inwards&lt;br/&gt;risks to treaties]
-  D --&gt; E[Recoveries on claims;&lt;br/&gt;reinstatement premiums]
-  E --&gt; F[Credit risk monitoring;&lt;br/&gt;disputes; commutations]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. SBF and capital model&lt;br/&gt;uSCR, RDS"] --&gt; B["2. Outwards programme:&lt;br/&gt;quota share, risk XoL,&lt;br/&gt;cat XoL, aggregate"]
+  B --&gt; C["3. Placed by reinsurance brokers;&lt;br/&gt;security review of reinsurers"]
+  C --&gt; D["4. Cessions: allocate inwards&lt;br/&gt;risks to treaties"]
+  D --&gt; E["5. Recoveries on claims;&lt;br/&gt;reinstatement premiums"]
+  E --&gt; F["6. Credit risk monitoring;&lt;br/&gt;disputes; commutations"]
   F --&gt; A
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A,B,C,D,E,F stepc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -14164,7 +14330,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <hr />
 <h2 id="m23-2-l0-the-lloyd-s-value-chain">2. L0 – the Lloyd's value chain</h2>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   A[1 Capital and planning] --&gt; B[2 Distribution and onboarding]
   B --&gt; C[3 Placement and underwriting]
   C --&gt; D[4 Delegated authority]
@@ -14180,7 +14347,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   J -.-&gt; C
   J -.-&gt; D
   J -.-&gt; G
-</pre></div>
+</pre></div></div>
 <h3 id="m23-l1-process-list">L1 process list</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -14369,9 +14536,17 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <hr />
 <h2 id="m23-p01-syndicate-establishment-and-approval">P01 – Syndicate establishment and approval</h2>
 <p><strong>Trigger:</strong> a group, investor or underwriting team wants a Lloyd's platform. <strong>Output:</strong> an approved syndicate ready to write from 1 January.</p>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  S1[Strategy and structure] --&gt; S2[Business plan and capital] --&gt; S3[Lloyd's application] --&gt; S4[Approval and set-up] --&gt; S5[Go live]
-</pre></div>
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  S1["1. Strategy and structure"] --&gt; S2["2. Business plan and capital"] --&gt; S3["3. Lloyd's application"] --&gt; S4["4. Approval and set-up"] --&gt; S5["5. Go live"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class S1 startc
+  class S2,S3,S4 stepc
+  class S5 endc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -14490,9 +14665,17 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <hr />
 <h2 id="m23-p02-annual-business-planning-sbf">P02 – Annual business planning (SBF)</h2>
 <p><strong>Trigger:</strong> annual planning cycle. <strong>Output:</strong> approved plan and capacity for the next year of account.</p>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[Lloyd's planning guidance] --&gt; B[Class plans] --&gt; C[Syndicate plan and SBF] --&gt; D[Board approval] --&gt; E[Lloyd's review] --&gt; F[Approved plan] --&gt; G[Monitoring]
-</pre></div>
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. Lloyd's planning guidance"] --&gt; B["2. Class plans"] --&gt; C["3. Syndicate plan and SBF"] --&gt; D["4. Board approval"] --&gt; E["5. Lloyd's review"] --&gt; F["6. Approved plan"] --&gt; G["7. Monitoring"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,D,E,F stepc
+  class G endc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -14771,9 +14954,17 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <hr />
 <h2 id="m23-p05-open-market-placement-and-binding">P05 – Open market placement and binding</h2>
 <p><strong>Trigger:</strong> client instruction or renewal. <strong>Output:</strong> bound contract with signed lines and contract certainty.</p>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[Instruction] --&gt; B[Submission and MRC] --&gt; C[Lead quote] --&gt; D[Firm order and lead line] --&gt; E[Following] --&gt; F[Signing down] --&gt; G[Contract certainty] --&gt; H[Processing]
-</pre></div>
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. Instruction"] --&gt; B["2. Submission and MRC"] --&gt; C["3. Lead quote"] --&gt; D["4. Firm order and lead line"] --&gt; E["5. Following"] --&gt; F["6. Signing down"] --&gt; G["7. Contract certainty"] --&gt; H["8. Processing"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,D,E,F,G stepc
+  class H endc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -15149,9 +15340,17 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <hr />
 <h2 id="m23-p08-premium-processing-accounting-and-central-settlement">P08 – Premium processing, accounting and central settlement</h2>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[Broker premium submission] --&gt; B[Bureau validation] --&gt; C[Signing - SND] --&gt; D[Accounting entries per syndicate] --&gt; E[Central settlement] --&gt; F[Premium trust funds] --&gt; G[Reconciliation and credit control]
-</pre></div>
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. Broker premium submission"] --&gt; B["2. Bureau validation"] --&gt; C["3. Signing - SND"] --&gt; D["4. Accounting entries per syndicate"] --&gt; E["5. Central settlement"] --&gt; F["6. Premium trust funds"] --&gt; G["7. Reconciliation and credit control"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,D,E,F stepc
+  class G endc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -15277,9 +15476,17 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <hr />
 <h2 id="m23-p09-coverholder-approval-and-binding-authority-set-up">P09 – Coverholder approval and binding authority set-up</h2>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[Sponsor and due diligence] --&gt; B[ATLAS application] --&gt; C[Lloyd's approval] --&gt; D[Binding authority placed] --&gt; E[Registered before inception] --&gt; F[Go live]
-</pre></div>
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. Sponsor and due diligence"] --&gt; B["2. ATLAS application"] --&gt; C["3. Lloyd's approval"] --&gt; D["4. Binding authority placed"] --&gt; E["5. Registered before inception"] --&gt; F["6. Go live"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,D,E stepc
+  class F endc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -15414,11 +15621,20 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <hr />
 <h2 id="m23-p10-delegated-binding-and-bordereaux-processing">P10 – Delegated binding and bordereaux processing</h2>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[Coverholder binds and issues certificates] --&gt; B[Monthly bordereaux] --&gt; C[Ingestion and mapping] --&gt; D[Validation against BAA] --&gt; E{Exceptions} --&gt;|Yes| F[Queries]
-  E --&gt;|No| G[Finance, exposure, claims, oversight]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. Coverholder binds and issues certificates"] --&gt; B["2. Monthly bordereaux"] --&gt; C["3. Ingestion and mapping"] --&gt; D["4. Validation against BAA"] --&gt; E{"5. Exceptions"} --&gt;|Yes| F["6. Queries"]
+  E --&gt;|No| G["7. Finance, exposure, claims, oversight"]
   F --&gt; B
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,D,F stepc
+  class E decc
+  class G endc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -15669,9 +15885,17 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <hr />
 <h2 id="m23-p12-open-market-claims-notification-to-settlement">P12 – Open market claims (notification to settlement)</h2>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[Notification] --&gt; B[Triage standard or complex] --&gt; C[Investigation] --&gt; D[Reserve] --&gt; E[Agreement] --&gt; F[Payment] --&gt; G[Recoveries] --&gt; H[Closure]
-</pre></div>
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. Notification"] --&gt; B["2. Triage standard or complex"] --&gt; C["3. Investigation"] --&gt; D["4. Reserve"] --&gt; E["5. Agreement"] --&gt; F["6. Payment"] --&gt; G["7. Recoveries"] --&gt; H["8. Closure"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B,C,D,E,F,G stepc
+  class H endc
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -16867,7 +17091,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>Tags on system names.</strong> Market and Lloyd's systems are named as publicly described by Lloyd's, Velonetic and market bodies. Lloyd's Core Market Returns (CMR), Market Data Collections (MDC) and ATLAS are confirmed on Lloyd's own pages <span class="tag tag-certain">certain</span>. Bureau component names (IMR, ECF, CLASS) and some tools are tagged <span class="tag tag-likely">likely</span> because names and services change – Velonetic is modernising incrementally after Blueprint Two. Vendor product names for firm-level systems are <strong>examples of the type, not recommendations</strong>, and are tagged <span class="tag tag-likely">likely</span>; always confirm the client's own landscape.</p>
 <hr />
 <h2 id="m24-1-the-application-landscape-on-one-page">1. The application landscape on one page</h2>
-<div class="diagram"><pre class="mermaid">flowchart TB
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
   subgraph CLIENT[Client and producing broker]
     C1[Client risk data and documents]
     C2[Retail broker system]
@@ -16958,7 +17183,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   M13 --&gt; R2
   M15 --- M2
   M15 --- M8
-</pre></div>
+</pre></div></div>
 <hr />
 <h2 id="m24-2-application-catalogue">2. Application catalogue</h2>
 <h3 id="m24-2-1-market-and-lloyd-s-applications">2.1 Market and Lloyd's applications</h3>
@@ -17618,7 +17843,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </tbody>
 </table></div>
 <h3 id="m24-4-2-the-identifier-chain">4.2 The identifier chain</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   P[Party IDs and LEI] --&gt; U[UMR - contract]
   U --&gt; L[Lines by syndicate number]
   L --&gt; S[SND - premium entry]
@@ -17631,7 +17857,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   Y --&gt; K[Capital and RITC]
   U --&gt; B[Binder UMR]
   B --&gt; X[Certificate numbers in bordereaux]
-</pre></div>
+</pre></div></div>
 <p><strong>Why this matters:</strong> if the UMR or line is wrong at placement, every downstream link breaks – accounting, claims matching, reinsurance recoveries and reporting. Most reconciliation teams exist to repair broken links in this chain.</p>
 <hr />
 <h2 id="m24-5-end-to-end-interlinked-journeys">5. End-to-end interlinked journeys</h2>
@@ -18062,7 +18288,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <hr />
 <h2 id="m24-6-end-to-end-data-flow-diagram">6. End-to-end data flow diagram</h2>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   SUB[Submission and SOV] -- risk data --&gt; ING[Ingestion]
   ING --&gt; WB[Workbench]
   WB -- decision and price --&gt; PLT[Placing platform]
@@ -18087,7 +18314,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   GL -- results --&gt; RET[Lloyd's returns CMR and MDC]
   CAP -- LCR --&gt; RET
   GL -- solvency data --&gt; PRA[PRA returns]
-</pre></div>
+</pre></div></div>
 <hr />
 <h2 id="m24-7-integration-and-message-types">7. Integration and message types</h2>
 <div class="table-wrap"><table>
@@ -18321,7 +18548,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </tbody>
 </table></div>
 <h3 id="m25-lloyd-s-insurance-stages-used-in-this-module">Lloyd's insurance stages used in this module</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   S1[1 Plan and capital] --&gt; S2[2 Onboard and place]
   S2 --&gt; S3[3 Underwrite]
   S3 --&gt; S4[4 Bind and document]
@@ -18334,10 +18562,17 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   S9 --&gt; S10
   S10 --&gt; S11[11 Reserve, close, report]
   S11 --&gt; S1
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11 stepc
+</pre></div></div>
 <hr />
 <h2 id="m25-stage-1-plan-and-capital">Stage 1 – Plan and capital</h2>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
+  autonumber
   participant BRD as MA board&lt;br/&gt;Board papers
   participant CUO as CUO and class UW&lt;br/&gt;Planning models
   participant ACT as Actuarial&lt;br/&gt;Capital model and reserving tools
@@ -18354,7 +18589,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   LLY--&gt;&gt;FIN: Plan approval and capacity
   LLY-&gt;&gt;MEM: Member capital requirement - ECA = uSCR x 1.35
   MEM-&gt;&gt;LLY: Funds at Lloyd's - Coming into Line
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -18406,7 +18641,9 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>Watch points:</strong> plan data built in spreadsheets with weak lineage; plan and capital data inconsistent; late Lloyd's challenges.</p>
 <hr />
 <h2 id="m25-stage-2-onboard-client-and-place-the-risk">Stage 2 – Onboard client and place the risk</h2>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
+  autonumber
   participant CL as Client and retail broker&lt;br/&gt;Client files
   participant LB as Lloyd's broker&lt;br/&gt;Placing system and DMS
   participant SAN as Broker compliance&lt;br/&gt;Sanctions and KYC screening
@@ -18422,7 +18659,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   LB-&gt;&gt;PLT: Electronic MRC for presentation
   PLT-&gt;&gt;WB: Risk presented to lead
   Note over WB: Underwriting decision - see Stage 3
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -18481,7 +18718,9 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>Watch points:</strong> the same risk data is keyed by broker and by each insurer; SOV quality decides cat model quality.</p>
 <hr />
 <h2 id="m25-stage-3-underwrite">Stage 3 – Underwrite</h2>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
+  autonumber
   participant WB as Lead underwriter&lt;br/&gt;Workbench
   participant CMP as Compliance&lt;br/&gt;Sanctions screening and Crystal
   participant EXP as Exposure team&lt;br/&gt;Cat models
@@ -18498,7 +18737,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   CUO--&gt;&gt;WB: Approval with conditions
   WB-&gt;&gt;PLT: Quote - terms, rate, line, subjectivities
   Note over WB: Decision and rationale saved as file note
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -18557,7 +18796,9 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>Watch points:</strong> checks done in separate tools without a single decision record; exposure checks monthly rather than at bind.</p>
 <hr />
 <h2 id="m25-stage-4-bind-document-and-change">Stage 4 – Bind, document and change</h2>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
+  autonumber
   participant CL as Client
   participant LB as Lloyd's broker&lt;br/&gt;Placing system
   participant PLT as Placing platform
@@ -18574,7 +18815,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   PLT-&gt;&gt;FUW: Final MRC, signed lines
   LB-&gt;&gt;CL: Evidence of cover and contract documents
   Note over PAS: Mid-term change - MRC endorsement agreed under GUA, AP or RP processed
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -18619,7 +18860,9 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>Watch points:</strong> PAS updated by re-keying rather than from the platform; written line booked and never corrected to signed line.</p>
 <hr />
 <h2 id="m25-stage-5-premium-accounting-and-central-settlement">Stage 5 – Premium accounting and central settlement</h2>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
+  autonumber
   participant CL as Client
   participant LB as Lloyd's broker&lt;br/&gt;Broker accounting
   participant IMR as Velonetic&lt;br/&gt;Insurers' Market Repository
@@ -18638,7 +18881,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   TA-&gt;&gt;TA: Three-way reconciliation - PAS, bureau, cash
   TA-&gt;&gt;GL: Postings
   Note over TA: Aged debt chased - premium payment clause enforced
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -18697,7 +18940,9 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>Watch points:</strong> bureau queries from data errors; written vs signed line breaks; FX differences; non-bureau insurers on the same contract processed separately.</p>
 <hr />
 <h2 id="m25-stage-6-coverholder-approval-and-binding-authority-set-up">Stage 6 – Coverholder approval and binding authority set-up</h2>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
+  autonumber
   participant CH as Coverholder&lt;br/&gt;Own systems
   participant LB as Lloyd's broker&lt;br/&gt;Placing system
   participant DA as MA DA team&lt;br/&gt;DA platform
@@ -18715,7 +18960,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   LUW-&gt;&gt;PLT: Lead and follow lines on binder
   DA-&gt;&gt;ATL: Register binder before inception
   DA-&gt;&gt;DA: Load structured binder terms into contract register
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -18767,7 +19012,9 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>Watch points:</strong> binder terms left in PDF; registration after inception; ATLAS records not maintained.</p>
 <hr />
 <h2 id="m25-stage-7-delegated-binding-bordereaux-and-oversight">Stage 7 – Delegated binding, bordereaux and oversight</h2>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
+  autonumber
   participant CL as Insured and retail agent
   participant CH as Coverholder&lt;br/&gt;Rating and policy system
   participant LB as Lloyd's broker&lt;br/&gt;Broker accounting
@@ -18788,7 +19035,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   AUD-&gt;&gt;CH: Risk-based audit
   AUD--&gt;&gt;DA: Findings and rating
   Note over DA: Oversight MI - timeliness, data quality, GPI use, loss ratio, breaches
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -18840,7 +19087,9 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>Watch points:</strong> each coverholder layout different; each carrier on the binder processes the same file; exposure weeks out of date.</p>
 <hr />
 <h2 id="m25-stage-8-open-market-claims">Stage 8 – Open market claims</h2>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
+  autonumber
   participant CL as Insured
   participant LB as Lloyd's broker&lt;br/&gt;Broker claims system
   participant ECF as Velonetic&lt;br/&gt;ECF and CLASS
@@ -18861,7 +19110,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   ECF-&gt;&gt;TA: Claim payment entries by syndicate
   ECF--&gt;&gt;LB: Funds via settlement
   LB-&gt;&gt;CL: Pay claim
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -18913,7 +19162,9 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>Watch points:</strong> follower claims systems updated manually; complex/standard triage not recorded; sanctions check missed at payment.</p>
 <hr />
 <h2 id="m25-stage-9-delegated-and-catastrophe-claims">Stage 9 – Delegated and catastrophe claims</h2>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
+  autonumber
   participant CL as Insured
   participant DCA as DCA or TPA&lt;br/&gt;DCA claims system
   participant DA as MA DA platform
@@ -18930,7 +19181,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   EXP-&gt;&gt;CLM: Modelled loss estimate
   CLM-&gt;&gt;LLY: Initial loss estimates
   CLM-&gt;&gt;RI: Event-coded claims for recoveries
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -18988,7 +19239,9 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <hr />
 <h2 id="m25-stage-10-reinsurance">Stage 10 – Reinsurance</h2>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
+  autonumber
   participant ACT as MA actuarial&lt;br/&gt;Capital model
   participant RI as MA reinsurance&lt;br/&gt;RI system
   participant RIB as Reinsurance broker&lt;br/&gt;Broker systems
@@ -19006,7 +19259,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   RI-&gt;&gt;RIB: Collection notes for recoverable claims
   RIB-&gt;&gt;RIN: Collections
   RIN--&gt;&gt;TA: Recoveries paid
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -19057,7 +19310,9 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <hr />
 <h2 id="m25-stage-11-reserve-close-the-year-and-report">Stage 11 – Reserve, close the year and report</h2>
-<div class="diagram"><pre class="mermaid">sequenceDiagram
+<div class="diagram" data-kind="sequence"><div class="dbar"><span class="dleg"><i class="sw s-actor"></i>Party and system (lane) <i class="num">1</i>Numbered hand-offs show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+sequenceDiagram
+  autonumber
   participant CLM as MA claims&lt;br/&gt;Claims system
   participant ACT as MA actuarial&lt;br/&gt;Reserving tools
   participant SA as Signing actuary
@@ -19076,7 +19331,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   DP-&gt;&gt;FIN: Reporting data
   FIN-&gt;&gt;LLY: Quarterly and annual returns
   FIN-&gt;&gt;REG: Solvency and regulatory returns
-</pre></div>
+</pre></div></div>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -21343,7 +21598,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 </table></div>
 <p>Both must be <strong>MECE</strong>: <strong>mutually exclusive</strong> (no overlaps) and <strong>collectively exhaustive</strong> (nothing missing).</p>
 <h3 id="m11-3-2-diagnostic-tree-why-is-our-combined-ratio-5-points-worse">3.2 Diagnostic tree – "Why is our combined ratio 5 points worse than peers?"</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   Q[Combined ratio 5 pts&lt;br/&gt;worse than peers] --&gt; L[Loss ratio higher]
   Q --&gt; E[Expense ratio higher]
   L --&gt; L1[Attritional higher]
@@ -21365,10 +21621,11 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   E2 --&gt; E2b[Systems duplication]
   E2 --&gt; E2c[Scale - fixed costs on small premium]
   E2 --&gt; E2d[Lloyd's and regulatory costs]
-</pre></div>
+</pre></div></div>
 <p>Each end branch must be <strong>testable with data</strong>. "Selection is worse" is tested by comparing loss ratios of risks within the same class and price band against peers or market data.</p>
 <h3 id="m11-3-3-solution-tree-how-can-we-cut-2-points-of-expense-ratio">3.3 Solution tree – "How can we cut 2 points of expense ratio?"</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   S[Cut 2 pts of&lt;br/&gt;expense ratio] --&gt; R[Reduce cost]
   S --&gt; G[Grow premium on&lt;br/&gt;same cost base]
   R --&gt; R1[Remove work: eliminate,&lt;br/&gt;simplify, standardise]
@@ -21378,7 +21635,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   R --&gt; R5[Renegotiate external costs:&lt;br/&gt;facility terms, vendors]
   G --&gt; G1[Grow profitable classes]
   G --&gt; G2[Raise capacity use of&lt;br/&gt;existing teams]
-</pre></div>
+</pre></div></div>
 <p><strong>Tip:</strong> the first split of a tree decides the quality of the work. Common good first splits in London work: loss vs expense; price vs volume; open market vs delegated vs facility; lead vs follow; class; year of account.</p>
 <hr />
 <h2 id="m11-4-step-3-work-hypothesis-first">4. Step 3 – Work hypothesis-first</h2>
@@ -21489,7 +21746,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <hr />
 <h2 id="m11-5-step-4-size-the-value-london-driver-trees">5. Step 4 – Size the value (London driver trees)</h2>
 <h3 id="m11-5-1-the-london-value-driver-tree">5.1 The London value driver tree</h3>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   ROC[Return on capital] --&gt; P[Profit]
   ROC --&gt; C[Capital required]
   P --&gt; UW[Underwriting result]
@@ -21505,7 +21763,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   ER --&gt; ACQ[Acquisition cost]
   ER --&gt; OPS[Operating cost]
   C --&gt; SCR[uSCR / ECA - driven by&lt;br/&gt;exposure, mix, reinsurance,&lt;br/&gt;reserve risk, operational risk]
-</pre></div>
+</pre></div></div>
 <h3 id="m11-5-2-conversion-rules-to-memorise">5.2 Conversion rules to memorise</h3>
 <div class="table-wrap"><table>
 <thead>
@@ -21676,7 +21934,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <h2 id="m11-7-step-6-synthesise-the-pyramid-principle">7. Step 6 – Synthesise: the pyramid principle</h2>
 <h3 id="m11-7-1-the-idea">7.1 The idea</h3>
 <p>Executives want the <strong>answer first</strong>, then the reasons, then the evidence. The pyramid principle (from Barbara Minto, a former McKinsey consultant) is the standard method:</p>
-<div class="diagram"><pre class="mermaid">flowchart TB
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart TB
   G[Governing thought: the answer] --&gt; K1[Key line 1]
   G --&gt; K2[Key line 2]
   G --&gt; K3[Key line 3]
@@ -21686,7 +21945,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   K2 --&gt; E4[Evidence]
   K3 --&gt; E5[Evidence]
   K3 --&gt; E6[Evidence]
-</pre></div>
+</pre></div></div>
 <p>Rules:</p>
 <ol>
 <li><strong>Start with the answer</strong> (the governing thought).</li>
@@ -22930,7 +23189,8 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
 <p><strong>Key question.</strong> How should Syndicate A shape its 2027 plan to protect a combined ratio below 95% on a normalised basis while keeping Lloyd's approval?</p>
 <p><strong>Day-one hypothesis.</strong> The underlying ratio is already about 95%; rate falls will push it above 97% in 2027 unless the syndicate shrinks under-priced classes, protects terms, and takes 1–2 points out of expenses.</p>
 <p><strong>Issue tree.</strong></p>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow"><div class="dbar"><span class="dleg">Map view · use Enlarge to zoom</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   Q[Keep normalised CR &lt; 95% in 2027] --&gt; P[Price and terms]
   Q --&gt; M[Portfolio mix]
   Q --&gt; C[Cost]
@@ -22944,7 +23204,7 @@ Commission: 25% | Surplus lines tax (FL): 4.94% | Coverholder ref: CH-0457
   C --&gt; C2[Acquisition cost]
   R --&gt; R1[Cheaper reinsurance in soft market]
   R --&gt; R2[Capital efficiency]
-</pre></div>
+</pre></div></div>
 <p><strong>Market mechanics.</strong> Lloyd's approves the SBF and in 2026 is warning that rate adequacy for 2027 is under threat <span class="tag tag-likely">likely</span>; the PRA is watching internal models that may overstate profitability <span class="tag tag-likely">likely</span>. Plans with unrealistic loss ratios will be challenged.</p>
 <p><strong>Analyses and illustrative findings.</strong></p>
 <div class="table-wrap"><table>
@@ -26445,10 +26705,18 @@ Next quarter's 3 actions: ____ / ____ / ____
 <p>The CII units focus on principles, law and market practice. They do not go deeply into: the Blueprint Two decision and market modernisation (<a href="#m08">Module 08</a>), AI (<a href="#m09">Module 09</a>), Lloyd's 2026–2030 strategy and current results (<a href="#m07">Module 07</a>), data architecture, or consulting skills (<a href="#m11">Module 11</a>). Passing the exams is necessary for credibility but not sufficient for consulting.</p>
 <hr />
 <h2 id="m14-4-recommended-study-sequence">4. Recommended study sequence</h2>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[LM1&lt;br/&gt;6-8 weeks&lt;br/&gt;Principles, regulation,&lt;br/&gt;market structure] --&gt; B[LM2&lt;br/&gt;8-10 weeks&lt;br/&gt;MRC, placement law,&lt;br/&gt;intermediaries, DA, claims]
-  B --&gt; C[LM3&lt;br/&gt;10-12 weeks&lt;br/&gt;Wordings, business planning,&lt;br/&gt;pricing, distribution]
-</pre></div>
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. LM1&lt;br/&gt;6-8 weeks&lt;br/&gt;Principles, regulation,&lt;br/&gt;market structure"] --&gt; B["2. LM2&lt;br/&gt;8-10 weeks&lt;br/&gt;MRC, placement law,&lt;br/&gt;intermediaries, DA, claims"]
+  B --&gt; C["3. LM3&lt;br/&gt;10-12 weeks&lt;br/&gt;Wordings, business planning,&lt;br/&gt;pricing, distribution"]
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A startc
+  class B stepc
+  class C endc
+</pre></div></div>
 <p><span class="tag tag-guessing">guessing</span> Study hours: about 50–60 hours for LM1, 80–100 hours for LM2, 100–120 hours for LM3, for someone working full time without London market operations experience. Adjust after your first practice test.</p>
 <h3 id="m14-weekly-method-works-for-all-three-units">Weekly method (works for all three units)</h3>
 <ol>
@@ -26752,13 +27020,19 @@ Next quarter's 3 actions: ____ / ____ / ____
 <p>See <a href="#m03">Module 03</a>. For the exam, know the main features of: marine (hull, cargo, liability, war), aviation (hull, liability, products, space), energy (onshore, offshore), property (including terrorism and political violence), casualty/liability (public/products liability, professional indemnity, D&amp;O, medical malpractice, cyber), specialty (political risk, credit, K&amp;R, contingency, fine art, bloodstock), personal lines/A&amp;H through delegated authority, and reinsurance.</p>
 <hr />
 <h2 id="m15-lo4-the-insurance-cycle-1-question">LO4 – The insurance cycle (≈1 question)</h2>
-<div class="diagram"><pre class="mermaid">flowchart LR
-  A[High prices and profits] --&gt; B[New capital enters,&lt;br/&gt;competition increases]
-  B --&gt; C[Prices fall, terms widen&lt;br/&gt;= SOFT market]
-  C --&gt; D[Losses rise, capital lost&lt;br/&gt;or withdrawn]
-  D --&gt; E[Capacity falls, prices rise&lt;br/&gt;= HARD market]
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
+  A["1. High prices and profits"] --&gt; B["2. New capital enters,&lt;br/&gt;competition increases"]
+  B --&gt; C["3. Prices fall, terms widen&lt;br/&gt;= SOFT market"]
+  C --&gt; D["4. Losses rise, capital lost&lt;br/&gt;or withdrawn"]
+  D --&gt; E["5. Capacity falls, prices rise&lt;br/&gt;= HARD market"]
   E --&gt; A
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class A,B,C,D,E stepc
+</pre></div></div>
 <p>Drivers: capital supply, catastrophe events, investment returns, competition, reserve releases or deteriorations. The London market in 2026 is in a <strong>softening</strong> phase (Lloyd's risk-adjusted rates −6.7% in H1 2026) <span class="tag tag-certain">certain</span>.</p>
 <hr />
 <h2 id="m15-lo5-reinsurance-3-questions">LO5 – Reinsurance (≈3 questions)</h2>
@@ -27090,16 +27364,24 @@ Next quarter's 3 actions: ____ / ____ / ____
 <hr />
 <h2 id="m16-lo1-business-nature-of-the-london-market-1-question">LO1 – Business nature of the London Market (≈1 question)</h2>
 <p><strong>1.1 Principal parties and relationships</strong></p>
-<div class="diagram"><pre class="mermaid">flowchart LR
+<div class="diagram" data-kind="flow-numbered"><div class="dbar"><span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step <i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span><button type="button" class="btn small enlarge">Enlarge</button></div><div class="dwrap"><pre class="mermaid">%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", "primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", "secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", "edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", "actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", "signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", "noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", "sequenceNumberColor": "#FFFFFF"}, "flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, "sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%
+flowchart LR
   Client -- appoints, agent of client --&gt; Broker
-  Broker -- presents risk --&gt; Lead[Lead underwriter]
+  Broker -- presents risk --&gt; Lead["7. Lead underwriter"]
   Broker -- shows led slip --&gt; Followers
   Lead -- sets terms --&gt; Followers
-  MA[Managing agent] -- manages --&gt; Syndicate
+  MA["2. Managing agent"] -- manages --&gt; Syndicate
   Members -- capital --&gt; Syndicate
   MA -- grants binding authority --&gt; Coverholder
   Coverholder -- binds risks for --&gt; Syndicate
-</pre></div>
+  classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px
+  classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px
+  classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px
+  classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px
+  class Client,MA,Members startc
+  class Broker,Lead,Coverholder stepc
+  class Followers,Syndicate endc
+</pre></div></div>
 <p>Key relationships to know: client–broker (agency); broker–insurer (TOBA, premium and claims handling); lead–follower (subscription, GUA, claims lead arrangements); managing agent–members (agency agreements); insurer–coverholder (binding authority agreement). See <a href="#m02">Module 02</a>.</p>
 <hr />
 <h2 id="m16-lo2-main-classes-of-insurance-3-questions">LO2 – Main classes of insurance (≈3 questions)</h2>
@@ -28422,6 +28704,17 @@ Next quarter's 3 actions: ____ / ____ / ____
   </main>
 </div>
 <a class="btn small totop" href="#top">Back to top</a>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lbTitle" hidden>
+  <div class="lbbar">
+    <b id="lbTitle">Diagram</b>
+    <button type="button" class="btn small" id="zOut" aria-label="Zoom out">−</button>
+    <span class="zoomval" id="zVal">100%</span>
+    <button type="button" class="btn small" id="zIn" aria-label="Zoom in">+</button>
+    <button type="button" class="btn small" id="zFit">Fit to screen</button>
+    <button type="button" class="btn small" id="lbClose">Close</button>
+  </div>
+  <div class="lbbody" id="lbBody"></div>
+</div>
 
 <script>
 (function () {
@@ -28476,6 +28769,39 @@ Next quarter's 3 actions: ____ / ____ / ____
 
   /* Diagram count */
   var dc = document.querySelectorAll(".diagram").length; if (dc) $("diagCount").textContent = dc;
+
+  /* Diagram enlarge viewer */
+  var lb = $("lightbox"), lbBody = $("lbBody"), zoom = 1, natW = 0, lastBtn = null;
+  function heading(el) {
+    var n = el; while (n) { var p = n.previousElementSibling; while (p) { if (/^H[1-4]$/.test(p.tagName)) return p.textContent; p = p.previousElementSibling; } n = n.parentElement; if (n && n.classList && n.classList.contains("module")) { var h = n.querySelector("h1"); return h ? h.textContent : "Diagram"; } } return "Diagram";
+  }
+  function applyZoom() { var svg = lbBody.querySelector("svg"); if (!svg || !natW) return; svg.style.width = Math.round(natW * zoom) + "px"; $("zVal").textContent = Math.round(zoom * 100) + "%"; }
+  function fit() { var svg = lbBody.querySelector("svg"); if (!svg || !natW) return; zoom = Math.max(0.3, Math.min(4, (lbBody.clientWidth - 40) / natW)); applyZoom(); }
+  function openLb(d, btn) {
+    var svg = d.querySelector("svg");
+    if (!svg) { var b = d.querySelector(".enlarge"); if (b) { b.textContent = "Loading…"; setTimeout(function () { b.textContent = "Enlarge"; }, 1200); } return; }
+    var c = svg.cloneNode(true), vb = svg.viewBox && svg.viewBox.baseVal;
+    natW = vb && vb.width ? vb.width : svg.getBoundingClientRect().width;
+    c.removeAttribute("width"); c.removeAttribute("height"); c.style.maxWidth = "none"; c.style.minWidth = "0";
+    lbBody.innerHTML = ""; lbBody.appendChild(c);
+    $("lbTitle").textContent = heading(d);
+    lastBtn = btn || null; lb.hidden = false; document.body.style.overflow = "hidden";
+    fit(); if (zoom < 1) { zoom = 1; applyZoom(); }
+    $("lbClose").focus();
+  }
+  function closeLb() { lb.hidden = true; lbBody.innerHTML = ""; document.body.style.overflow = ""; if (lastBtn) lastBtn.focus(); }
+  document.querySelectorAll(".diagram").forEach(function (d) {
+    var b = d.querySelector(".enlarge");
+    if (b) b.addEventListener("click", function () { openLb(d, b); });
+    var w = d.querySelector(".dwrap");
+    if (w) w.addEventListener("dblclick", function () { openLb(d, b); });
+  });
+  $("zIn").addEventListener("click", function () { zoom = Math.min(4, zoom * 1.25); applyZoom(); });
+  $("zOut").addEventListener("click", function () { zoom = Math.max(0.3, zoom / 1.25); applyZoom(); });
+  $("zFit").addEventListener("click", fit);
+  $("lbClose").addEventListener("click", closeLb);
+  lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener("keydown", function (e) { if (!lb.hidden) { if (e.key === "Escape") closeLb(); if (e.key === "+" || e.key === "=") $("zIn").click(); if (e.key === "-") $("zOut").click(); } });
 
   /* Search */
   var modText = {};

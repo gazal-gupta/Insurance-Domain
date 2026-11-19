@@ -94,6 +94,127 @@ def slug(s):
     return s[:60] or "s"
 
 
+INIT = ('%%{init: {"theme": "base", "themeVariables": {'
+        '"fontFamily": "Arial, Helvetica, sans-serif", "fontSize": "16px", '
+        '"primaryColor": "#FFF4DA", "primaryTextColor": "#14243A", "primaryBorderColor": "#9C7218", '
+        '"secondaryColor": "#DDEFF1", "tertiaryColor": "#F3F5F8", "lineColor": "#4E5A6B", '
+        '"edgeLabelBackground": "#FFFFFF", "clusterBkg": "#F6F8FB", "clusterBorder": "#9AA5B4", '
+        '"actorBkg": "#14243A", "actorTextColor": "#FFFFFF", "actorBorder": "#14243A", "actorLineColor": "#9AA5B4", '
+        '"signalColor": "#1C6A73", "signalTextColor": "#14243A", "labelBoxBkgColor": "#DDEFF1", '
+        '"noteBkgColor": "#FFF4DA", "noteTextColor": "#14243A", "noteBorderColor": "#9C7218", '
+        '"sequenceNumberColor": "#FFFFFF"}, '
+        '"flowchart": {"nodeSpacing": 45, "rankSpacing": 55, "padding": 14, "useMaxWidth": false}, '
+        '"sequence": {"actorFontSize": 15, "messageFontSize": 15, "noteFontSize": 14, "useMaxWidth": false, "mirrorActors": true}}}%%')
+
+CLASSDEFS = [
+    "classDef startc fill:#2B7A4B,stroke:#1E5A37,color:#FFFFFF,stroke-width:2px",
+    "classDef stepc fill:#FFF4DA,stroke:#9C7218,color:#14243A,stroke-width:1.5px",
+    "classDef decc fill:#FDE7C4,stroke:#A86400,color:#14243A,stroke-width:2px",
+    "classDef endc fill:#1C6A73,stroke:#124A50,color:#FFFFFF,stroke-width:2px",
+]
+
+LEGENDS = {
+    "flow-numbered": ('<span class="dleg"><i class="sw s-start"></i>Start <i class="sw s-step"></i>Step '
+                      '<i class="sw s-dec"></i>Decision <i class="sw s-end"></i>End · numbers show the step sequence</span>'),
+    "sequence": ('<span class="dleg"><i class="sw s-actor"></i>Party and system (lane) '
+                 '<i class="num">1</i>Numbered hand-offs show the step sequence</span>'),
+    "flow": '<span class="dleg">Map view · use Enlarge to zoom</span>',
+    "other": '<span class="dleg">Use Enlarge to zoom</span>',
+}
+
+NODE_DEF = re.compile(r"(\b[A-Za-z][\w]*)\s*(\[\[.*?\]\]|\[.*?\]|\{.*?\}|\(\(.*?\)\)|\(.*?\))")
+ARROW = re.compile(r"\s*(?:<-->|-->|-\.->|==>|---)\s*")
+
+
+def enhance_mermaid(code):
+    """Add theme, numbering and colour coding. Returns (code, kind)."""
+    lines = code.strip("\n").split("\n")
+    first = lines[0].strip()
+    if first.startswith("sequenceDiagram"):
+        if not any(l.strip() == "autonumber" for l in lines):
+            lines.insert(1, "  autonumber")
+        return INIT + "\n" + "\n".join(lines) + "\n", "sequence"
+    if not (first.startswith("flowchart") or first.startswith("graph")):
+        return INIT + "\n" + "\n".join(lines) + "\n", "other"
+    if any(l.strip().startswith("subgraph") for l in lines):
+        return INIT + "\n" + "\n".join(lines) + "\n", "flow"
+    # parse nodes, labels, shapes and edges
+    order, shape, edges = [], {}, []
+    for l in lines[1:]:
+        s = l.strip()
+        if not s or s.startswith(("classDef", "class ", "style ", "linkStyle", "%%", "direction", "click")):
+            continue
+        for mo in NODE_DEF.finditer(s):
+            nid, lab = mo.group(1), mo.group(2)
+            if nid not in shape:
+                shape[nid] = lab[0]
+            if nid not in order:
+                order.append(nid)
+        bare = NODE_DEF.sub(r"\1", s)
+        bare = re.sub(r"--\s[^>]*?-->", "-->", bare)
+        bare = re.sub(r"-\.\s[^>]*?\.->", "-.->", bare)
+        bare = re.sub(r"\|[^|]*\|", "", bare)
+        parts = [p.strip() for p in ARROW.split(bare) if p.strip()]
+        ids = [p for p in parts if re.fullmatch(r"[A-Za-z]\w*", p)]
+        for nid in ids:
+            if nid not in order:
+                order.append(nid)
+        if len(ids) == len(parts):
+            edges += list(zip(ids, ids[1:]))
+    outdeg = {n: 0 for n in order}
+    indeg = {n: 0 for n in order}
+    for a, b in edges:
+        outdeg[a] = outdeg.get(a, 0) + 1
+        indeg[b] = indeg.get(b, 0) + 1
+    if not order or len(order) > 18 or max(outdeg.values() or [0]) > 2 or not edges:
+        return INIT + "\n" + "\n".join(lines) + "\n", "flow"
+    # sequence: breadth-first from roots in appearance order
+    adj = {n: [] for n in order}
+    for a, b in edges:
+        if b not in adj[a]:
+            adj[a].append(b)
+    roots = [n for n in order if indeg.get(n, 0) == 0] or [order[0]]
+    seq, queue = [], list(roots)
+    while queue:
+        n = queue.pop(0)
+        if n in seq:
+            continue
+        seq.append(n)
+        queue += [m for m in adj.get(n, []) if m not in seq]
+    seq += [n for n in order if n not in seq]
+    num = {n: i + 1 for i, n in enumerate(seq)}
+    labels_text = [m.group(2) for l in lines[1:] for m in NODE_DEF.finditer(l)]
+    if labels_text and all(re.match(r"^[\[\{\(]+\"?\d", t) for t in labels_text):
+        num = {}  # diagram already carries its own step numbers – keep them
+    done = set()
+
+    def label(mo):
+        nid, lab = mo.group(1), mo.group(2)
+        if nid in done or nid not in num:
+            return mo.group(0)
+        done.add(nid)
+        op = 2 if lab[:2] in ("[[", "((") else 1
+        inner = lab[op:-op].strip().strip('"')
+        return f'{nid}{lab[:op]}"{num[nid]}. {inner}"{lab[-op:]}'
+
+    out = [lines[0]]
+    for l in lines[1:]:
+        out.append(NODE_DEF.sub(label, l))
+    cls = {"startc": [], "stepc": [], "decc": [], "endc": []}
+    for n in order:
+        if shape.get(n) == "{":
+            cls["decc"].append(n)
+        elif indeg.get(n, 0) == 0:
+            cls["startc"].append(n)
+        elif outdeg.get(n, 0) == 0:
+            cls["endc"].append(n)
+        else:
+            cls["stepc"].append(n)
+    out += ["  " + c for c in CLASSDEFS]
+    out += [f"  class {','.join(v)} {k}" for k, v in cls.items() if v]
+    return INIT + "\n" + "\n".join(out) + "\n", "flow-numbered"
+
+
 def convert(mid, text):
     # title
     m = re.match(r"#\s+(.+)\n", text)
@@ -125,7 +246,11 @@ def convert(mid, text):
 
     h = markdown.markdown(body, extensions=["tables", "fenced_code", "sane_lists"])
     for i, code in enumerate(mermaids):
-        block = f'<div class="diagram"><pre class="mermaid">{html.escape(code, quote=False)}</pre></div>'
+        code, kind = enhance_mermaid(code)
+        legend = LEGENDS.get(kind, "")
+        block = (f'<div class="diagram" data-kind="{kind}"><div class="dbar">{legend}'
+                 f'<button type="button" class="btn small enlarge">Enlarge</button></div>'
+                 f'<div class="dwrap"><pre class="mermaid">{html.escape(code, quote=False)}</pre></div></div>')
         h = h.replace(f"<p>MERMAIDBLOCK{i}</p>", block)
     h = h.replace("<table>", '<div class="table-wrap"><table>').replace("</table>", "</table></div>")
     h = re.sub(r'<a href="(https?://)', r'<a target="_blank" rel="noopener" href="\1', h)

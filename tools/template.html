@@ -13,7 +13,7 @@
   --display: "Fraunces", Georgia, "Times New Roman", serif;
   --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --radius: 10px; --topbar: 60px;
+  --radius: 10px; --topbar: 60px; --diagram-bg: #FFFFFF; --diagram-ink: #14243A;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -21,6 +21,7 @@
     --ink: #F1E7CF; --brass: #D7AC52; --brass-soft: #3A2E15; --teal: #63B5BD; --teal-soft: #14323A;
     --ok: #6CC08E; --warn: #E2A84C; --risk: #E58190;
     --c0: #D7AC52; --c1: #63B5BD; --c2: #B58FD9; --c3: #6CC08E; --c4: #E58190; --c5: #7FA6EA; --c6: #E2A84C; --c7: #A6B1C1;
+    --diagram-bg: #F4F6F9; --diagram-ink: #14243A;
     color-scheme: dark;
   }
 }
@@ -29,6 +30,7 @@
   --ink: #F1E7CF; --brass: #D7AC52; --brass-soft: #3A2E15; --teal: #63B5BD; --teal-soft: #14323A;
   --ok: #6CC08E; --warn: #E2A84C; --risk: #E58190;
   --c0: #D7AC52; --c1: #63B5BD; --c2: #B58FD9; --c3: #6CC08E; --c4: #E58190; --c5: #7FA6EA; --c6: #E2A84C; --c7: #A6B1C1;
+  --diagram-bg: #F4F6F9; --diagram-ink: #14243A;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -197,8 +199,31 @@ h1, h2, h3 { font-family: var(--display); color: var(--ink); text-wrap: balance;
 .prose td { padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; font-variant-numeric: tabular-nums; }
 .prose tr:last-child td { border-bottom: 0; }
 .prose tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface-2) 45%, transparent); }
-.diagram { overflow-x: auto; margin: 14px 0 20px; padding: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
-.diagram pre.mermaid { margin: 0; background: transparent; text-align: center; font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: pre; }
+.diagram { margin: 16px 0 24px; background: var(--diagram-bg); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.dbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 12px; border-bottom: 1px solid #D8DEE6; background: #F3F5F8; color: var(--diagram-ink); }
+.dleg { font-size: 12.5px; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; color: #3B4656; }
+.sw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid; vertical-align: -2px; margin-left: 6px; }
+.sw:first-child { margin-left: 0; }
+.s-start { background: #2B7A4B; border-color: #1E5A37; } .s-step { background: #FFF4DA; border-color: #9C7218; }
+.s-dec { background: #FDE7C4; border-color: #A86400; } .s-end { background: #1C6A73; border-color: #124A50; } .s-actor { background: #14243A; border-color: #14243A; }
+.dleg .num { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: #1C6A73; color: #FFFFFF; font-style: normal; font-size: 11px; font-weight: 700; margin-left: 6px; }
+.dbar .enlarge { background: #14243A; color: #FFFFFF; border-color: #14243A; }
+.dwrap { overflow-x: auto; padding: 16px; cursor: zoom-in; }
+.diagram pre.mermaid { margin: 0; background: transparent; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 16px; color: #5A6577; white-space: pre; }
+.diagram svg { display: block; margin: 0 auto; height: auto; }
+.diagram svg, .diagram svg * { font-family: Arial, Helvetica, sans-serif; }
+.diagram svg { white-space: normal; }
+.diagram[data-kind="flow-numbered"] svg, .diagram[data-kind="sequence"] svg { width: auto !important; max-width: none !important; }
+.diagram[data-kind="flow"] svg, .diagram[data-kind="other"] svg { width: 100% !important; max-width: none !important; min-width: 760px; }
+.lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(10, 16, 26, .82); display: flex; flex-direction: column;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
+.lightbox[hidden] { display: none !important; }
+.lbbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; background: #FFFFFF; color: #14243A; border-radius: 10px 10px 0 0; padding: 8px 12px; }
+.lbbar b { flex: 1; min-width: 0; font-family: var(--display); font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lbbar .btn { background: #FFFFFF; color: #14243A; border-color: #C9D1DC; }
+.lbbar .zoomval { font-family: var(--mono); font-size: 12.5px; min-width: 48px; text-align: center; }
+.lbbody { flex: 1; overflow: auto; background: #FFFFFF; border-radius: 0 0 10px 10px; padding: 20px; }
+.lbbody svg { display: block; margin: 0 auto; max-width: none !important; height: auto; }
 .notes { margin: 28px 0 0; background: var(--teal-soft); border-radius: var(--radius); padding: 12px 14px; display: grid; gap: 6px; }
 .notes label { font-size: 13px; font-weight: 600; color: var(--teal); }
 .notes textarea { font: inherit; font-size: 14px; width: 100%; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); padding: 8px 10px; resize: vertical; }
@@ -221,7 +246,6 @@ footer.foot { margin-top: 64px; font-size: 13px; color: var(--muted); border-top
   .hub { max-width: 190px; }
 }
 .brand .short { display: none; }
-@media (max-width: 760px) { .diagram svg { min-width: 560px; } }
 @media (max-width: 520px) { .search { display: none; } .brand { flex: 1 1 auto; } .brand .full { display: none; } .brand .short { display: inline; } }
 </style>
 
@@ -438,6 +462,17 @@ footer.foot { margin-top: 64px; font-size: 13px; color: var(--muted); border-top
   </main>
 </div>
 <a class="btn small totop" href="#top">Back to top</a>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lbTitle" hidden>
+  <div class="lbbar">
+    <b id="lbTitle">Diagram</b>
+    <button type="button" class="btn small" id="zOut" aria-label="Zoom out">−</button>
+    <span class="zoomval" id="zVal">100%</span>
+    <button type="button" class="btn small" id="zIn" aria-label="Zoom in">+</button>
+    <button type="button" class="btn small" id="zFit">Fit to screen</button>
+    <button type="button" class="btn small" id="lbClose">Close</button>
+  </div>
+  <div class="lbbody" id="lbBody"></div>
+</div>
 
 <script>
 (function () {
@@ -492,6 +527,39 @@ footer.foot { margin-top: 64px; font-size: 13px; color: var(--muted); border-top
 
   /* Diagram count */
   var dc = document.querySelectorAll(".diagram").length; if (dc) $("diagCount").textContent = dc;
+
+  /* Diagram enlarge viewer */
+  var lb = $("lightbox"), lbBody = $("lbBody"), zoom = 1, natW = 0, lastBtn = null;
+  function heading(el) {
+    var n = el; while (n) { var p = n.previousElementSibling; while (p) { if (/^H[1-4]$/.test(p.tagName)) return p.textContent; p = p.previousElementSibling; } n = n.parentElement; if (n && n.classList && n.classList.contains("module")) { var h = n.querySelector("h1"); return h ? h.textContent : "Diagram"; } } return "Diagram";
+  }
+  function applyZoom() { var svg = lbBody.querySelector("svg"); if (!svg || !natW) return; svg.style.width = Math.round(natW * zoom) + "px"; $("zVal").textContent = Math.round(zoom * 100) + "%"; }
+  function fit() { var svg = lbBody.querySelector("svg"); if (!svg || !natW) return; zoom = Math.max(0.3, Math.min(4, (lbBody.clientWidth - 40) / natW)); applyZoom(); }
+  function openLb(d, btn) {
+    var svg = d.querySelector("svg");
+    if (!svg) { var b = d.querySelector(".enlarge"); if (b) { b.textContent = "Loading…"; setTimeout(function () { b.textContent = "Enlarge"; }, 1200); } return; }
+    var c = svg.cloneNode(true), vb = svg.viewBox && svg.viewBox.baseVal;
+    natW = vb && vb.width ? vb.width : svg.getBoundingClientRect().width;
+    c.removeAttribute("width"); c.removeAttribute("height"); c.style.maxWidth = "none"; c.style.minWidth = "0";
+    lbBody.innerHTML = ""; lbBody.appendChild(c);
+    $("lbTitle").textContent = heading(d);
+    lastBtn = btn || null; lb.hidden = false; document.body.style.overflow = "hidden";
+    fit(); if (zoom < 1) { zoom = 1; applyZoom(); }
+    $("lbClose").focus();
+  }
+  function closeLb() { lb.hidden = true; lbBody.innerHTML = ""; document.body.style.overflow = ""; if (lastBtn) lastBtn.focus(); }
+  document.querySelectorAll(".diagram").forEach(function (d) {
+    var b = d.querySelector(".enlarge");
+    if (b) b.addEventListener("click", function () { openLb(d, b); });
+    var w = d.querySelector(".dwrap");
+    if (w) w.addEventListener("dblclick", function () { openLb(d, b); });
+  });
+  $("zIn").addEventListener("click", function () { zoom = Math.min(4, zoom * 1.25); applyZoom(); });
+  $("zOut").addEventListener("click", function () { zoom = Math.max(0.3, zoom / 1.25); applyZoom(); });
+  $("zFit").addEventListener("click", fit);
+  $("lbClose").addEventListener("click", closeLb);
+  lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener("keydown", function (e) { if (!lb.hidden) { if (e.key === "Escape") closeLb(); if (e.key === "+" || e.key === "=") $("zIn").click(); if (e.key === "-") $("zOut").click(); } });
 
   /* Search */
   var modText = {};
